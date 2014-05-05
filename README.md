@@ -1,16 +1,5 @@
 Multiverse Miner
 
-Picks:
+What you can do:
 
-You use the furnace to forge picks. There are 10 types of picks.
-
-The cost of the picks should be quite high.
-
-
-TODO:
-1) Create planetary objects
-2) Create pick selection
-3) Determine types of elements
-4) Create solar system
-5) Create mobs
-6) Create galaxies
+Mine, and get iron.
