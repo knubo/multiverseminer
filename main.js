@@ -3,6 +3,7 @@ var game = {
 	    depth: 0,
 		ironChance: 10,
 		iron: 0,
+		ironBar: 0,
 		fuelChance: 0,
 		fuel: 0,
 		oxygenChance: 100,
@@ -45,4 +46,13 @@ function dig_earth(number){
 
 function getRandom(){
     return Math.floor((Math.random() * 100) + 1);
+}
+
+function craftIronBar(){
+    if(game.earth.iron>=10){
+	    game.earth.iron-=10;
+		game.earth.ironBar+=1;
+		document.getElementById('iron').innerHTML = game.earth.iron;
+		document.getElementById('ironbar').innerHTML = game.earth.ironBar;
+	}
 }
