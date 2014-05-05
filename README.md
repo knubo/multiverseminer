@@ -1,6 +1,10 @@
 Multiverse Miner
 
-Picks:
+What you can do:
+
+Mine, get iron and craft iron bars.
+
+Todo:
 
 
 Each planet is it's own incremental. You need specific resources from each planet to continue. Each planet has attacks from intergalactic mobs, which serve to halt your progress, and steal the resources of the planet.
