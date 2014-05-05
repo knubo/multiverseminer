@@ -6,15 +6,37 @@
 		<script src="earth.js" type="text/javascript"></script>
 		<script src="jquery.planetarium" type="text/javascript"></script>
 		<link href="planetarium.css" rel="stylesheet" type="text/css">
+        <style>
+			.container{
+				text-align:center;
+				width:100%;
+				height:100%;
+			}
+			.right{
+				position:fixed;
+				right:0px;
+				top:0px;
+				width:250px;
+				text-align:center;
+			}
+		</style>
 	</head>
     <body>
-	    <center><img src="assets/pick.png" onclick="dig_down(1)" /><br><br>
-		<button onclick="dig_sideway(1)">Not implemented</button><br>
-	    <center><button onclick="dig_down(1)">Dig deeper underground.</button>
-		<button onclick="dig_sideway(1)">Gather atmosphere.</button><br>
-		<span id="depth">0</span> meters deep<br><br><br>
-		<span id="iron">0</span> irons<br>
-		<span id="ironbar">0</span> iron bars<br><br><br>
-		<button onclick="craftIronBar()">Craft an iron bar [10 irons]</button></center>
+    	<div class="container">
+            <img src="assets/pick.png" onclick="dig_down()" /><br><br>
+            <button onclick="dig_sideway(1)">Not implemented</button><br>
+            <button onclick="dig_down()">Dig deeper underground.</button>
+            <button onclick="dig_sideway(1)">Gather atmosphere.</button><br>
+            <span id="depth">0</span> meters deep<br><br><br>
+            <span id="iron">0</span> irons<br>
+            <span id="ironbar">0</span> iron bars<br><br><br>
+            <button onclick="craftIronBar()">Craft an iron bar [10 irons]</button>
+            <button onclick="craftIronPick()">Craft an iron pickaxe [10 iron bars]</button>
+        </div>
+        <div class="right">
+        	<h1 id="pickType">Wood Pickaxe</h1>
+            <h3 id="pickPower">1</h3>
+            <p>m/s</p>
+        </div>
     </body>
 </html>
