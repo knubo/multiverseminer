@@ -1,12 +1,37 @@
-earth = {
-    "name": "Earth",
-    "attributes": {
-        "layers": {
-            "0": ["Atmosphere", 0, 0, ["Oxygen"]],
-            "1": ["Crust", 0, 35, ["Iron", "Gold"]],
-            "2": ["Upper Mantle", 35, 60, ["Iron", "Fuel"]],
-            "3": ["Mantle", 60, 2890, ["Iron"]]
+{
+    "layers": {
+        "0": {
+            "elements": "oxygen",
+            "maxDepth": 0,
+            "minDepth": 0,
+            "name": "atmosphere"
         },
-
+        "1": {
+            "elements": [
+                "iron",
+                "gold"
+            ],
+            "maxDepth": 35,
+            "minDepth": 1,
+            "name": "crust"
+        },
+        "2": {
+            "elements": [
+                "iron",
+                "fuel"
+            ],
+            "maxDepth": 60,
+            "minDepth": 36,
+            "name": "upper mantle"
+        },
+        "3": {
+            "elements": [
+                "iron"
+            ],
+            "maxDepth": 2890,
+            "minDepth": 61,
+            "name": "mantle"
+        }
     },
+    "name": "Earth"
 }
