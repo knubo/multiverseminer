@@ -15,7 +15,7 @@ var game = {
 	}
 };
 
-function dig_earth(number){
+function dig_down(number){
     game.earth.depth+=number;
 	if(game.earth.depth>10000){
 	    game.earth.ironChance=100;
