@@ -12,45 +12,29 @@ var game = {
 	},
 	moon: {
 	    depth: 0
-	},
-	pick: {
-		current: {
-			owned: true,
-			power: 1
-		},
-		wood: {
-			owned: true,
-			power: 1,
-			name: "Wood Pickaxe"
-		},
-		iron: {
-			owned: false,
-			power: 3,
-			name: "Iron Pickaxe"
-		}
 	}
 };
 
-function dig_down(){
-    game.earth.depth+=game.pick.current.power;
+function dig_down(number){
+    game.earth.depth+=number;
 	if(game.earth.depth>10000){
-	    game.earth.ironChance=100*game.pick.current.power;
+	    game.earth.ironChance=100;
 	} else if(game.earth.depth>9000){
-	    game.earth.ironChance=90*game.pick.current.power;
+	    game.earth.ironChance=90;
 	} else if(game.earth.depth>8000){
-	    game.earth.ironChance=80*game.pick.current.power;
+	    game.earth.ironChance=80;
 	} else if(game.earth.depth>7000){
-	    game.earth.ironChance=70*game.pick.current.power;
+	    game.earth.ironChance=70;
 	} else if(game.earth.depth>6000){
-	    game.earth.ironChance=50*game.pick.current.power;
+	    game.earth.ironChance=50;
 	} else if(game.earth.depth>5000){
-	    game.earth.ironChance=40*game.pick.current.power;
+	    game.earth.ironChance=40;
 	} else if(game.earth.depth>4000){
-	    game.earth.ironChance=30*game.pick.current.power;
+	    game.earth.ironChance=30;
 	} else if(game.earth.depth>3000){
-	    game.earth.ironChance=20*game.pick.current.power;
+	    game.earth.ironChance=20;
 	} else {
-	    game.earth.ironChance=10*game.pick.current.power;
+	    game.earth.ironChance=10;
 	}
 	game.earth.chance = getRandom();
 	if(game.earth.chance<game.earth.ironChance){
@@ -70,16 +54,5 @@ function craftIronBar(){
 		game.earth.ironBar+=1;
 		document.getElementById('iron').innerHTML = game.earth.iron;
 		document.getElementById('ironbar').innerHTML = game.earth.ironBar;
-	}
-}
-
-function craftIronPick(){
-    if(game.earth.ironBar>=10){
-	    game.earth.ironBar-=10;
-		game.pick.iron.owned = true;
-		game.pick.current.power = game.pick.iron.power;
-		document.getElementById('ironbar').innerHTML = game.earth.ironBar;
-		document.getElementById('pickType').innerHTML = game.pick.iron.name;
-		document.getElementById('pickPower').innerHTML = game.pick.iron.power;
 	}
 }
