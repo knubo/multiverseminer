@@ -9,7 +9,6 @@ The cost of the picks should be quite high.
 
 TODO:
 1) Create planetary objects
-
 2) Create pick selection
 3) Determine types of elements
 4) Create solar system
