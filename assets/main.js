@@ -35,10 +35,17 @@ var game = {
 			owned: false,
 			power: 10,
 			name: "Copper Pickaxe"
-		}
+		},
+        gold: {
+            owned: false,
+            power: 15,
+            name: "Gold Pickaxe"
+        }
 	}
 };
+
 var atmosphere = 0;
+
 function gather_atmosphere(number){
     atmosphere = atmosphere + number;
     document.getElementById("atmosphere").innerHTML = atmosphere;
