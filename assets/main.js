@@ -1,17 +1,22 @@
 var game = {
     earth: { 
 	    depth: 0,
-		ironChance: 100,
-		iron: 10,
+		iron: 0,
 		ironBar: 0,
+		ironChance: 20,
 		fuel: 10,
         fuelCan: 0,
 		fuelChance: 5,
-		oxygenChance: 100,
 		oxygen: 0,
+		oxygenChance: 100,
+        oxygenTank: 0,
 		chance: 0,
 		copper: 0,
-		copperChance: 5
+        copperBar: 0,
+		copperChance: 5,
+        gold: 0,
+        goldBar: 0,
+        goldChance: 1
 	},
 	moon: {
 	    depth: 0
@@ -21,20 +26,15 @@ var game = {
 			owned: true,
 			power: 1
 		},
-		wood: {
-			owned: true,
-			power: 1,
-			name: "Wood Pickaxe"
+		copper: {
+			owned: false,
+			power: 3,
+			name: "Copper Pickaxe"
 		},
 		iron: {
 			owned: false,
-			power: 3,
-			name: "Iron Pickaxe"
-		},
-		copper: {
-			owned: false,
 			power: 10,
-			name: "Copper Pickaxe"
+			name: "Iron Pickaxe"
 		},
         gold: {
             owned: false,
