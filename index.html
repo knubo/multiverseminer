@@ -69,8 +69,6 @@
     <span id="fuelCan">0</span> fuel cans<br />
     <br />
     <br />
-
-    <p><button onclick="planetEarth()">Travel</button></p>
   </div>
 
   <div class="left">
@@ -85,29 +83,22 @@
 
     <div id="accordion">
       <h4 class="accordion-toggle">Fuel</h4>
-
       <div class="accordion-content default">
         <button onclick="craftFuelCan()">Fuel can [1 fuel, 1 iron bar]</button><br />
         <button onclick="craftFuelTank()">Fuel tank [1 fuel can, 10 iron
         bar]</button><br />
       </div>
-
       <h4 class="accordion-toggle">Iron</h4>
-
       <div class="accordion-content">
         <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br />
         <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br />
       </div>
-
       <h4 class="accordion-toggle">Oxygen</h4>
-
       <div class="accordion-content">
         <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 ironbar]</button><br />
         <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button><br />
       </div>
-
       <h4 class="accordion-toggle">Machinery</h4>
-
       <div class="accordion-content">
         <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron
         bars]</button><br />
@@ -120,6 +111,9 @@
       <h4 id="pickPower">1 / mpc</h4>
 
       <h2>Element Finder</h2>Elements available at the current depth: // element list
+      <div id="travel">
+          <p><button onclick="planetEarth()">Travel</button></p>
+      </div>
     </div>
 
     <div class="bottom">
