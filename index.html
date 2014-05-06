@@ -73,7 +73,7 @@
   </div>
 
   <div class="left">
-    <h3>Crafting</h3><script type="text/javascript">
+    <h2>Crafting</h2><script type="text/javascript">
           $(document).ready(function($) {
             $('#accordion').find('.accordion-toggle').click(function(){
               $(this).next().slideToggle('fast');
@@ -90,19 +90,27 @@
         bar]</button><br />
       </div>
       <h4 class="accordion-toggle">Iron</h4>
-      <div class="accordion-content">
+      <div class="accordion-content default">
         <button onclick='craft("ironBar")'>Craft an iron bar [10 iron]</button><br />
         <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br />
       </div>
+      
       <h4 class="accordion-toggle">Oxygen</h4>
-      <div class="accordion-content">
+      <div class="accordion-content default">
         <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 ironbar]</button><br />
         <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button><br />
       </div>
+      
       <h4 class="accordion-toggle">Machinery</h4>
-      <div class="accordion-content">
-        <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron
-        bars]</button><br />
+      <div class="accordion-content default">
+        <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron bars]</button><br />
+      </div>
+      
+      <h4 class="accordion-toggle">Picks</h4>
+      <div class="accordion-content default">
+          <button onclick="craft('copperPick')">Copper Pick [10 copper bars]</button><br />
+          <button onclick="craft('ironPick')">Iron Pick [10 iron bars]</button><br />
+          <button onclick="craft('goldPick')">Gold Pick [10 gold bars]</button><br />
       </div>
     </div>
     
