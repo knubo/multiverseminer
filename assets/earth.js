@@ -1,4 +1,5 @@
 {
+    "gravity": 1,
     "layers": {
         "0": {
             "elements": "oxygen",
@@ -26,15 +27,13 @@
         },
         "3": {
             "elements": [
-                "iron"
+                "iron",
+                "copper"
             ],
             "maxDepth": 2890,
             "minDepth": 61,
             "name": "mantle"
         }
     },
-    "name": "Earth",
-    "mobs": {
-        "human":
-    }
+    "name": "Earth"
 }
