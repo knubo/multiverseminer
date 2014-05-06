@@ -69,18 +69,46 @@
             <p>
         <div class="left">
         <h3>Crafting</h3>
-        <h4>Fuel</h4>
-        <button onclick="craftOxygenCan()">Fuel can [1 fuel, 1 iron bar]</button>
-        <button onclick="craftOxygenTank()">Fuel tank [1 fuel can, 10 iron bar]</button>
-        <h4>Iron</h4>
-        <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br>
-        <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br>
-        <h4>Oxygen</h4>
-        <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 iron bar]</button>
-        <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button>
-        <h4>Machinery</h4>
-        <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron bars]</button>
-        <br>+10 mpc.
+        <script type="text/javascript">
+          $(document).ready(function($) {
+            $('#accordion').find('.accordion-toggle').click(function(){
+
+              //Expand or collapse this panel
+              $(this).next().slideToggle('fast');
+
+              //Hide the other panels
+              $(".accordion-content").not($(this).next()).slideUp('fast');
+
+            });
+          });
+        </script>
+        <style>
+          .accordion-toggle {cursor: pointer;}
+          .accordion-content {display: none;}
+          .accordion-content.default {display: block;}
+        </style>
+
+        <!-- HTML -->
+        <div id="accordion">
+          <h4 class="accordion-toggle">Fuel</h4>
+          <div class="accordion-class default">
+              <button onclick="craftFuelCan()">Fuel can [1 fuel, 1 iron bar]</button><br>
+              <button onclick="craftFuelTank()">Fuel tank [1 fuel can, 10 iron bar]</button><br>
+          </div>
+          <h4 class="accordion-toggle">Iron</h4>
+          <div class="accordion-content">
+              <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br>
+              <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br>
+          </div>
+          <h4 class="accordion-toggle">Oxygen</h4>
+          <div class="accordion-content">
+              <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 iron bar]</button><br>
+              <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button><br>
+          </div>
+          <h4 class="accordion-toggle">Machinery</h4>
+          <div class="accordion-content">
+              <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron bars]</button><br>
+          </div>
         </div>
         
         <div class="right">
