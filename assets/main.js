@@ -98,9 +98,9 @@ function craftIronPick(){
 
 function planetEarth(){
 	$(".planet").planetarium({
-   		autospin: "1000ms",                                  
+   		autospin: "100ms",                                  
    		angle: "20deg",                                      
-   		glow: "rgba(255, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
+   		glow: "rgba(0, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
    		pattern: "assets/texture-earth.jpg",                    
    		size: "100x100",                                     
    		float: true,                                         
@@ -109,4 +109,36 @@ function planetEarth(){
    		ringColor: "#fff",                                   
    		ringAngle: "20deg"                                   
  });
+}
+
+function dig_sideway(){
+	if(game.earth.depth>10000){
+	    game.earth.ironChance=100*game.pick.current.power;
+	} else if(game.earth.depth>9000){
+	    game.earth.ironChance=90*game.pick.current.power;
+	} else if(game.earth.depth>8000){
+	    game.earth.ironChance=80*game.pick.current.power;
+	} else if(game.earth.depth>7000){
+	    game.earth.ironChance=70*game.pick.current.power;
+	} else if(game.earth.depth>6000){
+	    game.earth.ironChance=50*game.pick.current.power;
+	} else if(game.earth.depth>5000){
+	    game.earth.ironChance=40*game.pick.current.power;
+	} else if(game.earth.depth>4000){
+	    game.earth.ironChance=30*game.pick.current.power;
+	} else if(game.earth.depth>3000){
+	    game.earth.ironChance=20*game.pick.current.power;
+	} else {
+	    game.earth.ironChance=10*game.pick.current.power;
+	}
+	game.earth.chance = getRandom();
+	if(game.earth.chance<game.earth.ironChance){
+	    game.earth.iron++;
+		document.getElementById('iron').innerHTML = game.earth.iron;
+	}
+	if(game.earth.chance<game.earth.copperChance){
+	    game.earth.copper++;
+		document.getElementById('copper').innerHTML = game.earth.copper;
+	}
+	document.getElementById('depth').innerHTML = game.earth.depth;
 }
