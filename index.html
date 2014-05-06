@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
     <head>
@@ -10,6 +11,24 @@
         <script src="assets/jquery.planetarium.js" type="text/javascript"></script>
         <link href="assets/planetarium.css" rel="stylesheet" type="text/css">
         <style type="text/css">
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Multiverse Miner</title>
+  <script src="assets/jquery-2.1.1.min.js" type="text/javascript">
+</script>
+  <script src="assets/main.js" type="text/javascript">
+</script>
+  <script src="assets/earth.js" type="text/javascript">
+</script>
+  <script src="assets/jquery.planetarium.js" type="text/javascript">
+</script>
+  <link href="assets/planetarium.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+>>>>>>> 5db508d42cdf1be569f3f80c86a2ea1c2e2f6856
     html {
             background: url(assets/stardust.jpg) no-repeat center center fixed; 
                 -webkit-background-size: cover;
@@ -43,6 +62,7 @@
                 right:0px;
                 text-align:center;
             }
+<<<<<<< HEAD
         </style>
     </head>
     <body text="white">
@@ -66,70 +86,92 @@
         <div class="left">
         <h3>Crafting</h3>
         <script type="text/javascript">
-          $(document).ready(function($) {
-            $('#accordion').find('.accordion-toggle').click(function(){
-
-              //Expand or collapse this panel
-              $(this).next().slideToggle('fast');
-
-              //Hide the other panels
-              $(".accordion-content").not($(this).next()).slideUp('fast');
-
-            });
-          });
-        </script>
-        <style>
+=======
+  </style>
+  <style type="text/css">
           .accordion-toggle {cursor: pointer;}
           .accordion-content {display: none;}
           .accordion-content.default {display: block;}
-        </style>
+  </style>
+</head>
 
-        <!-- HTML -->
-        <div id="accordion">
-          <h4 class="accordion-toggle">Fuel</h4>
-          <div class="accordion-class default">
-              <button onclick="craftFuelCan()">Fuel can [1 fuel, 1 iron bar]</button><br>
-              <button onclick="craftFuelTank()">Fuel tank [1 fuel can, 10 iron bar]</button><br>
-          </div>
-          <h4 class="accordion-toggle">Iron</h4>
-          <div class="accordion-content">
-              <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br>
-              <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br>
-          </div>
-          <h4 class="accordion-toggle">Oxygen</h4>
-          <div class="accordion-content">
-              <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 iron bar]</button><br>
-              <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button><br>
-          </div>
-          <h4 class="accordion-toggle">Machinery</h4>
-          <div class="accordion-content">
-              <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron bars]</button><br>
-          </div>
-        </div>
-        
-        <div class="right">
-            <h2 id="pickType">
-                Wooden Pickaxe
-            </h2>
-            <h4 id="pickPower">
-                1 / mpc
-            </h4>
-            <p>
-            <p>
-            <h2>Element Finder</h2>
-            Elements available at the current depth:
-            // element list
-        </div>
-        
-        <div class="bottom">
-            <div class="health">
-                <h2>HP</h2>
-                <h4 id="hp">100</h4>
-            </div>
-            
-            <h1 id="oxygen">
-                <h2>Oxygen</h2>
-                <h4 id="oxygen">100</h4>
-        </div>
-    </body>
+<body text="white">
+  <div class="container">
+    <h1>Multiverse Miner</h1><br />
+    <button onclick="dig_down()">Dig</button> <span id="depth">0</span> meters deep.
+
+    <p><button onclick="gather_atmosphere(1)">Gather atmosphere.</button><br /></p>
+
+    <div class="planet"></div><br />
+    <span id="copper">0</span> copper<br />
+    <span id="iron">0</span> iron<br />
+    <span id="atmosphere">0</span> oxygen cans<br />
+    <span id="ironbar">0</span> iron bars<br />
+    <br />
+    <br />
+
+    <p><button onclick="planetEarth()">Travel</button></p>
+  </div>
+
+  <div class="left">
+    <h3>Crafting</h3><script type="text/javascript">
+>>>>>>> 5db508d42cdf1be569f3f80c86a2ea1c2e2f6856
+          $(document).ready(function($) {
+            $('#accordion').find('.accordion-toggle').click(function(){
+              $(this).next().slideToggle('fast');
+              $(".accordion-content").not($(this).next()).slideUp('fast');
+            });
+          });
+    </script>
+
+    <div id="accordion">
+      <h4 class="accordion-toggle">Fuel</h4>
+
+      <div class="accordion-content default">
+        <button onclick="craftFuelCan()">Fuel can [1 fuel, 1 iron bar]</button><br />
+        <button onclick="craftFuelTank()">Fuel tank [1 fuel can, 10 iron
+        bar]</button><br />
+      </div>
+
+      <h4 class="accordion-toggle">Iron</h4>
+
+      <div class="accordion-content">
+        <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br />
+        <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br />
+      </div>
+
+      <h4 class="accordion-toggle">Oxygen</h4>
+
+      <div class="accordion-content">
+        <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 ironbar]</button><br />
+        <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button><br />
+      </div>
+
+      <h4 class="accordion-toggle">Machinery</h4>
+
+      <div class="accordion-content">
+        <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron
+        bars]</button><br />
+      </div>
+    </div>
+
+    <div class="right">
+      <h2 id="pickType">Wooden Pickaxe</h2>
+
+      <h4 id="pickPower">1 / mpc</h4>
+
+      <h2>Element Finder</h2>Elements available at the current depth: // element list
+    </div>
+
+    <div class="bottom">
+      <div class="health">
+        <h2>HP</h2>
+        <h4 id="hp">100</h4>
+      </div>
+          <h1 id="oxygen"></h1>
+          <h2>Oxygen</h2>
+          <h4 id="oxygen">100</h4>
+     </div>
+  </div>
+</body>
 </html>
