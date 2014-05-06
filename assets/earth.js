@@ -1,5 +1,6 @@
 earth = {
     "gravity": 1,
+    "artificats": ["arondight", "trident", "ichaival"],
     "layers": {
         "0": {
             "elements": "oxygen",
