@@ -31,6 +31,11 @@ var game = {
 			power: 3,
 			name: "Iron Pickaxe"
 		}
+		copper: {
+			owned: false,
+			power: 10,
+			name: "Copper Pickaxe"
+		}
 	}
 };
 var atmosphere = 0;
