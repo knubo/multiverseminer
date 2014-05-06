@@ -89,3 +89,7 @@ function craftIronPick(){
 		document.getElementById('pickPower').innerHTML = game.pick.iron.power;
 	}
 }
+
+function gather_atmosphere(){
+	// "Add 1" is incredibly vague.
+}
