@@ -44,11 +44,12 @@
     </head>
     <body text="white">
         <div class="container">
-            <img src="assets/pick.png" onclick="dig_down()"><br>
+            <h1>Multiverse Miner</h1>
             <br>
+            <button onclick="dig_down()">Dig</button>
+            <span id="depth">0</span> meters deep.
+            <p>
             <button onclick="gather_atmosphere(1)">Gather atmosphere.</button><br>
-            <span id="depth">0</span> meters deep<br>
-            <br>
             <div class="planet"></div><br>
             <span id="iron">0</span> iron<br>
             <span id="atmosphere">0</span> oxygen cans<br>
@@ -70,7 +71,8 @@
         <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 iron bar]</button>
         <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button>
         <h4>Machinery</h4>
-        <button onclick="craftJackhammer()">Craft a jackhammer [1 fuel tank, 10 iron bars]</button>
+        <button onclick="craftJackhammer()">Jackhammer [1 fuel tank, 10 iron bars]</button>
+        <br>+10 mpc.
         </div>
         
         <div class="right">
