@@ -89,3 +89,18 @@ function craftIronPick(){
 		document.getElementById('pickPower').innerHTML = game.pick.iron.power;
 	}
 }
+
+function planetEarth(){
+	$(".planet").planetarium({
+   		autospin: "1000ms",                                  
+   		angle: "20deg",                                      
+   		glow: "rgba(255, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
+   		pattern: "assets/texture-earth.jpg",                    
+   		size: "100x100",                                     
+   		float: true,                                         
+   		space: "body",                                       
+   		ring: false,                                         
+   		ringColor: "#fff",                                   
+   		ringAngle: "20deg"                                   
+ });
+}
