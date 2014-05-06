@@ -8,7 +8,7 @@ planets = {
        initialGoldPerSec: 1,
        goldPerSec: 1,
        resourceAboveGround: ["Oxygen"],
-       resourceUnderGround: ["Iron", "Fuel", "Gold"]
+       resourceUnderGround: ["Iron", "Fuel", "Gold", "Copper"]
     },
     1: {
         'name': 'the Moon',
