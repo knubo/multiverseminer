@@ -33,5 +33,8 @@
             "name": "mantle"
         }
     },
-    "name": "Earth"
+    "name": "Earth",
+    "mobs": {
+        "human":
+    }
 }
