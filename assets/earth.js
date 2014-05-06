@@ -1,4 +1,4 @@
-{
+earth = {
     "gravity": 1,
     "layers": {
         "0": {
