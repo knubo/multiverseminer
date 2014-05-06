@@ -4,13 +4,17 @@
         <title>
             Multiverse Miner
         </title>
-        <script src="assets/jquery-2.1.1.min.js" type="text/javascript"></script>
-        <script src="assets/main.js" type="text/javascript"></script>
-        <script src="assets/earth.js" type="text/javascript"></script>
-        <script src="assets/jquery.planetarium.js" type="text/javascript"></script>
+        <script src="assets/jquery-2.1.1.min.js" type="text/javascript">
+</script>
+        <script src="assets/main.js" type="text/javascript">
+</script>
+        <script src="assets/earth.js" type="text/javascript">
+</script>
+        <script src="assets/jquery.planetarium.js" type="text/javascript">
+</script>
         <link href="assets/planetarium.css" rel="stylesheet" type="text/css">
         <style type="text/css">
-            html {
+    html {
             background: url(assets/stardust.jpg) no-repeat center center fixed; 
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
@@ -38,32 +42,32 @@
             <button onclick="gather_atmosphere(1)">Gather atmosphere.</button><br>
             <span id="depth">0</span> meters deep<br>
             <br>
-            <br>
+            <div class="planet"></div><br>
             <span id="iron">0</span> iron<br>
             <span id="atmosphere">0</span> oxygen cans<br>
             <span id="ironbar">0</span> iron bars<br>
             <br>
             <br>
-            <button onclick="craftIronBar()">Craft an iron bar [10 irons]</button> <button onclick="craftIronPick()">Craft an iron pickaxe [10 iron bars]</button>
-            <button onclick="planetEarth()">Boop.</button>
-            <div class="planet"></div>
+            <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button>
+            <button onclick="craftIronPick()">Craft an iron pickaxe [10 iron bars]</button>
+            <p>
+                <button onclick="planetEarth()">Show Earth</button>
         </div>
         <div class="right">
-            <h1 id="pickType">
-                Wood Pickaxe
-            </h1>
-            <h3 id="pickPower">
-                1
-            </h3>
-            <p>
-                m/s
-            </p>
+            <h2 id="pickType">
+                Wooden Pickaxe
+            </h2>
+            <h4 id="pickPower">
+                1 / mpc
+            </h4>
             <div class="health">
-                <h1 id="hp">HP 100</h1>
+                <h2>HP</h2>
+                <h4 id="hp">100</h4>
             </div>
-            <div class="oxygen">
-                <h1 id="oxygen">Oxygen 100</h1>
-            </div>
+            
+            <h1 id="oxygen">
+                <h2>Oxygen</h2>
+                <h4 id="oxygen">100</h4>
         </div>
     </body>
 </html>
