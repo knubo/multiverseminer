@@ -1,10 +1,20 @@
-//To use craft function, just create a onclick button, with (what) replaced by the object name
-//If you don't know the name of it's not in this file, you're old enough to add it :)
-function craft(what){
-    if(what==="ironbar"){
-	    if(game.earth.iron>=10){
-		    game.earth.iron-=10;
-			game.earth.ironbar++;
-		}
-	}
+function craft(item) {
+    if (item === "ironBar") {
+        if (game.earth.iron >= 10) {
+            game.earth.iron -= 10;
+            game.earth.ironBar++;
+            document.getElementById('iron').innerHTML = game.earth.iron;
+            document.getElementById('ironBar').innerHTML = game.earth.ironBar;
+        }
+    }
+    if (item === "fuelCan") {
+        if (game.earth.fuel >= 10 && game.earth.ironBar >= 1) {
+            game.earth.fuel -= 10;
+            game.earth.ironBar--;
+            game.earth.fuelCan++;
+            document.getElementById('fuel').innerHTML = game.earth.fuel;
+            document.getElementById('ironBar').innerHTML = game.earth.ironBar;
+            document.getElementById('fuelCan').innerHTML = game.earth.fuelCan;
+        }
+    }
 }
