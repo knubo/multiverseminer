@@ -7,6 +7,13 @@
 		<script src="assets/jquery.planetarium" type="text/javascript"></script>
 		<link href="assets/planetarium.css" rel="stylesheet" type="text/css">
         <style>
+        html {
+            background: url(assets/stardust.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;;
+        }
 			.container{
 				text-align:center;
 				width:100%;
@@ -28,7 +35,7 @@
             <button onclick="dig_down()">Dig deeper underground.</button>
             <button onclick="dig_sideway(1)">Gather atmosphere.</button><br>
             <span id="depth">0</span> meters deep<br><br><br>
-            <span id="iron">0</span> irons<br>
+            <span id="iron">0</span> iron<br>
             <span id="ironbar">0</span> iron bars<br><br><br>
             <button onclick="craftIronBar()">Craft an iron bar [10 irons]</button>
             <button onclick="craftIronPick()">Craft an iron pickaxe [10 iron bars]</button>
