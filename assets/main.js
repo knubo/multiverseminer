@@ -156,5 +156,9 @@ function dig_sideways(){
 	    game.earth.copper++;
 		document.getElementById('copper').innerHTML = game.earth.copper;
 	}
+    if(game.earth.chance<game.earth.fuelChance){
+        game.earth.fuel++;
+        document.getElementById('fuel').innerHTML = game.earth.fuel;
+    }
 	document.getElementById('depth').innerHTML = game.earth.depth;
 }
