@@ -1,11 +1,12 @@
 var game = {
     earth: { 
 	    depth: 0,
-		ironChance: 10,
-		iron: 0,
-		ironBar: 0,
-		fuelChance: 0,
-		fuel: 0,
+		ironChance: 100,
+		iron: 10,
+		ironBar: 10,
+        fuelCan: 0,
+		fuelChance: 100,
+		fuel: 10,
 		oxygenChance: 100,
 		oxygen: 0,
 		chance: 0,
@@ -69,6 +70,10 @@ function dig_down(){
 	    game.earth.copper++;
 		document.getElementById('copper').innerHTML = game.earth.copper;
 	}
+    if(game.earth.chance<game.earth.fuelChance){
+        game.earth.fuel++;
+        document.getElementById('fuel').innerHTML = game.earth.fuel;
+    }
 	document.getElementById('depth').innerHTML = game.earth.depth;
 }
 
@@ -81,8 +86,19 @@ function craftIronBar(){
 	    game.earth.iron-=10;
 		game.earth.ironBar+=1;
 		document.getElementById('iron').innerHTML = game.earth.iron;
-		document.getElementById('ironbar').innerHTML = game.earth.ironBar;
+		document.getElementById('ironBar').innerHTML = game.earth.ironBar;
 	}
+}
+
+function craftFuelCan(){
+    if(game.earth.fuel>=10 && game.earth.ironBar>=1){
+        game.earth.fuel-=10;
+        game.earth.ironBar-=1;
+        game.earth.fuelCan+=1;
+        document.getElementById('fuel').innerHTML = game.earth.fuel;
+        document.getElementById('ironBar').innerHTML = game.earth.ironBar;
+        document.getElementById('fuelCan').innerHTML = game.earth.fuelCan;
+    }
 }
 
 function craftIronPick(){
@@ -98,9 +114,9 @@ function craftIronPick(){
 
 function planetEarth(){
 	$(".planet").planetarium({
-   		autospin: "100ms",                                  
+   		autospin: "1000ms",                                  
    		angle: "20deg",                                      
-   		glow: "rgba(0, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
+   		glow: "rgba(255, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
    		pattern: "assets/texture-earth.jpg",                    
    		size: "100x100",                                     
    		float: true,                                         

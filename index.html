@@ -1,34 +1,16 @@
-<<<<<<< HEAD
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-    <head>
-        <title>
-            Multiverse Miner
-        </title>
-        <script src="assets/jquery-2.1.1.min.js" type="text/javascript"></script>
-        <script src="assets/main.js" type="text/javascript"></script>
-        <script src="assets/earth.js" type="text/javascript"></script>
-        <script src="assets/jquery.planetarium.js" type="text/javascript"></script>
-        <link href="assets/planetarium.css" rel="stylesheet" type="text/css">
-        <style type="text/css">
-=======
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Multiverse Miner</title>
-  <script src="assets/jquery-2.1.1.min.js" type="text/javascript">
-</script>
-  <script src="assets/main.js" type="text/javascript">
-</script>
-  <script src="assets/earth.js" type="text/javascript">
-</script>
-  <script src="assets/jquery.planetarium.js" type="text/javascript">
-</script>
-  <link href="assets/planetarium.css" rel="stylesheet" type="text/css" />
-  <style type="text/css">
->>>>>>> 5db508d42cdf1be569f3f80c86a2ea1c2e2f6856
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Multiverse Miner</title>
+    <script src="assets/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="assets/main.js" type="text/javascript"></script>
+    <script src="assets/earth.js" type="text/javascript"></script>
+    <script src="assets/jquery.planetarium.js" type="text/javascript"></script>
+    <link href="assets/planetarium.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
     html {
             background: url(assets/stardust.jpg) no-repeat center center fixed; 
                 -webkit-background-size: cover;
@@ -62,37 +44,12 @@
                 right:0px;
                 text-align:center;
             }
-<<<<<<< HEAD
-        </style>
-    </head>
-    <body text="white">
-        <div class="container">
-            <h1>Multiverse Miner</h1>
-            <br>
-            <button onclick="dig_down()">Dig</button> <button onclick="dig_sideway()">Dig sideway</button><br>
-            <span id="depth">0</span> meters deep.
-            <p>
-            <button onclick="gather_atmosphere(1)">Gather atmosphere.</button><br>
-            <div class="planet"></div><br>
-            <span id="copper">0</span> copper<br>
-            <span id="iron">0</span> iron<br>
-            <span id="atmosphere">0</span> oxygen cans<br>
-            <span id="ironbar">0</span> iron bars<br>
-            <br>
-            <br>
-            <p>
-                <button onclick="planetEarth()">Travel</button>
-            <p>
-        <div class="left">
-        <h3>Crafting</h3>
-        <script type="text/javascript">
-=======
-  </style>
-  <style type="text/css">
+    </style>
+    <style type="text/css">
           .accordion-toggle {cursor: pointer;}
           .accordion-content {display: none;}
           .accordion-content.default {display: block;}
-  </style>
+    </style>
 </head>
 
 <body text="white">
@@ -106,7 +63,9 @@
     <span id="copper">0</span> copper<br />
     <span id="iron">0</span> iron<br />
     <span id="atmosphere">0</span> oxygen cans<br />
-    <span id="ironbar">0</span> iron bars<br />
+    <span id="ironBar">0</span> iron bars<br />
+    <span id="fuel">0</span> fuel<br />
+    <span id="fuelCan">0</span> fuel cans<br />
     <br />
     <br />
 
@@ -115,7 +74,6 @@
 
   <div class="left">
     <h3>Crafting</h3><script type="text/javascript">
->>>>>>> 5db508d42cdf1be569f3f80c86a2ea1c2e2f6856
           $(document).ready(function($) {
             $('#accordion').find('.accordion-toggle').click(function(){
               $(this).next().slideToggle('fast');
