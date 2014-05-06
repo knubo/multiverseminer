@@ -10,7 +10,7 @@ var game = {
 		oxygen: 0,
 		chance: 0,
 		copper: 0,
-		copperChance: 20
+		copperChance: 5
 	},
 	moon: {
 	    depth: 0
@@ -62,8 +62,12 @@ function dig_down(){
 	}
 	game.earth.chance = getRandom();
 	if(game.earth.chance<game.earth.ironChance){
-	    game.earth.iron+=1;
+	    game.earth.iron++;
 		document.getElementById('iron').innerHTML = game.earth.iron;
+	}
+	if(game.earth.chance<game.earth.copperChance){
+	    game.earth.copper++;
+		document.getElementById('copper').innerHTML = game.earth.copper;
 	}
 	document.getElementById('depth').innerHTML = game.earth.depth;
 }
