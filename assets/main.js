@@ -93,37 +93,6 @@ function getRandom(){
     return Math.floor((Math.random() * 100) + 1);
 }
 
-function craftIronBar(){
-    if(game.earth.iron>=10){
-	    game.earth.iron-=10;
-		game.earth.ironBar+=1;
-		document.getElementById('iron').innerHTML = game.earth.iron;
-		document.getElementById('ironBar').innerHTML = game.earth.ironBar;
-	}
-}
-
-function craftFuelCan(){
-    if(game.earth.fuel>=10 && game.earth.ironBar>=1){
-        game.earth.fuel-=10;
-        game.earth.ironBar-=1;
-        game.earth.fuelCan+=1;
-        document.getElementById('fuel').innerHTML = game.earth.fuel;
-        document.getElementById('ironBar').innerHTML = game.earth.ironBar;
-        document.getElementById('fuelCan').innerHTML = game.earth.fuelCan;
-    }
-}
-
-function craftIronPick(){
-    if(game.earth.ironBar>=10){
-	    game.earth.ironBar-=10;
-		game.pick.iron.owned = true;
-		game.pick.current.power = game.pick.iron.power;
-		document.getElementById('ironbar').innerHTML = game.earth.ironBar;
-		document.getElementById('pickType').innerHTML = game.pick.iron.name;
-		document.getElementById('pickPower').innerHTML = game.pick.iron.power;
-	}
-}
-
 function planetEarth(){
 	$(".planet").planetarium({
    		autospin: "10000ms",                                  
