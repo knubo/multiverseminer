@@ -40,6 +40,6 @@ earth = {
     },
     "name": "Earth",
     "mobs": {
-        "human":
+        "human": 2
     }
 }

@@ -8,9 +8,9 @@ var game = {
 		fuel: 0,
 		oxygenChance: 100,
 		oxygen: 0,
-		chance: 0
+		chance: 0,
 		copper: 0,
-		copperChance: 20,
+		copperChance: 20
 	},
 	moon: {
 	    depth: 0
