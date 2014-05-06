@@ -3,10 +3,10 @@ var game = {
 	    depth: 0,
 		ironChance: 100,
 		iron: 10,
-		ironBar: 10,
-        fuelCan: 0,
-		fuelChance: 100,
+		ironBar: 0,
 		fuel: 10,
+        fuelCan: 0,
+		fuelChance: 5,
 		oxygenChance: 100,
 		oxygen: 0,
 		chance: 0,
@@ -30,7 +30,7 @@ var game = {
 			owned: false,
 			power: 3,
 			name: "Iron Pickaxe"
-		}
+		},
 		copper: {
 			owned: false,
 			power: 10,
@@ -123,20 +123,6 @@ function planetEarth(){
    		angle: "20deg",                                      
    		glow: "rgba(255, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
    		pattern: "assets/texture-earth.jpg",                    
-   		size: "100x100",                                     
-   		float: true,                                         
-   		space: "body",                                       
-   		ring: false,                                         
-   		ringColor: "#fff",                                   
-   		ringAngle: "20deg"                                   
- });
-}
-function planetMoon(){
-	$(".planet").planetarium({
-   		autospin: "10000ms",                                  
-   		angle: "20deg",                                      
-   		glow: "rgba(255, 255, 255, 0.34902) 0px 0px 50px, inset 33px 20px 50px rgba(0,0,0,0.5)", 
-   		pattern: "assets/texture-moon.jpg",                    
    		size: "100x100",                                     
    		float: true,                                         
    		space: "body",                                       
