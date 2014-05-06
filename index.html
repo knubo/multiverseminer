@@ -33,6 +33,13 @@
                 width:250px;
                 text-align:center;
             }
+            .left{
+                position:fixed;
+                left:0px;
+                top:0px;
+                width:250px;
+                text-align:center;
+            }
         </style>
     </head>
     <body text="white">
@@ -51,13 +58,21 @@
             <p>
                 <button onclick="planetEarth()">Travel</button>
             <p>
+        <div class="left">
         <h3>Crafting</h3>
+        <h4>Fuel</h4>
+        <button onclick="craftOxygenCan()">Fuel can [1 fuel, 1 iron bar]</button>
+        <button onclick="craftOxygenTank()">Fuel tank [1 fuel can, 10 iron bar]</button>
         <h4>Iron</h4>
         <button onclick="craftIronBar()">Craft an iron bar [10 iron]</button><br>
-        <button onclick="craftIronPick()">Craft an iron pickaxe [10 iron bars]</button><br>
+        <button onclick="craftIronPick()">Iron pickaxe [10 iron bars]</button><br>
         <h4>Oxygen</h4>
-        <button onclick="craftOxygenCan()">Craft an oxygen can [1 oxygen, 1 iron]</button>
+        <button onclick="craftOxygenCan()">Oxygen can [1 oxygen, 1 iron bar]</button>
+        <button onclick="craftOxygenTank()">Oxygen tank [1 oxygen can, 10 iron bar]</button>
+        <h4>Machinery</h4>
+        <button onclick="craftJackhammer()">Craft a jackhammer [1 fuel tank, 10 iron bars]</button>
         </div>
+        
         <div class="right">
             <h2 id="pickType">
                 Wooden Pickaxe
