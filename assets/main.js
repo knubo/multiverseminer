@@ -4,7 +4,7 @@ var game = {
 		iron: 0,
 		ironBar: 0,
 		ironChance: 20,
-		fuel: 10,
+		fuel: 0,
         fuelCan: 0,
 		fuelChance: 5,
 		oxygen: 0,
