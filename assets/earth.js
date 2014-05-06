@@ -11,7 +11,8 @@ earth = {
         "1": {
             "elements": [
                 "iron",
-                "gold"
+                "gold",
+                "copper"
             ],
             "maxDepth": 35,
             "minDepth": 1,
@@ -20,7 +21,8 @@ earth = {
         "2": {
             "elements": [
                 "iron",
-                "fuel"
+                "fuel",
+                "copper"
             ],
             "maxDepth": 60,
             "minDepth": 36,
@@ -36,5 +38,8 @@ earth = {
             "name": "mantle"
         }
     },
-    "name": "Earth"
+    "name": "Earth",
+    "mobs": {
+        "human":
+    }
 }
