@@ -30,6 +30,12 @@ var game = {
 		}
 	}
 };
+var atmosphere = 0;
+function gather_atmosphere(number){
+    atmosphere = atmosphere + number;
+    document.getElementById("atmosphere").innerHTML = atmosphere;
+};
+
 
 function dig_down(){
     game.earth.depth+=game.pick.current.power;
