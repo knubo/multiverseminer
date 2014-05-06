@@ -127,7 +127,7 @@ function planetEarth(){
  });
 }
 
-function dig_sideway(){
+function dig_sideways(){
 	if(game.earth.depth>10000){
 	    game.earth.ironChance=100*game.pick.current.power;
 	} else if(game.earth.depth>9000){
