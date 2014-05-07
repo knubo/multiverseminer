@@ -23,6 +23,7 @@ Items = {
         'id': 4,
         'name': 'Dirt',
         'baseValue': 0,
+        'storageLimit': 100,
         'craftResult': 1,
         'craftCost': {},
     },
