@@ -124,6 +124,9 @@ Items = {
             'goldBar': 1
         }
     },
+    //
+    // Jewels
+    //
     'diamond': {
         'id': 2000,
         'name': 'Diamond',
@@ -134,6 +137,22 @@ Items = {
         'id': 2001,
         'name': 'Topaz',
         'baseValue': 500
+    },
+    //
+    // Potions
+    //
+    'strengthPotion': {
+        'id': 3000,
+        'name': 'Strength Potion',
+        'description': 'Dig deeper for 1 minute',
+        'baseValue': 5000
+        'duration': 60
+    },
+    'refiningPotion': {
+        'id': 3001,
+        'name': 'Refining Potion',
+        'description': '5% bonus when refining for 1 minute',
+        'duration': 60
     }
 };
 
