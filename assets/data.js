@@ -146,13 +146,21 @@ Items = {
         'name': 'Strength Potion',
         'description': 'Dig deeper for 1 minute',
         'baseValue': 5000
-        'duration': 60
+        'duration': 60,
+        'use': 1
     },
     'refiningPotion': {
         'id': 3001,
         'name': 'Refining Potion',
         'description': '5% bonus when refining for 1 minute',
-        'duration': 60
+        'duration': 60,
+        'use': 1
+    },
+    'oxygenPotion': {
+        'id': 3002,
+        'name': 'Oxygen Potion',
+        'description': 'Refills your oxygen tanks',
+        'use': 1
     }
 };
 
