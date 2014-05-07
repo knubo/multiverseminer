@@ -1,3 +1,4 @@
+// I thought this was for individual planets.
 function Planet(data) {
     this.data = data;
     this.miner = new Miner('planet' + data.id);
