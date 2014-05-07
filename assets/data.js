@@ -226,7 +226,7 @@ Planets = {
         'name': 'Moon',
         'gravity': 0.166,
         'baseMultiplier': 1,
-        'distance': 384,
+        'distance': 238900,
         'resources': {}
     },
     'mercury': {
@@ -329,9 +329,57 @@ Planets.earth.resources[Items.gold.id] = {
     'baseChance': 0.1
 };
 
+Planets.moon.resources[Items.oxygen.id] = {
+    'mode': 'gather',
+    'minDepth': 1,
+    'maxDepth': 100,
+    'baseChance': 0.43
+};
+Planets.moon.resources[Items.silicon.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.20
+};
+Planets.moon.resources[Items.magnesium.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.19
+};
 Planets.moon.resources[Items.iron.id] = {
     'mode': 'mine',
     'minDepth': 20,
     'maxDepth': 100,
-    'baseChance': 0.9
+    'baseChance': 0.10
+};
+Planets.moon.resources[Items.calcium.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.03
+};
+Planets.moon.resources[Items.aluminum.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.03
+};
+Planets.moon.resources[Items.chromium.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.042
+};
+Planets.moon.resources[Items.titanium.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.018
+};
+Planets.moon.resources[Items.manganese.id] = {
+    'mode': 'mine',
+    'minDepth': 20,
+    'maxDepth': 100,
+    'baseChance': 0.012
 };
