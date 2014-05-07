@@ -9,6 +9,7 @@
     <script src="assets/main.js" type="text/javascript"></script>
 	<script src="assets/craft.js" type="text/javascript"></script>
 	<script src="assets/furnace.js" type="text/javascript"></script>
+	<script src="assets/notification.js" type="text/javascript"></script>
     <script src="assets/earth.js" type="text/javascript"></script>
     <script src="assets/jquery.planetarium.js" type="text/javascript"></script>
     <link href="assets/planetarium.css" rel="stylesheet" type="text/css" />
@@ -118,7 +119,7 @@
     <div class="right">
       <h2 id="pickType">Wooden Pickaxe</h2>
 
-      <h4 id="pickPower">1 / mpc</h4>
+      <h4 id="pickPower" onclick="notification('messagehere')">1 / mpc</h4>
 
       <h2>Element Finder</h2>Elements available at the current depth: // element list
       <div id="travel">
@@ -127,7 +128,8 @@
     </div>
 
     <div class="bottom">
-     </div>
+	    <span id="notif"><b>Earth mine opens up to you...</b></span>
+    </div>
   </div>
 </body>
 </html>
