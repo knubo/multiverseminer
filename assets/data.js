@@ -491,3 +491,18 @@ Planets.moon.resources[Items.manganese.id] = {
     'maxDepth': 100,
     'baseChance': 0.012
 };
+
+Planets.mars.resources[Items.carbondioxide] = {
+    'mode': 'gather',
+    'minDepth': -50,
+    'maxDepth': 0,
+    'baseChance': 1
+};
+
+Planets.mars.resources[Items.potassium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.05
+
+};
