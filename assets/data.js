@@ -229,6 +229,70 @@ Planets = {
         'distance': 384,
         'resources': {}
     },
+    'mercury': {
+        'id': 3,
+        'name': 'Mercury',
+        'gravity': 0.378,
+        'baseMultiplier': 1,
+        'distance': 57000000000,
+        'resources': {}
+    },
+    'venus': {
+        'id': 4,
+        'name': 'Venus',
+        'gravity': .907,
+        'baseMultiplier': 1,
+        'distance': 26000000000,
+        'resources': {}
+    },
+    'mars': {
+        'id': 5,
+        'name': 'Mars',
+        'gravity': 0.713,
+        'baseMultiplier': 1,
+        'distance': 35000000000,
+        'resources': {}
+    },
+    'jupiter': {
+        'id': 6,
+        'name': 'Jupiter',
+        'gravity': 2.36,
+        'baseMultiplier': 1,
+        'distance': 370000000000,
+        'resources': {}
+    },
+    'saturn': {
+        'id': 7,
+        'name': 'Saturn',
+        'gravity': 0.916,
+        'baseMultiplier': 1,
+        'distance': 744000000000,
+        'resources': {}
+    },
+    'uranus': {
+        'id': 8,
+        'name': 'Uranus',
+        'gravity': 0.230,
+        'baseMultiplier': 1,
+        'distance': 1607000000,
+        'resources': {}
+    },
+    'neptune': {
+        'id': 9,
+        'name': 'Neptune',
+        'gravity': 0.297,
+        'baseMultiplier': 1,
+        'distance': 2680000000,
+        'resources': {}
+    },
+    'pluto': {
+        'id': 10,
+        'name': 'Pluto',
+        'gravity': 0.059,
+        'baseMultiplier': 1,
+        'distance': 2670000000000,
+        'resources': {}
+    }
 };
 
 //---------------------------------------------------------------------------
