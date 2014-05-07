@@ -111,19 +111,29 @@ Items = {
         'craftResult': 1,
         'craftCost': {},
     },
-    
-    'jackhammer':{
+
+    'jackhammer': {
         'id': 1000,
         'name': 'Jackhammer',
         'baseValue': 10000,
         'storageLimit': 1,
         'craftResult': 1,
-        'craftCost':
-        {
+        'craftCost': {
             'ironBar': 50,
             'fuelCan': 50,
             'goldBar': 1
         }
+    },
+    'diamond': {
+        'id': 2000,
+        'name': 'Diamond',
+        'baseValue': 1000,
+
+    },
+    'topaz': {
+        'id': 2001,
+        'name': 'Topaz',
+        'baseValue': 500
     }
 };
 
