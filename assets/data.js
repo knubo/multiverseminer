@@ -18,9 +18,18 @@ Items = {
         'craftResult': 1,
         'craftCost': {},
     },
-
-    'dirt': {
+    'gasCan': {
         'id': 4,
+        'name': 'Gas canister',
+        'description': 'A canister used to hold gas.',
+        'baseValue': 50,
+        'craftResult': 1,
+        'craftCost': {
+            'iron': 5
+        }
+    },
+    'dirt': {
+        'id': 5,
         'name': 'Dirt',
         'baseValue': 0,
         'storageLimit': 100,
@@ -156,6 +165,14 @@ Items = {
         'id': 3002,
         'name': 'Oxygen Potion',
         'description': 'Refills your oxygen tanks',
+        'use': 1,
+        'baseValue': 25000,
+        'storeValue': 50000
+    },
+    'healthPotion': {
+        'id': 3003,
+        'name': 'Health Potion',
+        'description': 'Refills your health',
         'use': 1,
         'baseValue': 25000,
         'storeValue': 50000
