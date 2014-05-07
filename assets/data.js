@@ -188,6 +188,12 @@ Items.oxygenCan.craftCost[Items.ironBar.id] = 1;
 Items.oxygenTank.craftCost[Items.oxygenCan.id] = 1;
 Items.oxygenTank.craftCost[Items.ironBar.id] = 10;
 
+Items.jackhammer.craftCost[Items.ironBar] = 50;
+Items.jackhammer.craftCost[Items.fuelCan] = 50;
+Items.jackhammer.craftCost[Items.goldBar] = 1;
+
+Items.gasCan.craftCost[Items.ironBar.id] = 5;
+
 Items.fuelCan.craftCost[Items.fuel.id] = 10;
 Items.fuelCan.craftCost[Items.ironBar.id] = 1;
 
