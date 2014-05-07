@@ -1,5 +1,6 @@
 function Player()
 {
+	this.pickPower = 1;
 	this.miner = new Miner('player');
 	this.combatant = new Combatant('player');
 	this.storage = new Storage('player');
@@ -38,7 +39,7 @@ function Player()
 		game.settings.addStat('manualDigCount');
 		
 		// Todo: this is stub
-		game.currentPlanet.currentDepth++;
+		game.currentPlanet.currentDepth+= this.pickPower;
 		
 		var items = this.miner.mine();
 		if (items)

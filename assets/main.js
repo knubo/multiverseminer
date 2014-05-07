@@ -94,11 +94,12 @@ function onPlanetEarth(){
    		pattern: "assets/texture-earth.jpg",                    
    		size: "100x100",                                     
    		float: true,                                         
-   		space: "body",                                       
+   		space: "body",            
    		ring: false,                                         
    		ringColor: "#fff",                                   
    		ringAngle: "20deg"                                   
  });
+	$(".hidePlanetBtn").hide();
 }
 
 function onSave()
