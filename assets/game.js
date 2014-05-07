@@ -133,7 +133,18 @@ function Game()
 			storageSource.removeItem(key, cost[key]);
 		}
 		
-		storageTarget.addItem(what, count);
+		if (what == Items.copperPick) {
+			storageTarget.addItem(what, count);
+			Player.pickPower = 3;
+		} else if (what == Items.ironPick){
+			storageTarget.addItem(what, count);
+			Player.pickPower = 5;
+		} else if (what == Items.goldPick) {
+			storagetarget.addItem(what, count);
+			Player.pickPower = 7;
+		} else {
+			storageTarget.addItem(what, count);
+		}
 	}
 	
 	this.getItemName = function(id)
