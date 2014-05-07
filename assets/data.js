@@ -124,28 +124,22 @@ Items = {
             'goldBar': 1
         }
     },
-    //
-    // Jewels
-    //
     'diamond': {
         'id': 2000,
         'name': 'Diamond',
-        'baseValue': 1000,
-
+        'baseValue': 1000
     },
     'topaz': {
         'id': 2001,
         'name': 'Topaz',
         'baseValue': 500
     },
-    //
-    // Potions
-    //
     'strengthPotion': {
         'id': 3000,
         'name': 'Strength Potion',
         'description': 'Dig deeper for 1 minute',
-        'baseValue': 5000
+        'storeValue': 10000,
+        'baseValue': 5000,
         'duration': 60,
         'use': 1
     },
@@ -153,6 +147,8 @@ Items = {
         'id': 3001,
         'name': 'Refining Potion',
         'description': '5% bonus when refining for 1 minute',
+        'baseValue': 25000,
+        'storeValue': 50000,
         'duration': 60,
         'use': 1
     },
@@ -160,7 +156,9 @@ Items = {
         'id': 3002,
         'name': 'Oxygen Potion',
         'description': 'Refills your oxygen tanks',
-        'use': 1
+        'use': 1,
+        'baseValue': 25000,
+        'storeValue': 50000
     }
 };
 
