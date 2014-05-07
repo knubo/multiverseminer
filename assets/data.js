@@ -495,14 +495,26 @@ Planets.moon.resources[Items.manganese.id] = {
 Planets.mars.resources[Items.carbondioxide] = {
     'mode': 'gather',
     'minDepth': -50,
-    'maxDepth': 0,
     'baseChance': 1
 };
 
 Planets.mars.resources[Items.potassium.id] = {
     'mode': 'mine',
-    'minDepth': 50,
-    'maxDepth': 5500,
+    'minDepth': 1,
     'baseChance': 0.05
-
+};
+Planets.mars.resources[Items.magnesium.id] = {
+    'mode': 'mine',
+    'minDepth': 1,
+    'baseChance': 0.1
+};
+Planets.mars.resources[Items.sodium.id] = {
+    'mode': 'mine',
+    'minDepth': 1,
+    'baseChance': 0.09
+};
+Planets.mars.resources[Items.chloride.id] = {
+    'mode': 'mine',
+    'minDepth': 1,
+    'baseChance': 0.09
 };
