@@ -497,7 +497,6 @@ Planets.mars.resources[Items.carbondioxide] = {
     'minDepth': -50,
     'baseChance': 1
 };
-
 Planets.mars.resources[Items.potassium.id] = {
     'mode': 'mine',
     'minDepth': 1,
