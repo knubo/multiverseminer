@@ -326,7 +326,115 @@ Planets.earth.resources[Items.gold.id] = {
     'mode': 'mine',
     'minDepth': 500,
     'maxDepth': 5500,
-    'baseChance': 0.1
+    'baseChance': 0.01
+};
+Planets.earth.resources[Items.silicon.id] = {
+    'mode': 'mine',
+    'minDepth': 500,
+    'maxDepth': 5500,
+    'baseChance': 0.27
+};
+Planets.earth.resources[Items.aluminum.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.08
+};
+Planets.earth.resources[Items.calcium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.03
+};
+Planets.earth.resources[Items.sodium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.02
+};
+Planets.earth.resources[Items.sodium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.02
+};
+Planets.earth.resources[Items.potassium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.02
+};
+Planets.earth.resources[Items.magnesium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.02
+};
+Planets.earth.resources[Items.titanium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.044
+};
+Planets.earth.resources[Items.hydrogen.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.014
+};
+Planets.earth.resources[Items.phosphorus.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.012
+};
+Planets.earth.resources[Items.manganese.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.010
+};
+Planets.earth.resources[Items.fluorine.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.008
+};
+Planets.earth.resources[Items.barium.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.0001
+};
+Planets.earth.resources[Items.carbon.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.003
+};
+Planets.earth.resources[Items.sulfur.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.005
+};
+Planets.earth.resources[Items.nitrogen.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.0005
+};
+Planets.earth.resources[Items.nickel.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.0005
+};
+Planets.earth.resources[Items.zinc.id] = {
+    'mode': 'mine',
+    'minDepth': 50,
+    'maxDepth': 5500,
+    'baseChance': 0.0005
 };
 
 Planets.moon.resources[Items.oxygen.id] = {
