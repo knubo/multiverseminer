@@ -110,6 +110,20 @@ Items = {
         'storageLimit': 1,
         'craftResult': 1,
         'craftCost': {},
+    },
+    
+    'jackhammer':{
+        'id': 1000,
+        'name': 'Jackhammer',
+        'baseValue': 10000,
+        'storageLimit': 1,
+        'craftResult': 1,
+        'craftCost':
+        {
+            'ironBar': 50,
+            'fuelCan': 50,
+            'goldBar': 1
+        }
     }
 };
 
