@@ -178,10 +178,38 @@ addItem(5003, 'healthPotion', 'Health Potion', 25000, {
 	'use' : 1
 });
 
+addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
+    'description': 'Resurrect your character',
+    'storeValue': 500000,
+    'use' : 1,
+});
+
 // ---------------------------------------------------------------------------
 // Set the item categories
 // ---------------------------------------------------------------------------
+<<<<<<< HEAD
 setItemCategories();
+=======
+setItemCategory(ItemCategory.rawMaterial, [ Items.oxygen, Items.dirt,
+		Items.copper, Items.iron, Items.gold, Items.silicon, Items.aluminum,
+		Items.calcium, Items.sodium, Items.fuel, Items.potassium,
+		Items.magnesium, Items.titanium, Items.hydrogen, Items.phosphorus,
+		Items.manganese, Items.fluorine, Items.barium, Items.carbon,
+		Items.sulfur, Items.nitrogen, Items.nickel, Items.zinc, Items.chromium,
+		Items.chloride, Items.carbondioxide ]);
+
+setItemCategory(ItemCategory.gem, [ Items.diamond, Items.topaz ]);
+
+setItemCategory(ItemCategory.component, [ Items.copperBar, Items.ironBar,
+		Items.goldBar, Items.goldBar, Items.oxygenCan, Items.oxygenTank,
+		Items.gasCan, Items.fuelCan, Items.fuelTank ]);
+
+setItemCategory(ItemCategory.gear, [ Items.copperPick, Items.ironPick,
+		Items.goldPick, Items.jackhammer ]);
+
+setItemCategory(ItemCategory.usable, [ Items.strengthPotion,
+		Items.refiningPotion, Items.oxygenPotion, Items.healthPotion, Items.resurrectionPotion ]);
+>>>>>>> da202af647e4b8313a1ce17a043d819c75583b37
 
 // ---------------------------------------------------------------------------
 // Set the crafting cost
