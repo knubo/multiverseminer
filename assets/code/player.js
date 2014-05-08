@@ -81,19 +81,22 @@ function Player() {
 	
 	this.equipBestGear = function() {
 		// TODO: needs actual selection of best gear, right now it selects the latest found + proper pickPower assignment
-		for (var key in this.storage.gearTypeDictionary)
+		for (var key in this.storage.items)
 		{
-			var item = game.itemDictionary[this.storage.gearTypeDictionary[key]];
+			var item = game.itemDictionary[key];
 		
-			if(item.category == ItemCategory.gear)
-			{
-				if(item.gearType = GearType.mainHand)
+			if(item != undefined)
+			{			
+				if(item.category == ItemCategory.gear)
 				{
-					this.pickPower = 3;
-					this.equip(item.id);
-				}
-				else if(item.gearType = GearType.head)
-				{
+					Utils.log("equipBestGear " + item.id + " " + item.gearType);
+				
+					if(item.gearType = GearType.mainHand)
+					{
+						this.pickPower = 3;
+						this.equip(item.id);
+					}
+					
 					this.equip(item.id);
 				}
 			}
