@@ -21,7 +21,7 @@ function Player() {
 		this.gear.addSlot(GearType.head);
 		this.gear.addSlot(GearType.chest);
 		this.gear.addSlot(GearType.mainHand);
-		this.gear.addSlot(GearType.extraHand);
+		this.gear.addSlot(GearType.secondHand);
 		this.gear.addSlot(GearType.legs);	
 		this.gear.addSlot(GearType.feet);
 		// Equip wodden pick
