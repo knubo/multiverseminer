@@ -10,7 +10,7 @@ GearType = {
 	'head' : 'Head',
 	'chest' : 'Chest',
 	'mainHand' : 'Main Hand',
-	'extraHand' : 'Extra Hand',
+	'secondHand' : 'Second Hand',
 	'legs' : 'Legs',
 	'feet' : 'Feet',
 };
@@ -133,7 +133,7 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000);
 // ---------------------------------------------------------------------------
 // Gear / Equipment
 // ---------------------------------------------------------------------------
-addItem(4000, 'woddenPick', 'Wodden Pickaxe', 0, {
+addItem(4000, 'woodenPick', 'Wooden Pickaxe', 0, {
 	'storageLimit' : 1
 });
 addItem(4001, 'copperPick', 'Copper Pickaxe', 15, {
