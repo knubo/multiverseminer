@@ -151,6 +151,9 @@ addItem(4004, 'jackhammer', 'Jackhammer', 10000, {
 addItem(4005, 'copperHelmet', 'Copper Helmet', 5, {
 	'storageLimit' : 1
 });
+addItem(4006, 'miningRig', 'Mining Rig', 50000, {
+    'storageLimit': 1
+});
 
 // ---------------------------------------------------------------------------
 // Usable
