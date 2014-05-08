@@ -12,6 +12,20 @@ setInterval(function() {
 $.noty.defaults.layout = 'bottomRight';
 $.noty.defaults.timeout = 3000;
 
+$(document).ready( function () {
+    $('#inventoryTable').DataTable( {
+        "sScrollY": "400px",
+        "bScrollCollapse": true,
+        "bPaginate": false,
+        "bJQueryUI": true,
+        "aoColumnDefs": [
+            { "sWidth": "90%", "aTargets": [ -1 ] }
+        ]
+    } );
+} );
+
+var inventoryCategoryFilter = undefined;
+
 // ---------------------------------------------------------------------------
 // user interface
 // ---------------------------------------------------------------------------
@@ -21,6 +35,31 @@ Utils.logCallback = function(type, message) {
 		type : type
 	});
 };
+
+function updateInventory() {
+	$('#inventoryTable').DataTable().rows().remove();
+
+	if (!inventoryCategoryFilter) {
+		var items = game.player.storage.getItems();
+	} else {
+		var items = game.player.storage.getItemsOfCategory(inventoryCategoryFilter);
+	}
+
+	game.player.storage.storageChanged = false;
+
+	if (!items || items.length <= 0) {
+		$('#inventoryTable').DataTable().draw();
+		return;
+	}
+
+	for (var i = 0; i < items.length; i++) {
+		var itemName = game.getItemName(items[i]);
+		var count = game.player.storage.getItemCount(items[i]);
+		$('#inventoryTable').DataTable().row.add([count, itemName]).draw();
+	}
+	
+	$('#inventoryTable').DataTable().draw();
+}
 
 function updateInterface() {
 	$('#planet').text(game.currentPlanet.data.name);
@@ -51,6 +90,10 @@ function updateInterface() {
 		$('#elementFinder').text(elements.join());
 	} else {
 		$('#elementFinder').text("N/A");
+	}
+
+	if (game.player.storage.storageChanged) {
+		updateInventory();
 	}
 }
 
@@ -130,6 +173,8 @@ function onPlanetEarth() {
 
 function onSave() {
 	game.save();
+
+	Utils.log("Game saved");
 }
 
 function onReset() {
@@ -149,4 +194,9 @@ function onReset() {
 			}
 		} ]
 	});
+}
+
+function onSetInventoryFilter(filter) {
+	inventoryCategoryFilter = filter;
+	updateInventory();
 }

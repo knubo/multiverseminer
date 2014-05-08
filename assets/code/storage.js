@@ -152,21 +152,21 @@ function Storage(id) {
 	// internal stuff, don't use outside
 	// ---------------------------------------------------------------------------
 	this._registerItemDictionary = function(itemInfo, property, dictionary) {
-		var propertyValue = itemInfo["property"];
+		var propertyValue = itemInfo[property];
 		if (propertyValue) {
 			if (!dictionary[propertyValue]) {
 				dictionary[propertyValue] = [];
 			}
-
+			
 			// Register this item in our dictionary if it's not there yet
-			if (!jQuery.inArray(itemInfo.id, dictionary[propertyValue])) {
+			if (jQuery.inArray(itemInfo.id, dictionary[propertyValue]) == -1) {
 				dictionary[propertyValue].push(itemInfo.id);
 			}
 		}
 	};
 	
 	this._unregisterItemDictionary = function(itemInfo, property, dictionary) {
-		var propertyValue = itemInfo["property"];
+		var propertyValue = itemInfo[property];
 		if (propertyValue) {
 			if (!dictionary[propertyValue]) {
 				return
@@ -213,8 +213,10 @@ function Storage(id) {
 				continue;
 			}
 
-			this.items[key] = Utils.loadInt(storageKey + key, 0);
+			this.addItem(key, Utils.loadInt(storageKey + key, 0));
 		}
+		
+		this.storageChanged = true;
 	};
 
 	this.reset = function(fullReset) {
