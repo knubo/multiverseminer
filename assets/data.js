@@ -1,18 +1,18 @@
 ItemCategory = {
-	'rawMaterial' : 1,
-	'gem' : 2,
-	'component' : 3,
-	'gear' : 4,
-	'usable' : 5,
+    'rawMaterial': 1,
+    'gem': 2,
+    'component': 3,
+    'gear': 4,
+    'usable': 5,
 };
 
 GearType = {
-	'head' : 'Head',
-	'chest' : 'Chest',
-	'mainHand' : 'Main Hand',
-	'secondHand' : 'Second Hand',
-	'legs' : 'Legs',
-	'feet' : 'Feet',
+    'head': 'Head',
+    'chest': 'Chest',
+    'mainHand': 'Main Hand',
+    'secondHand': 'Second Hand',
+    'legs': 'Legs',
+    'feet': 'Feet',
 };
 
 Items = {};
@@ -20,62 +20,62 @@ Items = {};
 // ---------------------------------------------------------------------------
 // helper functions
 // ---------------------------------------------------------------------------
+
 function addItem(id, internalName, name, baseValue, metadata) {
-	var item = {
-		'id' : id,
-		'name' : name,
-		'baseValue' : baseValue,
-	};
+    var item = {
+        'id': id,
+        'name': name,
+        'baseValue': baseValue,
+    };
 
-	if (metadata) {
-		var keys = Object.keys(metadata);
-		for (var i = 0; i < keys.length; i++) {
-			item[keys[i]] = metadata[keys[i]];
-		}
-	}
+    if (metadata) {
+        var keys = Object.keys(metadata);
+        for (var i = 0; i < keys.length; i++) {
+            item[keys[i]] = metadata[keys[i]];
+        }
+    }
 
-	Items[internalName] = item;
+    Items[internalName] = item;
 }
 
 function setItemCraftingCost(item, id, value) {
-	if (!item.craftCost) {
-		item.craftCost = {};
-	}
+    if (!item.craftCost) {
+        item.craftCost = {};
+    }
 
-	item.craftCost[id] = value;
+    item.craftCost[id] = value;
 };
 
 function setGearType(item, value) {
-	item.gearType = value;
+    item.gearType = value;
 };
 
 function setItemCategories() {
-	for (var key in Items)
-	{
-		if(Items[key].id < 2000)
-			Items[key].category = ItemCategory.rawMaterial;
-		else if(Items[key].id < 3000)
-			Items[key].category = ItemCategory.gem;
-		else if(Items[key].id < 4000)
-			Items[key].category = ItemCategory.component;
-		else if(Items[key].id < 5000)
-			Items[key].category = ItemCategory.gear;
-		else if(Items[key].id < 999999)
-			Items[key].category = ItemCategory.usable;
-	}
+    for (var key in Items) {
+        if (Items[key].id < 2000)
+            Items[key].category = ItemCategory.rawMaterial;
+        else if (Items[key].id < 3000)
+            Items[key].category = ItemCategory.gem;
+        else if (Items[key].id < 4000)
+            Items[key].category = ItemCategory.component;
+        else if (Items[key].id < 5000)
+            Items[key].category = ItemCategory.gear;
+        else if (Items[key].id < 999999)
+            Items[key].category = ItemCategory.usable;
+    }
 }
 
 function setPlanetMiningResource(planet, id, mode, min, max, chance) {
-	if(!planet.resources) {
-		planet.resources = {};
-	}
-	
-	planet.resources[id] = {
-			'mode': mode,
-			'minDepth': min,
-			'maxDepth': max,
-			'baseChance': chance,
-	};
+    if (!planet.resources) {
+        planet.resources = {};
+    }
+
+    planet.resources[id] = {
+        'mode': mode,
+        'minDepth': min,
+        'maxDepth': max,
+        'baseChance': chance,
+    };
 }
 
 // ---------------------------------------------------------------------------
@@ -83,7 +83,7 @@ function setPlanetMiningResource(planet, id, mode, min, max, chance) {
 // ---------------------------------------------------------------------------
 addItem(1, 'oxygen', 'Oxygen', 0.1);
 addItem(2, 'dirt', 'Dirt', 0, {
-	'storageLimit' : 100
+    'storageLimit': 100
 });
 addItem(3, 'copper', 'Copper', 0.5);
 addItem(4, 'iron', 'Iron', 1);
@@ -115,6 +115,10 @@ addItem(29, 'carbonMonoxide', 'Carbon Monoxide', 1000);
 addItem(30, 'helium', 'Helium', 1000);
 addItem(31, 'neon', 'Neon', 1000);
 addItem(32, 'methane', 'Methane', 10000);
+addItem(33, 'argon', 'Argon', 10000);
+addItem(34, 'xenon', 'Xenon', 100000);
+addItem(35, 'krypton', 'Krypton', 100000);
+
 
 // ---------------------------------------------------------------------------
 // Gems
@@ -131,7 +135,7 @@ addItem(3002, 'goldBar', 'Gold bar', 1000);
 addItem(3003, 'oxygenCan', 'Oxygen can', 11);
 addItem(3004, 'oxygenTank', 'Oxygen tank', 120);
 addItem(3005, 'gasCan', 'Gas canister', 50, {
-	'description' : 'A canister used to hold gas.'
+    'description': 'A canister used to hold gas.'
 });
 addItem(3006, 'fuelCan', 'Fuel can', 1000);
 addItem(3007, 'fuelTank', 'Fuel tank', 1000);
@@ -140,22 +144,22 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000);
 // Gear / Equipment
 // ---------------------------------------------------------------------------
 addItem(4000, 'woodenPick', 'Wooden Pickaxe', 0, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4001, 'copperPick', 'Copper Pickaxe', 15, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4002, 'ironPick', 'Iron Pickaxe', 25, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4003, 'goldPick', 'Gold Pickaxe', 2500, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4004, 'jackhammer', 'Jackhammer', 10000, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4005, 'copperHelmet', 'Copper Helmet', 5, {
-	'storageLimit' : 1
+    'storageLimit': 1
 });
 addItem(4006, 'miningRig', 'Mining Rig', 50000, {
     'storageLimit': 1
@@ -165,35 +169,35 @@ addItem(4006, 'miningRig', 'Mining Rig', 50000, {
 // Usable
 // ---------------------------------------------------------------------------
 addItem(5000, 'strengthPotion', 'Strength Potion', 5000, {
-	'description' : 'Dig deeper for 1 minute',
-	'storeValue' : 10000,
-	'duration' : 60,
-	'use' : 1
+    'description': 'Dig deeper for 1 minute',
+    'storeValue': 10000,
+    'duration': 60,
+    'use': 1
 });
 
 addItem(5001, 'refiningPotion', 'Refining Potion', 25000, {
-	'description' : '5% bonus when refining for 1 minute',
-	'storeValue' : 50000,
-	'duration' : 60,
-	'use' : 1
+    'description': '5% bonus when refining for 1 minute',
+    'storeValue': 50000,
+    'duration': 60,
+    'use': 1
 });
 
 addItem(5002, 'oxygenPotion', 'Oxygen Potion', 25000, {
-	'description' : 'Refills your oxygen tanks',
-	'storeValue' : 50000,
-	'use' : 1
+    'description': 'Refills your oxygen tanks',
+    'storeValue': 50000,
+    'use': 1
 });
 
 addItem(5003, 'healthPotion', 'Health Potion', 25000, {
-	'description' : 'Refills your health',
-	'storeValue' : 50000,
-	'use' : 1
+    'description': 'Refills your health',
+    'storeValue': 50000,
+    'use': 1
 });
 
 addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
     'description': 'Resurrect your character',
     'storeValue': 500000,
-    'use' : 1,
+    'use': 1,
 });
 
 // ---------------------------------------------------------------------------
@@ -252,86 +256,86 @@ setGearType(Items.woodenPick, GearType.mainHand);
 // Planet data
 // ---------------------------------------------------------------------------
 Planets = {
-	'earth' : {
-		'id' : 1,
-		'name' : 'Earth',
-		'gravity' : 1,
-		'baseMultiplier' : 1,
-		'distance' : 0,
-		'resources' : {}
-	},
-	'moon' : {
-		'id' : 2,
-		'name' : 'Moon',
-		'gravity' : 0.166,
-		'baseMultiplier' : 1,
-		'distance' : 238900,
-		'resources' : {}
-	},
-	'mercury' : {
-		'id' : 3,
-		'name' : 'Mercury',
-		'gravity' : 0.378,
-		'baseMultiplier' : 1,
-		'distance' : 57000000000,
-		'resources' : {}
-	},
-	'venus' : {
-		'id' : 4,
-		'name' : 'Venus',
-		'gravity' : .907,
-		'baseMultiplier' : 1,
-		'distance' : 26000000000,
-		'resources' : {}
-	},
-	'mars' : {
-		'id' : 5,
-		'name' : 'Mars',
-		'gravity' : 0.713,
-		'baseMultiplier' : 1,
-		'distance' : 35000000000,
-		'resources' : {}
-	},
-	'jupiter' : {
-		'id' : 6,
-		'name' : 'Jupiter',
-		'gravity' : 2.36,
-		'baseMultiplier' : 1,
-		'distance' : 370000000000,
-		'resources' : {}
-	},
-	'saturn' : {
-		'id' : 7,
-		'name' : 'Saturn',
-		'gravity' : 0.916,
-		'baseMultiplier' : 1,
-		'distance' : 744000000000,
-		'resources' : {}
-	},
-	'uranus' : {
-		'id' : 8,
-		'name' : 'Uranus',
-		'gravity' : 0.230,
-		'baseMultiplier' : 1,
-		'distance' : 1607000000,
-		'resources' : {}
-	},
-	'neptune' : {
-		'id' : 9,
-		'name' : 'Neptune',
-		'gravity' : 0.297,
-		'baseMultiplier' : 1,
-		'distance' : 2680000000,
-		'resources' : {}
-	},
-	'pluto' : {
-		'id' : 10,
-		'name' : 'Pluto',
-		'gravity' : 0.059,
-		'baseMultiplier' : 1,
-		'distance' : 2670000000000,
-		'resources' : {}
-	}
+    'earth': {
+        'id': 1,
+        'name': 'Earth',
+        'gravity': 1,
+        'baseMultiplier': 1,
+        'distance': 0,
+        'resources': {}
+    },
+    'moon': {
+        'id': 2,
+        'name': 'Moon',
+        'gravity': 0.166,
+        'baseMultiplier': 1,
+        'distance': 238900,
+        'resources': {}
+    },
+    'mercury': {
+        'id': 3,
+        'name': 'Mercury',
+        'gravity': 0.378,
+        'baseMultiplier': 1,
+        'distance': 57000000000,
+        'resources': {}
+    },
+    'venus': {
+        'id': 4,
+        'name': 'Venus',
+        'gravity': .907,
+        'baseMultiplier': 1,
+        'distance': 26000000000,
+        'resources': {}
+    },
+    'mars': {
+        'id': 5,
+        'name': 'Mars',
+        'gravity': 0.713,
+        'baseMultiplier': 1,
+        'distance': 35000000000,
+        'resources': {}
+    },
+    'jupiter': {
+        'id': 6,
+        'name': 'Jupiter',
+        'gravity': 2.36,
+        'baseMultiplier': 1,
+        'distance': 370000000000,
+        'resources': {}
+    },
+    'saturn': {
+        'id': 7,
+        'name': 'Saturn',
+        'gravity': 0.916,
+        'baseMultiplier': 1,
+        'distance': 744000000000,
+        'resources': {}
+    },
+    'uranus': {
+        'id': 8,
+        'name': 'Uranus',
+        'gravity': 0.230,
+        'baseMultiplier': 1,
+        'distance': 1607000000,
+        'resources': {}
+    },
+    'neptune': {
+        'id': 9,
+        'name': 'Neptune',
+        'gravity': 0.297,
+        'baseMultiplier': 1,
+        'distance': 2680000000,
+        'resources': {}
+    },
+    'pluto': {
+        'id': 10,
+        'name': 'Pluto',
+        'gravity': 0.059,
+        'baseMultiplier': 1,
+        'distance': 2670000000000,
+        'resources': {}
+    }
 };
 
 // ---------------------------------------------------------------------------
@@ -339,11 +343,9 @@ Planets = {
 // ---------------------------------------------------------------------------
 
 // Earth
-// -----
-// Gas
 setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
 setPlanetMiningResource(Planets.earth, Items.fuel.id, 'gather', -20, 0, 0.1);
-// Solid
+
 setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.5);
 setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.9);
 setPlanetMiningResource(Planets.earth, Items.gold.id, 'mine', 500, 5500, 0.01);
@@ -366,10 +368,8 @@ setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
 
 // Moon
-// ----
-// Gas
 setPlanetMiningResource(Planets.moon, Items.oxygen.id, 'gather', 1, 100, 0.43);
-// Solid
+
 setPlanetMiningResource(Planets.moon, Items.silicon.id, 'mine', 20, 100, 0.2);
 setPlanetMiningResource(Planets.moon, Items.magnesium.id, 'mine', 20, 100, 0.19);
 setPlanetMiningResource(Planets.moon, Items.iron.id, 'mine', 20, 100, 0.1);
@@ -380,29 +380,55 @@ setPlanetMiningResource(Planets.moon, Items.titanium.id, 'mine', 20, 100, 0.018)
 setPlanetMiningResource(Planets.moon, Items.manganese.id, 'mine', 20, 100, 0.012);
 
 // Mars
-// ----
-// Gas
 setPlanetMiningResource(Planets.mars, Items.carbonDioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
-// Solid
+
 setPlanetMiningResource(Planets.mars, Items.potassium.id, 'mine', 1, Number.MAX_VALUE, 0.05);
 setPlanetMiningResource(Planets.mars, Items.magnesium.id, 'mine', 1, Number.MAX_VALUE, 0.1);
 setPlanetMiningResource(Planets.mars, Items.sodium.id, 'mine', 1, Number.MAX_VALUE, 0.09);
 setPlanetMiningResource(Planets.mars, Items.chloride.id, 'mine', 1, Number.MAX_VALUE, 0.09);
 
 // Venus
-// Gas
 setPlanetMiningResource(Planets.venus, Items.carbonDioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
 setPlanetMiningResource(Planets.venus, Items.nitrogen.id, 'gather', 50, 5500, 0.03);
 setPlanetMiningResource(Planets.venus, Items.sulfurDioxide.id, 'gather', -50, Number.MAX_VALUE, 0.015);
 setPlanetMiningResource(Planets.venus, Items.argon.id, 'gather', -50, Number.MAX_VALUE, 0.007);
 setPlanetMiningResource(Planets.venus, Items.carbonMonoxide.id, 'gather', -50, Number.MAX_VALUE, 0.0017);
 setPlanetMiningResource(Planets.venus, Items.neon.id, 'gather', -50, Number.MAX_VALUE, 0.0007);
-// Solid
-setPlanetMiningResource(Planets.venus, Items.iron.id, 'mine', 4, 350, 1)
+
+setPlanetMiningResource(Planets.venus, Items.iron.id, 'mine', 4, 350, 1);
+
+// Mercury
+setPlanetMiningResource(Planets.mercury, Items.oxygen.id, 'gather', -20, 0, .94);
+setPlanetMiningResource(Planets.mercury, Items.oxygen.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.argon.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.nitrogen.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.carbonDioxide.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.xenon.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.krypton.id, 'gather', -20, 0, .01);
+setPlanetMiningResource(Planets.mercury, Items.neon.id, 'gather', -20, 0, .01);
+
+setPlanetMiningResource(Planets.mercury, Items.oxygen.id, 'dig', 1, 10000, 0.29);
+setPlanetMiningResource(Planets.mercury, Items.hydrogen.id, 'gather', -50, Number.MAX_VALUE, .22);
+setPlanetMiningResource(Planets.mercury, Items.helium.id, 'gather', -50, Number.MAX_VALUE, .06);
+setPlanetMiningResource(Planets.mercury, Items.potassium.id, 'gather', -50, Number.MAX_VALUE, .05);
 
 // Jupiter
-// Gas
 setPlanetMiningResource(Planets.jupiter, Items.hydrogen.id, 'gather', -50, Number.MAX_VALUE, .90);
 setPlanetMiningResource(Planets.jupiter, Items.helium.id, 'gather', -50, Number.MAX_VALUE, .1);
 setPlanetMiningResource(Planets.jupiter, Items.neon.id, 'gather', -50, Number.MAX_VALUE, 0.0007);
 setPlanetMiningResource(Planets.jupiter, Items.methane.id, 'gather', -50, Number.MAX_VALUE, 0.0001);
+
+// Saturn
+setPlanetMiningResource(Planets.saturn, Items.hydrogen.id, 'gather', -50, Number.MAX_VALUE, .96);
+setPlanetMiningResource(Planets.saturn, Items.helium.id, 'gather', -50, Number.MAX_VALUE, .03);
+setPlanetMiningResource(Planets.saturn, Items.methane.id, 'gather', -50, Number.MAX_VALUE, 0.01);
+
+// Neptune
+setPlanetMiningResource(Planets.neptune, Items.hydrogen.id, 'gather', -50, Number.MAX_VALUE, .80);
+setPlanetMiningResource(Planets.neptune, Items.helium.id, 'gather', -50, Number.MAX_VALUE, .19);
+setPlanetMiningResource(Planets.neptune, Items.methane.id, 'gather', -50, Number.MAX_VALUE, 0.01);
+
+// Pluto
+setPlanetMiningResource(Planets.pluto, Items.nitrogen.id, 'gather', 50, 5500, 0.90);
+setPlanetMiningResource(Planets.pluto, Items.methane.id, 'gather', -50, Number.MAX_VALUE, 0.05);
+setPlanetMiningResource(Planets.pluto, Items.carbonMonoxide.id, 'gather', -50, Number.MAX_VALUE, 0.05);
