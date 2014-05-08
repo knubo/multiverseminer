@@ -227,6 +227,10 @@ setItemCraftingCost(Items.ironPick, Items.ironBar.id, 10);
 setItemCraftingCost(Items.goldBar, Items.gold.id, 10);
 setItemCraftingCost(Items.goldPick, Items.goldBar.id, 10);
 
+setItemCraftingCost(Items.ironBar, Items.ironBar.id, 100);
+setItemCraftingCost(Items.goldBar, Items.goldBar.id, 10);
+setItemCraftingCost(Items.fuelTank, Items.fuelTank.id, 10);
+
 // ---------------------------------------------------------------------------
 // Set the gear type
 // ---------------------------------------------------------------------------
