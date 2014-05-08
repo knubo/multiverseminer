@@ -80,6 +80,14 @@ function updateInterface() {
 	$('#fuel').text(game.player.storage.getItemCount(Items.fuel.id));
 	$('#fuelCan').text(game.player.storage.getItemCount(Items.fuelCan.id));
 	$('#fuelTank').text(game.player.storage.getItemCount(Items.fuelTank.id));
+	
+	var slots = [];
+	for (var key in game.player.gear.slots)
+	{
+		slots.push(game.player.gear.slots[key].gearType + " - " + game.getItemName(game.player.gear.slots[key].id));
+	}
+	$('#gear').html("<p>" + slots.join("</p><p>") + "</p>");
+	$('#pickPower').text(game.player.pickPower + " / mpc");
 
 	if (game.currentPlanet) {
 		resources = game.currentPlanet._getAvailableResources("mine");
@@ -87,7 +95,7 @@ function updateInterface() {
 		for (var i = 0; i < resources.length; i++) {
 			elements.push(game.getItemName(resources[i].id));
 		}
-		$('#elementFinder').text(elements.join());
+		$('#elementFinder').text(elements.join(", "));
 	} else {
 		$('#elementFinder').text("N/A");
 	}
