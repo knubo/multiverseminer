@@ -118,12 +118,12 @@ function Storage(id) {
 		}
 
 		this.items[id] -= value;
-		// Unregister from the dictionaries
-		this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-		this._unregisterItemDictionary(itemInfo, "type", this.itemTypeDictionary);
 		if (this.items[id] <= 0) {
 			// We depleted the resource so we remove the entry
 			delete this.items[id];
+			// Unregister from the dictionaries
+			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
+			this._unregisterItemDictionary(itemInfo, "type", this.itemTypeDictionary);
 		}
 		
 		
