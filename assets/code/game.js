@@ -30,6 +30,8 @@ function Game() {
 		this.load();
 
 		this.setStartupState();
+		
+		this.player.equipBestGear();
 	};
 
 	this.setStartupState = function() {
@@ -62,6 +64,8 @@ function Game() {
 		}
 
 		this.setStartupState();
+		
+		this.save();
 	};
 
 	this.update = function() {
@@ -123,18 +127,10 @@ function Game() {
 
 		var totalQuantity = count * quantity;
 		// Todo: Refactor
-		if (what == Items.copperPick) {
-			storageTarget.addItem(what, totalQuantity);
-			Player.pickPower = 3;
-		} else if (what == Items.ironPick) {
-			storageTarget.addItem(what, totalQuantity);
-			Player.pickPower = 5;
-		} else if (what == Items.goldPick) {
-			storagetarget.addItem(what, totalQuantity);
-			Player.pickPower = 7;
-		} else {
-			storageTarget.addItem(what, totalQuantity);
-		}
+					
+		storageTarget.addItem(what, totalQuantity);
+		
+		Player.equipBestGear();
 		
 		Utils.log("Crafted " + totalQuantity + " " + targetItem.name);
 	};

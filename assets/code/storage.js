@@ -3,7 +3,7 @@ function Storage(id) {
 	this.items = {};
 
 	this.itemCategoryDictionary = {};
-	this.itemTypeDictionary = {};
+	this.gearTypeDictionary = {};
 	this.itemMetadata = {};
 	
 	this.storageChanged = false;
@@ -52,7 +52,8 @@ function Storage(id) {
 
 		// Register this item in the dictionaries
 		this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-		this._registerItemDictionary(itemInfo, "type", this.itemTypeDictionary);
+		if(itemInfo.category == ItemCategory.gear)
+			this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
 		
 		this.storageChanged = true;
 	};
@@ -123,8 +124,9 @@ function Storage(id) {
 			delete this.items[id];
 			
 			// Unregister from the dictionaries
-			this._unregisterItemDictionary(itemInfo, "category", this.getItemsOfCategoryyDictionary);
-			this._unregisterItemDictionary(itemInfo, "type", this.itemTypeDictionary);
+			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
+			if(itemInfo.category == ItemCategory.gear)
+				this._unregisterItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
 		}
 		
 		this.storageChanged = true;
@@ -221,5 +223,6 @@ function Storage(id) {
 
 	this.reset = function(fullReset) {
 		this.items = {};
+		this.addItem(4000);
 	};
 };

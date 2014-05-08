@@ -24,8 +24,6 @@ function Player() {
 		this.gear.addSlot(GearType.secondHand);
 		this.gear.addSlot(GearType.legs);	
 		this.gear.addSlot(GearType.feet);
-		// Equip wodden pick
-		this.gear.equip(4000);
 	};
 	
 	this.update = function(elapsed) {
@@ -79,6 +77,27 @@ function Player() {
 	this.craft = function(itemId, count) {
 		// For now we craft with our inventory into our inventory
 		game.craft(this.storage, this.storage, itemId, count);
+	};
+	
+	this.equipBestGear = function() {
+		// TODO: needs actual selection of best gear, right now it selects the latest found + proper pickPower assignment
+		for (var key in this.storage.gearTypeDictionary)
+		{
+			var item = game.itemDictionary[this.storage.gearTypeDictionary[key]];
+		
+			if(item.category == ItemCategory.gear)
+			{
+				if(item.gearType = GearType.mainHand)
+				{
+					this.pickPower = 3;
+					this.equip(item.id);
+				}
+				else if(item.gearType = GearType.head)
+				{
+					this.equip(item.id);
+				}
+			}
+		}
 	};
 	
 	this.equip = function(itemId) {
