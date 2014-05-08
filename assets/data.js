@@ -344,7 +344,6 @@ Planets = {
 
 // Earth
 setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
-setPlanetMiningResource(Planets.earth, Items.fuel.id, 'gather', -20, 0, 0.1);
 
 setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.5);
 setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.9);
@@ -366,6 +365,7 @@ setPlanetMiningResource(Planets.earth, Items.sulfur.id, 'mine', 50, 5500, 0.005)
 setPlanetMiningResource(Planets.earth, Items.nitrogen.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
+setPlanetMiningResource(Planets.earth, Items.fuel.id, 'mine', 100, 0, 0.1);
 
 // Moon
 setPlanetMiningResource(Planets.moon, Items.oxygen.id, 'gather', 1, 100, 0.43);
