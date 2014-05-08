@@ -212,12 +212,12 @@ setItemCategories();
 setItemCraftingCost(Items.oxygenCan, Items.oxygen.id, 1);
 setItemCraftingCost(Items.oxygenCan, Items.ironBar.id, 1);
 
-setItemCraftingCost(Items.oxygenTank, Items.oxygenCan.id, 1);
+setItemCraftingCost(Items.oxygenTank, Items.oxygenCan.id, 10);
 setItemCraftingCost(Items.oxygenTank, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.jackhammer, Items.ironBar.id, 50);
 setItemCraftingCost(Items.jackhammer, Items.fuelCan.id, 50);
-setItemCraftingCost(Items.jackhammer, Items.goldBar.id, 1);
+setItemCraftingCost(Items.jackhammer, Items.goldBar.id, 10);
 
 setItemCraftingCost(Items.gasCan, Items.ironBar.id, 5);
 
@@ -228,13 +228,17 @@ setItemCraftingCost(Items.fuelTank, Items.fuelCan.id, 1);
 setItemCraftingCost(Items.fuelTank, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.copperBar, Items.copper.id, 10);
+
 setItemCraftingCost(Items.copperPick, Items.copperBar.id, 10);
+
 setItemCraftingCost(Items.copperHelmet, Items.copperBar.id, 5);
 
 setItemCraftingCost(Items.ironBar, Items.iron.id, 10);
+
 setItemCraftingCost(Items.ironPick, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.goldBar, Items.gold.id, 10);
+
 setItemCraftingCost(Items.goldPick, Items.goldBar.id, 10);
 
 // ---------------------------------------------------------------------------
