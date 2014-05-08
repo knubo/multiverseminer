@@ -121,11 +121,19 @@ function Storage(id) {
 		if (this.items[id] <= 0) {
 			// We depleted the resource so we remove the entry
 			delete this.items[id];
+<<<<<<< HEAD
 			
 			// Unregister from the dictionaries
 			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
 			this._unregisterItemDictionary(itemInfo, "type", this.itemTypeDictionary);
 		}		
+=======
+			// Unregister from the dictionaries
+			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
+			this._unregisterItemDictionary(itemInfo, "type", this.itemTypeDictionary);
+		}
+		
+>>>>>>> e064c692bb3b98f29d0af13683b38c3d3fea7b91
 		
 		this.storageChanged = true;
 	};
