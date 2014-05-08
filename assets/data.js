@@ -148,6 +148,9 @@ addItem(4003, 'goldPick', 'Gold Pickaxe', 2500, {
 addItem(4004, 'jackhammer', 'Jackhammer', 10000, {
 	'storageLimit' : 1
 });
+addItem(4005, 'copperHelmet', 'Copper Helmet', 5, {
+	'storageLimit' : 1
+});
 
 // ---------------------------------------------------------------------------
 // Usable
@@ -213,6 +216,7 @@ setItemCraftingCost(Items.fuelTank, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.copperBar, Items.copper.id, 10);
 setItemCraftingCost(Items.copperPick, Items.copperBar.id, 10);
+setItemCraftingCost(Items.copperHelmet, Items.copperBar.id, 5);
 
 setItemCraftingCost(Items.ironBar, Items.iron.id, 10);
 setItemCraftingCost(Items.ironPick, Items.ironBar.id, 10);
