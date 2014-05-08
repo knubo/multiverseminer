@@ -156,6 +156,12 @@ addItem(5003, 'healthPotion', 'Health Potion', 25000, {
 	'use' : 1
 });
 
+addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
+    'description': 'Resurrect your character',
+    'storeValue': 500000,
+    'use' : 1,
+});
+
 // ---------------------------------------------------------------------------
 // Set the item categories
 // ---------------------------------------------------------------------------
@@ -177,7 +183,7 @@ setItemCategory(ItemCategory.gear, [ Items.copperPick, Items.ironPick,
 		Items.goldPick, Items.jackhammer ]);
 
 setItemCategory(ItemCategory.usable, [ Items.strengthPotion,
-		Items.refiningPotion, Items.oxygenPotion, Items.healthPotion ]);
+		Items.refiningPotion, Items.oxygenPotion, Items.healthPotion, Items.resurrectionPotion ]);
 
 // ---------------------------------------------------------------------------
 // Set the crafting cost
