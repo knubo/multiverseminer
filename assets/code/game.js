@@ -130,7 +130,7 @@ function Game() {
 					
 		storageTarget.addItem(what, totalQuantity);
 		
-		Player.equipBestGear();
+		this.player.equipBestGear();
 		
 		Utils.log("Crafted " + totalQuantity + " " + targetItem.name);
 	};

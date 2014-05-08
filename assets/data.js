@@ -45,6 +45,10 @@ function setItemCraftingCost(item, id, value) {
 	item.craftCost[id] = value;
 };
 
+function setGearType(item, value) {
+	item.gearType = value;
+};
+
 function setItemCategories() {
 	for (var key in Items)
 	{
@@ -55,11 +59,7 @@ function setItemCategories() {
 		else if(Items[key].id < 4000)
 			Items[key].category = ItemCategory.component;
 		else if(Items[key].id < 5000)
-		{
 			Items[key].category = ItemCategory.gear;
-			// GearType assignment placeholder
-			Items[key].gearType = GearType.mainHand;
-		}
 		else if(Items[key].id < 999999)
 			Items[key].category = ItemCategory.usable;
 	}
@@ -223,6 +223,17 @@ setItemCraftingCost(Items.ironPick, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.goldBar, Items.gold.id, 10);
 setItemCraftingCost(Items.goldPick, Items.goldBar.id, 10);
+
+// ---------------------------------------------------------------------------
+// Set the gear type
+// ---------------------------------------------------------------------------
+setGearType(Items.copperHelmet, GearType.head);
+
+setGearType(Items.copperPick, GearType.mainHand);
+setGearType(Items.goldPick, GearType.mainHand);
+setGearType(Items.ironPick, GearType.mainHand);
+setGearType(Items.woodenPick, GearType.mainHand);
+
 
 // ---------------------------------------------------------------------------
 // Planet data
