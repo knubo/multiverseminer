@@ -108,7 +108,13 @@ addItem(22, 'nickel', 'Nickel', 1000);
 addItem(23, 'zinc', 'Zinc', 1000);
 addItem(24, 'chromium', 'Chromium', 1000);
 addItem(25, 'chloride', 'Chloride', 1000);
-addItem(26, 'carbondioxide', 'Carbon dioxide', 1000);
+addItem(26, 'carbonDioxide', 'Carbon dioxide', 1000);
+addItem(27, 'sulfurDioxide', 'Sulfur Dioxide', 1000);
+addItem(28, 'argon', 'Argon', 1000);
+addItem(29, 'carbonMonoxide', 'Carbon Monoxide', 1000);
+addItem(30, 'helium', 'Helium', 1000);
+addItem(31, 'neon', 'Neon', 1000);
+addItem(32, 'methane', 'Methane', 10000);
 
 // ---------------------------------------------------------------------------
 // Gems
@@ -333,9 +339,11 @@ Planets = {
 // ---------------------------------------------------------------------------
 
 // Earth
+// -----
+// Gas
 setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
 setPlanetMiningResource(Planets.earth, Items.fuel.id, 'gather', -20, 0, 0.1);
-
+// Solid
 setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.5);
 setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.9);
 setPlanetMiningResource(Planets.earth, Items.gold.id, 'mine', 500, 5500, 0.01);
@@ -358,8 +366,10 @@ setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
 
 // Moon
+// ----
+// Gas
 setPlanetMiningResource(Planets.moon, Items.oxygen.id, 'gather', 1, 100, 0.43);
-
+// Solid
 setPlanetMiningResource(Planets.moon, Items.silicon.id, 'mine', 20, 100, 0.2);
 setPlanetMiningResource(Planets.moon, Items.magnesium.id, 'mine', 20, 100, 0.19);
 setPlanetMiningResource(Planets.moon, Items.iron.id, 'mine', 20, 100, 0.1);
@@ -370,9 +380,29 @@ setPlanetMiningResource(Planets.moon, Items.titanium.id, 'mine', 20, 100, 0.018)
 setPlanetMiningResource(Planets.moon, Items.manganese.id, 'mine', 20, 100, 0.012);
 
 // Mars
-setPlanetMiningResource(Planets.mars, Items.carbondioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
-
+// ----
+// Gas
+setPlanetMiningResource(Planets.mars, Items.carbonDioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
+// Solid
 setPlanetMiningResource(Planets.mars, Items.potassium.id, 'mine', 1, Number.MAX_VALUE, 0.05);
 setPlanetMiningResource(Planets.mars, Items.magnesium.id, 'mine', 1, Number.MAX_VALUE, 0.1);
 setPlanetMiningResource(Planets.mars, Items.sodium.id, 'mine', 1, Number.MAX_VALUE, 0.09);
 setPlanetMiningResource(Planets.mars, Items.chloride.id, 'mine', 1, Number.MAX_VALUE, 0.09);
+
+// Venus
+// Gas
+setPlanetMiningResource(Planets.venus, Items.carbonDioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
+setPlanetMiningResource(Planets.venus, Items.nitrogen.id, 'gather', 50, 5500, 0.03);
+setPlanetMiningResource(Planets.venus, Items.sulfurDioxide.id, 'gather', -50, Number.MAX_VALUE, 0.015);
+setPlanetMiningResource(Planets.venus, Items.argon.id, 'gather', -50, Number.MAX_VALUE, 0.007);
+setPlanetMiningResource(Planets.venus, Items.carbonMonoxide.id, 'gather', -50, Number.MAX_VALUE, 0.0017);
+setPlanetMiningResource(Planets.venus, Items.neon.id, 'gather', -50, Number.MAX_VALUE, 0.0007);
+// Solid
+setPlanetMiningResource(Planets.venus, Items.iron.id, 'mine', 4, 350, 1)
+
+// Jupiter
+// Gas
+setPlanetMiningResource(Planets.jupiter, Items.hydrogen.id, 'gather', -50, Number.MAX_VALUE, .90);
+setPlanetMiningResource(Planets.jupiter, Items.helium.id, 'gather', -50, Number.MAX_VALUE, .1);
+setPlanetMiningResource(Planets.jupiter, Items.neon.id, 'gather', -50, Number.MAX_VALUE, 0.0007);
+setPlanetMiningResource(Planets.jupiter, Items.methane.id, 'gather', -50, Number.MAX_VALUE, 0.0001);
