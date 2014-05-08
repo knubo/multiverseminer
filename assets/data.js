@@ -6,8 +6,13 @@ ItemCategory = {
 	'usable' : 5,
 };
 
-ItemType = {
-	'mainHand' : 1,
+GearType = {
+	'head' : 'Head',
+	'chest' : 'Chest',
+	'mainHand' : 'Main Hand',
+	'extraHand' : 'Extra Hand',
+	'legs' : 'Legs',
+	'feet' : 'Feet',
 };
 
 Items = {};
@@ -40,9 +45,23 @@ function setItemCraftingCost(item, id, value) {
 	item.craftCost[id] = value;
 };
 
-function setItemCategory(category, items) {
-	for (var i = 0; i < items.length; i++) {
-		items[i].category = category;
+function setItemCategories() {
+	for (var key in Items)
+	{
+		if(Items[key].id < 2000)
+			Items[key].category = ItemCategory.rawMaterial;
+		else if(Items[key].id < 3000)
+			Items[key].category = ItemCategory.gem;
+		else if(Items[key].id < 4000)
+			Items[key].category = ItemCategory.component;
+		else if(Items[key].id < 5000)
+		{
+			Items[key].category = ItemCategory.gear;
+			// GearType assignment placeholder
+			Items[key].gearType = GearType.mainHand;
+		}
+		else if(Items[key].id < 999999)
+			Items[key].category = ItemCategory.usable;
 	}
 }
 
@@ -114,16 +133,19 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000);
 // ---------------------------------------------------------------------------
 // Gear / Equipment
 // ---------------------------------------------------------------------------
-addItem(4000, 'copperPick', 'Copper Pickaxe', 15, {
+addItem(4000, 'woddenPick', 'Wodden Pickaxe', 0, {
 	'storageLimit' : 1
 });
-addItem(4001, 'ironPick', 'Iron Pickaxe', 25, {
+addItem(4001, 'copperPick', 'Copper Pickaxe', 15, {
 	'storageLimit' : 1
 });
-addItem(4002, 'goldPick', 'Gold Pickaxe', 2500, {
+addItem(4002, 'ironPick', 'Iron Pickaxe', 25, {
 	'storageLimit' : 1
 });
-addItem(4003, 'jackhammer', 'Jackhammer', 10000, {
+addItem(4003, 'goldPick', 'Gold Pickaxe', 2500, {
+	'storageLimit' : 1
+});
+addItem(4004, 'jackhammer', 'Jackhammer', 10000, {
 	'storageLimit' : 1
 });
 
@@ -159,25 +181,7 @@ addItem(5003, 'healthPotion', 'Health Potion', 25000, {
 // ---------------------------------------------------------------------------
 // Set the item categories
 // ---------------------------------------------------------------------------
-setItemCategory(ItemCategory.rawMaterial, [ Items.oxygen, Items.dirt,
-		Items.copper, Items.iron, Items.gold, Items.silicon, Items.aluminum,
-		Items.calcium, Items.sodium, Items.fuel, Items.potassium,
-		Items.magnesium, Items.titanium, Items.hydrogen, Items.phosphorus,
-		Items.manganese, Items.fluorine, Items.barium, Items.carbon,
-		Items.sulfur, Items.nitrogen, Items.nickel, Items.zinc, Items.chromium,
-		Items.chloride, Items.carbondioxide ]);
-
-setItemCategory(ItemCategory.gem, [ Items.diamond, Items.topaz ]);
-
-setItemCategory(ItemCategory.component, [ Items.copperBar, Items.ironBar,
-		Items.goldBar, Items.goldBar, Items.oxygenCan, Items.oxygenTank,
-		Items.gasCan, Items.fuelCan, Items.fuelTank ]);
-
-setItemCategory(ItemCategory.gear, [ Items.copperPick, Items.ironPick,
-		Items.goldPick, Items.jackhammer ]);
-
-setItemCategory(ItemCategory.usable, [ Items.strengthPotion,
-		Items.refiningPotion, Items.oxygenPotion, Items.healthPotion ]);
+setItemCategories();
 
 // ---------------------------------------------------------------------------
 // Set the crafting cost

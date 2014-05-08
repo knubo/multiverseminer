@@ -23,26 +23,28 @@ function Gear(id) {
 			return;
 		}
 
-		this.slots[type] = -1;
+		this.slots[type] = {
+		'gearType' : type,
+		};
 		this.slotMetadata[type] = undefined;
 	};
 
 	this.equip = function(itemId, metadata) {
 		// get the item info
-		var itemInfo = game.itemDictionary[id];
-		if (!itemInfo || !itemInfo.type) {
-			Utils.logError("attempt to equip unknown or invalid item: " + id);
+		var itemInfo = game.itemDictionary[itemId];
+		if (!itemInfo || itemInfo.category != ItemCategory.gear) {
+			Utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
 			return;
 		}
 
-		if (!this.slots[item.type]) {
-			Utils.logError("attempt to equip item but slot was not set: " + id
-					+ " in " + item.type);
+		if (!this.slots[itemInfo.gearType]) {
+			Utils.logError("attempt to equip item but slot was not set: " + itemId
+					+ " in " + itemInfo.type);
 			return;
 		}
 
-		this.slots[item.type] = item;
-		this.slotMetadata[item.type] = metadata;
+		this.slots[itemInfo.gearType] = itemInfo;
+		this.slotMetadata[itemInfo.gearType] = metadata;
 	};
 
 	this.unEquip = function(type) {

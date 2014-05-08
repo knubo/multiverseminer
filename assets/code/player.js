@@ -18,7 +18,14 @@ function Player() {
 		this.gear.initialize();
 		
 		// Add the slots we can wear
-		this.gear.addSlot(ItemType.mainHand);
+		this.gear.addSlot(GearType.head);
+		this.gear.addSlot(GearType.chest);
+		this.gear.addSlot(GearType.mainHand);
+		this.gear.addSlot(GearType.extraHand);
+		this.gear.addSlot(GearType.legs);	
+		this.gear.addSlot(GearType.feet);
+		// Equip wodden pick
+		this.gear.equip(4000);
 	};
 	
 	this.update = function(elapsed) {
