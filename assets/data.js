@@ -129,7 +129,9 @@ addItem(1, 'oxygen', 'Oxygen', 0.1);
 addItem(2, 'dirt', 'Dirt', 0, {
     'storageLimit': 100
 });
-addItem(3, 'copper', 'Copper', 0.5);
+addItem(3, 'copper', 'Copper', 0.5, {
+    'icon': '/assets/images/copper.png'
+});
 addItem(4, 'iron', 'Iron', 1);
 addItem(5, 'gold', 'Gold', 100);
 addItem(6, 'silicon', 'Silicon', 1000);
@@ -162,6 +164,7 @@ addItem(32, 'methane', 'Methane', 10000);
 addItem(33, 'argon', 'Argon', 10000);
 addItem(34, 'xenon', 'Xenon', 100000);
 addItem(35, 'krypton', 'Krypton', 100000);
+addItem(36, 'silver', 'Silver', 50);
 
 // ---------------------------------------------------------------------------
 // Gems
