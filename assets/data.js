@@ -214,7 +214,8 @@ addItem(3004, 'oxygenTank', 'Oxygen tank', 120).setCraftingCost(
     ]
 );
 addItem(3005, 'gasCan', 'Gas canister', 50, {
-    'description': 'A canister used to hold gas.'
+    'description': 'A canister used to hold gas.',
+    'icon': imageRoot + 'gasCan.png'
 }).setCraftingCost(
     [
         [ Items.ironBar.id, 5 ]
