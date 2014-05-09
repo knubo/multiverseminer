@@ -207,7 +207,9 @@ addItem(3003, 'oxygenCan', 'Oxygen can', 11).setCraftingCost(
         [ Items.ironBar.id, 1 ]
     ]
 );
-addItem(3004, 'oxygenTank', 'Oxygen tank', 120).setCraftingCost(
+addItem(3004, 'oxygenTank', 'Oxygen tank', 120, {
+        'icon': imageRoot + 'oxygenTank.png'
+}).setCraftingCost(
     [
         [ Items.oxygenCan.id, 1 ],
         [ Items.ironBar.id, 10 ]
