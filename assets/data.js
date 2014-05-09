@@ -172,7 +172,9 @@ addItem(2001, 'topaz', 'Topaz', 500);
 // ---------------------------------------------------------------------------
 // Components and parts
 // ---------------------------------------------------------------------------
-addItem(3000, 'copperBar', 'Copper bar', 5).setCraftingCost(
+addItem(3000, 'copperBar', 'Copper bar', 5, {
+        'icon': '/assets/images/copperBar.png'
+}).setCraftingCost(
     [
         [Items.copper.id, 10]
     ]);
