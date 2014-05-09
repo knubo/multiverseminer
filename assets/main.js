@@ -37,7 +37,8 @@ Utils.logCallback = function(type, message) {
 };
 
 function updateInventory() {
-	var scrollTopSaved = $('.dataTables_scrollBody').scrollTop();
+	var scrollInvSaved = $('.dataTables_scrollBody').scrollTop();
+	var bodyScrollSaved = $('body').scrollTop();
 	$('#inventoryTable').DataTable().rows().remove();
 
 	if (!inventoryCategoryFilter) {
@@ -60,7 +61,8 @@ function updateInventory() {
 	}
 	
 	$('#inventoryTable').DataTable().draw();
-	$('.dataTables_scrollBody').scrollTop(scrollTopSaved);
+	$('.dataTables_scrollBody').scrollTop(scrollInvSaved);
+	$('body').scrollTop(bodyScrollSaved);
 }
 
 function updateInterface() {
