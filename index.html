@@ -25,7 +25,9 @@
     
     <script src="assets/data.js" type="text/javascript"></script>
     <script src="assets/main.js" type="text/javascript"></script>
-       
+    
+    <script src="assets/mousetrap.min.js"></script>
+     
     <link href="assets/external/planetarium.css" rel="stylesheet" type="text/css" />
     <link href="assets/external/jquery.dataTables.css" rel="stylesheet" type="text/css">
     <link href="assets/external/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css">
@@ -45,9 +47,20 @@
 <body text="white">
   <div class="container">
     <h1>Multiverse Miner</h1><br />
-    <button onclick="onDigSideways()">Dig around</button>
-    <button onclick="onDigDown()">Dig down</button> <span id="depth">0</span> meters deep.
-    <button onclick="onMoveUp()">Move up</button>
+    <script>
+    Mousetrap.bind('d', function(e) {
+         onDigDown();		
+    });
+    Mousetrap.bind('f', function(e) {
+        onDigSideways();
+    });
+    Mousetrap.bind('g', function(e) {
+        onGatherAtmosphere();
+    })
+    </script>
+    <button onclick="onDigSideways()">Dig around (press D)</button>
+    <button onclick="onDigDown()">Dig down (press F)</button> <span id="depth">0</span> meters deep.
+    <button onclick="onMoveUp()">Move up (press G)</button>
 
     <p><button onclick="onGatherAtmosphere()">Gather atmosphere.</button><br /></p>
 
