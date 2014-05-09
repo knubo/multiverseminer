@@ -212,7 +212,7 @@ setItemCategories();
 setItemCraftingCost(Items.oxygenCan, Items.oxygen.id, 1);
 setItemCraftingCost(Items.oxygenCan, Items.ironBar.id, 1);
 
-setItemCraftingCost(Items.oxygenTank, Items.oxygenCan.id, 10);
+setItemCraftingCost(Items.oxygenTank, Items.oxygenCan.id, 1);
 setItemCraftingCost(Items.oxygenTank, Items.ironBar.id, 10);
 
 setItemCraftingCost(Items.jackhammer, Items.ironBar.id, 50);
