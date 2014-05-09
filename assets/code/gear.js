@@ -121,7 +121,7 @@ function Gear(id) {
 
 	this.reset = function(fullReset) {
 		for(var key in this.slots) {
-			if(!this.hasGearEquipped) {
+			if(!this.hasGearEquipped(key)) {
 				continue;
 			}
 			
