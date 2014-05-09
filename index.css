@@ -1,3 +1,12 @@
+/* Background image */
+html {
+	background: url(assets/images/stardust.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/* Main positioning styles */
 .container{
     text-align:center;
     margin-left:20%;
@@ -16,6 +25,9 @@
     left:0px;
     top:0px;
     width:20%;
+    height: 100%;
+	background-color: rgba(200, 200, 200, 0.15);
+	border-right: 2px solid white;
 }
 .bottom{
     position:fixed;
@@ -24,11 +36,26 @@
     right:0px;
     text-align:center;
 }
+/* Left/Crafting styles */
 .craftingPanel{
 	margin-left:20px;
 	margin-top:1px;
 	margin-right:20px;
-	margin-bottom:1px;	
+	margin-bottom:1px;
+}
+.craftingLabel{
+	margin: 20px auto;
+	height: 30px;
+	padding: 0;
+	width: 60%;		
+
+	border: 1px solid white;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	text-align: center;
+}
+.craftingLabel h2 {
+	margin: 0;
 }
 .craftingItemPanel{
 	margin-left:1px;
@@ -60,8 +87,44 @@
 	cursor: pointer;
 	cursor: hand;
 }
+#craftingContent {
+} 
+#craftingContent .ui-accordion-content {  
+    padding: 0;
+	margin-bottom: 10px;
+
+	border-radius: 0;
+    border: none;
+
+    background: none;  
+    color: #777;  
+
+    font-size: 10pt;  
+    line-height: 16pt;
+}  
+#craftingContent .ui-accordion-content div {
+	margin-bottom: 10px;
+	border-radius: 0;
+	background: #333;
+	box-shadow: inset 0 0 20px #000;
+}
+#craftingContent .ui-accordion-header {  
+    margin-bottom: 10px;  
+
+    border-radius: 0;
+    border: none;
+
+    background: #fff; 
+    color: #555; 
+	box-shadow: inset 0 0 20px #000;
+}  
+/* Inventory styles */
 .inventoryContainer{
 	margin-left:50px;
 	margin-top:10px;
 	margin-right:50px;
+}
+
+button {
+	color: black;
 }
