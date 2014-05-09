@@ -22,8 +22,13 @@ function Storage(id) {
 			return true;
 		}
 
+		var itemInfo = game.getItem(id);
+		if(!itemInfo) {
+			return false;
+		}
+		
 		// See if this item has limited storage capacity
-		var limit = game.itemDictionary[id].storageLimit;
+		var limit = game.getItem(id).storageLimit;
 		if (!limit) {
 			return true;
 		}
@@ -37,7 +42,7 @@ function Storage(id) {
 		}
 
 		// Get some info about the item we are adding
-		var itemInfo = game.itemDictionary[id];
+		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
 			Utils.logError("attempt to add unknown item: " + id);
 			return;
@@ -105,7 +110,7 @@ function Storage(id) {
 		}
 
 		// Get some info about the item we are adding
-		var itemInfo = game.itemDictionary[id];
+		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
 			Utils.logError("attempt to remove unknown item: " + id);
 			return;
@@ -208,7 +213,7 @@ function Storage(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 
-		var keys = Object.keys(game.itemDictionary);
+		var keys = game.getItems();
 		for ( var i = 0; i < keys.length; i++) {
 			var key = keys[i];
 			if (!localStorage[storageKey + key]) {

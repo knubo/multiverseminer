@@ -150,8 +150,8 @@ function Game() {
 		return 'N/A';
 	};
 
-	this.getCraftingCost = function(type, count) {
-		var targetItem = this.itemDictionary[type];
+	this.getCraftingCost = function(itemId, count) {
+		var targetItem = this.itemDictionary[itemId];
 
 		// Check if the item has proper crafting data
 		if (!targetItem.craftCost) {
@@ -166,6 +166,31 @@ function Game() {
 		}
 
 		return cost;
+	};
+	
+	this.getItem = function(itemId) {
+		if(this.itemDictionary[itemId]) {
+			return this.itemDictionary[itemId];
+		}
+		
+		return undefined;
+	}
+	
+	this.getItems = function() {
+		return Object.keys(this.itemDictionary);
+	}
+	
+	this.getItemsByCategory = function(category) {
+		// Todo: build a dictionary of this if we need to call this often
+		var results = [];
+		for(id in this.itemDictionary) {
+			var item = this.itemDictionary[id];
+			if(item.category && item.category == category) {
+				results.push(item);
+			}
+		}
+		
+		return results;
 	};
 
 	// ---------------------------------------------------------------------------

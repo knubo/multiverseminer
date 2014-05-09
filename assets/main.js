@@ -12,17 +12,23 @@ setInterval(function() {
 $.noty.defaults.layout = 'bottomRight';
 $.noty.defaults.timeout = 3000;
 
-$(document).ready( function () {
-    $('#inventoryTable').DataTable( {
-        "sScrollY": "400px",
-        "bScrollCollapse": true,
-        "bPaginate": false,
-        "bJQueryUI": true,
-        "aoColumnDefs": [
-            { "sWidth": "90%", "aTargets": [ -1 ] }
-        ]
-    } );
-} );
+$(document).tooltip();
+
+$(document).ready(function() {
+	$('#inventoryTable').DataTable({
+		"sScrollY" : "400px",
+		"bScrollCollapse" : true,
+		"bPaginate" : false,
+		"bJQueryUI" : true,
+		"aoColumnDefs" : [ {
+			"sWidth" : "90%",
+			"aTargets" : [ -1 ]
+		} ]
+	});
+
+	updateInterface();
+	updateInterfaceCrafting();
+});
 
 var inventoryCategoryFilter = undefined;
 
@@ -36,7 +42,7 @@ Utils.logCallback = function(type, message) {
 	});
 };
 
-function updateInventory() {
+function updateInterfaceInventory() {
 	var scrollInvSaved = $('.dataTables_scrollBody').scrollTop();
 	var bodyScrollSaved = $('body').scrollTop();
 	$('#inventoryTable').DataTable().rows().remove();
@@ -44,10 +50,9 @@ function updateInventory() {
 	if (!inventoryCategoryFilter) {
 		var items = game.player.storage.getItems();
 	} else {
-		var items = game.player.storage.getItemsOfCategory(inventoryCategoryFilter);
+		var items = game.player.storage
+				.getItemsOfCategory(inventoryCategoryFilter);
 	}
-
-	game.player.storage.storageChanged = false;
 
 	if (!items || items.length <= 0) {
 		$('#inventoryTable').DataTable().draw();
@@ -57,12 +62,85 @@ function updateInventory() {
 	for (var i = 0; i < items.length; i++) {
 		var itemName = game.getItemName(items[i]);
 		var count = game.player.storage.getItemCount(items[i]);
-		$('#inventoryTable').DataTable().row.add([count, itemName]).draw();
+		$('#inventoryTable').DataTable().row.add([ count, itemName ]).draw();
 	}
-	
+
 	$('#inventoryTable').DataTable().draw();
 	$('.dataTables_scrollBody').scrollTop(scrollInvSaved);
 	$('body').scrollTop(bodyScrollSaved);
+}
+
+function updateInterfaceGear() {
+	$('#gear').empty();
+
+	slots = [];
+	var gearSlots = game.player.gear.getSlots();
+	for (var i = 0; i < gearSlots.length; i++) {
+		var name = "N/A";
+		var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
+		if (itemId) {
+			name = game.getItemName(itemId);
+		}
+
+		$('#gear').append("<p>" + gearSlots[i] + " - " + name + "</p>");
+	}
+
+	$('#pickPower').text(game.player.pickPower + " / mpc");
+}
+
+function updateInterfaceCrafting() {
+	for ( var key in ItemCategory) {
+		var items = game.getItemsByCategory(ItemCategory[key]);
+		if (!items || items.length <= 0) {
+			continue;
+		}
+
+		var craftableItems = [];
+		for (var i = 0; i < items.length; i ++) {
+			if (items[i].craftCost) {
+				craftableItems.push(items[i]);
+			}
+		}
+
+		if (craftableItems.length <= 0) {
+			continue;
+		}
+
+		var headerContent = $('<div/>');
+		var header = $('#craftingContent').append(
+				'<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
+		for (var i = 0; i < craftableItems.length; i ++) {
+			headerContent.append(buildCraftingContent(craftableItems[i]));
+		}
+	}
+
+	$("#craftingContent").accordion();
+}
+
+function buildCraftingContent(item) {
+	
+	var content = $('<div class=\'craftingItemPanel\' onclick=\'onCraft(' + item.id + ')\' title=\''+buildCostTooltip(item)+'\'/>');
+	var icon = 'assets/images/icon_placeholder.png';
+	if(item.icon) {
+		icon = item.icon;
+	}
+	content.append('<image class=\'craftingIcon\' src="'+icon+'" />');
+	content.append('<span class="craftingText">'+item.name+'</span>').disableSelection();
+	
+	return content;
+}
+
+function buildCostTooltip(item) {
+	// We are building a text tooltip for now, html will be a bit more work
+	//  for html tooltips see: http://api.jqueryui.com/tooltip/#option-content
+	var cost = game.getCraftingCost(item.id, 1);
+	var costEntries = [];
+	for(var key in cost) {
+		var item = game.getItem(key);
+		costEntries.push(cost[key]+' '+item.name);
+	}
+	
+	return costEntries.join(', ');
 }
 
 function updateInterface() {
@@ -84,22 +162,6 @@ function updateInterface() {
 	$('#fuel').text(game.player.storage.getItemCount(Items.fuel.id));
 	$('#fuelCan').text(game.player.storage.getItemCount(Items.fuelCan.id));
 	$('#fuelTank').text(game.player.storage.getItemCount(Items.fuelTank.id));
-	
-	slots = [];
-	var gearSlots = game.player.gear.getSlots();
-	for (var i = 0; i < gearSlots.length; i++)
-	{
-		var name = "N/A";
-		var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
-		if(itemId) {
-			name = game.getItemName(itemId);
-		}
-
-		slots.push(gearSlots[i] + " - " + name);
-	}
-	
-	$('#gear').html("<p>" + slots.join("</p><p>") + "</p>");
-	$('#pickPower').text(game.player.pickPower + " / mpc");
 
 	if (game.currentPlanet) {
 		resources = game.currentPlanet._getAvailableResources("mine");
@@ -112,8 +174,14 @@ function updateInterface() {
 		$('#elementFinder').text("N/A");
 	}
 
+	if (game.player.gear.gearChanged) {
+		updateInterfaceGear();
+		game.player.gear.gearChanged = false;
+	}
+
 	if (game.player.storage.storageChanged) {
-		updateInventory();
+		updateInterfaceInventory();
+		game.player.storage.storageChanged = false;
 	}
 }
 
@@ -218,5 +286,5 @@ function onReset() {
 
 function onSetInventoryFilter(filter) {
 	inventoryCategoryFilter = filter;
-	updateInventory();
+	updateInterfaceInventory();
 }
