@@ -37,6 +37,7 @@ Utils.logCallback = function(type, message) {
 };
 
 function updateInventory() {
+	var scrollTopSaved = $('.dataTables_scrollBody').scrollTop();
 	$('#inventoryTable').DataTable().rows().remove();
 
 	if (!inventoryCategoryFilter) {
@@ -59,6 +60,7 @@ function updateInventory() {
 	}
 	
 	$('#inventoryTable').DataTable().draw();
+	$('.dataTables_scrollBody').scrollTop(scrollTopSaved);
 }
 
 function updateInterface() {
