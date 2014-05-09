@@ -89,8 +89,6 @@ function Player() {
 			{			
 				if(item.category == ItemCategory.gear)
 				{
-					Utils.log("equipBestGear " + item.id + " " + item.gearType);
-				
 					if(item.gearType == GearType.mainHand)
 					{
 						this.pickPower = 3;

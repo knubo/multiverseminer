@@ -32,9 +32,7 @@ function Gear(id) {
 	this.equip = function(itemId, metadata) {	
 		// get the item info
 		var itemInfo = game.itemDictionary[itemId];
-		
-		Utils.log("gear.equip " + itemInfo.id + " " + itemInfo.gearType);
-				
+
 		if (!itemInfo || itemInfo.category != ItemCategory.gear) {
 			Utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
 			return;
