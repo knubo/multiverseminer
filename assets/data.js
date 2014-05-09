@@ -184,7 +184,9 @@ addItem(3001, 'ironBar', 'Iron bar', 10, {
     [
         [Items.iron.id, 10]
     ]);
-addItem(3002, 'goldBar', 'Gold bar', 1000).setCraftingCost([
+addItem(3002, 'goldBar', 'Gold bar', 1000, {
+    'icon': '/assets/images/copperBar.png'
+}).setCraftingCost([
     [Items.gold.id, 10]
 ]);
 addItem(3003, 'oxygenCan', 'Oxygen can', 11).setCraftingCost(
