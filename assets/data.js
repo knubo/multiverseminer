@@ -179,13 +179,13 @@ addItem(3000, 'copperBar', 'Copper bar', 5, {
         [Items.copper.id, 10]
     ]);
 addItem(3001, 'ironBar', 'Iron bar', 10, {
-    'icon': '/assets/images/copperBar.png'
+    'icon': '/assets/images/ironBar.png'
 }).setCraftingCost(
     [
         [Items.iron.id, 10]
     ]);
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
-    'icon': '/assets/images/copperBar.png'
+    'icon': '/assets/images/goldBar.png'
 }).setCraftingCost([
     [Items.gold.id, 10]
 ]);
