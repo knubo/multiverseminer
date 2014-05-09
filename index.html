@@ -48,19 +48,19 @@
   <div class="container">
     <h1>Multiverse Miner</h1><br />
     <script>
-    Mousetrap.bind('d', function(e), keyup {
+    Mousetrap.bind('d', function(e) {
          onDigDown();		
     });
-    Mousetrap.bind('f', function(e), keyup {
+    Mousetrap.bind('f', function(e) {
         onDigSideways();
     });
-    Mousetrap.bind('g', function(e), keyup {
+    Mousetrap.bind('g', function(e) {
         onGatherAtmosphere();
     })
     </script>
-    <button onclick="onDigSideways()">Dig around (or press D)</button>
-    <button onclick="onDigDown()">Dig down (or press F)</button> <span id="depth">0</span> meters deep.
-    <button onclick="onMoveUp()">Move up (or press G)</button>
+    <button onclick="onDigSideways()">Dig around (press D)</button>
+    <button onclick="onDigDown()">Dig down (press F)</button> <span id="depth">0</span> meters deep.
+    <button onclick="onMoveUp()">Move up (press G)</button>
 
     <p><button onclick="onGatherAtmosphere()">Gather atmosphere.</button><br /></p>
 
