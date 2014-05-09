@@ -55,7 +55,9 @@ function Gear(id) {
 			return;
 		}
 
-		this.slots[type] = -1;
+		this.slots[type] = {
+		'gearType' : type,
+		};
 		if (this.slotMetadata[type]) {
 			delete this.slotMetadata[type];
 		}
@@ -82,5 +84,8 @@ function Gear(id) {
 	};
 
 	this.reset = function(fullReset) {
+		for(var type in this.slots) {
+			this.unEquip(type);
+		}
 	};
 }
