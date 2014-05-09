@@ -138,7 +138,8 @@ function Player() {
 		this.miner.reset(fullReset);
 		this.combatant.reset(fullReset);
 		this.storage.reset(fullReset);
-
+		this.gear.reset(fullReset);
 		this.oxygenConsumption = 1;
+		this.pickPower = 1;
 	};
 }
