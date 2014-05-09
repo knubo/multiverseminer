@@ -26,6 +26,11 @@ GearType = {
 Items = {};
 
 // ---------------------------------------------------------------------------
+// variables
+// ---------------------------------------------------------------------------
+var imageRoot = "assets/images/";
+
+// ---------------------------------------------------------------------------
 // helper functions
 // ---------------------------------------------------------------------------
 
@@ -130,7 +135,7 @@ addItem(2, 'dirt', 'Dirt', 0, {
     'storageLimit': 100
 });
 addItem(3, 'copper', 'Copper', 0.5, {
-    'icon': '/assets/images/copper.png'
+    'icon': imageRoot + 'copper.png'
 });
 addItem(4, 'iron', 'Iron', 1);
 addItem(5, 'gold', 'Gold', 100);
@@ -176,21 +181,21 @@ addItem(2001, 'topaz', 'Topaz', 500);
 // Components and parts
 // ---------------------------------------------------------------------------
 addItem(3000, 'copperBar', 'Copper bar', 5, {
-    'icon': '/assets/images/copperBar.png'
+    'icon': imageRoot + 'copperBar.png'
 }).setCraftingCost(
     [
         [Items.copper.id, 10]
     ]
 );
 addItem(3001, 'ironBar', 'Iron bar', 10, {
-    'icon': '/assets/images/ironBar.png'
+    'icon': imageRoot + 'ironBar.png'
 }).setCraftingCost(
     [
         [ Items.iron.id, 10 ]
     ]
 );
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
-    'icon': '/assets/images/goldBar.png'
+    'icon': imageRoot + 'goldBar.png'
 }).setCraftingCost(
     [
         [ Items.gold.id, 10 ]
@@ -228,7 +233,7 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     ]
 );
 addItem(3008, 'silverBar', 'Silver bar', 1000, {
-    'icon': '/assets/images/silverBar.png'
+    'icon': imageRoot + 'silverBar.png'
 }).setCraftingCost(
     [
         [ Items.silver.id, 10 ]
@@ -287,7 +292,7 @@ addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
 
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
-    'icon': 'assets/images/pick.png'
+    'icon': imageRoot + 'pick.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
