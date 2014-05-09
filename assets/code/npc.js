@@ -23,11 +23,13 @@ function NPC(id) {
 		this.miner.save();
 		this.combatant.save();
 		this.storage.save();
+		this.gear.save();
 	};
 
 	this.load = function() {
 		this.combatant.load();
 		this.storage.load();
+		this.gear.load();
 	};
 
 	this.reset = function(fullReset) {

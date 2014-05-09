@@ -11,6 +11,8 @@ function Settings() {
 	this.travelDistanceRemaining;
 	this.travelDistanceElapsed;
 	
+	this.isNewGame = true;
+	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
@@ -48,6 +50,8 @@ function Settings() {
 		localStorage.travelActive = this.travelActive;
 		localStorage.travelDistanceRemaining = this.travelDistanceRemaining;
 		localStorage.travelDistanceElapsed = this.travelDistanceElapsed;
+		
+		localStorage.isNewGame = this.newGame;
 	};
 
 	this.load = function() {
@@ -64,6 +68,8 @@ function Settings() {
 				"travelDistanceRemaining", 0);
 		this.travelDistanceElapsed = Utils
 				.loadFloat("travelDistanceElapsed", 0);
+		
+		this.isNewGame = Utils.loadBool("isNewGame", true);
 	};
 
 	this.reset = function(fullReset) {
@@ -75,6 +81,8 @@ function Settings() {
 		this.travelActive = false;
 		this.travelDistanceRemaining = 0;
 		this.travelDistanceElapsed = 0;
+		
+		this.isNewGame = true;
 
 		if (fullReset) {
 			this.totalStats = new Statistics('total');

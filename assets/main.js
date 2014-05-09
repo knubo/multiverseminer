@@ -85,11 +85,19 @@ function updateInterface() {
 	$('#fuelCan').text(game.player.storage.getItemCount(Items.fuelCan.id));
 	$('#fuelTank').text(game.player.storage.getItemCount(Items.fuelTank.id));
 	
-	var slots = [];
-	for (var key in game.player.gear.slots)
+	slots = [];
+	var gearSlots = game.player.gear.getSlots();
+	for (var i = 0; i < gearSlots.length; i++)
 	{
-		slots.push(game.player.gear.slots[key].gearType + " - " + game.getItemName(game.player.gear.slots[key].id));
+		var name = "N/A";
+		var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
+		if(itemId) {
+			name = game.getItemName(itemId);
+		}
+
+		slots.push(gearSlots[i] + " - " + name);
 	}
+	
 	$('#gear').html("<p>" + slots.join("</p><p>") + "</p>");
 	$('#pickPower').text(game.player.pickPower + " / mpc");
 

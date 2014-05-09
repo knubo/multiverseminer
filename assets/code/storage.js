@@ -223,6 +223,5 @@ function Storage(id) {
 
 	this.reset = function(fullReset) {
 		this.items = {};
-		this.addItem(4000);
 	};
 };
