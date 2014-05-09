@@ -125,8 +125,10 @@ html {
 	margin-right:50px;
 }
 #inventoryTable_wrapper .dataTables_filter {
-	color: #aaa;
+	margin-right: 20px;
 	padding: 4px;
+
+	color: #aaa;
 }
 #inventoryTable_wrapper .dataTables_filter input {
 	border-radius: 10px;
@@ -135,23 +137,27 @@ html {
 #inventoryTable_wrapper .dataTables_info {
 	margin-left: 10px;
 	padding: 0;
+
 	color: #aaa;
 }
 #inventoryTable_wrapper .ui-state-default { 
+	padding: 0;
+	
 	background: #222;
 	border: none;
 	border-right: 1px solid white;
-	padding: 0;
 }
 #inventoryTable_wrapper .ui-state-default:last-of-type { 
 	border: none;
 }
 #inventoryTable_wrapper .ui-corner-tr {
+	border-radius: 0;
 	background: #222;
 	border: none;
 	border-bottom: 1px solid white;
 }
 #inventoryTable_wrapper .ui-corner-br {
+	border-radius: 0;
 	background: #222;
 	border: none;
 	border-top: 1px solid white;
