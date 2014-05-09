@@ -4,6 +4,8 @@ function Gear(id) {
 
 	this.slots = {};
 	this.slotMetadata = {};
+	
+	this.gearChanged = false;
 
 	// ---------------------------------------------------------------------------
 	// general
@@ -29,7 +31,7 @@ function Gear(id) {
 
 	this.equip = function(itemId, metadata) {	
 		// get the item info
-		var itemInfo = game.itemDictionary[itemId];
+		var itemInfo = game.getItem(itemId);
 
 		if (!itemInfo || itemInfo.category != ItemCategory.gear) {
 			Utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
@@ -44,6 +46,7 @@ function Gear(id) {
 
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
+		this.gearChanged = true;
 	};
 
 	this.unEquip = function(type) {
@@ -55,6 +58,7 @@ function Gear(id) {
 		
 		this.slots[type] = -1;
 		this.slotMetadata[type] = undefined;
+		this.gearChanged = true;
 	};
 	
 	this.hasGearEquipped = function(type){
@@ -111,6 +115,8 @@ function Gear(id) {
 			this.equip(itemId);
 			// Todo: load metadata
 		}
+		
+		this.gearChanged = true;
 	};
 
 	this.reset = function(fullReset) {

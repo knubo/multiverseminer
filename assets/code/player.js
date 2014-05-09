@@ -85,7 +85,7 @@ function Player() {
 		// TODO: needs actual selection of best gear, right now it selects the latest found + proper pickPower assignment
 		for (var key in this.storage.items)
 		{
-			var item = game.itemDictionary[key];
+			var item = game.getItem(key);
 		
 			if(item != undefined)
 			{			

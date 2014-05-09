@@ -1,9 +1,9 @@
 ItemCategory = {
-    'rawMaterial': 1,
-    'gem': 2,
-    'component': 3,
-    'gear': 4,
-    'usable': 5,
+    'rawMaterial': 'Raw materials',
+    'gem': 'Gems',
+    'component': 'Components',
+    'gear': 'Gear',
+    'usable': 'Usable',
 };
 
 GearType = {
@@ -147,7 +147,8 @@ addItem(4000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1
 });
 addItem(4001, 'copperPick', 'Copper Pickaxe', 15, {
-    'storageLimit': 1
+    'storageLimit': 1,
+    'icon': 'assets/images/pick.png'
 });
 addItem(4002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1
