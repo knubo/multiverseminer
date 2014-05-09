@@ -120,7 +120,7 @@ function updateInterfaceCrafting() {
 		}
 	}
 
-	$("#craftingContent").accordion();
+	$("#craftingContent").accordion({heightStyle: "content" });
 	$("#craftingContent").accordion('option', 'active', activePage);
 }
 
