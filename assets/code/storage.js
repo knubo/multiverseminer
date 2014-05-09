@@ -157,6 +157,14 @@ function Storage(id) {
 		this.storageChanged = true;
 	};
 	
+	this.setStorageChanged = function(storageChanged) {
+		this.storageChanged = storageChanged;
+	};
+	
+	this.getStorageChanged = function() {
+		return this.storageChanged;
+	};
+	
 	// ---------------------------------------------------------------------------
 	// internal stuff, don't use outside
 	// ---------------------------------------------------------------------------
