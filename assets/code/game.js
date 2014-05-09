@@ -29,21 +29,29 @@ function Game() {
 		// Load the settings
 		this.load();
 
-		this.setStartupState();
+		if(this.settings.isNewGame) {
+			this.setNewGame();
+		}
 		
+		this.setStartupState();
+	};
+	
+	this.setNewGame = function() {
+		// Give the player some basic items
+		this.player.storage.addItem(4000);
 		this.player.equipBestGear();
+		
+		// make earth our current planet
+		this.settings.currentPlanet = Planets.earth.id;
+		
+		this.settings.isNewGame = false;
 	};
 
-	this.setStartupState = function() {
+	this.setStartupState = function() {		
 		// Bring us back to our last position
 		if (this.settings.travelActive) {
 			// Todo: resume travelling
 		} else {
-			if (this.settings.currentPlanet <= 0) {
-				// Bring us to earth if we have nothing
-				this.settings.currentPlanet = Planets.earth.id;
-			}
-
 			this._enterOrbit(this.settings.currentPlanet);
 		}
 	};
@@ -63,6 +71,7 @@ function Game() {
 			this.currentPlanet.reset(fullReset);
 		}
 
+		this.setNewGame();
 		this.setStartupState();
 		
 		this.save();
@@ -129,8 +138,6 @@ function Game() {
 		// Todo: Refactor
 					
 		storageTarget.addItem(what, totalQuantity);
-		
-		this.player.equipBestGear();
 		
 		Utils.log("Crafted " + totalQuantity + " " + targetItem.name);
 	};

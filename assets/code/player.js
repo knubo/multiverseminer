@@ -77,6 +77,8 @@ function Player() {
 	this.craft = function(itemId, count) {
 		// For now we craft with our inventory into our inventory
 		game.craft(this.storage, this.storage, itemId, count);
+		
+		this.equipBestGear();
 	};
 	
 	this.equipBestGear = function() {
@@ -122,6 +124,7 @@ function Player() {
 		this.miner.save();
 		this.combatant.save();
 		this.storage.save();
+		this.gear.save();
 
 		localStorage.playerOxygenConsumption = this.oxygenConsumption;
 	};
@@ -130,6 +133,7 @@ function Player() {
 		this.miner.load();
 		this.combatant.load();
 		this.storage.load();
+		this.gear.load();
 
 		this.oxygenConsumption = Utils.loadFloat('playerOxygenConsumption', 1);
 	};
@@ -139,6 +143,7 @@ function Player() {
 		this.combatant.reset(fullReset);
 		this.storage.reset(fullReset);
 		this.gear.reset(fullReset);
+		
 		this.oxygenConsumption = 1;
 		this.pickPower = 1;
 	};
