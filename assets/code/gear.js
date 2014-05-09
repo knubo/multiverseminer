@@ -33,7 +33,7 @@ function Gear(id) {
 		// get the item info
 		var itemInfo = game.getItem(itemId);
 
-		if (!itemInfo || itemInfo.category != ItemCategory.gear) {
+		if (!itemInfo || !itemInfo.gearType) {
 			Utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
 			return;
 		}

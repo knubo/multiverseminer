@@ -26,7 +26,7 @@ function Storage(id) {
 		if(!itemInfo) {
 			return false;
 		}
-		
+
 		// See if this item has limited storage capacity
 		var limit = game.getItem(id).storageLimit;
 		if (!limit) {
@@ -57,8 +57,9 @@ function Storage(id) {
 
 		// Register this item in the dictionaries
 		this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-		if(itemInfo.category == ItemCategory.gear)
+		if(itemInfo.gearType) {
 			this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
+		}
 		
 		this.storageChanged = true;
 	};
@@ -130,8 +131,9 @@ function Storage(id) {
 			
 			// Unregister from the dictionaries
 			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-			if(itemInfo.category == ItemCategory.gear)
+			if(itemInfo.gearType) {
 				this._unregisterItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
+			}
 		}
 		
 		this.storageChanged = true;

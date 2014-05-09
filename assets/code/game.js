@@ -38,7 +38,7 @@ function Game() {
 	
 	this.setNewGame = function() {
 		// Give the player some basic items
-		this.player.storage.addItem(4000);
+		this.player.storage.addItem(Items.woodenPick.id);
 		this.player.equipBestGear();
 		
 		// make earth our current planet
@@ -108,12 +108,12 @@ function Game() {
 		// Check if we have enough storage to store the result
 		if (!storageTarget.canAdd(what, count)) {
 			Utils.logError("Can not craft, storage limit exceeded!");
-			return;
+			return false;
 		}
 
 		var cost = this.getCraftingCost(what, count);
 		if (!cost) {
-			return;
+			return false;
 		}
 
 		var quantity = targetItem.craftResult || 1;
@@ -124,7 +124,7 @@ function Game() {
 			if (storageSource.getItemCount(key) < cost[key]) {
 				// Todo: this needs to go into the ui somewhere
 				Utils.logError("Insufficient resources, need " + cost[key] + " " + this.getItemName(key));
-				return;
+				return false;
 			}
 		}
 
@@ -140,6 +140,7 @@ function Game() {
 		storageTarget.addItem(what, totalQuantity);
 		
 		Utils.log("Crafted " + totalQuantity + " " + targetItem.name);
+		return true;
 	};
 
 	this.getItemName = function(id) {
