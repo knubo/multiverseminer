@@ -327,7 +327,9 @@ addItem(45000, 'copperArmorFeet', 'Copper Boots', 5, {
 // ---------------------------------------------------------------------------
 // Machines
 // ---------------------------------------------------------------------------
-addItem(46000, 'smallMotor', 'Small Motor', 3000, {}).setCraftingCost([
+addItem(46000, 'smallMotor', 'Small Motor', 3000, {
+    'icon': 'assets/images/smallMotor.png'
+}).setCraftingCost([
     [Items.ironBar.id, 5]
 ]);
 addItem(46001, 'atmosphereConcentrator', 'Atmosphere Concentrator', 10000, {
