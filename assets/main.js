@@ -186,9 +186,9 @@ function updateInterface() {
 		game.player.gear.gearChanged = false;
 	}
 
-	if (game.player.storage.storageChanged) {
+	if (game.player.storage.getStorageChanged()) {
 		updateInterfaceInventory();
-		game.player.storage.storageChanged = false;
+		game.player.storage.setStorageChanged(false);
 	}
 }
 
