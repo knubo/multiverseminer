@@ -76,9 +76,13 @@ function Player() {
 
 	this.craft = function(itemId, count) {
 		// For now we craft with our inventory into our inventory
-		game.craft(this.storage, this.storage, itemId, count);
+		if(!game.craft(this.storage, this.storage, itemId, count)) {
+			return false;
+		}
 		
 		this.equipBestGear();
+		
+		return true;
 	};
 	
 	this.equipBestGear = function() {
@@ -87,19 +91,17 @@ function Player() {
 		{
 			var item = game.getItem(key);
 		
-			if(item != undefined)
-			{			
-				if(item.category == ItemCategory.gear)
-				{
-					if(item.gearType == GearType.mainHand)
-					{
-						this.pickPower = 3;
-						this.equip(item.id);
-					}
-					
-					this.equip(item.id);
-				}
+			if(!item || !item.gearType) {
+				continue;
 			}
+			
+			if(item.gearType == GearType.mainHand)
+			{
+				this.pickPower = 3;
+				this.equip(item.id);
+			}
+			
+			this.equip(item.id);
 		}
 	};
 	

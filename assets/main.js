@@ -26,6 +26,8 @@ $(document).ready(function() {
 		} ]
 	});
 
+	$("#craftingContent").accordion();
+	
 	updateInterface();
 	updateInterfaceCrafting();
 });
@@ -89,6 +91,10 @@ function updateInterfaceGear() {
 }
 
 function updateInterfaceCrafting() {
+	var activePage = $('#craftingContent').accordion('option', 'active');
+	$('#craftingContent').accordion("destroy");
+	$('#craftingContent').empty();
+	
 	for ( var key in ItemCategory) {
 		var items = game.getItemsByCategory(ItemCategory[key]);
 		if (!items || items.length <= 0) {
@@ -97,7 +103,7 @@ function updateInterfaceCrafting() {
 
 		var craftableItems = [];
 		for (var i = 0; i < items.length; i ++) {
-			if (items[i].craftCost) {
+			if (items[i].craftCost && game.player.storage.canAdd(items[i].id)) {
 				craftableItems.push(items[i]);
 			}
 		}
@@ -115,6 +121,7 @@ function updateInterfaceCrafting() {
 	}
 
 	$("#craftingContent").accordion();
+	$("#craftingContent").accordion('option', 'active', activePage);
 }
 
 function buildCraftingContent(item) {
@@ -200,9 +207,10 @@ function onCraft(what) {
 		return;
 	}
 
-	game.player.craft(what);
-
-	updateInterface();
+	if(game.player.craft(what)) {
+		updateInterface();
+		updateInterfaceCrafting();
+	}
 }
 
 function onDigSideways() {
@@ -274,6 +282,8 @@ function onReset() {
 			onClick : function($noty) {
 				$noty.close();
 				game.reset();
+				
+				updateInterfaceCrafting();
 			}
 		}, {
 			text : 'Cancel',
