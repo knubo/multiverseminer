@@ -44,8 +44,8 @@ function Combatant(id) {
 	};
 
 	this.reset = function(fullReset) {
-		this.health = 0;
-		this.defense = 0;
+		this.health = 100;
+		this.defense = 100;
 
 		this.baseAttackSpeed = 1;
 	};
