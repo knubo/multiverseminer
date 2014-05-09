@@ -177,44 +177,60 @@ addItem(3000, 'copperBar', 'Copper bar', 5, {
 }).setCraftingCost(
     [
         [Items.copper.id, 10]
-    ]);
+    ]
+);
 addItem(3001, 'ironBar', 'Iron bar', 10, {
     'icon': '/assets/images/ironBar.png'
 }).setCraftingCost(
     [
-        [Items.iron.id, 10]
-    ]);
+        [ Items.iron.id, 10 ]
+    ]
+);
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
     'icon': '/assets/images/goldBar.png'
-}).setCraftingCost([
-    [Items.gold.id, 10]
-]);
+}).setCraftingCost(
+    [
+        [ Items.gold.id, 10 ]
+    ]
+);
 addItem(3003, 'oxygenCan', 'Oxygen can', 11).setCraftingCost(
     [
-        [Items.oxygen.id, 1],
-        [Items.ironBar.id, 1]
-    ]);
+        [ Items.oxygen.id, 1 ],
+        [ Items.ironBar.id, 1 ]
+    ]
+);
 addItem(3004, 'oxygenTank', 'Oxygen tank', 120).setCraftingCost(
     [
-        [Items.oxygenCan.id, 1],
-        [Items.ironBar.id, 10]
-    ]);
+        [ Items.oxygenCan.id, 1 ],
+        [ Items.ironBar.id, 10 ]
+    ]
+);
 addItem(3005, 'gasCan', 'Gas canister', 50, {
     'description': 'A canister used to hold gas.'
-}).setCraftingCost([
-    [Items.ironBar.id, 5]
-]);
+}).setCraftingCost(
+    [
+        [ Items.ironBar.id, 5 ]
+    ]
+);
 addItem(3006, 'fuelCan', 'Fuel can', 1000).setCraftingCost(
     [
-        [Items.fuel.id, 10],
-        [Items.ironBar.id, 1]
-    ]);
+        [ Items.fuel.id, 10 ],
+        [ Items.ironBar.id, 1 ]
+    ]
+);
 addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     [
-        [Items.fuelCan.id, 1],
-        [Items.ironBar.id, 10]
-    ]);;
-
+        [ Items.fuelCan.id, 1 ],
+        [ Items.ironBar.id, 10 ]
+    ]
+);
+addItem(3008, 'silverBar', 'Silver bar', 1000, {
+    'icon': '/assets/images/silverBar.png'
+}).setCraftingCost(
+    [
+        [ Items.silver.id, 10 ]
+    ]
+);
 // ---------------------------------------------------------------------------
 // Usable
 // ---------------------------------------------------------------------------
