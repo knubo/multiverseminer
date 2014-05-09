@@ -10,6 +10,7 @@ ItemCategory = {
     'gearLegs': 'Gear - Legs',
     'gearFeet': 'Gear - Feet',
     'gearBuilding': 'Buildings',
+    'machines': 'Machines',
     'usable': 'Usable',
 };
 
@@ -100,6 +101,8 @@ function setItemProperties() {
         } else if (item.id >= 45000 && item.id < 46000) {
             item.category = ItemCategory.gearFeet;
             item.gearType = GearType.feet;
+        } else if (item.id >=46000 && item.id < 47000) {
+            item.category = ItemCategory.machines;
         } else {
             item.category = ItemCategory.unset;
         }
