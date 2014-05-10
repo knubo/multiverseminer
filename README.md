@@ -1,27 +1,24 @@
 Multiverse Miner
 ================
 
-> [00:09:42]  <@antlong>	 !eightball will this game get finished
-> [00:09:42]  <multiversebot>	 antlong: Yes!
-> [00:09:48]  <@antlong>	 well, there you have it.
-> 
-> [01:11] <KiriKaz> !eightball will this game be famous
-> [01:11] <multiversebot> KiriKaz: Of course.
+Dreams of exploring the universe are a remnant of the past.
+___
 
-There's advancements in space travel; you're a space miner. You begin on earth, once you're able to build your ship, you fly to the moon to mine. Then earth is attacked, and you can't mine on it freely anymore, you must mine in space, building your ship up; you can go back to earth to exchange rare resources, the ultimate goal is to build a wormhole, and you fly through to user generated universes, where you PvP and conquer/loot you build bases on planets to auto-mine for you, but they can be attacked, so it's a constant battle to maintain your bases. Your ships can be attacked while transporting by NPCs and players also.
 
-IN PROGRESS:
+Since unlocking the true potential of the elements, wormholes have been created and mastered, space travel occurs at the speed of light, and the elements in the universe can be manipulated at your whim.
 
-1) Adding images to elements.
+Fascinated in the advancements in geology, physics, and time-travel, you decide to pick up your pickaxe, build yourself a ship and explore the farthest reaches of the universe.
 
-TODO:
+* Begin on earth. Mine resources, build a ship and explore the universe.
+* Mine elements, combine them, and craft powerful machines, weapons and more.
+* Fight enemies; space pirates, thieves, aliens and more await to steal your treasures.
+* Find artifacts, the most powerful and rare objects in the universe. Wield them to unlock powerful stat boosts and more.
+* Travel to every planet in the solar system; Each contains accurate amounts of the real elements found on the planet. 
 
-1) Add all elements on earth (data.js) to the site, index.html and main.js
 
-There is a 100 dirt limit, once the limit is reached, you can refine the dirt and have a chance to find ores.
-As first pass i think removing all the resources with type 'mine' from Planets.earth.resources[] (in assets/data.js) and putting only dirt that will cover the mine part of gathering dirt then next up we want to get mine and dig down split up so game.player.mine() should not mess with the planet depth move everything from onDigDown() to onDigSideways() in main.js and make onDigDown() increase the depth for now i think so what we should end up with is 2 buttons to go up / down, 1 button to mine (giving only dirt)
+[Join us on IRC.](http://webchat.freenode.net?channels=%23multiverseminer&uio=d4)
 
-The automated things that digs up rocks should be called Excavators.
-The buildings looking for precious resources should be called Processing Plants.
-The buildings that turn ores into bars should be called Smelting Mills.
-A proper mining base should have all of these, and on gas planets they would be called Gas Collectors, Gas Separators and Bottling Plants.
+[Play the game.](http://multiverseminer.com)
+
+[Visit our subreddit](http://reddit.com/r/multiverseminer)
+
