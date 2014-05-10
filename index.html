@@ -49,6 +49,12 @@
         Mousetrap.bind('u', function(e) {
             onMoveUp()
         })
+        Mousetrap.bind('s', function(e) {
+            onSave()
+        });
+        Mousetrap.bind('r', function(e) {
+            onReset()
+        });
         </script>
         <button onclick="onDigSideways()">Dig around (press D)</button><br /><br />
         <button onclick="onDigDown()">Dig down (press F)</button>
