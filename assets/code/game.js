@@ -42,7 +42,7 @@ function Game() {
 		this.player.equipBestGear();
 		
 		// make earth our current planet
-		this.settings.currentPlanet = Planets.earth.id;
+		this.currentPlanet = Planets.earth.id;
 		
 		this.settings.isNewGame = false;
 	};
@@ -52,7 +52,7 @@ function Game() {
 		if (this.settings.travelActive) {
 			// Todo: resume travelling
 		} else {
-			this._enterOrbit(this.settings.currentPlanet);
+			this._enterOrbit(this.currentPlanet);
 		}
 	};
 
