@@ -344,12 +344,12 @@ addItem(3008, 'silverBar', 'Silver bar', 1000, {
     ]
 );
 // The below are essentially batteries for laser/pulse weapons.
-addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost({
+addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
     [
         [Items.ceasium.id, 10],
         [Items.ironBar.id, 1]
     ]
-});
+);
 // TODO: finish figuring out how a hyper cell would work...
 addItem(3010, 'hyperCell', 'Hyper cell', 10000)
 // ---------------------------------------------------------------------------
@@ -484,7 +484,7 @@ addItem(45001, 'ironArmorFeet', 'Iron Boots', 50, {
 // Machines
 // ---------------------------------------------------------------------------
 addItem(46000, 'smallMotor', 'Small Motor', 3000, {
-    'icon': '/assets/images/smallMotor.jpg'
+    'icon': imageRoot + 'smallMotor.jpg'
 }).setCraftingCost([
     [Items.ironBar.id, 5]
 ]);
