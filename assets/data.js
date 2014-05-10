@@ -536,8 +536,43 @@ addItem(46001, 'atmosphereConcentrator', 'Atmosphere Concentrator', 10000, {
 ]);
 // ----------
 // Spaceship Main Pieces
-//
-addItem(50000, 'name', 'Name', 10000)
+addItem(50000, 'cabin', 'Cabin', 10000).setCraftingCost([
+    [Items.ironBar.id, 50]
+]);
+addItem(50001, 'payloadBayDoors', 'Payload Bay Doors', 10000).setCraftingCost([
+    [Items.ironBar.id, 50]
+]);
+addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
+    [Items.ironBar.id, 5]
+    //[Items.microchipController.id, 1],
+    //[Items.gPS.id, 1]
+]);
+addItem(50003, 'mainEngine', 'Main Engine', 10000).setCraftingCost([
+    [Items.ironBar.id, 30],
+    [Items.fuelTank.id, 5]
+]);
+addItem(50004, 'thrusters', 'Thrusters', 10000).setCraftingCost([
+    [Items.ironBar.id, 20],
+    [Items.oxygenTank.id, 2],
+    //[Items.hydrogenTank.id, 2],
+    [Items.smallMotor.id, 2]
+]);
+addItem(50005, 'solidBooster', 'Solid Booster', 10000).setCraftingCost([
+    [Items.ironBar.id, 20],
+    [Items.oxygenTank.id, 4]
+]);
+addItem(50006, 'forwardFuselage', 'Forward Fuselage', 10000).setCraftingCost([
+    [Items.ironBar.id, 20]
+]);
+addItem(50007, 'midFuselage', 'Mid Fuselage', 10000).setCraftingCost([
+    [Items.ironBar.id, 20]
+]);
+addItem(50008, 'aftFuselage', 'Aft Fuselage', 10000).setCraftingCost([
+    [Items.ironBar.id, 20]
+]);
+addItem(50009, 'landingGear', 'Landing Gear', 10000).setCraftingCost([
+    [Items.ironBar.id, 20]
+]);
 // ---------------------------------------------------------------------------
 // Set the item categories and types
 // ---------------------------------------------------------------------------
