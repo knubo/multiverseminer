@@ -16,7 +16,7 @@ function Game() {
 	// ---------------------------------------------------------------------------
 	this.init = function() {
 		// Rebuild the dictionaries for our data
-		this.planetDictionary = this.buildDictionary(planets);
+		this.planetDictionary = this.buildDictionary(Planets);
 		this.itemDictionary = this.buildDictionary(Items);
 
 		Utils.log(Object.keys(this.planetDictionary).length + " planets");
