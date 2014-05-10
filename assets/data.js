@@ -172,7 +172,6 @@ addItem(35, 'krypton', 'Krypton', 100000);
 addItem(36, 'silver', 'Silver', 50);
 addItem(37, 'ceasium', 'Ceasium', 100000);
 addItem(38, 'carbon', 'Carbon', 50000);
-
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
@@ -362,22 +361,28 @@ addItem(3012, 'glass', 'Glass', 5000).setCraftingCost(
         [Items.silica.id, 2]
     ]
 );
-addItem(3013, 'microchip', 'Microchip', 10000).setCraftingCost(
-    [
-        [Items.silica.id, 1],
-        [Items.steelBar.id, 1]
-    ]
-);
 addItem(3014, 'steelBar', 'Steel bar', 5000).setCraftingCost(
     [
         [Items.ironBar.id, 1],
         [Items.carbon.id, 1]
     ]
 );
+addItem(3013, 'microchip', 'Microchip', 10000).setCraftingCost(
+    [
+        [Items.silica.id, 1],
+        [Items.steelBar.id, 1]
+    ]
+);
 addItem(3015, 'hydrogenTank', 'Hydrogen tank', 10000).setCraftingCost(
     [
         [Items.hydrogen.id, 10],
         [Items.steelBar.id, 10]
+    ]
+);
+addItem(3016, 'gps', 'GPS', 10000).setCraftingCost(
+    [
+        [Items.steelBar.id, 10],
+        [Items.microchip.id, 1]
     ]
 );
 // ---------------------------------------------------------------------------
@@ -578,11 +583,11 @@ addItem(50000, 'cabin', 'Cabin', 10000).setCraftingCost([
 addItem(50001, 'payloadBayDoors', 'Payload Bay Doors', 10000).setCraftingCost([
     [Items.ironBar.id, 50]
 ]);
-addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
-    [Items.ironBar.id, 5]
-    [Items.microchip.id, 1],
-    [Items.gps.id, 1]
-]);
+//addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
+//    [Items.ironBar.id, 5]
+//    [Items.microchip.id, 1],
+//    [Items.gps.id, 1]
+//]);
 addItem(50003, 'mainEngine', 'Main Engine', 10000).setCraftingCost([
     [Items.ironBar.id, 30],
     [Items.fuelTank.id, 5],
