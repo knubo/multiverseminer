@@ -163,13 +163,31 @@ html {
 	border: none;
 	border-top: 1px solid white;
 }
+/* Elements */
 #elementFinder {
-	text-align: left;
-	padding-left: 30px;
+	padding-left: 15px;
+	overflow: auto;
 }
 #elementFinder ul {
 	list-style: none;
 }
+.element {
+	float: left;
+
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	font-size: 20px;
+
+	background: grey;
+	color: black;
+	box-shadow: inset 0 0 15px #000;
+	overflow: hidden;
+
+}
+/* Gems */
 #gemFinder {
 	text-align: left;
 	padding-left: 30px;

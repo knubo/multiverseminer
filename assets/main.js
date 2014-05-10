@@ -177,7 +177,7 @@ function updateInterface() {
 		for (var i = 0; i < resources.length; i++) {
 			// This is a raw material
 			if ( resources[i].id < 2000 ) {
-				resElement += "<div>" + game.getItemName(resources[i].id) + "</div>";
+				resElement += '<div class="element">' + game.getItem(resources[i].id).el + '</div>';
 			} else {
 				resGem += "<li>" + game.getItemName(resources[i].id) + "</li>";
 			}

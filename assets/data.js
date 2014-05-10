@@ -139,19 +139,38 @@ addItem(2, 'dirt', 'Dirt', 0, {
     'storageLimit': 100
 });
 addItem(3, 'copper', 'Copper', 0.5, {
-    'icon': imageRoot + 'copper.png'
+    'icon': imageRoot + 'copper.png',
+    'el': 'Cu'
 });
-addItem(4, 'iron', 'Iron', 1);
-addItem(5, 'gold', 'Gold', 100);
-addItem(6, 'silicon', 'Silicon', 1000);
-addItem(7, 'aluminum', 'Aluminum', 1000);
-addItem(8, 'calcium', 'Calcium', 1000);
-addItem(9, 'sodium', 'Sodium', 1000);
+addItem(4, 'iron', 'Iron', 1, {
+    'el': 'Fe'
+});
+addItem(5, 'gold', 'Gold', 100, {
+    'el': 'Au'
+});
+addItem(6, 'silicon', 'Silicon', 1000, {
+    'el': 'Si'
+});
+addItem(7, 'aluminum', 'Aluminum', 1000, {
+    'el': 'Al'
+});
+addItem(8, 'calcium', 'Calcium', 1000, {
+    'el': 'Ca'
+});
+addItem(9, 'sodium', 'Sodium', 1000, {
+    'el': 'Na'
+});
 addItem(10, 'fuel', 'Fuel', 1000);
 addItem(11, 'potassium', 'Potassium', 1000);
-addItem(12, 'magnesium', 'Magnesium', 1000);
-addItem(13, 'titanium', 'Titanium', 1000);
-addItem(14, 'hydrogen', 'Hydrogen', 1000);
+addItem(12, 'magnesium', 'Magnesium', 1000, {
+    'el': 'Mg'
+});
+addItem(13, 'titanium', 'Titanium', 1000, {
+    'el': 'Ti'
+});
+addItem(14, 'hydrogen', 'Hydrogen', 1000, {
+    'el': 'H'
+});
 addItem(15, 'phosphorus', 'Phosphorus', 1000);
 addItem(16, 'manganese', 'Manganese', 1000);
 addItem(17, 'fluorine', 'Fluorine', 1000);
