@@ -757,7 +757,10 @@ setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.fuel.id, 'mine', 100, 100000, 0.1);
 setPlanetMiningResource(Planets.earth, Items.carbon.id, 'mine', 1000, 100000, 0.001);
-var gemRate = 0.00005;
+
+// Global gem rate because i'm tired of changing them all for testing.
+var gemRate = 0.005;
+
 setPlanetMiningResource(Planets.earth, Items.agate.id, 'mine', 1, 10000, gemRate);
 setPlanetMiningResource(Planets.earth, Items.alexandrite.id, 'mine', 1, 10000, gemRate);
 setPlanetMiningResource(Planets.earth, Items.almandineGarnet.id, 'mine', 1, 10000, gemRate);
