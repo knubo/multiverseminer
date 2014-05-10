@@ -201,7 +201,9 @@ addItem(3002, 'goldBar', 'Gold bar', 1000, {
         [ Items.gold.id, 10 ]
     ]
 );
-addItem(3003, 'oxygenCan', 'Oxygen can', 11).setCraftingCost(
+addItem(3003, 'oxygenCan', 'Oxygen can', 11,{
+    'icon': imageRoot + 'oxygenCan.png'
+}).setCraftingCost(
     [
         [ Items.oxygen.id, 1 ],
         [ Items.ironBar.id, 1 ]
