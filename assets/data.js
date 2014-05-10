@@ -534,6 +534,10 @@ addItem(46001, 'atmosphereConcentrator', 'Atmosphere Concentrator', 10000, {
     [Items.ironBar.id, 5],
     [Items.smallMotor.id, 1]
 ]);
+// ----------
+// Spaceship Main Pieces
+//
+addItem(50000, 'name', 'Name', 10000)
 // ---------------------------------------------------------------------------
 // Set the item categories and types
 // ---------------------------------------------------------------------------
