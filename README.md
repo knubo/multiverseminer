@@ -1,5 +1,9 @@
 Multiverse Miner
 
+[00:09:42]  <@antlong>	 !eightball will this game get finished
+[00:09:42]  <multiversebot>	 antlong: Yes!
+[00:09:48]  <@antlong>	 well, there you have it.
+
 Theres advancements in space travel; you're a space miner. You begin on earth, once you're able to build your ship, you fly to the moon to mine. Then earth is attacked, and you can't mine on it freely anymore, you must mine in space, building your ship up; you can go back to earth to exchange rare resources, the ultimate goal is to build a wormhole, and you fly through to user generated universes, where you PvP and conquer/loot you build bases on planets to auto-mine for you, but they can be attacked, so it's a constant battle to maintain your bases. Your ships can be attacked while transporting by NPCs and players also.
 
 IN PROGRESS:
