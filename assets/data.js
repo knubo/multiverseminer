@@ -171,6 +171,7 @@ addItem(34, 'xenon', 'Xenon', 100000);
 addItem(35, 'krypton', 'Krypton', 100000);
 addItem(36, 'silver', 'Silver', 50);
 addItem(37, 'ceasium', 'Ceasium', 100000);
+addItem(38, 'carbon', 'Carbon', 50000);
 
 // ---------------------------------------------------------------------------
 // Gems
@@ -352,6 +353,29 @@ addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
 );
 // TODO: finish figuring out how a hyper cell would work...
 addItem(3010, 'hyperCell', 'Hyper cell', 10000)
+addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
+    [
+        [Items.silica.id, 1],
+        [Items.oxygen.id, 2]
+    ]
+);
+addItem(3012, 'glass', 'Glass', 5000).setCraftingCost(
+    [
+        [Items.silica.id, 2]
+    ]
+);
+addItem(3013, 'microchip', 'Microchip', 10000).setCraftingCost(
+    [
+        [Items.silica.id, 1],
+        [Items.steelBar.id, 1]
+    ]
+);
+addItem(3014, 'steelBar', 'Steel bar', 5000).setCraftingCost(
+    [
+        [Items.ironBar.id, 1],
+        [Items.carbon.id, 1]
+    ]
+);
 // ---------------------------------------------------------------------------
 // Usable
 // ---------------------------------------------------------------------------
@@ -390,6 +414,13 @@ addItem(4000, 'miningRig', 'Mining Rig', 50000, {
 }).setCraftingCost([
     [Items.dirt.id, 100]
 ]);
+addItem(4001, 'dirtRefinery', 'Dirt Refinery', 50000, {
+    'storageLimit': 1
+}).setCraftingCost(
+    [
+        [Items.ironBar.id, 50],
+        [Items.gasCan.id, 10]
+    ]);
 // ---------------------------------------------------------------------------
 // Equipment - MainHand
 // ---------------------------------------------------------------------------
@@ -670,8 +701,7 @@ Planets = {
 // Earth
 setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
 
-setPlanetMiningResource(Planets.earth, Items.dirt.id, 'mine', 0,
-    Number.MAX_VALUE, 1);
+setPlanetMiningResource(Planets.earth, Items.dirt.id, 'mine', 0, Number.MAX_VALUE, 1);
 setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.09);
 setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.02);
 setPlanetMiningResource(Planets.earth, Items.gold.id, 'mine', 500, 5500, 0.005);
@@ -679,7 +709,7 @@ setPlanetMiningResource(Planets.earth, Items.silicon.id, 'mine', 500, 5500, 0.27
 setPlanetMiningResource(Planets.earth, Items.aluminum.id, 'mine', 50, 5500, 0.08);
 setPlanetMiningResource(Planets.earth, Items.calcium.id, 'mine', 50, 5500, 0.03);
 setPlanetMiningResource(Planets.earth, Items.sodium.id, 'mine', 50, 5500, 0.02);
-setPlanetMiningResource(Planets.earth, Items.potassium.id, 'mine', 50, 5500,0.02);
+setPlanetMiningResource(Planets.earth, Items.potassium.id, 'mine', 50, 5500, 0.02);
 setPlanetMiningResource(Planets.earth, Items.magnesium.id, 'mine', 50, 5500, 0.02);
 setPlanetMiningResource(Planets.earth, Items.titanium.id, 'mine', 50, 5500, 0.044);
 setPlanetMiningResource(Planets.earth, Items.hydrogen.id, 'mine', 50, 5500, 0.014);
@@ -693,6 +723,7 @@ setPlanetMiningResource(Planets.earth, Items.nitrogen.id, 'mine', 50, 5500, 0.00
 setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.fuel.id, 'mine', 100, 100000, 0.1);
+setPlanetMiningResource(Planets.earth, Items.carbon.id, 'mine', 1000, 100000, 0.001);
 
 // Moon
 setPlanetMiningResource(Planets.moon, Items.oxygen.id, 'gather', 1, 100, 0.43);
