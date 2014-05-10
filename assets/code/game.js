@@ -42,8 +42,7 @@ function Game() {
 		this.player.equipBestGear();
 		
 		// make earth our current planet
-		this.currentPlanet = Planets.earth.id;
-		
+		this.settings.currentPlanet = Planets.earth.id;		
 		this.settings.isNewGame = false;
 	};
 
@@ -52,7 +51,7 @@ function Game() {
 		if (this.settings.travelActive) {
 			// Todo: resume travelling
 		} else {
-			this._enterOrbit(this.currentPlanet);
+			this._enterOrbit(this.settings.currentPlanet);
 		}
 	};
 
@@ -175,11 +174,11 @@ function Game() {
 		}
 		
 		return undefined;
-	}
+	};
 	
 	this.getItems = function() {
 		return Object.keys(this.itemDictionary);
-	}
+	};
 	
 	this.getItemsByCategory = function(category) {
 		// Todo: build a dictionary of this if we need to call this often
