@@ -46,10 +46,8 @@ html {
 }
 .infoLabel {
 	margin: 20px auto;
-	height: 30px;
 	padding: 0;
 	width: 60%;		
-
 	border: 1px solid white;
 	color: white;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -137,12 +135,10 @@ html {
 #inventoryTable_wrapper .dataTables_info {
 	margin-left: 10px;
 	padding: 0;
-
 	color: #aaa;
 }
 #inventoryTable_wrapper .ui-state-default { 
 	padding: 0;
-	
 	background: #222;
 	border: none;
 	border-right: 1px solid white;
