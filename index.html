@@ -36,7 +36,7 @@
 <body text="white">
     <div class="container">
         <img src="assets/images/logo.png" />
-        <br>
+        <p>
         <script>
         Mousetrap.bind('f', function(e) {
              onDigDown();		
@@ -57,10 +57,11 @@
             onReset()
         });
         </script>
-        <button onclick="onDigSideways()">Dig around (press D)</button><br /><br />
+        <button onclick="onDigSideways()">Dig around (press D)</button>
         <button onclick="onDigDown()">Dig down (press F)</button>
-        <button onclick="onMoveUp()">Move up (press U)</button><br /><br />
-        <button onclick="onGatherAtmosphere()">Gather oxygen (press G)</button><br /><br />
+        <button onclick="onMoveUp()">Move up (press U)</button>
+        <button onclick="onGatherAtmosphere()">Gather oxygen (press G)</button>
+        <p>
         <center> <span id="depth">0</span> meters deep.<br /></center>
 
         <div class="planet"></div><br />
@@ -107,9 +108,10 @@
         </div>
         <div id="gear"></div>
         <div class="infoLabel">
-            <h3>Finder</h3>
+            <h3>Element Finder</h3>
+        <p>
+            <div id="elementFinder"></div>
         </div>
-        Elements available at the current depth: <div id="elementFinder"></div>
     <!--      <div id="travel">
               <p><button class="hidePlanetBtn" onclick="onPlanetEarth()">Travel</button></p>
               </div>
