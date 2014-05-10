@@ -536,6 +536,7 @@ addItem(46001, 'atmosphereConcentrator', 'Atmosphere Concentrator', 10000, {
 ]);
 // ----------
 // Spaceship Main Pieces
+// ----------
 addItem(50000, 'cabin', 'Cabin', 10000).setCraftingCost([
     [Items.ironBar.id, 50]
 ]);
