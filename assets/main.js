@@ -175,6 +175,10 @@ function updateInterface() {
 		var resElement = "<div>";
 		var resGem = "<ul>";
 		for (var i = 0; i < resources.length; i++) {
+			// If it's dirt skip
+			if ( resources[i].id == 2 ) {
+				continue;
+			}
 			// This is a raw material
 			if ( resources[i].id < 2000 ) {
 				resElement += ('<div class="element">' + 
@@ -251,7 +255,9 @@ function onMoveUp() {
 
 	// Todo: this needs to happen in the player or something to account for
 	// items / bonus etc
-	game.currentPlanet.currentDepth--;
+	if(game.currentPlanet.currentDepth > 0) {
+		game.currentPlanet.currentDepth--;
+	}
 }
 
 function onGatherAtmosphere() {
