@@ -583,11 +583,11 @@ addItem(50000, 'cabin', 'Cabin', 10000).setCraftingCost([
 addItem(50001, 'payloadBayDoors', 'Payload Bay Doors', 10000).setCraftingCost([
     [Items.ironBar.id, 50]
 ]);
-//addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
-//    [Items.ironBar.id, 5]
-//    [Items.microchip.id, 1],
-//    [Items.gps.id, 1]
-//]);
+addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
+    [Items.ironBar.id, 5],
+    [Items.microchip.id, 1],
+    [Items.gps.id, 1]
+]);
 addItem(50003, 'mainEngine', 'Main Engine', 10000).setCraftingCost([
     [Items.ironBar.id, 30],
     [Items.fuelTank.id, 5],
