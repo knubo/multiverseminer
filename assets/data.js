@@ -293,6 +293,13 @@ addItem(3001, 'ironBar', 'Iron bar', 10, {
         [Items.iron.id, 10]
     ]
 );
+addItem(3008, 'silverBar', 'Silver bar', 1000, {
+    'icon': imageRoot + 'silverBar.png'
+}).setCraftingCost(
+    [
+        [Items.silver.id, 10]
+    ]
+);
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
     'icon': imageRoot + 'goldBar.png'
 }).setCraftingCost(
@@ -334,13 +341,6 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     [
         [Items.fuelCan.id, 1],
         [Items.ironBar.id, 10]
-    ]
-);
-addItem(3008, 'silverBar', 'Silver bar', 1000, {
-    'icon': imageRoot + 'silverBar.png'
-}).setCraftingCost(
-    [
-        [Items.silver.id, 10]
     ]
 );
 // The below are essentially batteries for laser/pulse weapons.
@@ -441,6 +441,16 @@ addItem(42001, 'ironHelmet', 'Iron Helmet', 50, {
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+addItem(42002, 'silverHelmet', 'Silver Helmet', 250, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.silverBar.id, 10]
+]);
+addItem(42003, 'goldHelmet', 'Gold Helmet', 500, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.goldBar.id, 10]
+]);
 // ---------------------------------------------------------------------------
 // Equipment - Chest
 // ---------------------------------------------------------------------------
@@ -453,6 +463,16 @@ addItem(43001, 'ironArmor', 'Iron Armor', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
+]);
+addItem(43002, 'silverArmor', 'Silver Armor', 250, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.silverBar.id, 10]
+]);
+addItem(43003, 'goldArmor', 'Gold Armor', 500, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.goldBar.id, 10]
 ]);
 // ---------------------------------------------------------------------------
 // Equipment - Legs
@@ -467,6 +487,16 @@ addItem(44001, 'ironArmorLegs', 'Iron Legs', 50, {
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+addItem(44002, 'silverArmorLegs', 'Silver Legs', 250, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.silverBar.id, 10]
+]);
+addItem(44003, 'goldArmorLegs', 'Gold Legs', 500, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.goldBar.id, 10]
+]);
 // ---------------------------------------------------------------------------
 // Equipment - Boots
 // ---------------------------------------------------------------------------
@@ -479,6 +509,16 @@ addItem(45001, 'ironArmorFeet', 'Iron Boots', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
+]);
+addItem(45002, 'silverArmorFeet', 'Silver Boots', 250, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.silverBar.id, 10]
+]);
+addItem(45003, 'goldArmorFeet', 'Gold Boots', 500, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.goldBar.id, 10]
 ]);
 // ---------------------------------------------------------------------------
 // Machines
@@ -624,8 +664,7 @@ setPlanetMiningResource(Planets.moon, Items.calcium.id, 'mine', 20, 100, 0.03);
 setPlanetMiningResource(Planets.moon, Items.aluminum.id, 'mine', 20, 100, 0.03);
 setPlanetMiningResource(Planets.moon, Items.chromium.id, 'mine', 20, 100, 0.042);
 setPlanetMiningResource(Planets.moon, Items.titanium.id, 'mine', 20, 100, 0.018);
-setPlanetMiningResource(Planets.moon, Items.manganese.id, 'mine', 20, 100,
-    0.012);
+setPlanetMiningResource(Planets.moon, Items.manganese.id, 'mine', 20, 100, 0.012);
 
 // Mars
 setPlanetMiningResource(Planets.mars, Items.carbonDioxide.id, 'gather', -50, Number.MAX_VALUE, 1);
