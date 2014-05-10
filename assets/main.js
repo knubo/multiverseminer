@@ -15,8 +15,6 @@ $.noty.defaults.timeout = 3000;
 $(document).tooltip();
 
 $(document).ready(function() {
-		resources = game.currentPlanet._getAvailableResources("mine");
-		console.log(resources);
 	$('#inventoryTable').DataTable({
 		"sScrollY" : "400px",
 		"bScrollCollapse" : true,
@@ -174,17 +172,17 @@ function updateInterface() {
 
 	if (game.currentPlanet) {
 		resources = game.currentPlanet._getAvailableResources("mine");
-		var resElement = "<ul>";
+		var resElement = "<div>";
 		var resGem = "<ul>";
 		for (var i = 0; i < resources.length; i++) {
 			// This is a raw material
 			if ( resources[i].id < 2000 ) {
-				resElement += "<li>" + game.getItemName(resources[i].id) + "</li>";
+				resElement += "<div>" + game.getItemName(resources[i].id) + "</div>";
 			} else {
 				resGem += "<li>" + game.getItemName(resources[i].id) + "</li>";
 			}
 		}
-		$('#elementFinder').html(resElement + "</ul>");
+		$('#elementFinder').html(resElement + "</div>");
 		$('#gemFinder').html(resGem + "</ul>");
 	} else {
 		$('#elementFinder').text("N/A");
