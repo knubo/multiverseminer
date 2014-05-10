@@ -175,6 +175,7 @@ addItem(37, 'ceasium', 'Ceasium', 100000);
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
+// TODO: Gems need descriptions. Figure out the stat boosts.
 addItem(2000, "agate", "Agate", 10000);
 addItem(2001, "alexandrite", "Alexandrite", 10000);
 addItem(2002, "almandineGarnet", "Almandine Garnet", 10000);
@@ -275,7 +276,6 @@ addItem(2097, "turquoise", "Turquoise", 10000);
 addItem(2098, "variscite", "Variscite", 10000);
 addItem(2099, "zircon", "Zircon", 10000);
 addItem(2100, "zultanite", "Zultanite", 10000);
-
 // ---------------------------------------------------------------------------
 // Components and parts
 // ---------------------------------------------------------------------------
@@ -350,6 +350,7 @@ addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost({
         [Items.ironBar.id, 1]
     ]
 });
+// TODO: finish figuring out how a hyper cell would work...
 addItem(3010, 'hyperCell', 'Hyper cell', 10000)
 // ---------------------------------------------------------------------------
 // Usable
@@ -381,7 +382,6 @@ addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
     'storeValue': 500000,
     'use': 1,
 });
-
 // ---------------------------------------------------------------------------
 // Buildings
 // ---------------------------------------------------------------------------
@@ -397,26 +397,22 @@ addItem(4000, 'miningRig', 'Mining Rig', 50000, {
 addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1
 });
-
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
     'icon': imageRoot + 'pick.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
-
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
 addItem(40004, 'jackhammer', 'Jackhammer', 10000, {
     'storageLimit': 1
 }).setCraftingCost(
@@ -433,7 +429,6 @@ addItem(40005, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
         [Items.plasmaCell.id, 5]
     ]
 );
-
 // ---------------------------------------------------------------------------
 // Equipment - Head
 // ---------------------------------------------------------------------------
@@ -442,7 +437,11 @@ addItem(42000, 'copperHelmet', 'Copper Helmet', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 4]
 ]);
-
+addItem(42001, 'ironHelmet', 'Iron Helmet', 50, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.ironBar.id, 10]
+]);
 // ---------------------------------------------------------------------------
 // Equipment - Chest
 // ---------------------------------------------------------------------------
@@ -451,7 +450,11 @@ addItem(43000, 'copperArmor', 'Copper Armor', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 8]
 ]);
-
+addItem(43001, 'ironArmor', 'Iron Armor', 50, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.ironBar.id, 10]
+]);
 // ---------------------------------------------------------------------------
 // Equipment - Legs
 // ---------------------------------------------------------------------------
@@ -460,14 +463,23 @@ addItem(44000, 'copperArmorLegs', 'Copper Legs', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 6]
 ]);
-
+addItem(44001, 'ironArmorLegs', 'Iron Legs', 50, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.ironBar.id, 10]
+]);
 // ---------------------------------------------------------------------------
-// Equipment - Legs
+// Equipment - Boots
 // ---------------------------------------------------------------------------
 addItem(45000, 'copperArmorFeet', 'Copper Boots', 5, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.copperBar.id, 3]
+]);
+addItem(45001, 'ironArmorFeet', 'Iron Boots', 50, {
+    'storageLimit': 1
+}).setCraftingCost([
+    [Items.ironBar.id, 10]
 ]);
 
 // ---------------------------------------------------------------------------
