@@ -63,10 +63,10 @@ html {
 	margin-bottom:1px;	
 	height:50px;
 	clear: left;
-	border-top: 1px solid grey;
-	border-right: 1px solid grey;
-	border-bottom: 1px solid grey;
-	border-left: 1px solid grey;
+	border-top: 1px solid gray;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray;
+	border-left: 1px solid gray;
 	cursor: pointer;
 	cursor: hand;
 }
@@ -85,6 +85,9 @@ html {
 	vertical-align: middle;
 	cursor: pointer;
 	cursor: hand;
+}
+#elementFinder {
+    font-size:12px;
 }
 #craftingContent {
 } 
