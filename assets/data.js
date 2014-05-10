@@ -12,6 +12,7 @@ ItemCategory = {
     'gearBuilding': 'Buildings',
     'machines': 'Machines',
     'usable': 'Usable',
+    'spaceship': 'Spaceship'
 };
 
 GearType = {
@@ -108,7 +109,10 @@ function setItemProperties() {
             item.gearType = GearType.feet;
         } else if (item.id >= 46000 && item.id < 47000) {
             item.category = ItemCategory.machines;
-        } else {
+        } else if (item.id >= 50000 && item.id < 50100){
+            item.category = ItemCategory.spaceship;
+        }
+        else {
             item.category = ItemCategory.unset;
         }
     }
