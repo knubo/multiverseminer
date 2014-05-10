@@ -344,14 +344,12 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
         [Items.ironBar.id, 10]
     ]
 );
-// The below are essentially batteries for laser/pulse weapons.
 addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
     [
         [Items.ceasium.id, 10],
         [Items.ironBar.id, 1]
     ]
 );
-// TODO: finish figuring out how a hyper cell would work...
 addItem(3010, 'hyperCell', 'Hyper cell', 10000)
 addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
     [
@@ -374,6 +372,12 @@ addItem(3014, 'steelBar', 'Steel bar', 5000).setCraftingCost(
     [
         [Items.ironBar.id, 1],
         [Items.carbon.id, 1]
+    ]
+);
+addItem(3015, 'hydrogenTank', 'Hydrogen tank', 10000).setCraftingCost(
+    [
+        [Items.hydrogen.id, 10],
+        [Items.steelBar.id, 10]
     ]
 );
 // ---------------------------------------------------------------------------
@@ -576,17 +580,18 @@ addItem(50001, 'payloadBayDoors', 'Payload Bay Doors', 10000).setCraftingCost([
 ]);
 addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
     [Items.ironBar.id, 5]
-    //[Items.microchipController.id, 1],
-    //[Items.gPS.id, 1]
+    [Items.microchip.id, 1],
+    [Items.gps.id, 1]
 ]);
 addItem(50003, 'mainEngine', 'Main Engine', 10000).setCraftingCost([
     [Items.ironBar.id, 30],
-    [Items.fuelTank.id, 5]
+    [Items.fuelTank.id, 5],
+    [Items.hydrogenTank.id, 5]
 ]);
 addItem(50004, 'thrusters', 'Thrusters', 10000).setCraftingCost([
     [Items.ironBar.id, 20],
     [Items.oxygenTank.id, 2],
-    //[Items.hydrogenTank.id, 2],
+    [Items.hydrogenTank.id, 2],
     [Items.smallMotor.id, 2]
 ]);
 addItem(50005, 'solidBooster', 'Solid Booster', 10000).setCraftingCost([
@@ -724,6 +729,7 @@ setPlanetMiningResource(Planets.earth, Items.nickel.id, 'mine', 50, 5500, 0.0005
 setPlanetMiningResource(Planets.earth, Items.zinc.id, 'mine', 50, 5500, 0.0005);
 setPlanetMiningResource(Planets.earth, Items.fuel.id, 'mine', 100, 100000, 0.1);
 setPlanetMiningResource(Planets.earth, Items.carbon.id, 'mine', 1000, 100000, 0.001);
+setPlanetMiningResource(Planets.earth, Items.ruby.id, 'mine', 10, 10000, 1);
 
 // Moon
 setPlanetMiningResource(Planets.moon, Items.oxygen.id, 'gather', 1, 100, 0.43);
