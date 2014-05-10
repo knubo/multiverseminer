@@ -170,12 +170,111 @@ addItem(33, 'argon', 'Argon', 10000);
 addItem(34, 'xenon', 'Xenon', 100000);
 addItem(35, 'krypton', 'Krypton', 100000);
 addItem(36, 'silver', 'Silver', 50);
+addItem(37, 'ceasium', 'Ceasium', 100000);
 
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
-addItem(2000, 'diamond', 'Diamond', 1000);
-addItem(2001, 'topaz', 'Topaz', 500);
+addItem(2000, "agate", "Agate", 10000);
+addItem(2001, "alexandrite", "Alexandrite", 10000);
+addItem(2002, "almandineGarnet", "Almandine Garnet", 10000);
+addItem(2003, "amazonite", "Amazonite", 10000);
+addItem(2004, "amber", "Amber", 10000);
+addItem(2005, "amethyst", "Amethyst", 10000);
+addItem(2006, "ametrine", "Ametrine", 10000);
+addItem(2007, "ammolite", "Ammolite", 10000);
+addItem(2008, "andalusite", "Andalusite", 10000);
+addItem(2009, "andesineLabradorite", "Andesine Labradorite", 10000);
+addItem(2010, "andraditeGarnet", "Andradite Garnet", 10000);
+addItem(2011, "apatite", "Apatite", 10000);
+addItem(2012, "aquamarine", "Aquamarine", 10000);
+addItem(2013, "aventurine", "Aventurine", 10000);
+addItem(2014, "azurite", "Azurite", 10000);
+addItem(2015, "blackOpal", "Black Opal", 10000);
+addItem(2016, "bloodstone", "Bloodstone", 10000);
+addItem(2017, "boulderOpal", "Boulder Opal", 10000);
+addItem(2018, "carnelian", "Carnelian", 10000);
+addItem(2019, "chalcedony", "Chalcedony", 10000);
+addItem(2020, "chariote", "Charoite", 10000);
+addItem(2021, "chysoberyl", "Chrysoberyl", 10000);
+addItem(2022, "chrysocolla", "Chrysocolla", 10000);
+addItem(2023, "chrysoprase", "Chrysoprase", 10000);
+addItem(2024, "citrine", "Citrine", 10000);
+addItem(2025, "corla", "Coral", 10000);
+addItem(2026, "danburite", "Danburite", 10000);
+addItem(2027, "diamond", "Diamond", 10000);
+addItem(2028, "diaspore", "Diaspore", 10000);
+addItem(2029, "emerald", "Emerald", 10000);
+addItem(2030, "flourite", "Fluorite", 10000);
+addItem(2031, "fossilCoral", "Fossil Coral", 10000);
+addItem(2032, "garnetGems", "Garnet Gems", 10000);
+addItem(2033, "goldenBeryl", "Golden Beryl", 10000);
+addItem(2034, "goshenite", "Goshenite", 10000);
+addItem(2035, "hawksEye", "Hawks Eye", 10000);
+addItem(2036, "heliodor", "Heliodor", 10000);
+addItem(2037, "heliotrope", "Heliotrope", 10000);
+addItem(2038, "hematite", "Hematite", 10000);
+addItem(2039, "hemimorphite", "Hemimorphite", 10000);
+addItem(2040, "howlite", "Howlite", 10000);
+addItem(2041, "idocrase", "Idocrase", 10000);
+addItem(2042, "iolite", "Iolite", 10000);
+addItem(2043, "jade", "Jade", 10000);
+addItem(2044, "jadeite", "Jadeite", 10000);
+addItem(2045, "jasper", "Jasper", 10000);
+addItem(2046, "kornerupine", "Kornerupine", 10000);
+addItem(2047, "kunzite", "Kunzite", 10000);
+addItem(2048, "kyanite", "Kyanite", 10000);
+addItem(2049, "labradorite", "Labradorite", 10000);
+addItem(2050, "lapis", "Lapis Lazuli", 10000);
+addItem(2051, "larimar", "Larimar", 10000);
+addItem(2052, "lepidolite", "Lepidolite", 10000);
+addItem(2053, "malachite", "Malachite", 10000);
+addItem(2054, "malayaGarnet", "Malaya Garnet", 10000);
+addItem(2055, "maliGarnet", "Mali Garnet", 10000);
+addItem(2056, "melanite", "Melanite", 10000);
+addItem(2057, "moldavite", "Moldavite", 10000);
+addItem(2058, "moonstone", "Moonstone", 10000);
+addItem(2059, "morganite", "Morganite", 10000);
+addItem(2060, "obsidian", "Obsidian", 10000);
+addItem(2061, "omphaciteJade", "Omphacite Jade", 10000);
+addItem(2062, "onyx", "Onyx", 10000);
+addItem(2063, "opal", "Opal", 10000);
+addItem(2064, "opalDoublet", "Opal Doublet", 10000);
+addItem(2065, "pearl", "Pearl", 10000);
+addItem(2066, "peridot", "Peridot", 10000);
+addItem(2067, "pietersite", "Pietersite", 10000);
+addItem(2068, "prehenite", "Prehnite", 10000);
+addItem(2070, "quartz", "Quartz", 10000);
+addItem(2071, "rainbowMoonstone", "Rainbow Moonstone", 10000);
+addItem(2072, "rainbowPyrite", "Rainbow Pyrite", 10000);
+addItem(2073, "rhodochrosite", "Rhodochrosite", 10000);
+addItem(2074, "rhodoliteGarnet", "Rhodolite Garnet", 10000);
+addItem(2075, "roseQuartz", "Rose Quartz", 10000);
+addItem(2076, "ruby", "Ruby", 10000);
+addItem(2077, "ruby-zoisite", "Ruby-Zoisite", 10000);
+addItem(2078, "rutilatedGems", "Rutilated Gems", 10000);
+addItem(2079, "rutileQuartz", "Rutile Quartz", 10000);
+addItem(2080, "rutileTopaz", "Rutile Topaz", 10000);
+addItem(2081, "sapphire", "Sapphire", 10000);
+addItem(2082, "seraphinite", "Seraphinite", 10000);
+addItem(2083, "serpentine", "Serpentine", 10000);
+addItem(2084, "smithsonie", "Smithsonite", 10000);
+addItem(2085, "smokyQuartz", "Smoky Quartz", 10000);
+addItem(2086, "snowflakeObsidian", "Snowflake Obsidian", 10000);
+addItem(2087, "sodalite", "Sodalite", 10000);
+addItem(2088, "spessartiteGarnet", "Spessartite Garnet", 10000);
+addItem(2089, "sphalerite", "Sphalerite", 10000);
+addItem(2090, "sphene", "Sphene", 10000);
+addItem(2091, "spinel", "Spinel", 10000);
+addItem(2092, "sugilite", "Sugilite", 10000);
+addItem(2093, "tanzanite", "Tanzanite", 10000);
+addItem(2094, "tigersEye", "Tiger's Eye", 10000);
+addItem(2095, "topaz", "Topaz", 10000);
+addItem(2096, "tourmaline", "Tourmaline", 10000);
+addItem(2097, "turquoise", "Turquoise", 10000);
+addItem(2098, "variscite", "Variscite", 10000);
+addItem(2099, "zircon", "Zircon", 10000);
+addItem(2100, "zultanite", "Zultanite", 10000);
 
 // ---------------------------------------------------------------------------
 // Components and parts
@@ -191,30 +290,30 @@ addItem(3001, 'ironBar', 'Iron bar', 10, {
     'icon': imageRoot + 'ironBar.png'
 }).setCraftingCost(
     [
-        [ Items.iron.id, 10 ]
+        [Items.iron.id, 10]
     ]
 );
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
     'icon': imageRoot + 'goldBar.png'
 }).setCraftingCost(
     [
-        [ Items.gold.id, 10 ]
+        [Items.gold.id, 10]
     ]
 );
-addItem(3003, 'oxygenCan', 'Oxygen can', 11,{
+addItem(3003, 'oxygenCan', 'Oxygen can', 11, {
     'icon': imageRoot + 'oxygenCan.png'
 }).setCraftingCost(
     [
-        [ Items.oxygen.id, 1 ],
-        [ Items.ironBar.id, 1 ]
+        [Items.oxygen.id, 1],
+        [Items.ironBar.id, 1]
     ]
 );
 addItem(3004, 'oxygenTank', 'Oxygen tank', 120, {
-        'icon': imageRoot + 'oxygenTank.png'
+    'icon': imageRoot + 'oxygenTank.png'
 }).setCraftingCost(
     [
-        [ Items.oxygenCan.id, 1 ],
-        [ Items.ironBar.id, 10 ]
+        [Items.oxygenCan.id, 1],
+        [Items.ironBar.id, 10]
     ]
 );
 addItem(3005, 'gasCan', 'Gas canister', 50, {
@@ -222,28 +321,36 @@ addItem(3005, 'gasCan', 'Gas canister', 50, {
     'icon': imageRoot + 'gasCan.png'
 }).setCraftingCost(
     [
-        [ Items.ironBar.id, 5 ]
+        [Items.ironBar.id, 5]
     ]
 );
 addItem(3006, 'fuelCan', 'Fuel can', 1000).setCraftingCost(
     [
-        [ Items.fuel.id, 10 ],
-        [ Items.ironBar.id, 1 ]
+        [Items.fuel.id, 10],
+        [Items.ironBar.id, 1]
     ]
 );
 addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     [
-        [ Items.fuelCan.id, 1 ],
-        [ Items.ironBar.id, 10 ]
+        [Items.fuelCan.id, 1],
+        [Items.ironBar.id, 10]
     ]
 );
 addItem(3008, 'silverBar', 'Silver bar', 1000, {
     'icon': imageRoot + 'silverBar.png'
 }).setCraftingCost(
     [
-        [ Items.silver.id, 10 ]
+        [Items.silver.id, 10]
     ]
 );
+// The below are essentially batteries for laser/pulse weapons.
+addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost({
+    [
+        [Items.ceasium.id, 10],
+        [Items.ironBar.id, 1]
+    ]
+});
+addItem(3010, 'hyperCell', 'Hyper cell', 10000)
 // ---------------------------------------------------------------------------
 // Usable
 // ---------------------------------------------------------------------------
@@ -253,26 +360,22 @@ addItem(5000, 'strengthPotion', 'Strength Potion', 5000, {
     'duration': 60,
     'use': 1
 });
-
 addItem(5001, 'refiningPotion', 'Refining Potion', 25000, {
     'description': '5% bonus when refining for 1 minute',
     'storeValue': 50000,
     'duration': 60,
     'use': 1
 });
-
 addItem(5002, 'oxygenPotion', 'Oxygen Potion', 25000, {
     'description': 'Refills your oxygen tanks',
     'storeValue': 50000,
     'use': 1
 });
-
 addItem(5003, 'healthPotion', 'Health Potion', 25000, {
     'description': 'Refills your health',
     'storeValue': 50000,
     'use': 1
 });
-
 addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
     'description': 'Resurrect your character',
     'storeValue': 500000,
@@ -321,7 +424,15 @@ addItem(40004, 'jackhammer', 'Jackhammer', 10000, {
         [Items.ironBar.id, 50],
         [Items.fuelCan.id, 50],
         [Items.goldBar.id, 10]
-    ]);
+    ]
+);
+addItem(40005, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
+    [
+        [Items.ironBar.id, 50],
+        [Items.hyperCell.id, 5],
+        [Items.plasmaCell.id, 5]
+    ]
+);
 
 // ---------------------------------------------------------------------------
 // Equipment - Head
