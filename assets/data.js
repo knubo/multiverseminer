@@ -592,8 +592,8 @@ setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
 
 setPlanetMiningResource(Planets.earth, Items.dirt.id, 'mine', 0,
     Number.MAX_VALUE, 1);
-setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.5);
-setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.9);
+setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.1);
+setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.2);
 setPlanetMiningResource(Planets.earth, Items.gold.id, 'mine', 500, 5500, 0.01);
 setPlanetMiningResource(Planets.earth, Items.silicon.id, 'mine', 500, 5500,
     0.27);
