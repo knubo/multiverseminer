@@ -25,6 +25,7 @@
     <script src="assets/code/utils.js" type="text/javascript"></script>
     
     <script src="assets/data.js" type="text/javascript"></script>
+    <script src="assets/ui.js" type="text/javascript"></script>
     <script src="assets/main.js" type="text/javascript"></script>
 
     <link href="assets/external/planetarium.css" rel="stylesheet" type="text/css" />
@@ -37,68 +38,60 @@
     <div class="container">
         <img src="assets/images/logo.png" />
         <p>
-        <script>
-        Mousetrap.bind('f', function(e) {
-             onDigDown();		
-        });
-        Mousetrap.bind('d', function(e) {
-            onDigSideways();
-        });
-        Mousetrap.bind('g', function(e) {
-            onGatherAtmosphere();
-        });
-        Mousetrap.bind('u', function(e) {
-            onMoveUp()
-        })
-        Mousetrap.bind('s', function(e) {
-            onSave()
-        });
-        Mousetrap.bind('r', function(e) {
-            onReset()
-        });
-        </script>
-        <button onclick="onDigSideways()">Dig around (press D)</button>
-        <button onclick="onDigDown()">Dig down (press F)</button>
-        <button onclick="onMoveUp()">Move up (press U)</button>
-        <button onclick="onGatherAtmosphere()">Gather oxygen (press G)</button>
+        	<button onclick="onDigSideways()">Dig around (press D)</button>
+        	<button onclick="onDigDown()">Dig down (press F)</button>
+        	<button onclick="onMoveUp()">Move up (press U)</button>
+        	<button onclick="onGatherAtmosphere()">Gather oxygen (press G)</button>
         <p>
         <center> <span id="depth">0</span> meters deep.<br /></center>
 
         <div class="planet"></div><br />
-        	
-        <div id="inventoryFilter">
-         	<button onclick="onSetInventoryFilter(undefined)">All</button>
-        	<button onclick="onSetInventoryFilter(ItemCategory.rawMaterial)">Raw materials</button>
-        	<button onclick="onSetInventoryFilter(ItemCategory.gem)">Gems</button>
-        	<button onclick="onSetInventoryFilter(ItemCategory.component)">Component</button>
-        	<button onclick="onSetInventoryFilter(ItemCategory.gear)">Gear</button>
-        	<button onclick="onSetInventoryFilter(ItemCategory.usable)">Usable</button>
-        </div>
-        <div class="inventoryContainer">
-            <!-- TODO: Add images to the inventory table -->
-        <table id="inventoryTable">
-        	<thead>
-            	<tr>
-                	<th>Count</th>
-                	<th>Name</th>
-            	</tr>
-        	</thead>
-        	<tbody>
-        	</tbody>
-    	</table>
-    	</div>
+
         <br />
         <p><button onclick="onSave()">Save (press S)</button>   <button onclick="onReset()">Reset (press R)</button><br /></p>
         <br />
     </div>
 
     <div class="left">
-        <div class="infoLabel">
-            <h2>Crafting</h2>
+    	<div id="leftCategory">
+        	<div class="categoryButton clickable" onclick="onSwitchLeftCategory('playerItemsPanel')">
+	            <h2>Inventory</h2>
+        	</div>
+        	<div class="categoryButton clickable" onclick="onSwitchLeftCategory('playerCraftingPanel')">
+	            <h2>Crafting</h2>
+        	</div>
         </div>
 
-    	<div class="craftingPanel">
-        <div id="craftingContent" />
+		<div id="leftCategoryContent" class="categoryContent">
+    		<div id="playerCraftingPanel" class="craftingPanel">
+    			<div id="playerCraftingContent"></div>
+    		</div>
+    		
+        	<div id="playerItemsPanel" class="craftingPanel">
+        		<div id="playerItemContent">
+	        		<div id="playerInventoryFilter">
+			         	<button onclick="onSetInventoryFilter(undefined)">All</button>
+			        	<button onclick="onSetInventoryFilter(ItemCategory.rawMaterial)">Raw materials</button>
+			        	<button onclick="onSetInventoryFilter(ItemCategory.gem)">Gems</button>
+			        	<button onclick="onSetInventoryFilter(ItemCategory.component)">Component</button>
+			        	<button onclick="onSetInventoryFilter(ItemCategory.gear)">Gear</button>
+			        	<button onclick="onSetInventoryFilter(ItemCategory.usable)">Usable</button>
+			        </div>
+			        
+			        <div class="inventoryContainer">
+				        <table id="inventoryTable">
+				        	<thead>
+				            	<tr>
+				                	<th>Count</th>
+				                	<th>Name</th>
+				            	</tr>
+				        	</thead>
+				        	<tbody>
+				        	</tbody>
+				    	</table>
+			    	</div>
+        		</div>
+        	</div>
         </div>
     </div>
   
@@ -118,12 +111,14 @@
         </div>
         <div id="gemFinder"></div>
         </div>
+        
     <!--      <div id="travel">
               <p><button class="hidePlanetBtn" onclick="onPlanetEarth()">Travel</button></p>
               </div>
     -->
 
-    </div> 
+    </div>
+    
     <div class="bottom">
     </div>
 </body>

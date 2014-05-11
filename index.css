@@ -39,12 +39,44 @@ html {
     right:0px;
     text-align:center;
 }
+.clickable {
+	cursor: pointer;
+	cursor: hand;
+}
+.inventoryFilterPrevious {
+	width: 20px;
+	height: 20px;
+	background: assets/images/icon_placeholder.png;
+	float:left;
+}
+.inventoryFilterText {
+	float:left;
+}
+.inventoryFilterNext {
+	width: 20px;
+	height: 20px;
+	background: assets/images/icon_placeholder.png;
+	float:left;
+}
 /* Left/Crafting styles */
 .craftingPanel{
 	margin-left:20px;
 	margin-top:1px;
 	margin-right:20px;
 	margin-bottom:1px;
+}
+.categoryButton {
+	margin: 10px auto;
+	padding: 0;
+	width: 35%;
+	border: 1px solid white;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	float: left;
+}
+.categoryContent {
+	clear: left;
 }
 .infoLabel {
 	margin: 20px auto;
@@ -123,9 +155,9 @@ html {
 }  
 /* Inventory styles */
 .inventoryContainer{
-	margin-left:50px;
+	margin-left:10px;
 	margin-top:10px;
-	margin-right:50px;
+	margin-right:10px;
 }
 #inventoryTable_wrapper .dataTables_filter {
 	margin-right: 20px;

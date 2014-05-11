@@ -135,9 +135,6 @@ function setPlanetMiningResource(planet, id, mode, min, max, chance) {
 // Raw materials
 // ---------------------------------------------------------------------------
 addItem(1, 'oxygen', 'Oxygen', 0.1);
-addItem(2, 'dirt', 'Dirt', 0, {
-    'storageLimit': 100
-});
 addItem(3, 'copper', 'Copper', 0.5, {
     'icon': imageRoot + 'copper.png',
     'el': 'Cu'
@@ -372,7 +369,7 @@ addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
         [Items.ironBar.id, 1]
     ]
 );
-addItem(3010, 'hyperCell', 'Hyper cell', 10000)
+addItem(3010, 'hyperCell', 'Hyper cell', 10000);
 addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
     [
         [Items.silica.id, 1],
@@ -444,9 +441,9 @@ addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
 addItem(4000, 'miningRig', 'Mining Rig', 50000, {
     'storageLimit': 1
 }).setCraftingCost([
-    [Items.dirt.id, 100]
+    [Items.iron.id, 100]
 ]);
-addItem(4001, 'dirtRefinery', 'Dirt Refinery', 50000, {
+addItem(4001, 'refinery', 'Refinery', 50000, {
     'storageLimit': 1
 }).setCraftingCost(
     [
@@ -734,7 +731,6 @@ Planets = {
 // Earth
 setPlanetMiningResource(Planets.earth, Items.oxygen.id, 'gather', -20, 0, 1);
 
-setPlanetMiningResource(Planets.earth, Items.dirt.id, 'mine', 0, Number.MAX_VALUE, 1);
 setPlanetMiningResource(Planets.earth, Items.iron.id, 'mine', 5, 350, 0.09);
 setPlanetMiningResource(Planets.earth, Items.copper.id, 'mine', 5, 1500, 0.02);
 setPlanetMiningResource(Planets.earth, Items.gold.id, 'mine', 500, 5500, 0.005);

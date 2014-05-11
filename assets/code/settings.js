@@ -4,6 +4,8 @@ function Settings() {
 
 	this.autoSaveEnabled = true;
 	this.autoSaveInterval = 60 * 1000;
+	
+	this.savedVersion = 0;
 
 	this.currentPlanet;
 
@@ -46,6 +48,8 @@ function Settings() {
 
 		localStorage.autoSaveEnabled = this.autoSaveEnabled;
 		localStorage.autoSaveInterval = this.autoSaveInterval;
+		
+		localStorage.savedVersion = this.savedVersion;
 
 		localStorage.travelActive = this.travelActive;
 		localStorage.travelDistanceRemaining = this.travelDistanceRemaining;
@@ -62,6 +66,8 @@ function Settings() {
 
 		this.autoSaveEnabled = Utils.loadBool("autoSaveEnabled", true);
 		this.autoSaveInterval = Utils.loadInt("autoSaveInterval", 60 * 1000);
+		
+		this.savedVersion = Utils.loadFloat("savedVersion", 0);
 
 		this.travelActive = Utils.loadBool("travelActive", 0);
 		this.travelDistanceRemaining = Utils.loadFloat(
