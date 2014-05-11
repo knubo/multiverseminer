@@ -91,6 +91,7 @@ html {
 	margin: 0;
 }
 .craftingItemPanel{
+    font-size:11px;
 	margin-left:1px;
 	margin-top:1px;
 	margin-right:1px;
