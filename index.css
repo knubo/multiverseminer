@@ -244,9 +244,8 @@ html {
 	width: 60%;
 	height: 250px;	
 	margin: 0 auto;
-
+    background-color:black;
 	position: relative;
-	background: brown;
 }
 .gearSlot {
 	width: 40px;
