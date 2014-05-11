@@ -1,4 +1,6 @@
-Utils = {};
+Utils = {
+        'startTime': Date.now(),
+};
 
 // ---------------------------------------------------------------------------
 // Utility functions
@@ -51,8 +53,73 @@ Utils.getDayTimeInSeconds = function() {
 	return now.getTime() - then.getTime();
 };
 
+Utils.splitDateTime = function(seconds) {
+    // returns array of [d, h, m, s, z]
+    var result = [0, 0, 0, 0, 0];
+    
+    var milliSeconds = Math.floor(seconds);
+
+    result[0] = Math.floor(milliSeconds / (24 * 60 * 60 * 1000));
+
+    milliSeconds %= (24 * 60 * 60 * 1000);
+    result[1] = Math.floor(milliSeconds / (60 * 60 * 1000));
+
+    milliSeconds %= (60 * 60 * 1000);
+    result[2] = Math.floor(milliSeconds / (60 * 1000));
+
+    milliSeconds %= (60 * 1000);
+    result[3] = Math.floor(milliSeconds / 1000);
+    result[4] = milliSeconds;
+    
+    return result;
+};
+
+Utils.getDurationDisplay = function(seconds, highPrecision) {
+    if (seconds === 0 || seconds == Number.POSITIVE_INFINITY) {
+        return '~~';
+    }
+    
+    var timeSplit = this.splitDateTime(seconds);
+    var days, hours, minutes, seconds;
+
+    days = timeSplit[0];
+    days = (days > 0) ? days + 'd ' : '';
+
+    hours = timeSplit[1];
+    hours = (hours > 0) ? this.pad(hours, 2) + 'h ' : '';
+
+    minutes = timeSplit[2];
+    minutes = (minutes > 0) ? this.pad(minutes, 2) + 'm ' : '';
+
+    seconds = timeSplit[3];
+    seconds = (seconds > 0) ? this.pad(seconds, 2) + 's ' : '';
+
+    if (highPrecision == true) {
+        milliSeconds = timeSplit[4];
+        milliSeconds = (milliSeconds > 0) ? this.pad(milliSeconds, 3) + 'ms' : '';
+
+        return (days + hours + minutes + seconds + milliSeconds).trim();
+    }
+
+    return (days + hours + minutes + seconds).trim();
+}
+
+Utils.getShortTimeDisplay = function(seconds) {
+    if (seconds === 0 || seconds == Number.POSITIVE_INFINITY) {
+        return '~~';
+    }
+    
+    var timeSplit = this.splitDateTime(seconds);
+    
+    hours = this.pad(timeSplit[1], 2) + ':';
+    minutes = this.pad(timeSplit[2], 2) + ':';
+    seconds = this.pad(timeSplit[3], 2);
+    
+    return hours + minutes + seconds;
+}
+
 Utils.logFormat = function(level, message, popup) {
-	var time = '[' + Date.now() - this.startTime + ']: ';
+	var time = '[' + this.getShortTimeDisplay(Date.now() - this.startTime) + ']: ';
 	var fullMessage = time + level + ' ' + message;
 
 	console.log(fullMessage);
@@ -62,8 +129,8 @@ Utils.logFormat = function(level, message, popup) {
 	}
 };
 
-Utils.log = function(message) {
-	if (Utils.logCallback) {
+Utils.log = function(message, silent) {
+	if (Utils.logCallback && (silent == undefined || !silent)) {
 		Utils.logCallback('information', message);
 	} else {
 		this.logFormat("INFO", message, false);

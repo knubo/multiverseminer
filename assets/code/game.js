@@ -100,6 +100,7 @@ function Game() {
 		}
 
 		this.lastUpdateTime = currentTime;
+		return elapsed;
 	};
 
 	this.craft = function(storageSource, storageTarget, what, count) {
@@ -241,6 +242,8 @@ function Game() {
 
 		this.currentPlanet = this.planets[target];
 		this.currentPlanet.load();
+		
+		this.player.moveTo(this.currentPlanet.currentDepth);
 	};
 
 	// ---------------------------------------------------------------------------

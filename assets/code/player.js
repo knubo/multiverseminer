@@ -44,8 +44,13 @@ function Player() {
 	// ---------------------------------------------------------------------------
 	// player functions
 	// ---------------------------------------------------------------------------
+	this.moveTo = function(depth) {
+	    this.miner.setDepth(game.currentPlanet.currentDepth);
+	};
+	
 	this.digDown = function() {
 		game.currentPlanet.currentDepth += this.pickPower;
+		this.moveTo(game.currentPlanet.currentDepth);
 	};
 	
 	this.mine = function() {
