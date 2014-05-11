@@ -10,6 +10,8 @@ function Game() {
 
 	this.lastUpdateTime = Date.now();
 	this.lastAutoSaveTime = Date.now();
+	
+	this.version = 0.1;
 
 	// ---------------------------------------------------------------------------
 	// general game functions
@@ -42,8 +44,11 @@ function Game() {
 		this.player.equipBestGear();
 		
 		// make earth our current planet
-		this.settings.currentPlanet = Planets.earth.id;		
+		this.settings.currentPlanet = Planets.earth.id;
+		
+		// Set some basic things in settings
 		this.settings.isNewGame = false;
+		this.settings.savedVersion = this.version;
 	};
 
 	this.setStartupState = function() {		

@@ -26,10 +26,30 @@ $(document).ready(function() {
 		} ]
 	});
 
-	$("#craftingContent").accordion();
+	$("#playerCraftingContent").accordion();
 	
 	updateInterface();
 	updateInterfaceCrafting();
+});
+
+// Setup key bindings
+Mousetrap.bind('f', function(e) {
+    onDigDown();       
+});
+Mousetrap.bind('d', function(e) {
+   onDigSideways();
+});
+Mousetrap.bind('g', function(e) {
+   onGatherAtmosphere();
+});
+Mousetrap.bind('u', function(e) {
+   onMoveUp();
+});
+Mousetrap.bind('s', function(e) {
+   onSave();
+});
+Mousetrap.bind('r', function(e) {
+   onReset();
 });
 
 var inventoryCategoryFilter = undefined;
@@ -96,9 +116,9 @@ function updateInterfaceGear() {
 }
 
 function updateInterfaceCrafting() {
-	var activePage = $('#craftingContent').accordion('option', 'active');
-	$('#craftingContent').accordion("destroy");
-	$('#craftingContent').empty();
+	var activePage = $('#playerCraftingContent').accordion('option', 'active');
+	$('#playerCraftingContent').accordion("destroy");
+	$('#playerCraftingContent').empty();
 	
 	for ( var key in ItemCategory) {
 		var items = game.getItemsByCategory(ItemCategory[key]);
@@ -118,41 +138,15 @@ function updateInterfaceCrafting() {
 		}
 
 		var headerContent = $('<div/>');
-		var header = $('#craftingContent').append(
+		var header = $('#playerCraftingContent').append(
 				'<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
 		for (var i = 0; i < craftableItems.length; i ++) {
-			headerContent.append(buildCraftingContent(craftableItems[i]));
+			headerContent.append(UI.buildCraftingEntry(craftableItems[i]));
 		}
 	}
 
-	$("#craftingContent").accordion({heightStyle: "content" });
-	$("#craftingContent").accordion('option', 'active', activePage);
-}
-
-function buildCraftingContent(item) {
-	
-	var content = $('<div class=\'craftingItemPanel\' onclick=\'onCraft(' + item.id + ')\' title=\''+buildCostTooltip(item)+'\'/>');
-	var icon = 'assets/images/icon_placeholder.png';
-	if(item.icon) {
-		icon = item.icon;
-	}
-	content.append('<image class=\'craftingIcon\' src="'+icon+'" />');
-	content.append('<span class="craftingText">'+item.name+'</span>').disableSelection();
-	
-	return content;
-}
-
-function buildCostTooltip(item) {
-	// We are building a text tooltip for now, html will be a bit more work
-	//  for html tooltips see: http://api.jqueryui.com/tooltip/#option-content
-	var cost = game.getCraftingCost(item.id, 1);
-	var costEntries = [];
-	for(var key in cost) {
-		var item = game.getItem(key);
-		costEntries.push(cost[key]+' '+item.name);
-	}
-	
-	return costEntries.join(', ');
+	$("#playerCraftingContent").accordion({heightStyle: "content" });
+	$("#playerCraftingContent").accordion('option', 'active', activePage);
 }
 
 function updateInterface() {
@@ -218,7 +212,7 @@ function onUpdate() {
 	game.update();
 
 	updateInterface();
-}
+};
 
 function onCraft(what) {
 	if (what == undefined) {
@@ -230,12 +224,12 @@ function onCraft(what) {
 		updateInterface();
 		updateInterfaceCrafting();
 	}
-}
+};
 
 function onDigSideways() {
 	game.settings.addStat('clickCount');
 	game.player.mine();
-}
+};
 
 function onDigDown() {
 	if (!game.currentPlanet) {
@@ -248,7 +242,7 @@ function onDigDown() {
 	// Todo: this needs to happen in the player or something to account for
 	// items / bonus etc
 	game.player.digDown();
-}
+};
 
 function onMoveUp() {
 	if (!game.currentPlanet) {
@@ -263,12 +257,17 @@ function onMoveUp() {
 	if(game.currentPlanet.currentDepth > 0) {
 		game.currentPlanet.currentDepth--;
 	}
-}
+};
 
 function onGatherAtmosphere() {
 	game.settings.addStat('clickCount');
 	game.player.gather();
-}
+};
+
+function onSwitchLeftCategory(content) {
+    $('#leftCategoryContent').children().hide();
+    $('#'+content).show();
+};
 
 function onPlanetEarth() {
 	$(".planet")
