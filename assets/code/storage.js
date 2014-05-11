@@ -206,6 +206,46 @@ function Storage(id) {
 		return 'storage_' + this.id + '_';
 	};
 
+	this._quickSort = function(items, left, right) {
+		var index;
+	    if (items.length > 1) {
+	        index = this._partition(items, left, right);
+	        if (left < index - 1) {
+	            this._quickSort(items, left, index - 1);
+	        }
+	        if (index < right) {
+	            this._quickSort(items, index, right);
+	        }
+	    }
+	    return items;
+	};
+
+	this._partition = function(items, left, right) {
+	    var pivot   = items[Math.floor((right + left) / 2)],
+	        i       = left,
+	        j       = right;
+	    while (i <= j) {
+	        while (items[i] < pivot) {
+	            i++;
+	        }
+	        while (items[j] > pivot) {
+	            j--;
+	        }
+	        if (i <= j) {
+	            this._swap(items, i, j);
+	            i++;
+	            j--;
+	        }
+	    }
+	    return i;
+	};
+
+	this._swap = function(list, firstIndex, secondIndex) {
+		var temp = list[firstIndex];
+	    list[firstIndex] = list[secondIndex];
+	    list[secondIndex] = list;
+	};
+
 	// ---------------------------------------------------------------------------
 	// loading / saving
 	// ---------------------------------------------------------------------------
