@@ -76,17 +76,22 @@ function updateInterfaceGear() {
 	$('#gear').empty();
 
 	slots = [];
+	var slots = '<div id="gearGUI">', slotText = "";
 	var gearSlots = game.player.gear.getSlots();
 	for (var i = 0; i < gearSlots.length; i++) {
-		var name = "N/A";
+		var name = "N/A", icon = '';
 		var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
 		if (itemId) {
 			name = game.getItemName(itemId);
+			icon = game.getItem(itemId).icon;
+			console.log(game.getItem(itemId));			
 		}
-
-		$('#gear').append("<p>" + gearSlots[i] + " - " + name + "</p>");
+		console.log(icon);
+		slots += '<div class="'+ gearSlots[i] +' gearSlot"><img src="'+icon+'" /></div>';
+		slotText += '<span>' + gearSlots[i] + ':' + name + '</span><br />';
 	}
 
+	$('#gear').append(slots + '</div>' + slotText);
 	$('#pickPower').text(game.player.pickPower + " / mpc");
 }
 
