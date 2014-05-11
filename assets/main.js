@@ -28,6 +28,8 @@ $(document).ready(function() {
 
 	$("#playerCraftingContent").accordion();
 	
+	onActivateCategoryPlayerInventory();
+	
 	updateInterface();
 	updateInterfaceCrafting();
 });
@@ -53,6 +55,11 @@ Mousetrap.bind('r', function(e) {
 });
 
 var inventoryCategoryFilter = undefined;
+
+var categoryCraftingUpdate = false;
+var categoryCraftingUpdateTime = 0;
+var categoryPlayerInventoryUpdate = false;
+var categoryPlayerInventoryUpdateTime = 0;
 
 // ---------------------------------------------------------------------------
 // user interface
@@ -149,7 +156,9 @@ function updateInterfaceCrafting() {
 	$("#playerCraftingContent").accordion('option', 'active', activePage);
 }
 
-function updateInterface() {
+function updateInterface(elapsedTime) {
+    var currentTime = Date.now();
+    
 	$('#planet').text(game.currentPlanet.data.name);
 	$('#depth').text(game.currentPlanet.currentDepth);
 
@@ -199,19 +208,27 @@ function updateInterface() {
 		game.player.gear.gearChanged = false;
 	}
 
-	if (game.player.storage.getStorageChanged()) {
-		updateInterfaceInventory();
-		game.player.storage.setStorageChanged(false);
+	if (categoryPlayerInventoryUpdate && game.player.storage.getStorageChanged()) {
+	    if(currentTime - categoryPlayerInventoryUpdateTime > 1000) {
+	        updateInterfaceInventory();
+		    game.player.storage.setStorageChanged(false);
+		    categoryPlayerInventoryUpdateTime = Date.now();
+	    }
 	}
+}
+
+function disableCategoryUpdates() {
+    categoryCraftingUpdate = false;
+    categoryPlayerInventoryUpdate = false;
 }
 
 // ---------------------------------------------------------------------------
 // function hooks
 // ---------------------------------------------------------------------------
 function onUpdate() {
-	game.update();
+	var elapsedTime = game.update();
 
-	updateInterface();
+	updateInterface(elapsedTime);
 };
 
 function onCraft(what) {
@@ -264,9 +281,18 @@ function onGatherAtmosphere() {
 	game.player.gather();
 };
 
-function onSwitchLeftCategory(content) {
+function onActivateCategoryPlayerInventory() {
+    disableCategoryUpdates();
     $('#leftCategoryContent').children().hide();
-    $('#'+content).show();
+    $('#playerItemsPanel').show();
+    categoryPlayerInventoryUpdate = true;
+}
+
+function onActivateCategoryCrafting() {
+    disableCategoryUpdates();
+    $('#leftCategoryContent').children().hide();
+    $('#playerCraftingPanel').show();
+    categoryCraftingUpdate = true;
 };
 
 function onPlanetEarth() {

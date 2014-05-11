@@ -2,6 +2,9 @@ function Miner(id) {
 	this.id = id;
 
 	this.baseMineSpeed = 1;
+	
+	this.gatherableResources = undefined;
+	this.minableResources = undefined;
 
 	// ---------------------------------------------------------------------------
 	// general
@@ -13,8 +16,7 @@ function Miner(id) {
 	};
 
 	this.gather = function() {
-		var resources = game.currentPlanet.getGatherableResources();
-		if (!resources || resources.length <= 0) {
+		if (!this.gatherableResources || this.gatherableResources.length <= 0) {
 			return;
 		}
 
@@ -23,13 +25,18 @@ function Miner(id) {
 	};
 
 	this.mine = function() {
-		var resources = game.currentPlanet.getMinableResources();
-		if (!resources || resources.length <= 0) {
+		if (!this.minableResources || this.minableResources.length <= 0) {
 			return;
 		}
-
+		
 		// Todo: apply modifiers and tools etc
-		return this._dropResources(resources);
+		var loot = this._dropResources(resources);		
+		return loot;
+	};
+	
+	this.setDepth = function() {
+	    this.minableResources = game.currentPlanet.getMinableResources();
+	    this.gatherableResources = game.currentPlanet.getGatherableResources();
 	};
 
 	// ---------------------------------------------------------------------------

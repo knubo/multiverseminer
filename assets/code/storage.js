@@ -36,7 +36,7 @@ function Storage(id) {
 		return limit < this.items[id];
 	};
 
-	this.addItem = function(id, value) {
+	this.addItem = function(id, value, silent) {
 		if (!value) {
 			value = 1;
 		}
@@ -47,29 +47,34 @@ function Storage(id) {
 			Utils.logError("attempt to add unknown item: " + id);
 			return;
 		}
-
+		
 		// Add it to the storage
 		if (!this.items[id]) {
 			this.items[id] = 0;
 		}
 
 		this.items[id] += value;
-
-		// Register this item in the dictionaries
-		this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-		if(itemInfo.gearType) {
-			this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
+		if(this.items[id] <= 1) {
+		    // Register this item in the dictionaries
+		    this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
+		    if(itemInfo.gearType) {
+		        this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
+		    }
 		}
 		
-		this.storageChanged = true;
+		if(silent == undefined || !silent) {
+		    this.storageChanged = true;
+		}
 	};
 
 	this.addItems = function(items) {
 		var keys = Object.keys(items);
 		for ( var i = 0; i < keys.length; i++) {
 			var key = keys[i];
-			this.addItem(key, items[key]);
+			this.addItem(key, items[key], true);
 		}
+		
+		this.storageChanged = true;
 	};
 
 	this.hasItem = function(id)
