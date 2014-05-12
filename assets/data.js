@@ -373,6 +373,11 @@ addItem(3002, 'goldBar', 'Gold bar', 1000, {
         [Items.gold.id, 10]
     ]
 );
+additem(3017, 'titaniumBar', 'Titanium Bar', 2500, ).setCraftingCost(
+	[
+		[Items.titanium.id, 10]
+	]
+);
 addItem(3003, 'oxygenCan', 'Oxygen can', 11, {
     'icon': imageRoot + 'oxygenCan.png'
 }).setCraftingCost(
@@ -522,9 +527,15 @@ addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-addItem(40004, 'jackhammer', 'Jackhammer', 10000, {
-    'storageLimit': 1,
+addItem(40004, 'titaniumPick', 'Titanium Pickaxe', 4000, {
+	'storageLimit': 1,
 	'power': 6
+}).setCraftingCost([
+	[Items.titaniumBar.id, 10]
+]);
+addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
+    'storageLimit': 1,
+	'power': 10
 }).setCraftingCost(
     [
         [Items.ironBar.id, 50],
@@ -532,12 +543,22 @@ addItem(40004, 'jackhammer', 'Jackhammer', 10000, {
         [Items.goldBar.id, 10]
     ]
 );
-addItem(40005, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
+addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
     [
         [Items.ironBar.id, 50],
         [Items.hyperCell.id, 5],
         [Items.plasmaCell.id, 5]
     ]
+);
+addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
+	'storageLimit' 1,
+	'power': 7
+}).setCraftingCost(
+	[
+		[Items.titaniumBar.id, 75].
+		[Items.diamond.id, 20],
+		[Items.goldBar.id, 5]
+	]
 );
 // ---------------------------------------------------------------------------
 // Equipment - Head
