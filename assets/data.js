@@ -160,7 +160,9 @@ addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
 addItem(10, 'fuel', 'Fuel', 1000);
-addItem(11, 'potassium', 'Potassium', 1000);
+addItem(11, 'potassium', 'Potassium', 1000, {
+    'el': 'K'
+});
 addItem(12, 'magnesium', 'Magnesium', 1000, {
     'el': 'Mg'
 });
@@ -170,30 +172,72 @@ addItem(13, 'titanium', 'Titanium', 1000, {
 addItem(14, 'hydrogen', 'Hydrogen', 1000, {
     'el': 'H'
 });
-addItem(15, 'phosphorus', 'Phosphorus', 1000);
-addItem(16, 'manganese', 'Manganese', 1000);
-addItem(17, 'fluorine', 'Fluorine', 1000);
-addItem(18, 'barium', 'Barium', 1000);
-addItem(19, 'carbon', 'Carbon', 1000);
-addItem(20, 'sulfur', 'Sulfur', 1000);
-addItem(21, 'nitrogen', 'Nitrogen', 1000);
-addItem(22, 'nickel', 'Nickel', 1000);
-addItem(23, 'zinc', 'Zinc', 1000);
-addItem(24, 'chromium', 'Chromium', 1000);
-addItem(25, 'chloride', 'Chloride', 1000);
-addItem(26, 'carbonDioxide', 'Carbon dioxide', 1000);
-addItem(27, 'sulfurDioxide', 'Sulfur Dioxide', 1000);
-addItem(28, 'argon', 'Argon', 1000);
-addItem(29, 'carbonMonoxide', 'Carbon Monoxide', 1000);
-addItem(30, 'helium', 'Helium', 1000);
-addItem(31, 'neon', 'Neon', 1000);
-addItem(32, 'methane', 'Methane', 10000);
-addItem(33, 'argon', 'Argon', 10000);
-addItem(34, 'xenon', 'Xenon', 100000);
-addItem(35, 'krypton', 'Krypton', 100000);
-addItem(36, 'silver', 'Silver', 50);
-addItem(37, 'ceasium', 'Ceasium', 100000);
-addItem(38, 'carbon', 'Carbon', 50000);
+addItem(15, 'phosphorus', 'Phosphorus', 1000, {
+    'el': 'P'
+});
+addItem(16, 'manganese', 'Manganese', 1000, {
+    'el': 'Mn'
+});
+addItem(17, 'fluorine', 'Fluorine', 1000, {
+    'el': 'F'
+});
+addItem(18, 'barium', 'Barium', 1000, {
+    'el': 'Ba'
+});
+addItem(19, 'carbon', 'Carbon', 1000, {
+    'el': 'C'
+});
+addItem(20, 'sulfur', 'Sulfur', 1000, {
+    'el': 'S'
+});
+addItem(21, 'nitrogen', 'Nitrogen', 1000, {
+    'el': 'N'
+});
+addItem(22, 'nickel', 'Nickel', 1000, {
+    'el': 'Ni'
+});
+addItem(23, 'zinc', 'Zinc', 1000, {
+    'el': 'Zn'
+});
+addItem(24, 'chromium', 'Chromium', 1000, {
+    'el': 'Cr'
+});
+addItem(25, 'chloride', 'Chloride', 1000, {
+    'el': 'Cl'
+});
+addItem(26, 'carbonDioxide', 'Carbon dioxide', 1000, {
+    'el': 'CO2'
+});
+addItem(27, 'sulfurDioxide', 'Sulfur Dioxide', 1000, {
+    'el': 'SO2'
+});
+addItem(28, 'carbonMonoxide', 'Carbon Monoxide', 1000, {
+    'el': 'CO'
+});
+addItem(29, 'helium', 'Helium', 1000, {
+    'el': 'He'
+});
+addItem(30, 'neon', 'Neon', 1000, {
+    'el': 'Ne'
+});
+addItem(31, 'methane', 'Methane', 10000, {
+    'el': 'CH4'
+});
+addItem(32, 'argon', 'Argon', 10000, {
+    'el': 'Ar'
+});
+addItem(33, 'xenon', 'Xenon', 100000, {
+    'el': 'Xe'
+});
+addItem(34, 'krypton', 'Krypton', 100000, {
+    'el': 'Kr'
+});
+addItem(35, 'silver', 'Silver', 50, {
+    'el': 'Ag'
+});
+addItem(36, 'ceasium', 'Ceasium', 100000, {
+    'el': 'Cs'
+});
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
