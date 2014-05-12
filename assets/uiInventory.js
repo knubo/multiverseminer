@@ -1,10 +1,9 @@
 var inventoryId = 0;
 
-function UIInventory(parent, columns, rows, storage) {
+function UIInventory(parent, slotCount, storage) {
     this.id = inventoryId++;
     this.parent = parent;
-    this.columns = columns;
-    this.rows = rows;    
+    this.count = slotCount;
     this.storage = storage;
     
     this.slotElements = [];
@@ -21,17 +20,13 @@ function UIInventory(parent, columns, rows, storage) {
     this.init = function() {
         var slotId = 0;
         var grid = $('<div class="itemGrid"></div>');
-        for(var x = 0; x < this.rows; x++) {
-            var row = $('<div class="itemRow"></div>');
-            for( var y = 0; y < this.columns; y++) {
-                var slotElement = this.createSlotElement();
-                row.append(slotElement);
-                this.slotElements.push(slotElement);
-                this.slotIdItemIdMap.push(undefined);
-                this._clearSlot(slotId);
-                slotId++;
-            }
-            grid.append(row);
+        for(var x = 0; x < this.count; x++) {
+            var slotElement = this.createSlotElement();
+            grid.append(slotElement);
+            this.slotElements.push(slotElement);
+            this.slotIdItemIdMap.push(undefined);
+            this._clearSlot(slotId);
+            slotId++;
         }
         
         $('#' + this.parent).append(grid);

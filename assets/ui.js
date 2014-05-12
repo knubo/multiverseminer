@@ -25,7 +25,7 @@ function UI() {
         this.playerIventoryFilter.min = 1; // To avoid selecting undef
         this.playerIventoryFilter.setSelection(game.settings.selectedPlayerInventoryFilter);
         
-        this.playerInventory = new UIInventory('playerInventorySlots', 5, 5, game.player.storage);
+        this.playerInventory = new UIInventory('playerInventorySlots', 30, game.player.storage);
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
         
