@@ -11,7 +11,7 @@ function Combatant(id) {
 	this.initialize = function() {		
 	};
 	
-	this.update = function(elapsed) {
+	this.update = function(currentTime) {
 	};
 
 	// ---------------------------------------------------------------------------

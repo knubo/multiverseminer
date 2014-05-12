@@ -13,22 +13,33 @@ function Planet(data) {
 		this.storage.initialize();
 	};
 	
-	this.update = function(elapsed) {
-		this.miner.update(elapsed);
+	this.update = function(currentTime) {
+		this.miner.update(currentTime);
 	};
 
 	// ---------------------------------------------------------------------------
 	// planet functions
 	// ---------------------------------------------------------------------------
-	this.getGatherableResources = function() {
-		return this._getAvailableResources('gather');
+	this.getGatherableResources = function(depth) {
+		return this._getAvailableResources('gather', depth || this.currentDepth);
 	};
 
-	this.getMinableResources = function() {
-		return this._getAvailableResources('mine');
+	this.getMinableResources = function(depth) {
+		return this._getAvailableResources('mine', depth || this.currentDepth);
+	};
+	
+	this.getName = function() {
+	    return this.data.name;
+	};
+	
+	this.getBackground = function() {
+	    return this.data.background;
 	};
 
-	this._getAvailableResources = function(mode) {
+	// ---------------------------------------------------------------------------
+    // internal
+    // ---------------------------------------------------------------------------
+	this._getAvailableResources = function(mode, depth) {
 		var results = [];
 		var keys = Object.keys(this.data.resources);
 		for ( var i = 0; i < keys.length; i++) {
@@ -43,7 +54,7 @@ function Planet(data) {
 
 			var min = resource.minDepth || 0;
 			var max = resource.maxDepth || Number.MAX_VALUE;
-			if (min > this.currentDepth || max < this.currentDepth) {
+			if (min > depth || max < depth) {
 				continue;
 			}
 

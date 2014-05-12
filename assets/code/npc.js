@@ -12,8 +12,8 @@ function NPC(id) {
 		this.gear.initialize();
 	};
 	
-	this.update = function(elapsed) {
-		this.combatant.update(elapsed);
+	this.update = function(currentTime) {
+		this.combatant.update(currentTime);
 	};
 
 	// ---------------------------------------------------------------------------
