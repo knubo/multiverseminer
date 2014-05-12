@@ -179,7 +179,8 @@ function onReset() {
 			onClick : function($noty) {
 				$noty.close();
 				game.reset();
-				ui.reset();
+				//TODO: Add reset function to ui
+//				ui.reset();
 				
 				onActivatePlayerInventory();
 				onActivatePlayerGear();

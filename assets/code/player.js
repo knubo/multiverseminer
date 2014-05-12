@@ -107,7 +107,7 @@ function Player() {
 			
 			if(item.gearType == GearType.mainHand)
 			{
-				this.pickPower = 3;
+				this.pickPower = item.power;
 			}
 			
 			this.equip(item.id);
