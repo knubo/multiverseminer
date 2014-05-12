@@ -500,26 +500,31 @@ addItem(4001, 'refinery', 'Refinery', 50000, {
 // Equipment - MainHand
 // ---------------------------------------------------------------------------
 addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
-    'storageLimit': 1
+    'storageLimit': 1,
+	'power': 1
 });
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
+	'power': 3,
     'icon': imageRoot + 'pick.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
-    'storageLimit': 1
+    'storageLimit': 1,
+	'power': 4
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
-    'storageLimit': 1
+    'storageLimit': 1,
+	'power': 5
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
 addItem(40004, 'jackhammer', 'Jackhammer', 10000, {
-    'storageLimit': 1
+    'storageLimit': 1,
+	'power': 6
 }).setCraftingCost(
     [
         [Items.ironBar.id, 50],
