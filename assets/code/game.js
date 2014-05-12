@@ -11,6 +11,8 @@ function Game() {
 	this.lastUpdateTime = Date.now();
 	this.lastAutoSaveTime = Date.now();
 	
+	this.planetChanged = true;
+	
 	this.version = 0.1;
 
 	// ---------------------------------------------------------------------------
@@ -81,8 +83,7 @@ function Game() {
 		this.save();
 	};
 
-	this.update = function() {
-		var currentTime = Date.now();
+	this.update = function(currentTime) {
 		elapsed = currentTime - this.lastUpdateTime;
 		elapsedSinceAutoSave = currentTime - this.lastAutoSaveTime;
 
@@ -93,10 +94,10 @@ function Game() {
 			this.lastAutoSaveTime = currentTime;
 		}
 
-		this.player.update(elapsed);
+		this.player.update(currentTime);
 
 		if (this.currentPlanet) {
-			this.currentPlanet.update(elapsed);
+			this.currentPlanet.update(currentTime);
 		}
 
 		this.lastUpdateTime = currentTime;
@@ -198,6 +199,18 @@ function Game() {
 		
 		return results;
 	};
+	
+	this.getPlanetChanged = function() {
+	    return this.planetChanged;
+	};
+	
+	this.setPlanetChanged = function(value) {
+	    this.planetChanged = value;
+	};
+	
+	this.getCategoryById = function(categoryId) {
+	    return ItemCategory[Object.keys(ItemCategory)[categoryId]];
+	};
 
 	// ---------------------------------------------------------------------------
 	// specific game functions
@@ -242,6 +255,7 @@ function Game() {
 
 		this.currentPlanet = this.planets[target];
 		this.currentPlanet.load();
+		this.planetChanged = true;
 		
 		this.player.moveTo(this.currentPlanet.currentDepth);
 	};

@@ -50,7 +50,7 @@ function addItem(id, internalName, name, baseValue, metadata) {
         }
     }
 
-    Items[internalName] = item;
+    Items[internalName] = item;    
     return item;
 }
 
@@ -140,9 +140,11 @@ addItem(3, 'copper', 'Copper', 0.5, {
     'el': 'Cu'
 });
 addItem(4, 'iron', 'Iron', 1, {
+    'icon': imageRoot + 'iron.png',
     'el': 'Fe'
 });
 addItem(5, 'gold', 'Gold', 100, {
+    'icon': imageRoot + 'gold.png',
     'el': 'Au'
 });
 addItem(6, 'silicon', 'Silicon', 1000, {
@@ -649,6 +651,7 @@ Planets = {
         'gravity': 1,
         'baseMultiplier': 1,
         'distance': 0,
+        'background': 'assets/images/planetBackground_blueLarge.png',
         'resources': {}
     },
     'moon': {

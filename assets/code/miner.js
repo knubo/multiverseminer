@@ -12,7 +12,7 @@ function Miner(id) {
 	this.initialize = function() {		
 	};
 	
-	this.update = function(elapsed) {
+	this.update = function(currentTime) {
 	};
 
 	this.gather = function() {
@@ -21,7 +21,7 @@ function Miner(id) {
 		}
 
 		// Todo: apply modifiers and tools etc
-		return this._dropResources(resources);
+		return this._dropResources(this.gatherableResources);
 	};
 
 	this.mine = function() {
@@ -30,13 +30,13 @@ function Miner(id) {
 		}
 		
 		// Todo: apply modifiers and tools etc
-		var loot = this._dropResources(resources);		
+		var loot = this._dropResources(this.minableResources);		
 		return loot;
 	};
 	
-	this.setDepth = function() {
-	    this.minableResources = game.currentPlanet.getMinableResources();
-	    this.gatherableResources = game.currentPlanet.getGatherableResources();
+	this.setDepth = function(depth) {
+	    this.minableResources = game.currentPlanet.getMinableResources(depth);
+	    this.gatherableResources = game.currentPlanet.getGatherableResources(depth);
 	};
 
 	// ---------------------------------------------------------------------------

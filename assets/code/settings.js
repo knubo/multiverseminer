@@ -13,6 +13,9 @@ function Settings() {
 	this.travelDistanceRemaining;
 	this.travelDistanceElapsed;
 	
+	// UI settings
+	this.selectedPlayerInventoryFilter = 1;
+	
 	this.isNewGame = true;
 	
 	// ---------------------------------------------------------------------------
@@ -55,6 +58,8 @@ function Settings() {
 		localStorage.travelDistanceRemaining = this.travelDistanceRemaining;
 		localStorage.travelDistanceElapsed = this.travelDistanceElapsed;
 		
+		localStorage.selectedPlayerInventoryFilter = this.selectedPlayerInventoryFilter;
+		
 		localStorage.isNewGame = this.newGame;
 	};
 
@@ -74,6 +79,8 @@ function Settings() {
 				"travelDistanceRemaining", 0);
 		this.travelDistanceElapsed = Utils
 				.loadFloat("travelDistanceElapsed", 0);
+		
+		this.selectedPlayerInventoryFilter = Utils.loadInt('selectedPlayerInventoryFilter', 1);
 		
 		this.isNewGame = Utils.loadBool("isNewGame", true);
 	};

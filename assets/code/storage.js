@@ -54,13 +54,12 @@ function Storage(id) {
 		}
 
 		this.items[id] += value;
-		if(this.items[id] <= 1) {
-		    // Register this item in the dictionaries
-		    this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-		    if(itemInfo.gearType) {
-		        this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
-		    }
-		}
+		
+		// Register this item in the dictionaries
+        this._registerItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
+        if(itemInfo.gearType) {
+            this._registerItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
+        }
 		
 		if(silent == undefined || !silent) {
 		    this.storageChanged = true;

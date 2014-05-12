@@ -6,90 +6,273 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
-/* Main positioning styles */
-.container{
-    text-align:center;
-    margin-left:20%;
-    width:60%;
-    height:100%;
-}
-.right{
-    position:fixed;
-    right:0px;
-    top:0px;
-    width:20%;
-    height: 100%;
-    text-align:center;
-	overflow: auto;
-}
-.left{
-    position:fixed;
-    left:0px;
-    top:0px;
-    width:20%;
-    height: 100%;
-	background-color: rgba(200, 200, 200, 0.15);
-	border-right: 2px solid white;
-	overflow: auto;
-}
-.bottom{
-    position:fixed;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    text-align:center;
-}
+
+/* utility classes */
 .clickable {
 	cursor: pointer;
 	cursor: hand;
 }
-.inventoryFilterPrevious {
-	width: 20px;
-	height: 20px;
-	background: assets/images/icon_placeholder.png;
-	float:left;
+
+.clearLeftFloat {
+	clear: left;
 }
-.inventoryFilterText {
-	float:left;
+
+.noSelect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-.inventoryFilterNext {
-	width: 20px;
-	height: 20px;
-	background: assets/images/icon_placeholder.png;
-	float:left;
+
+/* main panel classes */
+.panelPlanetDisplay{
+    text-align:center;
+    margin-left:20%;
+    width:60%;
+    height:calc(100% - 61px);
 }
-/* Left/Crafting styles */
+
+.panelPlanetLeft{
+	background-color: #747474;
+    position:fixed;
+    left:0px;
+    top:0px;
+    width:20%;
+    height: calc(100% - 61px);
+	border: 5px solid white;
+}
+
+.panelPlanetRight{
+	background-color: #747474;
+    position:fixed;
+    right:0px;
+    top:0px;
+    width:20%;
+    height: calc(100% - 61px);
+    border: 5px solid white;
+}
+
+.panelBottom{
+	background-color: white;
+	background: url(assets/images/bottomBarBackground.png);
+	background-repeat:no-repeat;
+	background-size:100% 50px;
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    height:50px;
+    width:100%;
+    text-align:center;
+    border-top: 1px black;
+}
+
+.panelBottomLeft {
+	float:left;
+	margin-left: 2px;
+}
+
+.panelBottomCenter{
+	margin: 0 auto;
+	width: 380px;
+	display: inline-block;
+}
+
+.panelBottomRight{
+	float:right;
+	margin-right: 4px;
+}
+
+/* button styles */
+.genericButton {
+	background-color: #444444;
+	float: left;
+	margin-left:1px;
+}
+
+.genericButtonLast {
+	margin-right:0px;
+}
+
+.bottomBarButton {
+	margin-top:5px;
+	height: 30px;
+	width: 100px;
+	text-align:center;
+}
+
+.bottomBarButtonText {
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.categoryButton {
+	height: 80px;
+	width: calc(25% - 1px);
+	text-align:center;
+	float: left;
+}
+
+.categoryButtonIcon {
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width:30px;
+    height:30px;
+}
+
+.categoryButtonText {
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    font-size:12px;
+}
+
+/* selection styles */
+.selectPrevious {
+	width: 16px;
+	height: 11px;
+	float:left;
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.selectionText {
+	float:left;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 15px;
+	font-size:16px;
+}
+
+.selectNext {
+	width: 16px;
+	height: 11px;
+	float:right;
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+
+/* Planet styles */
+.planetDisplay {
+	position:absolute;
+	bottom:0px;
+	width:60%;
+}
+
+.planetDisplayBackground {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.planetDisplayNameTitle {
+}
+
+.planetDisplayNameText {
+	margin-top:20px;
+}
+
+.planetDisplayNameFrame {
+	position:absolute;
+	top:60%;
+	width:100%;
+	height:91px;
+}
+
+.planetDisplayName {
+	margin: 0 auto;
+	display: inline-block;
+	height:100%;
+	width:295px;	
+	background: url(assets/images/planetTitleBackground.png);
+	background-repeat:no-repeat;
+	background-size:295px 61px;
+}
+
+/* Inventory styles */
+.inventoryPanel{
+	margin-left:20px;
+	margin-top:1px;
+	margin-right:20px;
+	margin-bottom:1px;
+}
+
+.inventoryFilter {
+}
+
+.inventoryContent {
+	position: absolute;
+	clear: left;
+	margin-top: 50px;
+	left: 8px;
+	width: calc(100% - 16px);
+	background-color: #878787;
+}
+
+/* Item styles */
+.itemGrid {
+	overflow: hidden;
+}
+
+.itemRow {
+	clear: both;
+	overflow: hidden;
+}
+
+.itemSlot {
+	width: 50px;
+	height: 50px;
+	margin: 6px;
+	float: left;
+}
+
+.itemSlotIcon {
+	width: 30px;
+	height: 30px;
+	margin-left:10px;
+	margin-top:6px;
+}
+
+.itemSlotText {
+	position: relative;
+	margin-top:-5px;
+	margin-right: 10px;
+	float: right;
+	font-size: 12px;
+}
+
+.itemSlotHover {
+	border: 1px solid #a7a7a7;
+}
+
+.itemSlotNonHover {
+	border: 1px solid #878787;
+}
+
+
+
+
+
+
+
+
+/* Check use: */
+
+/* Crafting styles */
 .craftingPanel{
 	margin-left:20px;
 	margin-top:1px;
 	margin-right:20px;
 	margin-bottom:1px;
 }
-.categoryButton {
-	margin: 10px auto;
-	padding: 0;
-	width: 35%;
-	border: 1px solid white;
-	color: white;
-	background-color: rgba(0, 0, 0, 0.8);
-	text-align: center;
-	float: left;
-}
-.categoryContent {
-	clear: left;
-}
-.infoLabel {
-	margin: 20px auto;
-	padding: 0;
-	width: 65%;
-	border: 1px solid white;
-	color: white;
-	background-color: rgba(0, 0, 0, 0.8);
-	text-align: center;
-}
-.infoLabel h2 {
-	margin: 0;
-}
+
+
 .craftingItemPanel{
     font-size:11px;
 	margin-left:1px;
@@ -121,12 +304,8 @@ html {
 	cursor: pointer;
 	cursor: hand;
 }
-#elementFinder {
-    font-size:12px;
-}
-#craftingContent {
-} 
-#craftingContent .ui-accordion-content {  
+
+#playerCraftingContent .ui-accordion-content {  
     padding: 0;
 	margin-bottom: 10px;
 
@@ -138,13 +317,13 @@ html {
 
     font-size: 10pt;  
     line-height: 16pt;
-}  
-#craftingContent .ui-accordion-content div {
+}
+#playerCraftingContent .ui-accordion-content div {
 	margin-bottom: 10px;
 	border-radius: 0;
 	background: #333;
 }
-#craftingContent .ui-accordion-header {  
+#playerCraftingContent .ui-accordion-header {  
     margin-bottom: 10px;  
 
     border-radius: 0;
@@ -153,8 +332,12 @@ html {
     background: #fff; 
     color: #555; 
 	box-shadow: inset 0 0 20px #000;
-}  
+}
+
 /* Inventory styles */
+
+
+
 .inventoryContainer{
 	margin-left:10px;
 	margin-top:10px;
@@ -196,6 +379,7 @@ html {
 	border: none;
 	border-top: 1px solid white;
 }
+
 /* Elements */
 #elementFinder {
 	padding-left: 15px;
@@ -236,15 +420,17 @@ html {
 #gemFinder ul {
 	list-style: none;
 }
+
 /* Gear */
-#gear {
+.gearPanel {
 	margin: 0 auto;
 }
-#gearGUI {
+
+.gearContent {
 	width: 60%;
 	height: 250px;	
 	margin: 0 auto;
-    background-color:black;
+    background-color: #878787;
 	position: relative;
 }
 .gearSlot {
@@ -296,11 +482,4 @@ html {
 	right: 0;
 	bottom: 0;
 	margin: 0 auto;
-}
-
-button {
-	border-radius: 5px;
-
-	background: #aaa;
-	color: black;
 }

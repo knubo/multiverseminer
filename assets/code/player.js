@@ -26,11 +26,10 @@ function Player() {
 		this.gear.addSlot(GearType.feet);
 	};
 	
-	this.update = function(elapsed) {
-		this.miner.update(elapsed);
-		this.combatant.update(elapsed);
-
-		var currentTime = Date.now();
+	this.update = function(currentTime) {
+		this.miner.update(currentTime);
+		this.combatant.update(currentTime);
+		
 		if (currentTime - this.lastOxygenConsumption > 1000) {
 			// Todo: need to do something when this runs out
 			if (this.storage.getItemCount(Items.oxygen.id) > 0) {
@@ -45,12 +44,18 @@ function Player() {
 	// player functions
 	// ---------------------------------------------------------------------------
 	this.moveTo = function(depth) {
+	    if(depth < 0) depth = 0;
+	    
+	    game.currentPlanet.currentDepth = depth;
 	    this.miner.setDepth(game.currentPlanet.currentDepth);
 	};
 	
-	this.digDown = function() {
-		game.currentPlanet.currentDepth += this.pickPower;
-		this.moveTo(game.currentPlanet.currentDepth);
+	this.moveUp = function() {
+	    this.moveTo(game.currentPlanet.currentDepth - this.pickPower);
+	};
+	
+	this.moveDown = function() {
+	    this.moveTo(game.currentPlanet.currentDepth + this.pickPower);
 	};
 	
 	this.mine = function() {
