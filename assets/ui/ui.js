@@ -13,9 +13,7 @@ function UI() {
     this.componentGemFinder = undefined;
     
     this.componentPlanet = undefined;
-    
-    this.defaultIcon = 'assets/images/icon_placeholder.png';
-    
+        
     // ---------------------------------------------------------------------------
     // main UI functions
     // ---------------------------------------------------------------------------
@@ -245,13 +243,29 @@ function UI() {
         component.needUpdate = true;
     };
     
+    this.getDefaultItemIcon = function(item) {
+        if(item.category) {
+            if(item.category == ItemCategory.rawMaterial) {
+                return sys.iconPlaceholderRawMaterial;
+            } else if (item.category == ItemCategory.gem) {
+                return sys.iconPLaceholderGem;
+            } else if (item.category == ItemCategory.gearChest) {
+                return sys.iconPlaceholderChest;
+            } else if (item.category == ItemCategory.gearHead) {
+                return sys.iconPLaceholderHead;
+            }
+        };
+        
+        return sys.iconPlaceholder;
+    };
+    
     // ---------------------------------------------------------------------------
     // building functions
     // ---------------------------------------------------------------------------
     this.buildCraftingEntry = function(item) {
         var tooltipContent = this.buildCraftingCostTooltip(item);
         var content = $('<div class="craftingItemPanel" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
-        var icon = UI.defaultIcon;
+        var icon = this.getDefaultItemIcon(item);
         if(item.icon) {
             icon = item.icon;
         }
@@ -284,7 +298,7 @@ function UI() {
         var icon = undefined;
         if(item != undefined) {
             tooltip = this.buildItemTooltip(item);
-            icon = item.icon != undefined ? item.icon : this.defaultIcon;
+            icon = item.icon != undefined ? item.icon : this.getDefaultItemIcon(item);
         }
         
         var entry = $('<div class="' + slot + ' gearSlot" title="' + tooltip + '">');

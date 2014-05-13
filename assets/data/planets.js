@@ -1,4 +1,20 @@
 // ---------------------------------------------------------------------------
+// helper functions
+// ---------------------------------------------------------------------------
+function setPlanetMiningResource(planet, id, mode, min, max, chance) {
+    if (!planet.resources) {
+        planet.resources = {};
+    }
+
+    planet.resources[id] = {
+        'mode': mode,
+        'minDepth': min,
+        'maxDepth': max,
+        'baseChance': chance,
+    };
+}
+
+// ---------------------------------------------------------------------------
 // Planet data
 // ---------------------------------------------------------------------------
 Planets = {

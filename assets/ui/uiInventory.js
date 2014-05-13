@@ -70,7 +70,7 @@ function UIInventory(parent, slotCount, storage) {
         }
         
         // Clear out slots that contain items we do not display
-        for(var i = 0; i < this.slotElements.length; i++) {
+        for(var i = 0; i < this.slotIdItemIdMap.length; i++) {
             var itemId = this.slotIdItemIdMap[i];
             if(!itemId) {
                 continue;
@@ -86,7 +86,7 @@ function UIInventory(parent, slotCount, storage) {
         for(var i = 0; i < itemsToUpdate.length; i++) {
             var itemId = itemsToUpdate[i];
             var item = game.getItem(itemId);
-            var icon = item.icon || ui.defaultIcon;
+            var icon = item.icon || ui.getDefaultItemIcon(item);
             var slotJQueryId = 'inv'+this.id+'_slot'+slotId;
             
             var slotId = this._getSlot(itemId);
@@ -112,7 +112,7 @@ function UIInventory(parent, slotCount, storage) {
                 function() { $(this).addClass("itemSlotNonHover"); $(this).removeClass("itemSlotHover"); }
         );
         
-        slot.append('<p class="itemSlotText">999</p>');
+        slot.append('<p class="itemSlotText">0</p>');
         return slot;
     };
     
@@ -140,7 +140,6 @@ function UIInventory(parent, slotCount, storage) {
     this._occupySlot = function(itemId) {
         for(var i = 0; i < this.slotElements.length; i++) {
             if(!this.slotIdItemIdMap[i]) {
-                var slot = this.slotElements[i];
                 this.slotIdItemIdMap[i] = itemId;
                 return i;
             }
