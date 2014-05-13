@@ -135,6 +135,19 @@ html {
 	float: left;
 	margin-left:1px;
 }
+.genericButton:hover {
+	background-color: rgb(115,115,115);
+}
+.genericButtonSelected {
+	box-shadow: 
+	  0 1px 2px #000,
+	  0 -1px 1px #000,
+	  inset 0 -1px 1px rgba(0,0,0,0.5),
+	  inset 0 1px 1px rgba(255,255,255,0.8);
+	background-color: rgb(115,115,115);
+	float: left;
+	margin-left:1px;
+}
 
 .genericButtonLast {
 	margin-right:0px;
@@ -177,12 +190,16 @@ html {
 
 /* selection styles */
 .selectPrevious {
+	opacity: 0.5;
 	width: 16px;
 	height: 11px;
 	float:left;
 	margin-top: 20px;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+.selectPrevious:hover {
+	opacity: 1;
 }
 
 .selectionText {
@@ -194,12 +211,16 @@ html {
 }
 
 .selectNext {
+	opacity: 0.5;
 	width: 16px;
 	height: 11px;
 	float:right;
 	margin-top: 20px;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+.selectNext:hover {
+	opacity: 1;
 }
 
 

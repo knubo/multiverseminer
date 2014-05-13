@@ -128,14 +128,20 @@ function onGatherAtmosphere() {
 };
 
 function onActivatePlayerInventory() {
+	// select the button
+	changeLeftCategoryButton(0);
+
     // disable and hide
     ui.hideLeftSideComponents();
-    
+
     // activate the category
     ui.showComponent(ui.componentPlayerInventory);
 }
 
 function onActivateCrafting() {
+	// select the button
+	changeLeftCategoryButton(1);
+		
     // disable and hide
     ui.hideLeftSideComponents();
     
@@ -144,6 +150,9 @@ function onActivateCrafting() {
 };
 
 function onActivatePlayerGear() {
+	// select the button
+	changeRightCategoryButton(0);
+	
     ui.hideRightSideComponents();
     
     // activate the category
@@ -151,6 +160,9 @@ function onActivatePlayerGear() {
 }
 
 function onActivateElementFinder() {
+	// select the button
+	changeRightCategoryButton(1);
+	
     ui.hideRightSideComponents();
     
     // activate the category
@@ -158,6 +170,9 @@ function onActivateElementFinder() {
 }
 
 function onActivateGemFinder() {
+	// select the button
+	changeRightCategoryButton(2);
+	
     ui.hideRightSideComponents();
     
     // activate the category
@@ -198,4 +213,25 @@ function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
 	
 	ui.updateComponent(ui.componentPlayerInventory);
+}
+
+function changeLeftCategoryButton(selected) {
+	for(var i = 0; i < 4; i++)
+	{
+		var name = document.getElementById("leftCategory" + i);
+		name.className="genericButton categoryButton clickable";
+    }
+	
+	var name = document.getElementById("leftCategory" + selected);
+	name.className="genericButtonSelected categoryButton clickable";
+}
+function changeRightCategoryButton(selected) {
+	for(var i = 0; i < 4; i++)
+	{
+		var name = document.getElementById("rightCategory" + i);
+		name.className="genericButton categoryButton clickable";
+    }
+	
+	var name = document.getElementById("rightCategory" + selected);
+	name.className="genericButtonSelected categoryButton clickable";
 }
