@@ -42,13 +42,28 @@
 <body text="white">
     <div class="panelPlanetDisplay">
         <img src="assets/images/logo.png" />
+		
+		<br /><br /><br /><br />
+		
         <p>
-        	<button onclick="onDigSideways()">Dig around (press D)</button>
-        	<button onclick="onDigDown()">Dig down (press F)</button>
-        	<button onclick="onMoveUp()">Move up (press U)</button>
-        	<button onclick="onGatherAtmosphere()">Gather oxygen (press G)</button>
+        	<button class="mainButton" onclick="onDigSideways()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">DIG AROUND [D]</div>
+			</button>
+			<button class="mainButton" onclick="onDigDown()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">DIG DOWN [F]</div>
+			</button>
+			<button class="mainButton" onclick="onMoveUp()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">MOVE UP [U]</div>
+			</button>
+			<button class="mainButton" onclick="onGatherAtmosphere()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">GATHER OXYGEN [G]</div>
+			</button>
         <p>
-        <center> <br /><br /><br /><br /><b>CURRENT DEPTH:</b><br /><span id="depth">0</span> meters<br /></center>
+        <center> <br /><b>CURRENT DEPTH:</b><br /><span id="depth">0</span> meters<br /></center>
 
         <div class="planetDisplay">
         	<div class="planetDisplayBackground" id="planetDisplayBackground"></div>
