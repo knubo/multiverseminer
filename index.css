@@ -57,6 +57,7 @@ html {
     width:20%;
     height: calc(100% - 61px);
 	border: 5px solid black;
+	outline: solid 1px rgb(138,138,138);  
 }
 
 .panelPlanetRight{
@@ -75,6 +76,7 @@ html {
     width:20%;
     height: calc(100% - 61px);
 	border: 5px solid black;
+	outline: solid 1px rgb(138,138,138);  
 }
 
 .panelBottom{
@@ -97,6 +99,7 @@ html {
     width:100%;
     text-align:center;
     border-top: 1px black;
+		outline: solid 1px rgb(138,138,138);  
 }
 
 .panelBottomLeft {
@@ -269,7 +272,8 @@ html {
 	margin-top: 50px;
 	left: 8px;
 	width: calc(100% - 16px);
-	background-color: #878787;
+	background-color: rgba(125,125,125,0.5);
+	border: 1px solid rgb(155,155,155);
 }
 
 /* Item styles */
@@ -304,7 +308,7 @@ html {
 }
 
 .itemSlotNonHover {
-	border: 1px solid #878787;
+	border: 1px solid rgba(0,0,0,0);
 }
 
 
@@ -479,8 +483,9 @@ html {
 	width: 60%;
 	height: 250px;	
 	margin: 0 auto;
-    background-color: #878787;
 	position: relative;
+	background-color: rgba(125,125,125,0.5);
+	border: 1px solid rgb(155,155,155);
 }
 .gearSlot {
 	width: 40px;
