@@ -373,7 +373,7 @@ addItem(3002, 'goldBar', 'Gold bar', 1000, {
         [Items.gold.id, 10]
     ]
 );
-additem(3017, 'titaniumBar', 'Titanium Bar', 2500, ).setCraftingCost(
+addItem(3017, 'titaniumBar', 'Titanium Bar', 2500).setCraftingCost(
 	[
 		[Items.titanium.id, 10]
 	]
@@ -551,11 +551,11 @@ addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
     ]
 );
 addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
-	'storageLimit' 1,
+	'storageLimit': 1,
 	'power': 7
 }).setCraftingCost(
 	[
-		[Items.titaniumBar.id, 75].
+		[Items.titaniumBar.id, 75],
 		[Items.diamond.id, 20],
 		[Items.goldBar.id, 5]
 	]
