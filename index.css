@@ -138,6 +138,10 @@ html {
 .genericButton:hover {
 	background-color: rgb(115,115,115);
 }
+.genericButton:active {
+	background-color: #444444;
+}
+
 .genericButtonSelected {
 	box-shadow: 
 	  0 1px 2px #000,
@@ -152,6 +156,37 @@ html {
 .genericButtonLast {
 	margin-right:0px;
 }
+
+.mainButton {
+	font-size: 14px;
+    font-family: 'overpassregular', Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    //line-height: 0;
+    letter-spacing: 1px;
+	
+	outline: solid 1px rgb(138,138,138);  
+	border: solid 1px black;
+	color: white;
+	box-shadow: 
+	  0 1px 2px #000,
+	  0 -1px 1px #000,
+	  inset 0 -1px 1px rgba(0,0,0,0.5),
+	  inset 0 1px 1px rgba(255,255,255,0.8);
+	background-color: #444444;	
+	height: 100px;
+	width: 150px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.mainButton:hover {
+	background-color: rgb(115,115,115);
+}
+.mainButton:active {
+	background-color: #444444;
+}
+
 
 .bottomBarButton {
 	margin-top:5px;
