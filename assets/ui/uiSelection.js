@@ -24,12 +24,12 @@ function UISelection(parent, values, selectionChangedCallback) {
         // Register ourselfs for callbacks
         UISelections[this.key] = this;
         
-        this.selectionPrevElement = $('<img class="selectPrevious clickable noSelect" src="'+ imageRoot +'selectionArrowBack.png"/>');
+        this.selectionPrevElement = $('<img class="selectPrevious clickable noSelect" src="'+ sys.imageRoot +'selectionArrowBack.png"/>');
         this.selectionPrevElement.click({param: this.key}, this.onSelectPrevious);
         
         this.selectionTextElement = $('<div class="selectionText noSelect"></div>');
         
-        this.selectionNextElement = $('<img class="selectNext clickable noSelect" src="'+ imageRoot +'selectionArrowForward.png"/>');
+        this.selectionNextElement = $('<img class="selectNext clickable noSelect" src="'+ sys.imageRoot +'selectionArrowForward.png"/>');
         this.selectionNextElement.click({param: this.key}, this.onSelectNext);
         
         $('#' + this.parent).append(this.selectionPrevElement);

@@ -1,10 +1,5 @@
 function Storage(id) {
 	this.id = id;
-	this.items = {};
-
-	this.itemCategoryDictionary = {};
-	this.gearTypeDictionary = {};
-	this.itemMetadata = {};
 	
 	this.storageChanged = false;
 	
@@ -12,6 +7,7 @@ function Storage(id) {
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
+	    this.reset();
 	};
 
 	// ---------------------------------------------------------------------------
@@ -282,5 +278,11 @@ function Storage(id) {
 
 	this.reset = function(fullReset) {
 		this.items = {};
+		
+		this.itemCategoryDictionary = {};
+	    this.gearTypeDictionary = {};
+	    this.itemMetadata = {};
+	    
+	    this.storageChanged = true;
 	};
 };

@@ -27,14 +27,8 @@ GearType = {
 Items = {};
 
 // ---------------------------------------------------------------------------
-// variables
-// ---------------------------------------------------------------------------
-var imageRoot = "assets/images/";
-
-// ---------------------------------------------------------------------------
 // helper functions
 // ---------------------------------------------------------------------------
-
 function addItem(id, internalName, name, baseValue, metadata) {
     var item = {
         'id': id,
@@ -118,126 +112,148 @@ function setItemProperties() {
     }
 }
 
-function setPlanetMiningResource(planet, id, mode, min, max, chance) {
-    if (!planet.resources) {
-        planet.resources = {};
-    }
-
-    planet.resources[id] = {
-        'mode': mode,
-        'minDepth': min,
-        'maxDepth': max,
-        'baseChance': chance,
-    };
-}
-
 // ---------------------------------------------------------------------------
 // Raw materials
 // ---------------------------------------------------------------------------
 addItem(1, 'oxygen', 'Oxygen', 0.1);
+
 addItem(3, 'copper', 'Copper', 0.5, {
-    'icon': imageRoot + 'copper.png',
+    'icon': sys.iconRoot + 'copper.png',
     'el': 'Cu'
 });
+
 addItem(4, 'iron', 'Iron', 1, {
-    'icon': imageRoot + 'iron.png',
+    'icon': sys.iconRoot + 'iron.png',
     'el': 'Fe'
 });
+
 addItem(5, 'gold', 'Gold', 100, {
-    'icon': imageRoot + 'gold.png',
+    'icon': sys.iconRoot + 'gold.png',
     'el': 'Au'
 });
+
 addItem(6, 'silicon', 'Silicon', 1000, {
     'el': 'Si'
 });
+
 addItem(7, 'aluminum', 'Aluminum', 1000, {
     'el': 'Al'
 });
+
 addItem(8, 'calcium', 'Calcium', 1000, {
     'el': 'Ca'
 });
+
 addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
+
 addItem(10, 'fuel', 'Fuel', 1000);
+
 addItem(11, 'potassium', 'Potassium', 1000, {
     'el': 'K'
 });
+
 addItem(12, 'magnesium', 'Magnesium', 1000, {
     'el': 'Mg'
 });
+
 addItem(13, 'titanium', 'Titanium', 1000, {
     'el': 'Ti'
 });
+
 addItem(14, 'hydrogen', 'Hydrogen', 1000, {
     'el': 'H'
 });
+
 addItem(15, 'phosphorus', 'Phosphorus', 1000, {
     'el': 'P'
 });
+
 addItem(16, 'manganese', 'Manganese', 1000, {
     'el': 'Mn'
 });
+
 addItem(17, 'fluorine', 'Fluorine', 1000, {
     'el': 'F'
 });
+
 addItem(18, 'barium', 'Barium', 1000, {
     'el': 'Ba'
 });
+
 addItem(19, 'carbon', 'Carbon', 1000, {
     'el': 'C'
 });
+
 addItem(20, 'sulfur', 'Sulfur', 1000, {
     'el': 'S'
 });
+
 addItem(21, 'nitrogen', 'Nitrogen', 1000, {
     'el': 'N'
 });
+
 addItem(22, 'nickel', 'Nickel', 1000, {
     'el': 'Ni'
 });
+
 addItem(23, 'zinc', 'Zinc', 1000, {
     'el': 'Zn'
 });
+
 addItem(24, 'chromium', 'Chromium', 1000, {
     'el': 'Cr'
 });
+
 addItem(25, 'chloride', 'Chloride', 1000, {
     'el': 'Cl'
 });
+
 addItem(26, 'carbonDioxide', 'Carbon dioxide', 1000, {
     'el': 'CO2'
 });
+
 addItem(27, 'sulfurDioxide', 'Sulfur Dioxide', 1000, {
     'el': 'SO2'
 });
+
 addItem(28, 'carbonMonoxide', 'Carbon Monoxide', 1000, {
     'el': 'CO'
 });
+
 addItem(29, 'helium', 'Helium', 1000, {
     'el': 'He'
 });
+
 addItem(30, 'neon', 'Neon', 1000, {
     'el': 'Ne'
 });
+
 addItem(31, 'methane', 'Methane', 10000, {
     'el': 'CH4'
 });
+
 addItem(32, 'argon', 'Argon', 10000, {
     'el': 'Ar'
 });
+
 addItem(33, 'xenon', 'Xenon', 100000, {
     'el': 'Xe'
 });
+
 addItem(34, 'krypton', 'Krypton', 100000, {
     'el': 'Kr'
 });
+
 addItem(35, 'silver', 'Silver', 50, {
     'el': 'Ag'
 });
+
 addItem(36, 'ceasium', 'Ceasium', 100000, {
     'el': 'Cs'
 });
+
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
@@ -342,120 +358,139 @@ addItem(2097, "turquoise", "Turquoise", 10000);
 addItem(2098, "variscite", "Variscite", 10000);
 addItem(2099, "zircon", "Zircon", 10000);
 addItem(2100, "zultanite", "Zultanite", 10000);
+
 // ---------------------------------------------------------------------------
 // Components and parts
 // ---------------------------------------------------------------------------
 addItem(3000, 'copperBar', 'Copper bar', 5, {
-    'icon': imageRoot + 'copperBar.png'
+    'icon': sys.iconRoot + 'copperBar.png'
 }).setCraftingCost(
     [
         [Items.copper.id, 10]
     ]
 );
+
 addItem(3001, 'ironBar', 'Iron bar', 10, {
-    'icon': imageRoot + 'ironBar.png'
+    'icon': sys.iconRoot + 'ironBar.png'
 }).setCraftingCost(
     [
         [Items.iron.id, 10]
     ]
 );
+
 addItem(3008, 'silverBar', 'Silver bar', 1000, {
-    'icon': imageRoot + 'silverBar.png'
+    'icon': sys.iconRoot + 'silverBar.png'
 }).setCraftingCost(
     [
         [Items.silver.id, 10]
     ]
 );
+
 addItem(3002, 'goldBar', 'Gold bar', 1000, {
-    'icon': imageRoot + 'goldBar.png'
+    'icon': sys.iconRoot + 'goldBar.png'
 }).setCraftingCost(
     [
         [Items.gold.id, 10]
     ]
 );
+
 addItem(3017, 'titaniumBar', 'Titanium Bar', 2500).setCraftingCost(
 	[
 		[Items.titanium.id, 10]
 	]
 );
+
 addItem(3003, 'oxygenCan', 'Oxygen can', 11, {
-    'icon': imageRoot + 'oxygenCan.png'
+    'icon': sys.iconRoot + 'oxygenCan.png'
 }).setCraftingCost(
     [
         [Items.oxygen.id, 1],
         [Items.ironBar.id, 1]
     ]
 );
+
 addItem(3004, 'oxygenTank', 'Oxygen tank', 120, {
-    'icon': imageRoot + 'oxygenTank.png'
+    'icon': sys.iconRoot + 'oxygenTank.png'
 }).setCraftingCost(
     [
         [Items.oxygenCan.id, 1],
         [Items.ironBar.id, 10]
     ]
 );
+
 addItem(3005, 'gasCan', 'Gas canister', 50, {
     'description': 'A canister used to hold gas.',
-    'icon': imageRoot + 'gasCan.png'
+    'icon': sys.iconRoot + 'gasCan.png'
 }).setCraftingCost(
     [
         [Items.ironBar.id, 5]
     ]
 );
+
 addItem(3006, 'fuelCan', 'Fuel can', 1000).setCraftingCost(
     [
         [Items.fuel.id, 10],
         [Items.ironBar.id, 1]
     ]
 );
+
 addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     [
         [Items.fuelCan.id, 1],
         [Items.ironBar.id, 10]
     ]
 );
+
 addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
     [
         [Items.ceasium.id, 10],
         [Items.ironBar.id, 1]
     ]
 );
+
 addItem(3010, 'hyperCell', 'Hyper cell', 10000);
+
 addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
     [
         [Items.silica.id, 1],
         [Items.oxygen.id, 2]
     ]
 );
+
 addItem(3012, 'glass', 'Glass', 5000).setCraftingCost(
     [
         [Items.silica.id, 2]
     ]
 );
+
 addItem(3014, 'steelBar', 'Steel bar', 5000).setCraftingCost(
     [
         [Items.ironBar.id, 1],
         [Items.carbon.id, 1]
     ]
 );
+
 addItem(3013, 'microchip', 'Microchip', 10000).setCraftingCost(
     [
         [Items.silica.id, 1],
         [Items.steelBar.id, 1]
     ]
 );
+
 addItem(3015, 'hydrogenTank', 'Hydrogen tank', 10000).setCraftingCost(
     [
         [Items.hydrogen.id, 10],
         [Items.steelBar.id, 10]
     ]
 );
+
 addItem(3016, 'gps', 'GPS', 10000).setCraftingCost(
     [
         [Items.steelBar.id, 10],
         [Items.microchip.id, 1]
     ]
 );
+
 // ---------------------------------------------------------------------------
 // Usable
 // ---------------------------------------------------------------------------
@@ -465,27 +500,32 @@ addItem(5000, 'strengthPotion', 'Strength Potion', 5000, {
     'duration': 60,
     'use': 1
 });
+
 addItem(5001, 'refiningPotion', 'Refining Potion', 25000, {
     'description': '5% bonus when refining for 1 minute',
     'storeValue': 50000,
     'duration': 60,
     'use': 1
 });
+
 addItem(5002, 'oxygenPotion', 'Oxygen Potion', 25000, {
     'description': 'Refills your oxygen tanks',
     'storeValue': 50000,
     'use': 1
 });
+
 addItem(5003, 'healthPotion', 'Health Potion', 25000, {
     'description': 'Refills your health',
     'storeValue': 50000,
     'use': 1
 });
+
 addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
     'description': 'Resurrect your character',
     'storeValue': 500000,
     'use': 1,
 });
+
 // ---------------------------------------------------------------------------
 // Buildings
 // ---------------------------------------------------------------------------
@@ -494,13 +534,15 @@ addItem(4000, 'miningRig', 'Mining Rig', 50000, {
 }).setCraftingCost([
     [Items.iron.id, 100]
 ]);
+
 addItem(4001, 'refinery', 'Refinery', 50000, {
     'storageLimit': 1
 }).setCraftingCost(
-    [
-        [Items.ironBar.id, 50],
-        [Items.gasCan.id, 10]
-    ]);
+[
+     [Items.ironBar.id, 50],
+     [Items.gasCan.id, 10]
+]);
+
 // ---------------------------------------------------------------------------
 // Equipment - MainHand
 // ---------------------------------------------------------------------------
@@ -508,31 +550,36 @@ addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1,
 	'power': 1
 });
+
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
 	'power': 3,
-    'icon': imageRoot + 'pick.png'
+    'icon': sys.iconRoot + 'pick.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
+
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1,
 	'power': 4
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
     'storageLimit': 1,
 	'power': 5
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
+
 addItem(40004, 'titaniumPick', 'Titanium Pickaxe', 4000, {
 	'storageLimit': 1,
 	'power': 6
 }).setCraftingCost([
 	[Items.titaniumBar.id, 10]
 ]);
+
 addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
     'storageLimit': 1,
 	'power': 10
@@ -543,6 +590,7 @@ addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
         [Items.goldBar.id, 10]
     ]
 );
+
 addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
     [
         [Items.ironBar.id, 50],
@@ -550,6 +598,7 @@ addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
         [Items.plasmaCell.id, 5]
     ]
 );
+
 addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
 	'storageLimit': 1,
 	'power': 7
@@ -560,6 +609,7 @@ addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
 		[Items.goldBar.id, 5]
 	]
 );
+
 // ---------------------------------------------------------------------------
 // Equipment - Head
 // ---------------------------------------------------------------------------
@@ -568,21 +618,25 @@ addItem(42000, 'copperHelmet', 'Copper Helmet', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 4]
 ]);
+
 addItem(42001, 'ironHelmet', 'Iron Helmet', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+
 addItem(42002, 'silverHelmet', 'Silver Helmet', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
+
 addItem(42003, 'goldHelmet', 'Gold Helmet', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
+
 // ---------------------------------------------------------------------------
 // Equipment - Chest
 // ---------------------------------------------------------------------------
@@ -591,21 +645,25 @@ addItem(43000, 'copperArmor', 'Copper Armor', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 8]
 ]);
+
 addItem(43001, 'ironArmor', 'Iron Armor', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+
 addItem(43002, 'silverArmor', 'Silver Armor', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
+
 addItem(43003, 'goldArmor', 'Gold Armor', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
+
 // ---------------------------------------------------------------------------
 // Equipment - Legs
 // ---------------------------------------------------------------------------
@@ -614,21 +672,25 @@ addItem(44000, 'copperArmorLegs', 'Copper Legs', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 6]
 ]);
+
 addItem(44001, 'ironArmorLegs', 'Iron Legs', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+
 addItem(44002, 'silverArmorLegs', 'Silver Legs', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
+
 addItem(44003, 'goldArmorLegs', 'Gold Legs', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
+
 // ---------------------------------------------------------------------------
 // Equipment - Boots
 // ---------------------------------------------------------------------------
@@ -637,76 +699,92 @@ addItem(45000, 'copperArmorFeet', 'Copper Boots', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 3]
 ]);
+
 addItem(45001, 'ironArmorFeet', 'Iron Boots', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
+
 addItem(45002, 'silverArmorFeet', 'Silver Boots', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
+
 addItem(45003, 'goldArmorFeet', 'Gold Boots', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
+
 // ---------------------------------------------------------------------------
 // Machines
 // ---------------------------------------------------------------------------
 addItem(46000, 'smallMotor', 'Small Motor', 3000, {
-    'icon': imageRoot + 'smallMotor.jpg'
+    'icon': sys.iconRoot + 'smallMotor.jpg'
 }).setCraftingCost([
     [Items.ironBar.id, 5]
 ]);
+
 addItem(46001, 'atmosphereConcentrator', 'Atmosphere Concentrator', 10000, {
     'planetLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 5],
     [Items.smallMotor.id, 1]
 ]);
-// ----------
+
+// ---------------------------------------------------------------------------
 // Spaceship Main Pieces
-// ----------
+// ---------------------------------------------------------------------------
 addItem(50000, 'cabin', 'Cabin', 10000).setCraftingCost([
     [Items.ironBar.id, 50]
 ]);
+
 addItem(50001, 'payloadBayDoors', 'Payload Bay Doors', 10000).setCraftingCost([
     [Items.ironBar.id, 50]
 ]);
+
 addItem(50002, 'maneuveringSystem', 'Maneuvering System', 10000).setCraftingCost([
     [Items.ironBar.id, 5],
     [Items.microchip.id, 1],
     [Items.gps.id, 1]
 ]);
+
 addItem(50003, 'mainEngine', 'Main Engine', 10000).setCraftingCost([
     [Items.ironBar.id, 30],
     [Items.fuelTank.id, 5],
     [Items.hydrogenTank.id, 5]
 ]);
+
 addItem(50004, 'thrusters', 'Thrusters', 10000).setCraftingCost([
     [Items.ironBar.id, 20],
     [Items.oxygenTank.id, 2],
     [Items.hydrogenTank.id, 2],
     [Items.smallMotor.id, 2]
 ]);
+
 addItem(50005, 'solidBooster', 'Solid Booster', 10000).setCraftingCost([
     [Items.ironBar.id, 20],
     [Items.oxygenTank.id, 4]
 ]);
+
 addItem(50006, 'forwardFuselage', 'Forward Fuselage', 10000).setCraftingCost([
     [Items.ironBar.id, 20]
 ]);
+
 addItem(50007, 'midFuselage', 'Mid Fuselage', 10000).setCraftingCost([
     [Items.ironBar.id, 20]
 ]);
+
 addItem(50008, 'aftFuselage', 'Aft Fuselage', 10000).setCraftingCost([
     [Items.ironBar.id, 20]
 ]);
+
 addItem(50009, 'landingGear', 'Landing Gear', 10000).setCraftingCost([
     [Items.ironBar.id, 20]
 ]);
+
 // ---------------------------------------------------------------------------
 // Set the item categories and types
 // ---------------------------------------------------------------------------
