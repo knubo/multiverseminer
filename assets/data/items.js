@@ -29,6 +29,7 @@ Items = {};
 // ---------------------------------------------------------------------------
 // helper functions
 // ---------------------------------------------------------------------------
+
 function addItem(id, internalName, name, baseValue, metadata) {
     var item = {
         'id': id,
@@ -44,7 +45,7 @@ function addItem(id, internalName, name, baseValue, metadata) {
         }
     }
 
-    Items[internalName] = item;    
+    Items[internalName] = item;
     return item;
 }
 
@@ -103,10 +104,9 @@ function setItemProperties() {
             item.gearType = GearType.feet;
         } else if (item.id >= 46000 && item.id < 47000) {
             item.category = ItemCategory.machines;
-        } else if (item.id >= 50000 && item.id < 50100){
+        } else if (item.id >= 50000 && item.id < 50100) {
             item.category = ItemCategory.spaceship;
-        }
-        else {
+        } else {
             item.category = ItemCategory.unset;
         }
     }
@@ -398,9 +398,9 @@ addItem(3002, 'goldBar', 'Gold bar', 1000, {
 );
 
 addItem(3017, 'titaniumBar', 'Titanium Bar', 2500).setCraftingCost(
-	[
-		[Items.titanium.id, 10]
-	]
+    [
+        [Items.titanium.id, 10]
+    ]
 );
 
 addItem(3003, 'oxygenCan', 'Oxygen can', 11, {
@@ -541,10 +541,10 @@ addItem(4000, 'miningRig', 'Mining Rig', 50000, {
 addItem(4001, 'refinery', 'Refinery', 50000, {
     'storageLimit': 1
 }).setCraftingCost(
-[
-     [Items.ironBar.id, 50],
-     [Items.gasCan.id, 10]
-]);
+    [
+        [Items.ironBar.id, 50],
+        [Items.gasCan.id, 10]
+    ]);
 
 // ---------------------------------------------------------------------------
 // Equipment - MainHand
@@ -562,37 +562,36 @@ var rheniumBasePrice = 45000;
 
 addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1,
-	'power': 1
+    'power': 1
 });
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
-	'power': 3,
+    'power': 3,
     'icon': sys.iconRoot + 'pick.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1,
-	'power': 4
+    'power': 4
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
     'storageLimit': 1,
-	'power': 5
+    'power': 5
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
 addItem(40004, 'titaniumPick', 'Titanium Pickaxe', 4000, {
-	'storageLimit': 1,
-	'power': 6
+    'storageLimit': 1,
+    'power': 6
 }).setCraftingCost([
-	[Items.titaniumBar.id, 10]
+    [Items.titaniumBar.id, 10]
 ]);
-
 addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
     'storageLimit': 1,
-	'power': 10
+    'power': 10
 }).setCraftingCost(
     [
         [Items.ironBar.id, 50],
@@ -600,7 +599,6 @@ addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
         [Items.goldBar.id, 10]
     ]
 );
-
 addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
     [
         [Items.ironBar.id, 50],
@@ -608,18 +606,16 @@ addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000).setCraftingCost(
         [Items.plasmaCell.id, 5]
     ]
 );
-
 addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
-	'storageLimit': 1,
-	'power': 7
+    'storageLimit': 1,
+    'power': 7
 }).setCraftingCost(
-	[
-		[Items.titaniumBar.id, 75],
-		[Items.diamond.id, 20],
-		[Items.goldBar.id, 5]
-	]
+    [
+        [Items.titaniumBar.id, 75],
+        [Items.diamond.id, 20],
+        [Items.goldBar.id, 5]
+    ]
 );
-
 addItem(40008, 'copperScimitar', 'Copper Scimitar', copperBasePrice);
 addItem(40009, 'copperAxe', 'Copper Axe', copperBasePrice);
 addItem(40010, 'copperTwoHandedAxe', 'Copper Two Handed Axe', copperBasePrice);
@@ -827,19 +823,16 @@ addItem(43000, 'copperArmor', 'Copper Armor', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 8]
 ]);
-
 addItem(43001, 'ironArmor', 'Iron Armor', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(43002, 'silverArmor', 'Silver Armor', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
-
 addItem(43003, 'goldArmor', 'Gold Armor', 500, {
     'storageLimit': 1
 }).setCraftingCost([
@@ -885,25 +878,53 @@ addItem(44000, 'copperArmorLegs', 'Copper Legs', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 6]
 ]);
-
 addItem(44001, 'ironArmorLegs', 'Iron Legs', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(44002, 'silverArmorLegs', 'Silver Legs', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
-
 addItem(44003, 'goldArmorLegs', 'Gold Legs', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
+addItem(44004, 'copperReinforcedPants', 'Copper Reinforced Pants', copperBasePrice);
+addItem(44005, 'copperReinforcedChaps', 'Copper Reinforced Chaps', copperBasePrice);
+addItem(44006, 'copperGeaves', 'Copper Geaves', copperBasePrice);
+addItem(44007, 'copperPlatelegs', 'Copper Platelegs', copperBasePrice);
+addItem(44008, 'bronzeReinforcedPants', 'Bronze Reinforced Pants', bronzeBasePrice);
+addItem(44009, 'bronzeReinforcedChaps', 'Bronze Reinforced Chaps', bronzeBasePrice);
+addItem(44010, 'bronzeGeaves', 'Bronze Geaves', bronzeBasePrice);
+addItem(44011, 'bronzePlatelegs', 'Bronze Platelegs', bronzeBasePrice);
+addItem(44012, 'ironReinforcedPants', 'Iron Reinforced Pants', ironBasePrice);
+addItem(44013, 'ironReinforcedChaps', 'Iron Reinforced Chaps', ironBasePrice);
+addItem(44014, 'ironGeaves', 'Iron Geaves', ironBasePrice);
+addItem(44015, 'ironPlatelegs', 'Iron Platelegs', ironBasePrice);
+addItem(44016, 'steelReinforcedPants', 'Steel Reinforced Pants', steelBasePrice);
+addItem(44017, 'steelReinforcedChaps', 'Steel Reinforced Chaps', steelBasePrice);
+addItem(44018, 'steelGeaves', 'Steel Geaves', steelBasePrice);
+addItem(44019, 'steelPlatelegs', 'Steel Platelegs', steelBasePrice);
+addItem(44020, 'titaniumReinforcedPants', 'Titanium Reinforced Pants', titaniumBasePrice);
+addItem(44021, 'titaniumReinforcedChaps', 'Titanium Reinforced Chaps', titaniumBasePrice);
+addItem(44022, 'titaniumGeaves', 'Titanium Geaves', titaniumBasePrice);
+addItem(44023, 'titaniumPlatelegs', 'Titanium Platelegs', titaniumBasePrice);
+addItem(44024, 'tungstenReinforcedPants', 'Tungsten Reinforced Pants', tungstenBasePrice);
+addItem(44025, 'tungstenReinforcedChaps', 'Tungsten Reinforced Chaps', tungstenBasePrice);
+addItem(44026, 'tungstenGeaves', 'Tungsten Geaves', tungstenBasePrice);
+addItem(44027, 'tungstenPlatelegs', 'Tungsten Platelegs', tungstenBasePrice);
+addItem(44028, 'iridiumReinforcedPants', 'Iridium Reinforced Pants', iridiumBasePrice);
+addItem(44029, 'iridiumReinforcedChaps', 'Iridium Reinforced Chaps', iridiumBasePrice);
+addItem(44030, 'iridiumGeaves', 'Iridium Geaves', iridiumBasePrice);
+addItem(44031, 'iridiumPlatelegs', 'Iridium Platelegs', iridiumBasePrice);
+addItem(44032, 'rheniumReinforcedPants', 'Rhenium Reinforced Pants', rheniumBasePrice);
+addItem(44033, 'rheniumReinforcedChaps', 'Rhenium Reinforced Chaps', rheniumBasePrice);
+addItem(44034, 'rheniumGeaves', 'Rhenium Geaves', rheniumBasePrice);
+addItem(44035, 'rheniumPlatelegs', 'Rhenium Platelegs', rheniumBasePrice);
 // ---------------------------------------------------------------------------
 // Equipment - Boots
 // ---------------------------------------------------------------------------
@@ -912,25 +933,45 @@ addItem(45000, 'copperArmorFeet', 'Copper Boots', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 3]
 ]);
-
 addItem(45001, 'ironArmorFeet', 'Iron Boots', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(45002, 'silverArmorFeet', 'Silver Boots', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
-
 addItem(45003, 'goldArmorFeet', 'Gold Boots', 500, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
+addItem(45004, 'copperReinforcedShoes', 'Copper Reinforced Shoes', copperBasePrice);
+addItem(45005, 'copperBoots', 'Copper Boots', copperBasePrice);
+addItem(45006, 'copperChainboots', 'Copper Chainboots', copperBasePrice);
+addItem(45007, 'bronzeReinforcedShoes', 'Bronze Reinforced Shoes', bronzeBasePrice);
+addItem(45008, 'bronzeBoots', 'Bronze Boots', bronzeBasePrice);
+addItem(45009, 'bronzeChainboots', 'Bronze Chainboots', bronzeBasePrice);
+addItem(45010, 'ironReinforcedShoes', 'Iron Reinforced Shoes', ironBasePrice);
+addItem(45011, 'ironBoots', 'Iron Boots', ironBasePrice);
+addItem(45012, 'ironChainboots', 'Iron Chainboots', ironBasePrice);
+addItem(45013, 'steelReinforcedShoes', 'Steel Reinforced Shoes', steelBasePrice);
+addItem(45014, 'steelBoots', 'Steel Boots', steelBasePrice);
+addItem(45015, 'steelChainboots', 'Steel Chainboots', steelBasePrice);
+addItem(45016, 'titaniumReinforcedShoes', 'Titanium Reinforced Shoes', titaniumBasePrice);
+addItem(45017, 'titaniumBoots', 'Titanium Boots', titaniumBasePrice);
+addItem(45018, 'titaniumChainboots', 'Titanium Chainboots', titaniumBasePrice);
+addItem(45019, 'tungstenReinforcedShoes', 'Tungsten Reinforced Shoes', tungstenBasePrice);
+addItem(45020, 'tungstenBoots', 'Tungsten Boots', tungstenBasePrice);
+addItem(45021, 'tungstenChainboots', 'Tungsten Chainboots', tungstenBasePrice);
+addItem(45022, 'iridiumReinforcedShoes', 'Iridium Reinforced Shoes', iridiumBasePrice);
+addItem(45023, 'iridiumBoots', 'Iridium Boots', iridiumBasePrice);
+addItem(45024, 'iridiumChainboots', 'Iridium Chainboots', iridiumBasePrice);
+addItem(45025, 'rheniumReinforcedShoes', 'Rhenium Reinforced Shoes', rheniumBasePrice);
+addItem(45026, 'rheniumBoots', 'Rhenium Boots', rheniumBasePrice);
+addItem(45027, 'rheniumChainboots', 'Rhenium Chainboots', rheniumBasePrice);
 // ---------------------------------------------------------------------------
 // Machines
 // ---------------------------------------------------------------------------
