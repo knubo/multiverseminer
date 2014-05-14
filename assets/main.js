@@ -13,17 +13,11 @@ $(document).tooltip();
 $(document).ready(onDocumentReady);
 
 // Setup key bindings
-Mousetrap.bind('f', function(e) {
-    onDigDown();       
-});
 Mousetrap.bind('d', function(e) {
-   onDigSideways();
+   onMine();
 });
 Mousetrap.bind('g', function(e) {
-   onGatherAtmosphere();
-});
-Mousetrap.bind('u', function(e) {
-   onMoveUp();
+   onGather();
 });
 Mousetrap.bind('s', function(e) {
    onSave();
@@ -31,14 +25,6 @@ Mousetrap.bind('s', function(e) {
 Mousetrap.bind('r', function(e) {
    onReset();
 });
-
-// Hook into the log so we can display it in the notification window
-Utils.logCallback = function(type, message) {
-    noty({
-        text : message,
-        type : type
-    });
-};
 
 // ---------------------------------------------------------------------------
 // function hooks
@@ -74,7 +60,7 @@ function onUpdate() {
 
 function onCraft(what) {
 	if (what == undefined) {
-		Utils.logError("onCraft with invalid target");
+		utils.logError("onCraft with invalid target");
 		return;
 	}
 
@@ -83,47 +69,13 @@ function onCraft(what) {
 	}
 };
 
-function onDigSideways() {
-	game.settings.addStat('clickCount');
+function onMine() {
+	game.settings.addStat('mineCount');
 	game.player.mine();
 };
 
-function onDigDown() {
-	if (!game.currentPlanet) {
-		Utils.logError("Can not dig down, not on planet");
-		return;
-	}
-
-	game.settings.addStat('clickCount');
-
-	// Todo: this needs to happen in the player or something to account for
-	// items / bonus etc
-	game.player.moveDown();
-	
-	// Update the finder components
-	ui.updateComponent(ui.componentElementFinder);
-    ui.updateComponent(ui.componentGemFinder);
-};
-
-function onMoveUp() {
-	if (!game.currentPlanet) {
-		Utils.logError("Can not dig up, not on planet");
-		return;
-	}
-
-	game.settings.addStat('clickCount');
-
-	// Todo: this needs to happen in the player or something to account for
-	// items / bonus etc
-	game.player.moveUp();
-	
-	// Update the finder components
-	ui.updateComponent(ui.componentElementFinder);
-	ui.updateComponent(ui.componentGemFinder);
-};
-
-function onGatherAtmosphere() {
-	game.settings.addStat('clickCount');
+function onGather() {
+	game.settings.addStat('gatherCount');
 	game.player.gather();
 };
 
@@ -169,20 +121,10 @@ function onActivateElementFinder() {
     ui.showComponent(ui.componentElementFinder);
 }
 
-function onActivateGemFinder() {
-	// select the button
-	changeRightCategoryButton(2);
-	
-    ui.hideRightSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentGemFinder);
-}
-
 function onSave() {
 	game.save();
 
-	Utils.log("Game saved");
+	ui.notify("Game saved");
 }
 
 function onReset() {

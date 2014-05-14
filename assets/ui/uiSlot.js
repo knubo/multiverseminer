@@ -38,7 +38,7 @@ function UISlot() {
 	this.onMouseDown = function(parameters) {
 		var self = parameters.data.self;
 		
-		// Utils.log('SlotMouseDown: ' + parameters.which+" " + self.content, true);
+		// utils.log('SlotMouseDown: ' + parameters.which+" " + self.content, true);
 		
 		// If we don't have content don't do anything on mouse down
 		if(!self.content) {
@@ -56,12 +56,12 @@ function UISlot() {
 	
 	this.onMouseUp = function(parameters) {
 		var self = parameters.data.self;
-		// Utils.log('SlotMouseUp: '  + parameters.which+" "+ self.content, true);
+		// utils.log('SlotMouseUp: '  + parameters.which+" "+ self.content, true);
 	};
 	
 	this.onDoubleClick = function(parameters) {
 		var self = parameters.data.self;
-		// Utils.log('SlotDBLC: '  + parameters.which+" "+ self.content, true);
+		// utils.log('SlotDBLC: '  + parameters.which+" "+ self.content, true);
 	};
 	
 	// ---------------------------------------------------------------------------

@@ -21,7 +21,7 @@ function Gear(id) {
 	// ---------------------------------------------------------------------------
 	this.addSlot = function(type) {
 		if (this.slots[type]) {
-			Utils.logError("Slot was already added: " + type);
+			utils.logError("Slot was already added: " + type);
 			return;
 		}
 
@@ -34,12 +34,12 @@ function Gear(id) {
 		var itemInfo = game.getItem(itemId);
 
 		if (!itemInfo || !itemInfo.gearType) {
-			Utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
+			utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
 			return;
 		}
 
 		if (!this.slots[itemInfo.gearType]) {
-			Utils.logError("attempt to equip item but slot was not set: " + itemId
+			utils.logError("attempt to equip item but slot was not set: " + itemId
 					+ " in " + itemInfo.type);
 			return;
 		}
@@ -51,7 +51,7 @@ function Gear(id) {
 
 	this.unEquip = function(type) {
 		if (!this.slots[type]) {
-			Utils.logError("attempt to un-equip item but slot was not set: "
+			utils.logError("attempt to un-equip item but slot was not set: "
 					+ type);
 			return;
 		}
@@ -107,7 +107,7 @@ function Gear(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 		for(var key in this.slots) {
-			var itemId = Utils.loadInt(storageKey + key, undefined);
+			var itemId = utils.loadInt(storageKey + key, undefined);
 			if(!itemId || itemId < 0) {
 				continue;
 			}

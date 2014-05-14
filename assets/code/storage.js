@@ -40,7 +40,7 @@ function Storage(id) {
 		// Get some info about the item we are adding
 		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
-			Utils.logError("attempt to add unknown item: " + id);
+			utils.logError("attempt to add unknown item: " + id);
 			return;
 		}
 		
@@ -63,10 +63,8 @@ function Storage(id) {
 	};
 
 	this.addItems = function(items) {
-		var keys = Object.keys(items);
-		for ( var i = 0; i < keys.length; i++) {
-			var key = keys[i];
-			this.addItem(key, items[key], true);
+		for ( var i = 0; i < items.length; i++) {
+			this.addItem(items[i], 1, true);
 		}
 		
 		this.storageChanged = true;
@@ -113,12 +111,12 @@ function Storage(id) {
 		// Get some info about the item we are adding
 		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
-			Utils.logError("attempt to remove unknown item: " + id);
+			utils.logError("attempt to remove unknown item: " + id);
 			return;
 		}
 		
 		if (!this.items[id] || this.items[id] < value) {
-			Utils.logError("RemoveItem of " + id
+			utils.logError("RemoveItem of " + id
 					+ " called with insufficient items: " + id + " was "
 					+ this.items[id]);
 			return;
@@ -130,7 +128,7 @@ function Storage(id) {
 			delete this.items[id];
 			
 			// Remove this item from the settings to avoid cheating by reloading
-			Utils.deleteSetting(this._getStorageKey() + id);
+			utils.deleteSetting(this._getStorageKey() + id);
 			
 			// Unregister from the dictionaries
 			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
@@ -273,7 +271,7 @@ function Storage(id) {
 				continue;
 			}
 
-			this.addItem(key, Utils.loadInt(storageKey + key, 0));
+			this.addItem(key, utils.loadInt(storageKey + key, 0));
 		}
 		
 		this.storageChanged = true;
