@@ -13,8 +13,6 @@ function Game() {
 	
 	this.planetChanged = true;
 	
-	this.targetPlanet = undefined;
-	
 	this.version = 0.1;
 
 	// ---------------------------------------------------------------------------
@@ -105,7 +103,7 @@ function Game() {
 		if(this.settings.travelActive) {
 			this.settings.travelDistanceElapsed += 5000;
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
-				this._enterOrbit(this.targetPlanet);
+				this._enterOrbit(this.settings.targetPlanet);
 			}
 		}
 
@@ -255,7 +253,7 @@ function Game() {
 		this.currentPlanet.save();
 		this.currentPlanet = undefined;
 		
-		this.targetPlanet = target;
+		this.settings.targetPlanet = target;
 	};
 
 	this._enterOrbit = function(target) {
@@ -269,7 +267,7 @@ function Game() {
 		this.currentPlanet.load();
 		this.planetChanged = true;
 		
-		this.targetPlanet = undefined;
+		this.settings.targetPlanet = undefined;
 		
 		this.settings.travelActive = false;
 		

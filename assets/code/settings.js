@@ -9,6 +9,7 @@ function Settings() {
 
 	this.currentPlanet;
 
+	this.targetPlanet;
 	this.travelActive;
 	this.travelDistanceRemaining;
 	this.travelDistanceElapsed;
@@ -54,6 +55,7 @@ function Settings() {
 		
 		localStorage.savedVersion = this.savedVersion;
 
+		localStorage.targetPlanet = this.targetPlanet;
 		localStorage.travelActive = this.travelActive;
 		localStorage.travelDistanceRemaining = this.travelDistanceRemaining;
 		localStorage.travelDistanceElapsed = this.travelDistanceElapsed;
@@ -74,6 +76,7 @@ function Settings() {
 		
 		this.savedVersion = Utils.loadFloat("savedVersion", 0);
 
+		this.targetPlanet = Utils.load("targetPlanet", undefined);
 		this.travelActive = Utils.loadBool("travelActive", 0);
 		this.travelDistanceRemaining = Utils.loadFloat(
 				"travelDistanceRemaining", 0);
@@ -91,6 +94,7 @@ function Settings() {
 
 		this.currentPlanet = 0;
 
+		this.targetPlanet = undefined;
 		this.travelActive = false;
 		this.travelDistanceRemaining = 0;
 		this.travelDistanceElapsed = 0;
