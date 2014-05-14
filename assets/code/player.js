@@ -42,22 +42,7 @@ function Player() {
 
 	// ---------------------------------------------------------------------------
 	// player functions
-	// ---------------------------------------------------------------------------
-	this.moveTo = function(depth) {
-	    if(depth < 0) depth = 0;
-	    
-	    game.currentPlanet.currentDepth = depth;
-	    this.miner.setDepth(game.currentPlanet.currentDepth);
-	};
-	
-	this.moveUp = function() {
-	    this.moveTo(game.currentPlanet.currentDepth - this.pickPower);
-	};
-	
-	this.moveDown = function() {
-	    this.moveTo(game.currentPlanet.currentDepth + this.pickPower);
-	};
-	
+	// ---------------------------------------------------------------------------	
 	this.mine = function() {
 		if (!game.currentPlanet) {
 			return;
@@ -117,7 +102,7 @@ function Player() {
 	this.equip = function(itemId) {
 		if(!itemId || !this.storage.hasItem(itemId))
 		{
-			Utils.logError("Unable to equip item, invalid or don't have it");
+			utils.logError("Unable to equip item, invalid or don't have it");
 			return;
 		}
 		
@@ -146,7 +131,7 @@ function Player() {
 		this.storage.load();
 		this.gear.load();
 
-		this.oxygenConsumption = Utils.loadFloat('playerOxygenConsumption', 1);
+		this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
 	};
 
 	this.reset = function(fullReset) {

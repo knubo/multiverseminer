@@ -44,7 +44,7 @@ function UISelection(parent, values, selectionChangedCallback) {
     
     this.setSelection = function(id) {
         if (!this.keys[id]) {
-            Utils.logError("setSelection called with invalid argument: " + id);
+            utils.logError("setSelection called with invalid argument: " + id);
             return;
         }
         

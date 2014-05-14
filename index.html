@@ -27,6 +27,7 @@
     <!-- Order is important -->
     <script src="assets/data/system.js" type="text/javascript"></script>
     <script src="assets/data/items.js" type="text/javascript"></script>
+    <script src="assets/data/loot.js" type="text/javascript"></script>
 	<script src="assets/data/planets.js" type="text/javascript"></script>
     <script src="assets/ui/ui.js" type="text/javascript"></script>
     <script src="assets/ui/uiComponent.js" type="text/javascript"></script>
@@ -47,19 +48,11 @@
 		<br /><br /><br /><br />
 		
         <p>
-        	<button class="mainButton" onclick="onDigSideways()">
+        	<button class="mainButton" onclick="onMine()">
 				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
 				<div class="categoryButtonText">DIG AROUND [D]</div>
 			</button>
-			<button class="mainButton" onclick="onDigDown()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">DIG DOWN [F]</div>
-			</button>
-			<button class="mainButton" onclick="onMoveUp()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">MOVE UP [U]</div>
-			</button>
-			<button class="mainButton" onclick="onGatherAtmosphere()">
+			<button class="mainButton" onclick="onGather()">
 				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
 				<div class="categoryButtonText">GATHER OXYGEN [G]</div>
 			</button>
@@ -122,9 +115,9 @@
         		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
 	            <div class="categoryButtonText">ELEMENTS</div>
         	</div>
-        	<div id="rightCategory2" class="genericButton categoryButton clickable" onclick="onActivateGemFinder()">
+        	<div id="rightCategory2" class="genericButton categoryButton clickable">
         		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
-	            <div class="categoryButtonText">GEMS</div>
+	            <div class="categoryButtonText"></div>
         	</div>
         	<div id="rightCategory3" class="genericButton categoryButton genericButtonLast clickable">
         		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
@@ -137,9 +130,6 @@
     		</div>
     		
     		<div id="elementFinderPanel" class="craftingPanel">
-    		</div>
-    		
-    		<div id="gemFinderPanel" class="craftingPanel">
     		</div>
         </div>
     </div>

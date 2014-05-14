@@ -3,9 +3,6 @@ function Miner(id) {
 
 	this.baseMineSpeed = 1;
 	
-	this.gatherableResources = undefined;
-	this.minableResources = undefined;
-
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
@@ -16,43 +13,26 @@ function Miner(id) {
 	};
 
 	this.gather = function() {
-		if (!this.gatherableResources || this.gatherableResources.length <= 0) {
-			return;
-		}
-
-		// Todo: apply modifiers and tools etc
-		return this._dropResources(this.gatherableResources);
+		var tableId = game.currentPlanet.getGatherLootTableId();
+		return this._dropResources(tableId);
 	};
 
 	this.mine = function() {
-		if (!this.minableResources || this.minableResources.length <= 0) {
-			return;
-		}
-		
-		// Todo: apply modifiers and tools etc
-		var loot = this._dropResources(this.minableResources);		
-		return loot;
-	};
-	
-	this.setDepth = function(depth) {
-	    this.minableResources = game.currentPlanet.getMinableResources(depth);
-	    this.gatherableResources = game.currentPlanet.getGatherableResources(depth);
+		var tableId = game.currentPlanet.getMiningLootTableId();
+		return this._dropResources(tableId);
 	};
 
 	// ---------------------------------------------------------------------------
 	// internal
 	// ---------------------------------------------------------------------------
-	this._dropResources = function(resources) {
-		var items = {};
-		for ( var i = 0; i < resources.length; i++) {
-			var resource = resources[i];
-			var chance = resource.baseChance;
-			if (Math.random() <= chance) {
-				// Todo: allow for drop of more than one?
-				items[resource.id] = 1;
-			}
+	this._dropResources = function(tableId) {
+		var table = game.getLootTable(tableId);
+		if (!table || table.length <= 0) {
+			return;
 		}
-
+		
+		// Todo: apply modifiers and tools etc		
+		items = game.loot(table, this.baseMineSpeed);
 		return items;
 	};
 
@@ -72,7 +52,7 @@ function Miner(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 
-		this.baseMineSpeed = Utils.loadFloat(storageKey + 'baseMineSpeed', 1);
+		this.baseMineSpeed = utils.loadFloat(storageKey + 'baseMineSpeed', 1);
 	};
 
 	this.reset = function(fullReset) {
