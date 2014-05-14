@@ -133,7 +133,6 @@ addItem(5, 'gold', 'Gold', 100, {
 });
 
 addItem(6, 'silicon', 'Silicon', 1000, {
-        'icon': sys.iconRoot + 'silicon.png',
     'el': 'Si'
 });
 
@@ -143,7 +142,6 @@ addItem(7, 'aluminum', 'Aluminum', 1000, {
 });
 
 addItem(8, 'calcium', 'Calcium', 1000, {
-    'icon': sys.iconRoot + 'calcium.png',
     'el': 'Ca'
 });
 
