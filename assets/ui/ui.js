@@ -13,6 +13,8 @@ function UI() {
     this.componentGemFinder = undefined;
     
     this.componentPlanet = undefined;
+    
+    this.isDragging = false;
         
     // ---------------------------------------------------------------------------
     // main UI functions
@@ -27,7 +29,7 @@ function UI() {
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
         
-        this.componentPlayerInventory = new UIComponent('playerInventoryPanel', this.updatePlayerInventoryPanel2);
+        this.componentPlayerInventory = new UIComponent('playerInventoryPanel', this.updatePlayerInventoryPanel);
         
         this.componentPlayerGear = new UIComponent('playerGearPanel', this.updatePlayerGearPanel);
         
@@ -47,19 +49,19 @@ function UI() {
 
         // Check for gear changes
         if (game.player.gear.gearChanged) {
-            this.componentPlayerGear.needUpdate = true;
+            this.componentPlayerGear.invalidate();
             game.player.gear.gearChanged = false;
         }
 
         // Check for inventory changes
         if (game.player.storage.getStorageChanged()) {
-            this.componentPlayerInventory.needUpdate = true;
+            this.componentPlayerInventory.invalidate();
             game.player.storage.setStorageChanged(false);
         }
         
         // Check for planet change
         if (game.getPlanetChanged()) {
-            this.componentPlanet.needUpdate = true;
+            this.componentPlanet.invalidate();
             game.setPlanetChanged(false);
         }
         
@@ -75,42 +77,12 @@ function UI() {
         this.componentPlanet.update();
     };
     
-    this.updatePlayerInventoryPanel2 = function() {
-        var self = ui;
-        self.playerInventory.update();
-    };
-    
     this.updatePlayerInventoryPanel = function() {
         var self = ui;
         
-        var scrollInvSaved = $('.dataTables_scrollBody').scrollTop();
-        var bodyScrollSaved = $('body').scrollTop();
-        $('#inventoryTable').DataTable().rows().remove();
-
-        var items = undefined;
-        if (!self.inventoryPlayerCategoryFilter) {
-            items = game.player.storage.getItems();
-        } else {
-            items = game.player.storage
-                    .getItemsOfCategory(self.inventoryPlayerCategoryFilter);
-        }
-
-        if (!items || items.length <= 0) {
-            $('#inventoryTable').DataTable().draw();
-            return;
-        }
-
-        for (var i = 0; i < items.length; i++) {
-            var itemName = game.getItemName(items[i]);
-            var count = game.player.storage.getItemCount(items[i]);
-            $('#inventoryTable').DataTable().row.add([ count, itemName ]).draw();
-        }
-
-        $('#inventoryTable').DataTable().draw();
-        $('.dataTables_scrollBody').scrollTop(scrollInvSaved);
-        $('body').scrollTop(bodyScrollSaved);
+        self.playerInventory.update(game.player.storage);
     };
-    
+        
     this.updatePlayerGearPanel = function() {
         var self = ui;
         
@@ -213,8 +185,9 @@ function UI() {
         var self = ui;
         var category = self.playerIventoryFilter.selection;
         game.settings.selectedPlayerInventoryFilter = category;
-        self.componentPlayerInventory.needUpdate = true;
         self.playerInventory.setCategory(category);
+        
+        self.componentPlayerInventory.invalidate();
     };
     
     this.hideLeftSideComponents = function() { 
@@ -236,11 +209,11 @@ function UI() {
     this.showComponent = function(component) {
         component.enabled = true;
         component.show();
-        component.needUpdate = true;
+        component.invalidate();
     };
     
     this.updateComponent = function(component) {
-        component.needUpdate = true;
+    	component.invalidate();
     };
     
     this.getDefaultItemIcon = function(item) {
