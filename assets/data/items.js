@@ -676,6 +676,38 @@ addItem(40061, 'titaniumPolearm', 'Titanium Polearm', titaniumBasePrice);
 addItem(40062, 'tungstenPolearm', 'Tungsten Polearm', tungstenBasePrice);
 addItem(40063, 'iridiumPolearm', 'Iridium Polearm', iridiumBasePrice);
 addItem(40064, 'rheniumPolearm', 'Rhenium Polearm', rheniumBasePrice);
+addItem(40065, 'copperSword', 'Copper Sword', copperBasePrice);
+addItem(40066, 'bronzeSword', 'Bronze Sword', bronzeBasePrice);
+addItem(40067, 'ironSword', 'Iron Sword', ironBasePrice);
+addItem(40068, 'steelSword', 'Steel Sword', steelBasePrice);
+addItem(40069, 'titaniumSword', 'Titanium Sword', titaniumBasePrice);
+addItem(40070, 'tungstenSword', 'Tungsten Sword', tungstenBasePrice);
+addItem(40071, 'iridiumSword', 'Iridium Sword', iridiumBasePrice);
+addItem(40072, 'rheniumSword', 'Rhenium Sword', rheniumBasePrice);
+addItem(40073, 'copperLongsword', 'Copper Longsword', copperBasePrice);
+addItem(40074, 'bronzeLongsword', 'Bronze Longsword', bronzeBasePrice);
+addItem(40075, 'ironLongsword', 'Iron Longsword', ironBasePrice);
+addItem(40076, 'steelLongsword', 'Steel Longsword', steelBasePrice);
+addItem(40077, 'titaniumLongsword', 'Titanium Longsword', titaniumBasePrice);
+addItem(40078, 'tungstenLongsword', 'Tungsten Longsword', tungstenBasePrice);
+addItem(40079, 'iridiumLongsword', 'Iridium Longsword', iridiumBasePrice);
+addItem(40080, 'rheniumLongsword', 'Rhenium Longsword', rheniumBasePrice);
+addItem(40081, 'copperSickle', 'Copper Sickle', copperBasePrice);
+addItem(40082, 'bronzeSickle', 'Bronze Sickle', bronzeBasePrice);
+addItem(40083, 'ironSickle', 'Iron Sickle', ironBasePrice);
+addItem(40084, 'steelSickle', 'Steel Sickle', steelBasePrice);
+addItem(40085, 'titaniumSickle', 'Titanium Sickle', titaniumBasePrice);
+addItem(40086, 'tungstenSickle', 'Tungsten Sickle', tungstenBasePrice);
+addItem(40087, 'iridiumSickle', 'Iridium Sickle', iridiumBasePrice);
+addItem(40088, 'rheniumSickle', 'Rhenium Sickle', rheniumBasePrice);
+addItem(40089, 'copperTippedStaff', 'Copper Tipped Staff', copperBasePrice);
+addItem(40090, 'bronzeTippedStaff', 'Bronze Tipped Staff', bronzeBasePrice);
+addItem(40091, 'ironTippedStaff', 'Iron Tipped Staff', ironBasePrice);
+addItem(40092, 'steelTippedStaff', 'Steel Tipped Staff', steelBasePrice);
+addItem(40093, 'titaniumTippedStaff', 'Titanium Tipped Staff', titaniumBasePrice);
+addItem(40094, 'tungstenTippedStaff', 'Tungsten Tipped Staff', tungstenBasePrice);
+addItem(40095, 'iridiumTippedStaff', 'Iridium Tipped Staff', iridiumBasePrice);
+addItem(40096, 'rheniumTippedStaff', 'Rhenium Tipped Staff', rheniumBasePrice);
 
 //	 Wood -> Copper -> Bronze -> Iron -> Steel -> Silver -> Gold -> Aluminum -> Titanium
 // ---------------------------------------------------------------------------
