@@ -11,11 +11,11 @@ function UIComponent(id, updateCallback) {
     // main functions
     // ---------------------------------------------------------------------------
     this.hide = function() {
-        $('#' + this.id).hide();
+        $('#' + this.id).hide("slide", { direction: "left"  }, 200);
     };
     
     this.show = function() {
-        $('#' + this.id).show();
+        $('#' + this.id).show("slide", { direction: "right"  }, 200);
     };
     
     this.update = function(currentTime) {

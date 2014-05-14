@@ -52,6 +52,12 @@ function Player() {
 
 		var items = this.miner.mine();
 		if (items) {
+			for(var i = 0; i < items.length; i++) {
+				var name = game.getItemName(items[i]);
+				var float = ui.createFloat([200, 200], '+1 ' + name);
+				float.offset(utils.getRandomInt(0, 200), utils.getRandomInt(0, 100));
+			}
+			
 			this.storage.addItems(items);
 		}
 	};

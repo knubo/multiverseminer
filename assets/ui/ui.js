@@ -26,6 +26,8 @@ function UI() {
     this.componentPlanet = undefined;
     
     this.activeDragElement = undefined;
+    
+    this.activeFloats = [];
         
     // ---------------------------------------------------------------------------
     // main UI functions
@@ -80,14 +82,25 @@ function UI() {
         }
         
         // Update the components
-        this.componentPlayerInventory.update();
-        this.componentPlayerGear.update();
+        this.componentPlayerInventory.update(currentTime);
+        this.componentPlayerGear.update(currentTime);
         
-        this.componentCrafting.update();
+        this.componentCrafting.update(currentTime);
         
-        this.componentElementFinder.update();
+        this.componentElementFinder.update(currentTime);
         
-        this.componentPlanet.update();
+        this.componentPlanet.update(currentTime);
+        
+        // Update floating components
+        for(var i = 0; i < this.activeFloats.length; i++) {
+        	var float = this.activeFloats[i];
+        	float.update(currentTime);
+        	if(float.timedOut) {
+        		// Remove the float
+        		float.remove();
+        		this.activeFloats.splice(i, 1);
+        	}
+        }
     };
     
     this.updatePlayerInventoryPanel = function() {
@@ -241,6 +254,18 @@ function UI() {
             text : message,
             type : 'error'
         });
+    };
+    
+    this.createFloat = function(position, content, classes) {
+    	var float = new UIFloating(position, content, classes || "genericFloating");
+    	float.init();
+    	
+    	// Todo: use something else as default i guess
+    	float.timeOut = Date.now() + 2;
+    	
+    	this.activeFloats.push(float);
+    	
+    	return float;
     };
     
     // ---------------------------------------------------------------------------
