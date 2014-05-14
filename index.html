@@ -43,34 +43,6 @@
 </head>
 
 <body text="white">
-    <div class="panelPlanetDisplay">
-        <img src="assets/images/logo.png" />
-		
-		<br /><br /><br /><br />
-		
-        <p>
-        	<button class="mainButton" onclick="onMine()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">DIG AROUND [D]</div>
-			</button>
-			<button class="mainButton" onclick="onGather()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">GATHER OXYGEN [G]</div>
-			</button>
-        <p>
-        <center> <br /><b>CURRENT DEPTH:</b><br /><span id="depth">0</span> meters<br /></center>
-
-        <div class="planetDisplay">
-        	<div class="planetDisplayBackground" id="planetDisplayBackground"></div>
-        	<div class="planetDisplayNameFrame">
-        		<div class="planetDisplayNameTitle">PLANET</div>
-        		<div class="planetDisplayName">
-        			<div class="planetDisplayNameText" id="planetDisplayNameText"></div>
-        		</div>
-        	</div>
-        </div>
-    </div>
-
     <div class="panelPlanetLeft">
     	<div id="leftCategory">
         	<div id="leftCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerInventory()">
@@ -105,8 +77,8 @@
         	</div>
         </div>
     </div>
-  
-    <div class="panelPlanetRight">
+	
+	<div class="panelPlanetRight">
         <div id="rightCategory">
         	<div id="rightCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerGear()">
         		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
@@ -134,7 +106,35 @@
     		</div>
         </div>
     </div>
-    
+
+	<div class="panelPlanetDisplay">
+        <img src="assets/images/logo.png" />
+		
+		<br /><br /><br /><br />
+		
+        <p>
+        	<button class="mainButton" onclick="onMine()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">DIG AROUND [D]</div>
+			</button>
+			<button class="mainButton" onclick="onGather()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+				<div class="categoryButtonText">GATHER OXYGEN [G]</div>
+			</button>
+        <p>
+        <center> <br /><b>CURRENT DEPTH:</b><br /><span id="depth">0</span> meters<br /></center>
+
+        <div class="planetDisplay">
+        	<div class="planetDisplayBackground" id="planetDisplayBackground"></div>
+        	<div class="planetDisplayNameFrame">
+        		<div class="planetDisplayNameTitle">PLANET</div>
+        		<div class="planetDisplayName">
+        			<div class="planetDisplayNameText" id="planetDisplayNameText"></div>
+        		</div>
+        	</div>
+        </div>
+    </div>
+	
     <div class="panelBottom">
     	<div class="panelBottomRight">
     		<div id="timeDisplay" class="genericButton bottomBarButton">
