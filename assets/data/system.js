@@ -13,4 +13,4 @@ function System() {
     this.iconPLaceholderGem = this.iconRoot + 'icon_placeholderGem.png';
     this.iconPlaceholderChest = this.iconRoot + 'icon_placeholderGearChest.png';
     this.iconPLaceholderHead = this.iconRoot + 'icon_placeholderGearHelmet.png';
-}
+};
