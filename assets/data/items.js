@@ -137,6 +137,7 @@ addItem(6, 'silicon', 'Silicon', 1000, {
 });
 
 addItem(7, 'aluminum', 'Aluminum', 1000, {
+    'icon': sys.iconRoot + 'aluminum.png',
     'el': 'Al'
 });
 
@@ -183,6 +184,7 @@ addItem(18, 'barium', 'Barium', 1000, {
 });
 
 addItem(19, 'carbon', 'Carbon', 1000, {
+    'icon': sys.iconRoot + 'carbon.png',
     'el': 'C'
 });
 
