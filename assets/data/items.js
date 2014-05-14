@@ -160,6 +160,7 @@ addItem(12, 'magnesium', 'Magnesium', 1000, {
 });
 
 addItem(13, 'titanium', 'Titanium', 1000, {
+    'icon': sys.iconRoot + "titanium.png",
     'el': 'Ti'
 });
 
@@ -460,7 +461,9 @@ addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
     ]
 );
 
-addItem(3012, 'glass', 'Glass', 5000).setCraftingCost(
+addItem(3012, 'glass', 'Glass', 5000, {
+    'icon': sys.iconRoot + "Glass.png"
+}).setCraftingCost(
     [
         [Items.silica.id, 2]
     ]
