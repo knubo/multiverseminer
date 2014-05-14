@@ -13,6 +13,8 @@ function Game() {
 	
 	this.planetChanged = true;
 	
+	this.targetPlanet = undefined;
+	
 	this.version = 0.1;
 
 	// ---------------------------------------------------------------------------
@@ -98,6 +100,13 @@ function Game() {
 
 		if (this.currentPlanet) {
 			this.currentPlanet.update(currentTime);
+		}
+		
+		if(this.settings.travelActive) {
+			this.settings.travelDistanceElapsed += 5000;
+			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
+				this._enterOrbit(this.targetPlanet);
+			}
 		}
 
 		this.lastUpdateTime = currentTime;
@@ -216,6 +225,7 @@ function Game() {
 	// specific game functions
 	// ---------------------------------------------------------------------------
 	this.travelTo = function(target) {
+		console.log("Traveling to " + target);
 		// Todo: deduct travel cost
 		if (target == undefined || !this.planetDictionary[target]) {
 			Utils.logError("Unknown destination: " + target);
@@ -231,7 +241,7 @@ function Game() {
 		if (this.currentPlanet) {
 			this.settings.travelDistanceRemaining = Math
 					.abs(this.settings.travelDistanceRemaining
-							- this.currentPlanet.distance);
+							- this.currentPlanet.data.distance);
 			this._leaveOrbit(target);
 		}
 	};
@@ -244,6 +254,8 @@ function Game() {
 		// Save the planet before leaving for another one
 		this.currentPlanet.save();
 		this.currentPlanet = undefined;
+		
+		this.targetPlanet = target;
 	};
 
 	this._enterOrbit = function(target) {
@@ -256,6 +268,10 @@ function Game() {
 		this.currentPlanet = this.planets[target];
 		this.currentPlanet.load();
 		this.planetChanged = true;
+		
+		this.targetPlanet = undefined;
+		
+		this.settings.travelActive = false;
 		
 		this.player.moveTo(this.currentPlanet.currentDepth);
 	};

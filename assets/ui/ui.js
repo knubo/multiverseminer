@@ -57,7 +57,11 @@ function UI() {
     this.update = function(currentTime) {
         $('#timeDisplayText').text(Utils.getShortTimeDisplay(Utils.getDayTimeInSeconds()));
         
-        $('#depth').text(game.currentPlanet.currentDepth);
+		if(game.settings.travelActive) {
+			$('#depth').text(game.settings.travelDistanceElapsed + " / " + game.settings.travelDistanceRemaining);
+		} else {
+			$('#depth').text(game.currentPlanet.currentDepth);
+		}
 
         // Check for gear changes
         if (game.player.gear.gearChanged) {
