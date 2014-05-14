@@ -549,20 +549,21 @@ addItem(4001, 'refinery', 'Refinery', 50000, {
 // ---------------------------------------------------------------------------
 // Equipment - MainHand
 // ---------------------------------------------------------------------------
+//
 // TODO: MOVE THIS UP 
 var copperBasePrice = 10000;
 var bronzeBasePrice = 15000;
 var ironBasePrice = 20000;
 var steelBasePrice = 25000;
-var silverBasePrice = 30000;
-var goldBasePrice = 35000;
-var titaniumBasePrice = 40000;
+var titaniumBasePrice = 30000;
+var tungstenBasePrice = 35000;
+var iridiumBasePrice = 40000;
+var rheniumBasePrice = 45000;
 
 addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1,
 	'power': 1
 });
-
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
 	'power': 3,
@@ -570,21 +571,18 @@ addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
-
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1,
 	'power': 4
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
     'storageLimit': 1,
 	'power': 5
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
 addItem(40004, 'titaniumPick', 'Titanium Pickaxe', 4000, {
 	'storageLimit': 1,
 	'power': 6
@@ -623,46 +621,62 @@ addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
 );
 
 addItem(40008, 'copperScimitar', 'Copper Scimitar', copperBasePrice);
-
 addItem(40009, 'bronzeScimitar', 'Bronze Scimitar', bronzeBasePrice);
-
 addItem(40010, 'ironScimitar', 'Iron Scimitar', ironBasePrice);
-
 addItem(40011, 'steelScimitar', 'Steel Scimitar', steelBasePrice);
+addItem(40012, 'titaniumScimitar', 'Titanium Scimitar', titaniumBasePrice);
+addItem(40013, 'tungstenScimitar', 'Tungsten Scimitar', tungstenBasePrice);
+addItem(40014, 'iridiumScimitar', 'Iridium Scimitar', iridiumBasePrice);
+addItem(40015, 'rheniumScimitar', 'Rhenium Scimitar', rheniumBasePrice);
+addItem(40016, 'copperAxe', 'Copper Axe', copperBasePrice);
+addItem(40017, 'bronzeAxe', 'Bronze Axe', bronzeBasePrice);
+addItem(40018, 'ironAxe', 'Iron Axe', ironBasePrice);
+addItem(40019, 'steelAxe', 'Steel Axe', steelBasePrice);
+addItem(40020, 'titaniumAxe', 'Titanium Axe', titaniumBasePrice);
+addItem(40021, 'tungstenAxe', 'Tungsten Axe', tungstenBasePrice);
+addItem(40022, 'iridiumAxe', 'Iridium Axe', iridiumBasePrice);
+addItem(40023, 'rheniumAxe', 'Rhenium Axe', rheniumBasePrice);
+addItem(40024, 'copperTwoHandedAxe', 'Copper Two Handed Axe', copperBasePrice);
+addItem(40025, 'bronzeTwoHandedAxe', 'Bronze Two Handed Axe', bronzeBasePrice);
+addItem(40026, 'ironTwoHandedAxe', 'Iron Two Handed Axe', ironBasePrice);
+addItem(40027, 'steelTwoHandedAxe', 'Steel Two Handed Axe', steelBasePrice);
+addItem(40028, 'titaniumTwoHandedAxe', 'Titanium Two Handed Axe', titaniumBasePrice);
+addItem(40029, 'tungstenTwoHandedAxe', 'Tungsten Two Handed Axe', tungstenBasePrice);
+addItem(40030, 'iridiumTwoHandedAxe', 'Iridium Two Handed Axe', iridiumBasePrice);
+addItem(40031, 'rheniumTwoHandedAxe', 'Rhenium Two Handed Axe', rheniumBasePrice);
+addItem(40033, 'copperHatchet', 'Copper Hatchet', copperBasePrice);
+addItem(40034, 'bronzeHatchet', 'Bronze Hatchet', bronzeBasePrice);
+addItem(40035, 'ironHatchet', 'Iron Hatchet', ironBasePrice);
+addItem(40036, 'steelHatchet', 'Steel Hatchet', steelBasePrice);
+addItem(40037, 'titaniumHatchet', 'Titanium Hatchet', titaniumBasePrice);
+addItem(40038, 'tungstenHatchet', 'Tungsten Hatchet', tungstenBasePrice);
+addItem(40039, 'iridiumHatchet', 'Iridium Hatchet', iridiumBasePrice);
+addItem(40040, 'rheniumHatchet', 'Rhenium Hatchet', rheniumBasePrice);
+addItem(40041, 'copperPistol', 'Copper Pistol', copperBasePrice);
+addItem(40042, 'bronzePistol', 'Bronze Pistol', bronzeBasePrice);
+addItem(40043, 'ironPistol', 'Iron Pistol', ironBasePrice);
+addItem(40044, 'steelPistol', 'Steel Pistol', steelBasePrice);
+addItem(40045, 'titaniumPistol', 'Titanium Pistol', titaniumBasePrice);
+addItem(40046, 'tungstenPistol', 'Tungsten Pistol', tungstenBasePrice);
+addItem(40047, 'iridiumPistol', 'Iridium Pistol', iridiumBasePrice);
+addItem(40048, 'rheniumPistol', 'Rhenium Pistol', rheniumBasePrice);
+addItem(40049, 'copperRifle', 'Copper Rifle', copperBasePrice);
+addItem(40050, 'bronzeRifle', 'Bronze Rifle', bronzeBasePrice);
+addItem(40051, 'ironRifle', 'Iron Rifle', ironBasePrice);
+addItem(40052, 'steelRifle', 'Steel Rifle', steelBasePrice);
+addItem(40053, 'titaniumRifle', 'Titanium Rifle', titaniumBasePrice);
+addItem(40054, 'tungstenRifle', 'Tungsten Rifle', tungstenBasePrice);
+addItem(40055, 'iridiumRifle', 'Iridium Rifle', iridiumBasePrice);
+addItem(40056, 'rheniumRifle', 'Rhenium Rifle', rheniumBasePrice);
+addItem(40057, 'copperPolearm', 'Copper Polearm', copperBasePrice);
+addItem(40058, 'bronzePolearm', 'Bronze Polearm', bronzeBasePrice);
+addItem(40059, 'ironPolearm', 'Iron Polearm', ironBasePrice);
+addItem(40060, 'steelPolearm', 'Steel Polearm', steelBasePrice);
+addItem(40061, 'titaniumPolearm', 'Titanium Polearm', titaniumBasePrice);
+addItem(40062, 'tungstenPolearm', 'Tungsten Polearm', tungstenBasePrice);
+addItem(40063, 'iridiumPolearm', 'Iridium Polearm', iridiumBasePrice);
+addItem(40064, 'rheniumPolearm', 'Rhenium Polearm', rheniumBasePrice);
 
-addItem(40012, 'silverScimitar', 'Silver Scimitar', silverBasePrice);
-
-addItem(40013, 'goldScimitar', 'Gold Scimitar', goldBasePrice);
-
-addItem(40014, 'titaniumScimitar', 'Titanium Scimitar', silverBasePrice);
-
-addItem(40015, 'copperDagger', 'Copper Dagger', copperBasePrice);
-
-addItem(40016, 'bronzeDagger', 'Bronze Dagger', copperBasePrice);
-
-addItem(40017, 'ironDagger', 'Iron Dagger', copperBasePrice);
-
-addItem(40018, 'steelDagger', 'Steel Dagger', copperBasePrice);
-
-addItem(40019, 'silverDagger', 'Silver Dagger', copperBasePrice);
-
-addItem(40020, 'goldDagger', 'Gold Dagger', copperBasePrice);
-
-addItem(40021, 'titaniumDagger', 'Titanium Dagger', copperBasePrice);
-
-addItem(40022, 'copperAxe', 'Copper Axe', copperBasePrice);
-
-addItem(40023, 'bronzeAxe', 'Bronze Axe', copperBasePrice);
-
-addItem(40024, 'ironAxe', 'Iron Axe', copperBasePrice);
-
-addItem(40025, 'steelAxe', 'Steel Axe', copperBasePrice);
-
-addItem(40026, 'silverAxe', 'Silver Axe', copperBasePrice);
-
-addItem(40027, 'goldAxe', 'Gold Axe', copperBasePrice);
-
-addItem(40028, 'titaniumAxe', 'Titanium Axe', copperBasePrice);
 //	 Wood -> Copper -> Bronze -> Iron -> Steel -> Silver -> Gold -> Aluminum -> Titanium
 // ---------------------------------------------------------------------------
 // Equipment - Head
