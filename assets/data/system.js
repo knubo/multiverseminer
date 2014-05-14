@@ -10,7 +10,7 @@ function System() {
     // Icons
     this.iconPlaceholder = this.iconRoot + 'icon_placeholder.png';
     this.iconPlaceholderRawMaterial = this.iconRoot + 'icon_placeholderRawMaterial.png';
-    this.iconPLaceholderGem = this.iconRoot + 'icon_placeholderGem.png';
+    this.iconPlaceholderGem = this.iconRoot + 'icon_placeholderGem.png';
     this.iconPlaceholderChest = this.iconRoot + 'icon_placeholderGearChest.png';
-    this.iconPLaceholderHead = this.iconRoot + 'icon_placeholderGearHelmet.png';
+    this.iconPlaceholderHead = this.iconRoot + 'icon_placeholderGearHelmet.png';
 };
