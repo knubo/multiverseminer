@@ -636,6 +636,33 @@ addItem(40013, 'goldScimitar', 'Gold Scimitar', goldBasePrice);
 
 addItem(40014, 'titaniumScimitar', 'Titanium Scimitar', silverBasePrice);
 
+addItem(40015, 'copperDagger', 'Copper Dagger', copperBasePrice);
+
+addItem(40016, 'bronzeDagger', 'Bronze Dagger', copperBasePrice);
+
+addItem(40017, 'ironDagger', 'Iron Dagger', copperBasePrice);
+
+addItem(40018, 'steelDagger', 'Steel Dagger', copperBasePrice);
+
+addItem(40019, 'silverDagger', 'Silver Dagger', copperBasePrice);
+
+addItem(40020, 'goldDagger', 'Gold Dagger', copperBasePrice);
+
+addItem(40021, 'titaniumDagger', 'Titanium Dagger', copperBasePrice);
+
+addItem(40022, 'copperAxe', 'Copper Axe', copperBasePrice);
+
+addItem(40023, 'bronzeAxe', 'Bronze Axe', copperBasePrice);
+
+addItem(40024, 'ironAxe', 'Iron Axe', copperBasePrice);
+
+addItem(40025, 'steelAxe', 'Steel Axe', copperBasePrice);
+
+addItem(40026, 'silverAxe', 'Silver Axe', copperBasePrice);
+
+addItem(40027, 'goldAxe', 'Gold Axe', copperBasePrice);
+
+addItem(40028, 'titaniumAxe', 'Titanium Axe', copperBasePrice);
 //	 Wood -> Copper -> Bronze -> Iron -> Steel -> Silver -> Gold -> Aluminum -> Titanium
 // ---------------------------------------------------------------------------
 // Equipment - Head
