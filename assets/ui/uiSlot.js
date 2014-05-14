@@ -12,20 +12,56 @@ function UISlot() {
 	this.canDrag = true;
 	this.canDrop = true;
 	
+	this.item = undefined;
+	
+	this.onClick = undefined;
+	
 	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
 	this.init = function() {
-		this.mainDiv = $('<div class="itemSlot itemSlotNonHover"></div>');
+		this.mainDiv = $('<div class="itemSlot itemSlotNonHover noSelect"></div>');
 		this.mainDiv.hover(
-                function() { $(this).addClass("itemSlotHover"); $(this).removeClass("itemSlotNonHover"); },
-                function() { $(this).addClass("itemSlotNonHover"); $(this).removeClass("itemSlotHover"); }
+                function() { $(this).addClass("itemSlotHover noSelect"); $(this).removeClass("itemSlotNonHover"); },
+                function() { $(this).addClass("itemSlotNonHover noSelect"); $(this).removeClass("itemSlotHover"); }
         );
         
-		this.mainDiv.append('<p class="itemSlotText">0</p>');
+		this.mainDiv.append('<p class="itemSlotText noSelect">0</p>');
+		this.mainDiv.mousedown({ self: this }, this.onMouseDown );
+		this.mainDiv.mouseup({ self: this }, this.onMouseUp );
+		this.mainDiv.dblclick({ self: this }, this.onDoubleClick );
+	};
+	
+	// ---------------------------------------------------------------------------
+    // events
+    // ---------------------------------------------------------------------------
+	this.onMouseDown = function(parameters) {
+		var self = parameters.data.self;
 		
-		// This is not really working out, gotta do it the hard way it seems...
-		// this.mainDiv.draggable( { addClasses: false, snap: ".itemSlot" } );
+		// Utils.log('SlotMouseDown: ' + parameters.which+" " + self.content, true);
+		
+		// If we don't have content don't do anything on mouse down
+		if(!self.content) {
+			return;
+		}
+				
+		if(self.onClick) {
+			self.onClick(self);
+		}
+		
+		if(!self.canDrag) {
+			return;
+		}
+	};
+	
+	this.onMouseUp = function(parameters) {
+		var self = parameters.data.self;
+		// Utils.log('SlotMouseUp: '  + parameters.which+" "+ self.content, true);
+	};
+	
+	this.onDoubleClick = function(parameters) {
+		var self = parameters.data.self;
+		// Utils.log('SlotDBLC: '  + parameters.which+" "+ self.content, true);
 	};
 	
 	// ---------------------------------------------------------------------------
@@ -36,6 +72,8 @@ function UISlot() {
 	};
 	
 	this.set = function(item, count) {
+		this.item = item;
+		
 		var icon = item.icon || ui.getDefaultItemIcon(item);
 		
 		this.iconDisplay = $('<img class="itemSlotIcon noselect" src="' + icon + '"/>');
