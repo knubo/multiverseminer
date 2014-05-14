@@ -185,7 +185,7 @@ function UI() {
         if(game.currentPlanet) {
             var background = game.currentPlanet.getBackground();
             if(background) {
-                $('#planetDisplayBackground').append('<img src="' + background + '"/>');
+                $('#planetDisplayBackground').append('<img class="planetImage" src="' + background + '"/>');
             }
             
             $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());

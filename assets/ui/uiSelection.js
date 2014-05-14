@@ -33,8 +33,8 @@ function UISelection(parent, values, selectionChangedCallback) {
         this.selectionNextElement.click({param: this.key}, this.onSelectNext);
         
         $('#' + this.parent).append(this.selectionPrevElement);
-        $('#' + this.parent).append(this.selectionTextElement);
         $('#' + this.parent).append(this.selectionNextElement);
+		$('#' + this.parent).append(this.selectionTextElement);
     };
     
     this.update = function(id) {

@@ -6,6 +6,15 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+body {
+	overflow:auto;
+	min-width:1280px;
+	min-height:720px;
+	width:100%;
+	height:100%;
+	margin: 0;
+	position: absolute;
+}
 
 /* utility classes */
 .clickable {
@@ -40,12 +49,9 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
     text-align:center;
-    margin-left:20%;
-    width:60%;
-    height:calc(100% - 61px);
 }
 
 .panelPlanetLeft{
@@ -54,15 +60,16 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
 
 	background-color: rgba(37, 37, 37, .75);
-    position:fixed;
-    left:0px;
-    top:0px;
+	float: left; 
+	min-width: 300px;
     width:20%;
-    height: calc(100% - 61px);
+	height:calc(100% - 50px - 6px * 2 + 1px);
+
+
 	border: 5px solid black;
 	outline: solid 1px rgb(138,138,138);  
 }
@@ -73,15 +80,14 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
 	
 	background-color: rgba(37, 37, 37, .75);
-    position:fixed;
-    right:0px;
-    top:0px;
+    float:right;
+	min-width: 300px;
     width:20%;
-    height: calc(100% - 61px);
+	height:calc(100% - 50px - 6px * 2 + 1px);
 	border: 5px solid black;
 	outline: solid 1px rgb(138,138,138);  
 }
@@ -92,21 +98,19 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
 
 	background: url(assets/images/bottomBarBackground.png);
 	background-repeat:no-repeat;
 	background-size:100% 50px;
-    position:fixed;
+	position:absolute;
     bottom:0px;
-    left:0px;
-    right:0px;
     height:50px;
     width:100%;
     text-align:center;
     border-top: 1px black;
-		outline: solid 1px rgb(138,138,138);  
+	outline: solid 1px rgb(138,138,138);  
 }
 
 .panelBottomLeft {
@@ -170,7 +174,7 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
 	
 	outline: solid 1px rgb(138,138,138);  
@@ -233,33 +237,24 @@ html {
 /* selection styles */
 .selectPrevious {
 	opacity: 0.5;
-	width: 16px;
-	height: 11px;
 	float:left;
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-left:20px;
+	margin-top:3px;
 }
 .selectPrevious:hover {
 	opacity: 1;
 }
 
 .selectionText {
-	float:left;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top: 15px;
+	text-align:center;
 	font-size:16px;
 }
 
 .selectNext {
 	opacity: 0.5;
-	width: 16px;
-	height: 11px;
 	float:right;
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-right:20px;
+	margin-top:3px;
 }
 .selectNext:hover {
 	opacity: 1;
@@ -268,14 +263,16 @@ html {
 
 /* Planet styles */
 .planetDisplay {
-	position:absolute;
+	position:relative;
 	bottom:0px;
-	width:60%;
 }
 
 .planetDisplayBackground {
 	margin: 0 auto;
-	display: inline-block;
+}
+.planetImage {
+	max-width:50%;
+	max-height:50%;
 }
 
 .planetDisplayNameTitle {
@@ -284,7 +281,7 @@ html {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
     color: rgb(204, 204, 204);
 }
@@ -295,9 +292,9 @@ html {
     font-weight: bold;
     font-style: normal;
     text-align: center;
-    //line-height: 0;
+    /*line-height: 0;*/
     letter-spacing: 1px;
-    //color: rgb(204, 204, 204);
+    /*color: rgb(204, 204, 204);*/
 	margin-top:15px;
 }
 
@@ -320,19 +317,21 @@ html {
 
 /* Inventory styles */
 .inventoryPanel{
-	margin-left:20px;
+	margin-left:10px;
 	margin-top:1px;
-	margin-right:20px;
+	margin-right:10px;
 	margin-bottom:1px;
 }
 
 .inventoryFilter {
+	margin-bottom:20px;
+	margin-top:20px;
+	height:20px;
 }
 
 .inventoryContent {
-	position: absolute;
+	position: relative;
 	clear: left;
-	margin-top: 50px;
 	left: 8px;
 	width: calc(100% - 16px);
 	background-color: rgba(125,125,125,0.5);
