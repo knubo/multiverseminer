@@ -567,7 +567,7 @@ addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
     'power': 3,
-    'icon': sys.iconRoot + 'pick.png'
+    'icon': sys.iconRoot + 'pick_1.png'
 }).setCraftingCost([
     [Items.copperBar.id, 10]
 ]);
