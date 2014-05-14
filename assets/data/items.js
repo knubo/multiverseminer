@@ -774,19 +774,16 @@ addItem(42000, 'copperHelmet', 'Copper Helmet', 5, {
 }).setCraftingCost([
     [Items.copperBar.id, 4]
 ]);
-
 addItem(42001, 'ironHelmet', 'Iron Helmet', 50, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.ironBar.id, 10]
 ]);
-
 addItem(42002, 'silverHelmet', 'Silver Helmet', 250, {
     'storageLimit': 1
 }).setCraftingCost([
     [Items.silverBar.id, 10]
 ]);
-
 addItem(42003, 'goldHelmet', 'Gold Helmet', 500, {
     'storageLimit': 1
 }).setCraftingCost([
@@ -848,7 +845,38 @@ addItem(43003, 'goldArmor', 'Gold Armor', 500, {
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
+addItem(43004, 'copperBreastplate', 'Copper Breastplate', copperBasePrice);
+addItem(43005, 'copperChainmail', 'Copper Chainmail', copperBasePrice);
+addItem(43006, 'copperMail', 'Copper Mail', copperBasePrice);
+addItem(43007, 'copperReinforcedShirt', 'Copper Reinforced Shirt', copperBasePrice);
+addItem(43008, 'bronzeBreastplate', 'Bronze Breastplate', bronzeBasePrice);
+addItem(43009, 'bronzeChainmail', 'Bronze Chainmail', bronzeBasePrice);
+addItem(43010, 'bronzeMail', 'Bronze Mail', bronzeBasePrice);
+addItem(43011, 'bronzeReinforcedShirt', 'Bronze Reinforced Shirt', bronzeBasePrice);
+addItem(43012, 'ironBreastplate', 'Iron Breastplate', ironBasePrice);
+addItem(43013, 'ironChainmail', 'Iron Chainmail', ironBasePrice);
+addItem(43014, 'ironMail', 'Iron Mail', ironBasePrice);
+addItem(43015, 'ironReinforcedShirt', 'Iron Reinforced Shirt', ironBasePrice);
+addItem(43016, 'steelBreastplate', 'Steel Breastplate', steelBasePrice);
+addItem(43017, 'steelChainmail', 'Steel Chainmail', steelBasePrice);
+addItem(43018, 'steelMail', 'Steel Mail', steelBasePrice);
+addItem(43019, 'steelReinforcedShirt', 'Steel Reinforced Shirt', steelBasePrice);
+addItem(43020, 'titaniumBreastplate', 'Titanium Breastplate', titaniumBasePrice);
+addItem(43021, 'titaniumChainmail', 'Titanium Chainmail', titaniumBasePrice);
+addItem(43022, 'titaniumMail', 'Titanium Mail', titaniumBasePrice);
+addItem(43023, 'titaniumReinforcedShirt', 'Titanium Reinforced Shirt', titaniumBasePrice);
+addItem(43024, 'tungstenBreastplate', 'Tungsten Breastplate', tungstenBasePrice);
+addItem(43025, 'tungstenChainmail', 'Tungsten Chainmail', tungstenBasePrice);
+addItem(43026, 'tungstenMail', 'Tungsten Mail', tungstenBasePrice);
+addItem(43027, 'tungstenReinforcedShirt', 'Tungsten Reinforced Shirt', tungstenBasePrice);
+addItem(43028, 'iridiumBreastplate', 'Iridium Breastplate', iridiumBasePrice);
+addItem(43029, 'iridiumChainmail', 'Iridium Chainmail', iridiumBasePrice);
+addItem(43030, 'iridiumMail', 'Iridium Mail', iridiumBasePrice);
+addItem(43031, 'iridiumReinforcedShirt', 'Iridium Reinforced Shirt', iridiumBasePrice);
+addItem(43032, 'rheniumBreastplate', 'Rhenium Breastplate', rheniumBasePrice);
+addItem(43033, 'rheniumChainmail', 'Rhenium Chainmail', rheniumBasePrice);
+addItem(43034, 'rheniumMail', 'Rhenium Mail', rheniumBasePrice);
+addItem(43035, 'rheniumReinforcedShirt', 'Rhenium Reinforced Shirt', rheniumBasePrice);
 // ---------------------------------------------------------------------------
 // Equipment - Legs
 // ---------------------------------------------------------------------------
