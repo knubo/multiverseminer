@@ -549,6 +549,15 @@ addItem(4001, 'refinery', 'Refinery', 50000, {
 // ---------------------------------------------------------------------------
 // Equipment - MainHand
 // ---------------------------------------------------------------------------
+// TODO: MOVE THIS UP 
+var copperBasePrice = 10000;
+var bronzeBasePrice = 15000;
+var ironBasePrice = 20000;
+var steelBasePrice = 25000;
+var silverBasePrice = 30000;
+var goldBasePrice = 35000;
+var titaniumBasePrice = 40000;
+
 addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
     'storageLimit': 1,
 	'power': 1
@@ -613,7 +622,21 @@ addItem(40007, 'titaniumJackhammerTip', 'Titanium Jackhammer Tip', 20000, {
 	]
 );
 
-addItem(40008, 'scimitar', 'Scimitar', 10000);
+addItem(40008, 'copperScimitar', 'Copper Scimitar', copperBasePrice);
+
+addItem(40009, 'bronzeScimitar', 'Bronze Scimitar', bronzeBasePrice);
+
+addItem(40010, 'ironScimitar', 'Iron Scimitar', ironBasePrice);
+
+addItem(40011, 'steelScimitar', 'Steel Scimitar', steelBasePrice);
+
+addItem(40012, 'silverScimitar', 'Silver Scimitar', silverBasePrice);
+
+addItem(40013, 'goldScimitar', 'Gold Scimitar', goldBasePrice);
+
+addItem(40014, 'titaniumScimitar', 'Titanium Scimitar', silverBasePrice);
+
+//	 Wood -> Copper -> Bronze -> Iron -> Steel -> Silver -> Gold -> Aluminum -> Titanium
 // ---------------------------------------------------------------------------
 // Equipment - Head
 // ---------------------------------------------------------------------------
