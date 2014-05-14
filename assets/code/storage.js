@@ -129,6 +129,9 @@ function Storage(id) {
 			// We depleted the resource so we remove the entry
 			delete this.items[id];
 			
+			// Remove this item from the settings to avoid cheating by reloading
+			Utils.deleteSetting(this._getStorageKey() + id);
+			
 			// Unregister from the dictionaries
 			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
 			if(itemInfo.gearType) {
