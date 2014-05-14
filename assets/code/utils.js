@@ -1,10 +1,16 @@
 Utils = {
-        'startTime': Date.now(),
+        'startTime': Date.now()
 };
 
 // ---------------------------------------------------------------------------
 // Utility functions
 // ---------------------------------------------------------------------------
+Utils.deleteSetting = function(key) {
+	if(localStorage[key]) {
+		delete localStorage[key];
+	}
+};
+
 Utils.load = function(property, defaultValue) {
 	loadedValue = localStorage[property];
 	if (localStorage[property] == undefined) {
@@ -102,7 +108,7 @@ Utils.getDurationDisplay = function(seconds, highPrecision) {
     }
 
     return (days + hours + minutes + seconds).trim();
-}
+};
 
 Utils.getShortTimeDisplay = function(seconds) {
     if (seconds === 0 || seconds == Number.POSITIVE_INFINITY) {
@@ -116,7 +122,7 @@ Utils.getShortTimeDisplay = function(seconds) {
     seconds = this.pad(timeSplit[3], 2);
     
     return hours + minutes + seconds;
-}
+};
 
 Utils.logFormat = function(level, message, popup) {
 	var time = '[' + this.getShortTimeDisplay(Date.now() - this.startTime) + ']: ';
