@@ -792,7 +792,36 @@ addItem(42003, 'goldHelmet', 'Gold Helmet', 500, {
 }).setCraftingCost([
     [Items.goldBar.id, 10]
 ]);
-
+addItem(42004, 'copperReinforcedCowl', 'Copper Reinforced Cowl', copperBasePrice);
+addItem(42005, 'copperReinforcedHood', 'Copper Reinforced Hood', copperBasePrice);
+addItem(42006, 'copperReinforcedMask', 'Copper Reinforced Mask', copperBasePrice);
+addItem(42008, 'bronzeReinforcedCowl', 'Bronze Reinforced Cowl', bronzeBasePrice);
+addItem(42009, 'bronzeReinforcedHood', 'Bronze Reinforced Hood', bronzeBasePrice);
+addItem(42010, 'bronzeReinforcedMask', 'Bronze Reinforced Mask', bronzeBasePrice);
+addItem(42011, 'bronzeHelmet', 'Bronze Helmet', bronzeBasePrice);
+addItem(42012, 'ironReinforcedCowl', 'Iron Reinforced Cowl', ironBasePrice);
+addItem(42013, 'ironReinforcedHood', 'Iron Reinforced Hood', ironBasePrice);
+addItem(42014, 'ironReinforcedMask', 'Iron Reinforced Mask', ironBasePrice);
+addItem(42016, 'steelReinforcedCowl', 'Steel Reinforced Cowl', steelBasePrice);
+addItem(42017, 'steelReinforcedHood', 'Steel Reinforced Hood', steelBasePrice);
+addItem(42018, 'steelReinforcedMask', 'Steel Reinforced Mask', steelBasePrice);
+addItem(42019, 'steelHelmet', 'Steel Helmet', steelBasePrice);
+addItem(42020, 'titaniumReinforcedCowl', 'Titanium Reinforced Cowl', titaniumBasePrice);
+addItem(42021, 'titaniumReinforcedHood', 'Titanium Reinforced Hood', titaniumBasePrice);
+addItem(42022, 'titaniumReinforcedMask', 'Titanium Reinforced Mask', titaniumBasePrice);
+addItem(42023, 'titaniumHelmet', 'Titanium Helmet', titaniumBasePrice);
+addItem(42024, 'tungstenReinforcedCowl', 'Tungsten Reinforced Cowl', tungstenBasePrice);
+addItem(42025, 'tungstenReinforcedHood', 'Tungsten Reinforced Hood', tungstenBasePrice);
+addItem(42026, 'tungstenReinforcedMask', 'Tungsten Reinforced Mask', tungstenBasePrice);
+addItem(42027, 'tungstenHelmet', 'Tungsten Helmet', tungstenBasePrice);
+addItem(42028, 'iridiumReinforcedCowl', 'Iridium Reinforced Cowl', iridiumBasePrice);
+addItem(42029, 'iridiumReinforcedHood', 'Iridium Reinforced Hood', iridiumBasePrice);
+addItem(42030, 'iridiumReinforcedMask', 'Iridium Reinforced Mask', iridiumBasePrice);
+addItem(42031, 'iridiumHelmet', 'Iridium Helmet', iridiumBasePrice);
+addItem(42032, 'rheniumReinforcedCowl', 'Rhenium Reinforced Cowl', rheniumBasePrice);
+addItem(42033, 'rheniumReinforcedHood', 'Rhenium Reinforced Hood', rheniumBasePrice);
+addItem(42034, 'rheniumReinforcedMask', 'Rhenium Reinforced Mask', rheniumBasePrice);
+addItem(42035, 'rheniumHelmet', 'Rhenium Helmet', rheniumBasePrice);
 // ---------------------------------------------------------------------------
 // Equipment - Chest
 // ---------------------------------------------------------------------------
