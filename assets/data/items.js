@@ -249,7 +249,7 @@ addItem(34, 'krypton', 'Krypton', 100000, {
 });
 
 addItem(35, 'silver', 'Silver', 50, {
-    'icon': sys.iconRoot + 'silver.png'
+    'icon': sys.iconRoot + 'silver.png',
     'el': 'Ag'
 });
 
