@@ -22,11 +22,12 @@ function UI() {
     this.componentCrafting = undefined;
     
     this.componentElementFinder = undefined;
-    this.componentGemFinder = undefined;
     
     this.componentPlanet = undefined;
     
-    this.isDragging = false;
+    this.activeDragElement = undefined;
+    
+    this.activeFloats = [];
         
     // ---------------------------------------------------------------------------
     // main UI functions
@@ -48,14 +49,13 @@ function UI() {
         this.componentCrafting = new UIComponent('playerCraftingPanel', this.updateCraftingPanel);    
         
         this.componentElementFinder = new UIComponent('elementFinderPanel', this.updateElementFinderPanel);
-        this.componentGemFinder = new UIComponent('gemFinderPanel', this.updateGemFinderPanel);
         
         this.componentPlanet = new UIComponent('planetDisplay', this.updatePlanetDisplay);
         this.componentPlanet.enabled = true;
     };
     
     this.update = function(currentTime) {
-        $('#timeDisplayText').text(Utils.getShortTimeDisplay(Utils.getDayTimeInSeconds()));
+        $('#timeDisplayText').text(utils.getShortTimeDisplay(utils.getDayTimeInSeconds()));
         
 		if(game.settings.travelActive) {
 			$('#depth').text(game.settings.travelDistanceElapsed + " / " + game.settings.travelDistanceRemaining);
@@ -82,15 +82,25 @@ function UI() {
         }
         
         // Update the components
-        this.componentPlayerInventory.update();
-        this.componentPlayerGear.update();
+        this.componentPlayerInventory.update(currentTime);
+        this.componentPlayerGear.update(currentTime);
         
-        this.componentCrafting.update();
+        this.componentCrafting.update(currentTime);
         
-        this.componentElementFinder.update();
-        this.componentGemFinder.update();
+        this.componentElementFinder.update(currentTime);
         
-        this.componentPlanet.update();
+        this.componentPlanet.update(currentTime);
+        
+        // Update floating components
+        for(var i = 0; i < this.activeFloats.length; i++) {
+        	var float = this.activeFloats[i];
+        	float.update(currentTime);
+        	if(float.timedOut) {
+        		// Remove the float
+        		float.remove();
+        		this.activeFloats.splice(i, 1);
+        	}
+        }
     };
     
     this.updatePlayerInventoryPanel = function() {
@@ -150,38 +160,23 @@ function UI() {
     };
     
     this.updateElementFinderPanel = function() {
-        if (game.currentPlanet) {
-            resources = game.currentPlanet._getAvailableResources("mine");
+    	$('#elementFinderPanel').text("N/A");
+        /*if (game.currentPlanet) {
+            var tableId = game.currentPlanet.getMiningLootTableId();
+            var table = game.getLootTable(tableId);
+            utils.log(table.entries);
             var resElement = "<div>";
-            for (var i = 0; i < resources.length; i++) {
-                // This is a raw material
-                if ( resources[i].id < 2000 ) {
-                    resElement += ('<div class="element">' + 
-                                        '<span class="elementName">' + game.getItemName(resources[i].id) + '</span>' +
-                                        '<span class="elementAbr">' + game.getItem(resources[i].id).el + '</span>' +
-                                    '</div>');
-                }
+            for (var i = 0; i < table.entries.length; i++) {
+            	var item = game.getItem(table[i][0]);
+            	'<div class="element">' + 
+                	'<span class="elementName">' + item.name + '</span>' +
+                	'<span class="elementAbr">' + item.el + '</span>' +
+                '</div>'
             }
             $('#elementFinderPanel').html(resElement + "</div>");
         } else {
             $('#elementFinderPanel').text("N/A");
-        }
-    };
-    
-    this.updateGemFinderPanel = function() {
-        if (game.currentPlanet) {
-            resources = game.currentPlanet._getAvailableResources("mine");
-            var resGem = "<ul>";
-            for (var i = 0; i < resources.length; i++) {
-                // This is a raw material
-                if ( resources[i].id >= 2000 && resources[i].id < 3000 ) {
-                    resGem += "<li>" + game.getItemName(resources[i].id) + "</li>";
-                }
-            }
-            $('#gemFinderPanel').html(resGem + "</ul>");
-        } else {
-            $('#gemFinderPanel').text("N/A");
-        }
+        }*/
     };
     
     this.updatePlanetDisplay = function() {
@@ -190,7 +185,7 @@ function UI() {
         if(game.currentPlanet) {
             var background = game.currentPlanet.getBackground();
             if(background) {
-                $('#planetDisplayBackground').append('<img src="' + background + '"/>');
+                $('#planetDisplayBackground').append('<img class="planetImage" src="' + background + '"/>');
             }
             
             $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
@@ -214,7 +209,6 @@ function UI() {
     this.hideRightSideComponents = function() { 
         this.hideComponent(this.componentPlayerGear);
         this.hideComponent(this.componentElementFinder);
-        this.hideComponent(this.componentGemFinder);
     };
     
     this.hideComponent = function(component) {
@@ -246,6 +240,32 @@ function UI() {
         };
         
         return sys.iconPlaceholder;
+    };
+    
+    this.notify = function(message) {
+    	noty({
+            text : message,
+            type : 'information'
+        });
+    };
+    
+    this.notifyError = function(message) {
+    	noty({
+            text : message,
+            type : 'error'
+        });
+    };
+    
+    this.createFloat = function(position, content, classes) {
+    	var float = new UIFloating(position, content, classes || "genericFloating");
+    	float.init();
+    	
+    	// Todo: use something else as default i guess
+    	float.timeOut = Date.now() + 2;
+    	
+    	this.activeFloats.push(float);
+    	
+    	return float;
     };
     
     // ---------------------------------------------------------------------------

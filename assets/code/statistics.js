@@ -30,11 +30,10 @@ function Statistics(key) {
 
     this.load = function() {
         var storageKey = this._getStorageKey();
-        this.clickCount = Utils.loadInt(storageKey + 'clickCount', 1);
-        this.autoDigCount = Utils.loadInt(storageKey + 'autoDigCount', 1);
-        this.manualDigCount = Utils.loadInt(storageKey + 'manualDigCount', 1);
-        this.manualGatherCount = Utils.loadInt(
-            storageKey + 'manualGatherCount', 1);
+        this.clickCount = utils.loadInt(storageKey + 'clickCount', 1);
+        this.autoDigCount = utils.loadInt(storageKey + 'autoDigCount', 1);
+        this.manualDigCount = utils.loadInt(storageKey + 'manualDigCount', 1);
+        this.manualGatherCount = utils.loadInt(storageKey + 'manualGatherCount', 1);
     };
 
     this.reset = function(fullReset) {

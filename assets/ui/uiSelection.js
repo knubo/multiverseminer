@@ -33,8 +33,8 @@ function UISelection(parent, values, selectionChangedCallback) {
         this.selectionNextElement.click({param: this.key}, this.onSelectNext);
         
         $('#' + this.parent).append(this.selectionPrevElement);
-        $('#' + this.parent).append(this.selectionTextElement);
         $('#' + this.parent).append(this.selectionNextElement);
+		$('#' + this.parent).append(this.selectionTextElement);
     };
     
     this.update = function(id) {
@@ -44,7 +44,7 @@ function UISelection(parent, values, selectionChangedCallback) {
     
     this.setSelection = function(id) {
         if (!this.keys[id]) {
-            Utils.logError("setSelection called with invalid argument: " + id);
+            utils.logError("setSelection called with invalid argument: " + id);
             return;
         }
         

@@ -7,26 +7,26 @@ function Game() {
 
 	this.planetDictionary = undefined;
 	this.itemDictionary = undefined;
+	this.lootTableDictionary = undefined;
 
 	this.lastUpdateTime = Date.now();
 	this.lastAutoSaveTime = Date.now();
 	
 	this.planetChanged = true;
 	
-	this.targetPlanet = undefined;
-	
 	this.version = 0.1;
 
 	// ---------------------------------------------------------------------------
-	// general game functions
+	// main functions
 	// ---------------------------------------------------------------------------
 	this.init = function() {
 		// Rebuild the dictionaries for our data
 		this.planetDictionary = this.buildDictionary(Planets);
 		this.itemDictionary = this.buildDictionary(Items);
+		this.lootTableDictionary = this.buildDictionary(LootTables);
 
-		Utils.log(Object.keys(this.planetDictionary).length + " planets");
-		Utils.log(Object.keys(this.itemDictionary).length + " items");
+		utils.log(Object.keys(this.planetDictionary).length + " planets");
+		utils.log(Object.keys(this.itemDictionary).length + " items");
 		
 		// Initialize all the components
 		this.player.initialize();
@@ -53,15 +53,6 @@ function Game() {
 		// Set some basic things in settings
 		this.settings.isNewGame = false;
 		this.settings.savedVersion = this.version;
-	};
-
-	this.setStartupState = function() {		
-		// Bring us back to our last position
-		if (this.settings.travelActive) {
-			// Todo: resume travelling
-		} else {
-			this._enterOrbit(this.settings.currentPlanet);
-		}
 	};
 
 	this.reset = function(fullReset) {
@@ -91,7 +82,7 @@ function Game() {
 
 		if (this.settings.autoSaveEnabled
 				&& elapsedSinceAutoSave > this.settings.autoSaveInterval) {
-			Utils.log("Auto-saving");
+			ui.notify("Auto-saving");
 			this.save();
 			this.lastAutoSaveTime = currentTime;
 		}
@@ -105,7 +96,7 @@ function Game() {
 		if(this.settings.travelActive) {
 			this.settings.travelDistanceElapsed += 5000;
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
-				this._enterOrbit(this.targetPlanet);
+				this._enterOrbit(this.settings.targetPlanet);
 			}
 		}
 
@@ -113,6 +104,18 @@ function Game() {
 		return elapsed;
 	};
 
+	// ---------------------------------------------------------------------------
+	// game functions
+	// ---------------------------------------------------------------------------
+	this.setStartupState = function() {		
+		// Bring us back to our last position
+		if (this.settings.travelActive) {
+			// Todo: resume travelling
+		} else {
+			this._enterOrbit(this.settings.currentPlanet);
+		}
+	};
+	
 	this.craft = function(storageSource, storageTarget, what, count) {
 		if (!count) {
 			count = 1;
@@ -122,7 +125,7 @@ function Game() {
 
 		// Check if we have enough storage to store the result
 		if (!storageTarget.canAdd(what, count)) {
-			Utils.logError("Can not craft, storage limit exceeded!");
+			ui.notifyError("Can not craft, storage limit exceeded!");
 			return false;
 		}
 
@@ -138,7 +141,7 @@ function Game() {
 			var key = keys[i];
 			if (storageSource.getItemCount(key) < cost[key]) {
 				// Todo: this needs to go into the ui somewhere
-				Utils.logError("Insufficient resources, need " + cost[key] + " " + this.getItemName(key));
+				ui.notifyError("Insufficient resources, need " + cost[key] + " " + this.getItemName(key));
 				return false;
 			}
 		}
@@ -154,8 +157,28 @@ function Game() {
 					
 		storageTarget.addItem(what, totalQuantity);
 		
-		Utils.log("Crafted " + totalQuantity + " " + targetItem.name);
+		ui.notify("Crafted " + totalQuantity + " " + targetItem.name);
 		return true;
+	};
+	
+	this.loot = function(table, count) {
+		var results = [];
+		for(var n = 0; n < count; n++) {
+			this._pickLootTableEntries(table, results);
+			if(results.length <= 0) {
+				continue;
+			}
+		}
+		
+		return results;
+	};
+	
+	this.getLootTable = function(id) {
+		if(this.lootTableDictionary[id]) {
+			return this.lootTableDictionary[id];
+		}
+		
+		return undefined;
 	};
 
 	this.getItemName = function(id) {
@@ -171,7 +194,7 @@ function Game() {
 
 		// Check if the item has proper crafting data
 		if (!targetItem.craftCost) {
-			Utils.logError("Don't know how to craft this, check the data!");
+			ui.notifyError("Don't know how to craft this, check the data!");
 			return;
 		}
 
@@ -220,15 +243,12 @@ function Game() {
 	this.getCategoryById = function(categoryId) {
 	    return ItemCategory[Object.keys(ItemCategory)[categoryId]];
 	};
-
-	// ---------------------------------------------------------------------------
-	// specific game functions
-	// ---------------------------------------------------------------------------
+	
 	this.travelTo = function(target) {
 		console.log("Traveling to " + target);
 		// Todo: deduct travel cost
 		if (target == undefined || !this.planetDictionary[target]) {
-			Utils.logError("Unknown destination: " + target);
+			ui.notifyError("Unknown destination: " + target);
 			return;
 		}
 
@@ -245,17 +265,60 @@ function Game() {
 			this._leaveOrbit(target);
 		}
 	};
+	
+	// ---------------------------------------------------------------------------
+	// internal functions
+	// ---------------------------------------------------------------------------
+	this._pickLootTableEntries = function(table, results) {
+		switch(table.mode) {
+			case LootMode.single: {
+				this._pickSingleLootTableEntry(table, results);
+				break;
+			}
+			
+			case LootMode.multi: {
+				this._pickMultiLootTableEntries(table, results);
+				break;
+			}
+		}
+	};
+	
+	this._pickMultiLootTableEntries = function(table, results) {
+		for(var i = 0; i < table.entries.length; i++) {
+			var entry = table.entries[i][0];
+			var chance = table.entries[i][1];
+			if(Math.random() <= chance) {
+				if(entry.entries) {
+					// Sub-table
+					this._pickLootTableEntries(entry, results);
+				} else {
+					results.push(entry);
+				}
+			}
+		}
+	};
+	
+	this._pickSingleLootTableEntry = function(table, results) {
+		var pick = utils.getRandomInt(0, table.entries.length - 1);
+		var entry = table.entries[pick];
+		if(entry.entries) {
+			// Sub-table
+			this._pickLootTableEntries(entry, results);
+		} else {
+			results.push(entry);
+		}
+	};
 
 	this._leaveOrbit = function(target) {
 		if (!this.currentPlanet) {
-			Utils.logError("Can not leave, not on a planet");
+			ui.notifyError("Can not leave, not on a planet");
 		}
 
 		// Save the planet before leaving for another one
 		this.currentPlanet.save();
 		this.currentPlanet = undefined;
 		
-		this.targetPlanet = target;
+		this.settings.targetPlanet = target;
 	};
 
 	this._enterOrbit = function(target) {
@@ -269,11 +332,9 @@ function Game() {
 		this.currentPlanet.load();
 		this.planetChanged = true;
 		
-		this.targetPlanet = undefined;
+		this.settings.targetPlanet = undefined;
 		
 		this.settings.travelActive = false;
-		
-		this.player.moveTo(this.currentPlanet.currentDepth);
 	};
 
 	// ---------------------------------------------------------------------------
@@ -285,7 +346,7 @@ function Game() {
 		for ( var i = 0; i < keys.length; i++) {
 			var entry = list[keys[i]];
 			if (result[entry.id]) {
-				Utils.logError("Duplicate id: " + entry.id);
+				utils.logError("Duplicate id: " + entry.id);
 				continue;
 			}
 
