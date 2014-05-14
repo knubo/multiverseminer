@@ -74,6 +74,7 @@ function Game() {
 		this.setStartupState();
 		
 		this.save();
+		location.reload();
 	};
 
 	this.update = function(currentTime) {
