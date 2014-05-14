@@ -21,7 +21,7 @@ GearType = {
     'mainHand': 'Main Hand',
     'secondHand': 'Second Hand',
     'legs': 'Legs',
-    'feet': 'Feet'
+    'feet': 'Feet',
 };
 
 Items = {};
@@ -34,7 +34,7 @@ function addItem(id, internalName, name, baseValue, metadata) {
         'id': id,
         'name': name,
         'baseValue': baseValue,
-        'setCraftingCost': _setItemCraftingCost
+        'setCraftingCost': _setItemCraftingCost,
     };
 
     if (metadata) {
@@ -137,7 +137,6 @@ addItem(6, 'silicon', 'Silicon', 1000, {
 });
 
 addItem(7, 'aluminum', 'Aluminum', 1000, {
-    'icon': sys.iconRoot + 'aluminum.png',
     'el': 'Al'
 });
 
@@ -524,7 +523,7 @@ addItem(5003, 'healthPotion', 'Health Potion', 25000, {
 addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
     'description': 'Resurrect your character',
     'storeValue': 500000,
-    'use': 1
+    'use': 1,
 });
 
 // ---------------------------------------------------------------------------
