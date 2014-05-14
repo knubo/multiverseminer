@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 var sys = new System();
 
-function System() {
+function System() {	
     this.imageRoot = "assets/images/";
     this.iconRoot = this.imageRoot + "itemIcons/";
     

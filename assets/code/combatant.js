@@ -36,10 +36,10 @@ function Combatant(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 
-		this.health = Utils.loadFloat(storageKey + 'health', 0);
-		this.defense = Utils.loadFloat(storageKey + 'defense', 0);
+		this.health = utils.loadFloat(storageKey + 'health', 0);
+		this.defense = utils.loadFloat(storageKey + 'defense', 0);
 
-		this.baseAttackSpeed = Utils.loadFloat(storageKey + 'baseAttackSpeed',
+		this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed',
 				1);
 	};
 

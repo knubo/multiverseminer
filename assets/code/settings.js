@@ -69,23 +69,21 @@ function Settings() {
 		this.totalStats.load();
 		this.sessionStats.load();
 
-		this.currentPlanet = Utils.loadInt("currentPlanet", 0);
+		this.currentPlanet = utils.loadInt("currentPlanet", 0);
 
-		this.autoSaveEnabled = Utils.loadBool("autoSaveEnabled", true);
-		this.autoSaveInterval = Utils.loadInt("autoSaveInterval", 60 * 1000);
+		this.autoSaveEnabled = utils.loadBool("autoSaveEnabled", true);
+		this.autoSaveInterval = utils.loadInt("autoSaveInterval", 60 * 1000);
 		
-		this.savedVersion = Utils.loadFloat("savedVersion", 0);
+		this.savedVersion = utils.loadFloat("savedVersion", 0);
 
-		this.targetPlanet = Utils.load("targetPlanet", undefined);
-		this.travelActive = Utils.loadBool("travelActive", 0);
-		this.travelDistanceRemaining = Utils.loadFloat(
-				"travelDistanceRemaining", 0);
-		this.travelDistanceElapsed = Utils
-				.loadFloat("travelDistanceElapsed", 0);
+		this.targetPlanet = utils.load("targetPlanet", undefined);
+		this.travelActive = utils.loadBool("travelActive", 0);
+		this.travelDistanceRemaining = utils.loadFloat("travelDistanceRemaining", 0);
+		this.travelDistanceElapsed = utils.loadFloat("travelDistanceElapsed", 0);
 		
-		this.selectedPlayerInventoryFilter = Utils.loadInt('selectedPlayerInventoryFilter', 1);
+		this.selectedPlayerInventoryFilter = utils.loadInt('selectedPlayerInventoryFilter', 1);
 		
-		this.isNewGame = Utils.loadBool("isNewGame", true);
+		this.isNewGame = utils.loadBool("isNewGame", true);
 	};
 
 	this.reset = function(fullReset) {
