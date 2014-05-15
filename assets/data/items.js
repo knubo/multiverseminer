@@ -152,9 +152,7 @@ addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
 
-addItem(10, 'crudeOil', 'Crude Oil', 1000, {
-    'icon': sys.iconRoot + "crudeOil.png"
-});
+addItem(10, 'fuel', 'Fuel', 1000);
 
 addItem(11, 'potassium', 'Potassium', 1000, {
     'icon': sys.iconRoot + 'potassium.png',
@@ -274,6 +272,9 @@ addItem(36, 'ceasium', 'Ceasium', 100000, {
     'el': 'Cs'
 });
 
+addItem(37, 'crudeOil', 'Crude Oil', 10000, {
+    'icon': sys.iconRoot + "crudeOil.png"
+});
 // ---------------------------------------------------------------------------
 // Gems
 // ---------------------------------------------------------------------------
