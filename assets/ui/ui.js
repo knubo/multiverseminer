@@ -25,14 +25,25 @@ function UI() {
     
     this.componentPlanet = undefined;
     
+    this.isDragging = false;
+    this.pendingDragElementTime = Date.now();
+    this.pendingDragElement = undefined;
     this.activeDragElement = undefined;
+    this.activeDragSource = undefined;
+    this.activeDragTarget = undefined;
     
     this.activeFloats = [];
+    
+    this.cursorPositionX = 0;
+    this.cursorPositionY = 0;
         
     // ---------------------------------------------------------------------------
     // main UI functions
     // ---------------------------------------------------------------------------
     this.init = function() {
+    	$(document).on('mousemove', this.onMouseMove);
+    	$(document).on('mouseup', this.onMouseUp);
+    	
         this.playerIventoryFilter = new UISelection('playerInventoryFilter', ItemCategory, this.onPlayerInventoryFilterChanged);
         this.playerIventoryFilter.init();
         this.playerIventoryFilter.min = 1; // To avoid selecting undef
@@ -101,6 +112,12 @@ function UI() {
         		this.activeFloats.splice(i, 1);
         	}
         }
+        
+        // Check if we are starting a drag operation
+        if(this.pendingDragElement && currentTime - this.pendingDragElementTime > sys.dragDelay) {
+        	this.enterDrag(this.pendingDragElement);
+        	this.pendingDragElement = undefined;
+        }
     };
     
     this.updatePlayerInventoryPanel = function() {
@@ -118,7 +135,8 @@ function UI() {
         var gearSlots = game.player.gear.getSlots();
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
-            content.append(self.buildGearSlot(gearSlots[i], itemId));
+            var slot = self.buildGearSlot(gearSlots[i], itemId);
+            content.append(slot.getMainElement());
         }
 
         $('#playerGearPanel').append(content);
@@ -190,6 +208,35 @@ function UI() {
             
             $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
         }
+    };
+    
+    this.onMouseMove = function(parameter) {
+    	var self = ui;
+    	
+    	this.cursorPositionX = parameter.pageX;
+    	this.cursorPositionY = parameter.pageY;
+    	
+    	if(!self.isDragging) {
+    		return;
+    	}
+    	
+    	self.activeDragElement.moveTo(this.cursorPositionX + 1, this.cursorPositionY + 1);
+    };
+    
+    this.onMouseUp = function(parameter) {
+    	var self = ui;
+    	
+    	// If we are pending a drag cancel it
+    	if(self.pendingDragElement) {
+    		self.pendingDragElement = undefined;
+    	}
+    	
+    	// If we are not in a drag bail out
+    	if(!self.isDragging) {
+    		return;
+    	}
+    	
+    	self.finishDrag();
     };
     
     this.onPlayerInventoryFilterChanged = function() {
@@ -267,6 +314,53 @@ function UI() {
     	
     	return float;
     };
+        
+    this.beginDrag = function(source) {
+    	if(!sys.enableDragDrop) {
+    		return;
+    	}
+    	
+    	// Queue this element for dragging
+    	this.activeDragSource = source;
+    	this.pendingDragElement = source;
+    	this.pendingDragElementTime = Date.now();
+    };
+    
+    this.enterDrag = function(source) {
+    	this.isDragging = true;
+    	var sourceElement = source.getMainElement();
+    	this.activeDragElement = new UIFloating(sourceElement.clone(), 'dragDropFloating');
+    	this.activeDragElement.init();
+    	this.activeDragElement.moveTo(this.cursorPositionX + 1, this.cursorPositionY + 1);
+    };
+    
+    this.setDragTarget = function(target) {
+    	if(!this.isDragging) {
+    		return;
+    	}
+    	
+    	this.activeDragTarget = target;
+    };
+    
+    this.getDragSource = function() {
+    	if(!this.isDragging) {
+    		return undefined;
+    	}
+    	
+    	return this.activeDragSource;
+    };
+    
+    this.finishDrag = function(source) {
+    	// Sanity check before resolve
+    	if(this.activeDragSource && this.activeDragTarget) {
+    		this.activeDragTarget.drop(this.activeDragSource);
+    	}
+    	
+    	this.activeDragSource = undefined;
+    	this.activeDragTarget = undefined;
+    	this.activeDragElement.remove();
+    	this.isDragging = false;
+    };
     
     // ---------------------------------------------------------------------------
     // building functions
@@ -303,20 +397,14 @@ function UI() {
             item = game.getItem(itemId);
         }
         
-        var tooltip = '';
-        var icon = undefined;
+        var slot = new UISlot(slot+' gearSlot ');
+        slot.init();
+        
         if(item != undefined) {
-            tooltip = this.buildItemTooltip(item);
-            
-            icon = item.icon != undefined ? item.icon : this.getDefaultItemIcon(item);
+        	slot.set(item, 1);
         }
         
-        var entry = $('<div class="' + slot + ' gearSlot noselect" title="' + tooltip + '">');
-        if(icon != undefined) {
-            entry.append('<img src="' + icon + '"/>');
-        }
-        
-        return entry;
+        return slot;
     };
 
     this.buildInventory = function(targetDiv, storage) {

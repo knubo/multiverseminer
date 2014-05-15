@@ -1,4 +1,4 @@
-function UIFloating(position, content, classes) {
+function UIFloating(content, classes) {
 	
 	this.mainDiv = undefined;
 	this.classes = classes;
@@ -54,9 +54,7 @@ function UIFloating(position, content, classes) {
 	};
 	
 	this.moveTo = function(x, y) {
-		// TODO
-		//utils.log('moveTo'+x+' '+y);
-		//this.mainDiv.animate({ bottom: '"'+x+'px' });
+		this.mainDiv.offset({ top: y, left: x});
 	};
 	
 	this.setContent = function(content) {
