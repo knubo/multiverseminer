@@ -152,7 +152,9 @@ addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
 
-addItem(10, 'fuel', 'Fuel', 1000);
+addItem(10, 'fuel', 'Fuel', 1000, {
+    'icon': sys.iconRoot + "crudeOil.png"
+});
 
 addItem(11, 'potassium', 'Potassium', 1000, {
     'icon': sys.iconRoot + 'potassium.png',
@@ -160,6 +162,7 @@ addItem(11, 'potassium', 'Potassium', 1000, {
 });
 
 addItem(12, 'magnesium', 'Magnesium', 1000, {
+    'icon': sys.iconRoot + "magnesium.png",
     'el': 'Mg'
 });
 
@@ -169,6 +172,7 @@ addItem(13, 'titanium', 'Titanium', 1000, {
 });
 
 addItem(14, 'hydrogen', 'Hydrogen', 1000, {
+    'icon': sys.iconRoot + "hydrogen.png",
     'el': 'H'
 });
 
@@ -203,14 +207,17 @@ addItem(20, 'sulfur', 'Sulfur', 1000, {
 });
 
 addItem(21, 'nitrogen', 'Nitrogen', 1000, {
+    'icon': sys.iconRoot + "nitrogen.png",
     'el': 'N'
 });
 
 addItem(22, 'nickel', 'Nickel', 1000, {
+    'icon': sys.iconRoot + "nickel.png",
     'el': 'Ni'
 });
 
 addItem(23, 'zinc', 'Zinc', 1000, {
+    'icon': sys.iconRoot + "zinc.png",
     'el': 'Zn'
 });
 
