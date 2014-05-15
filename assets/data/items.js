@@ -155,6 +155,7 @@ addItem(9, 'sodium', 'Sodium', 1000, {
 addItem(10, 'fuel', 'Fuel', 1000);
 
 addItem(11, 'potassium', 'Potassium', 1000, {
+    'icon': sys.iconRoot + 'potassium.png',
     'el': 'K'
 });
 
@@ -177,14 +178,17 @@ addItem(15, 'phosphorus', 'Phosphorus', 1000, {
 });
 
 addItem(16, 'manganese', 'Manganese', 1000, {
+    'icon': sys.iconRoot + 'manganese.png',
     'el': 'Mn'
 });
 
 addItem(17, 'fluorine', 'Fluorine', 1000, {
+    'icon': sys.iconRoot + 'flourine.png',
     'el': 'F'
 });
 
 addItem(18, 'barium', 'Barium', 1000, {
+    'icon': sys.iconRoot + 'barium.png',
     'el': 'Ba'
 });
 
@@ -194,6 +198,7 @@ addItem(19, 'carbon', 'Carbon', 1000, {
 });
 
 addItem(20, 'sulfur', 'Sulfur', 1000, {
+    'icon': sys.iconRoot + 'sulfur.png',
     'el': 'S'
 });
 
