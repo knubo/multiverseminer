@@ -1,5 +1,3 @@
-UISelections = [];
-
 var nextUISelectionKey = 0;
 
 function UISelection(parent, values, selectionChangedCallback) {
@@ -20,21 +18,28 @@ function UISelection(parent, values, selectionChangedCallback) {
     // ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
-    this.init = function() {
-        // Register ourselfs for callbacks
-        UISelections[this.key] = this;
+    this.init = function() {        
+        this.selectionFirstElement = $('<img class="selectPrevious clickable noSelect" src="'+ sys.selectionArrowBackFast + '"/>');
+        this.selectionFirstElement.click({self: this}, this.onSelectFirst);
         
-        this.selectionPrevElement = $('<img class="selectPrevious clickable noSelect" src="'+ sys.imageRoot +'selectionArrowBack.png"/>');
-        this.selectionPrevElement.click({param: this.key}, this.onSelectPrevious);
+        this.selectionPrevElement = $('<img class="selectPrevious clickable noSelect" src="'+ sys.selectionArrowBack + '"/>');
+        this.selectionPrevElement.click({self: this}, this.onSelectPrevious);
         
         this.selectionTextElement = $('<div class="selectionText noSelect"></div>');
         
-        this.selectionNextElement = $('<img class="selectNext clickable noSelect" src="'+ sys.imageRoot +'selectionArrowForward.png"/>');
-        this.selectionNextElement.click({param: this.key}, this.onSelectNext);
+        this.selectionNextElement = $('<img class="selectNext clickable noSelect" src="'+ sys.selectionArrowForward +'"/>');
+        this.selectionNextElement.click({self: this}, this.onSelectNext);
         
-        $('#' + this.parent).append(this.selectionPrevElement);
+        this.selectionLastElement = $('<img class="selectNext clickable noSelect" src="'+ sys.selectionArrowForwardFast +'"/>');
+        this.selectionLastElement.click({self: this}, this.onSelectLast);
+        
+        // have to add the right floating elements first
+        $('#' + this.parent).append(this.selectionLastElement);
         $('#' + this.parent).append(this.selectionNextElement);
-		$('#' + this.parent).append(this.selectionTextElement);
+        
+        $('#' + this.parent).append(this.selectionFirstElement);
+        $('#' + this.parent).append(this.selectionPrevElement);
+        $('#' + this.parent).append(this.selectionTextElement);
     };
     
     this.update = function(id) {
@@ -51,7 +56,7 @@ function UISelection(parent, values, selectionChangedCallback) {
         this.selection = id;
         this.update();
     };
-    
+        
     this.selectPrevious = function() {
         if (this.selection <= this.min) {
             if (!this.loop) {
@@ -82,13 +87,25 @@ function UISelection(parent, values, selectionChangedCallback) {
         this.callback(this.selection);
     };
     
-    this.onSelectPrevious = function(key) {
-        var self = UISelections[key.data.param];
+    this.onSelectFirst = function(parameter) {
+    	var self = parameter.data.self;
+    	self.selection = self.min + 1;
+    	self.selectPrevious();
+    };
+    
+    this.onSelectPrevious = function(parameter) {
+    	var self = parameter.data.self;
         self.selectPrevious();
     };
     
-    this.onSelectNext = function(key) {
-        var self = UISelections[key.data.param];
+    this.onSelectNext = function(parameter) {
+    	var self = parameter.data.self;
         self.selectNext();
+    };
+    
+    this.onSelectLast = function(parameter) {
+    	var self = parameter.data.self;
+    	self.selection = self.max - 1;
+    	self.selectNext();
     };
 };

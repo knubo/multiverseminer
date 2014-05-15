@@ -114,7 +114,7 @@ function UI() {
         
         $('#playerGearPanel').empty();
 
-        var content = $('<div id="playerGearPanelContent" class="gearContent"></div>');
+        var content = $('<div id="playerGearPanelContent" class="gearContent noselect"></div>');
         var gearSlots = game.player.gear.getSlots();
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
@@ -185,7 +185,7 @@ function UI() {
         if(game.currentPlanet) {
             var background = game.currentPlanet.getBackground();
             if(background) {
-                $('#planetDisplayBackground').append('<img class="planetImage" src="' + background + '"/>');
+                $('#planetDisplayBackground').append('<img class="planetImage noselect" src="' + background + '"/>');
             }
             
             $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
@@ -231,11 +231,11 @@ function UI() {
             if(item.category == ItemCategory.rawMaterial) {
                 return sys.iconPlaceholderRawMaterial;
             } else if (item.category == ItemCategory.gem) {
-                return sys.iconPLaceholderGem;
+                return sys.iconPlaceholderGem;
             } else if (item.category == ItemCategory.gearChest) {
                 return sys.iconPlaceholderChest;
             } else if (item.category == ItemCategory.gearHead) {
-                return sys.iconPLaceholderHead;
+                return sys.iconPlaceholderHead;
             }
         };
         
@@ -273,13 +273,13 @@ function UI() {
     // ---------------------------------------------------------------------------
     this.buildCraftingEntry = function(item) {
         var tooltipContent = this.buildCraftingCostTooltip(item);
-        var content = $('<div class="craftingItemPanel" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
+        var content = $('<div class="craftingItemPanel noselect" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
         var icon = this.getDefaultItemIcon(item);
         if(item.icon) {
             icon = item.icon;
         }
-        content.append('<image class=\'craftingIcon\' src="'+icon+'" />');
-        content.append('<span class="craftingText">'+item.name+'</span>').disableSelection();
+        content.append('<image class="craftingIcon noselect" src="'+icon+'" />');
+        content.append('<span class="craftingText noselect">'+item.name+'</span>').disableSelection();
         
         return content;
     };
@@ -307,10 +307,11 @@ function UI() {
         var icon = undefined;
         if(item != undefined) {
             tooltip = this.buildItemTooltip(item);
+            
             icon = item.icon != undefined ? item.icon : this.getDefaultItemIcon(item);
         }
         
-        var entry = $('<div class="' + slot + ' gearSlot" title="' + tooltip + '">');
+        var entry = $('<div class="' + slot + ' gearSlot noselect" title="' + tooltip + '">');
         if(icon != undefined) {
             entry.append('<img src="' + icon + '"/>');
         }

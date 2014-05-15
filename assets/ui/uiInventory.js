@@ -18,7 +18,7 @@ function UIInventory(parent, slotCount) {
     // ---------------------------------------------------------------------------
     this.init = function() {
         var slotId = 0;
-        var grid = $('<div class="itemGrid"></div>');
+        var grid = $('<div class="itemGrid noselect"></div>');
         for(var x = 0; x < this.count; x++) {
             var slot = new UISlot();
             slot.init();
