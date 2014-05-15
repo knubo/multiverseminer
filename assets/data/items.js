@@ -142,10 +142,12 @@ addItem(7, 'aluminum', 'Aluminum', 1000, {
 });
 
 addItem(8, 'calcium', 'Calcium', 1000, {
+    'icon': sys.iconRoot + 'calcium.png',
     'el': 'Ca'
 });
 
 addItem(9, 'sodium', 'Sodium', 1000, {
+    'icon': sys.iconRoot + 'sodium.png',
     'el': 'Na'
 });
 
@@ -169,6 +171,7 @@ addItem(14, 'hydrogen', 'Hydrogen', 1000, {
 });
 
 addItem(15, 'phosphorus', 'Phosphorus', 1000, {
+    'icon': sys.iconRoot + 'phosphorus.png',
     'el': 'P'
 });
 
