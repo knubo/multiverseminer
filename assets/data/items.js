@@ -881,7 +881,7 @@ addItem(40000, 'woodenPick', 'Wooden Pickaxe', 0, {
 });
 addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
     'storageLimit': 1,
-    'power': 3,
+    'power': 2,
     'icon': sys.iconRoot + 'pick_1.png', 
 	'statIncrease': {'strength': 1}, 
 	'statDecrease': {'agility': 1}
@@ -890,7 +890,7 @@ addItem(40001, 'copperPick', 'Copper Pickaxe', 15, {
 ]);
 addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
     'storageLimit': 1,
-    'power': 4, 
+    'power': 3, 
 	'statIncrease': {'strength': 1}, 
 	'statDecrease': {'agility': 1}
 }).setCraftingCost([
@@ -898,7 +898,7 @@ addItem(40002, 'ironPick', 'Iron Pickaxe', 25, {
 ]);
 addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
     'storageLimit': 1,
-    'power': 5, 
+    'power': 4, 
 	'statIncrease': {'strength': 1}, 
 	'statDecrease': {'agility': 1}
 }).setCraftingCost([
@@ -906,7 +906,7 @@ addItem(40003, 'goldPick', 'Gold Pickaxe', 2500, {
 ]);
 addItem(40004, 'titaniumPick', 'Titanium Pickaxe', 4000, {
     'storageLimit': 1,
-    'power': 6, 
+    'power': 5, 
 	'statIncrease': {'strength': 1}, 
 	'statDecrease': {'agility': 1}
 }).setCraftingCost([
