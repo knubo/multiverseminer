@@ -16,6 +16,7 @@ function Settings() {
 	
 	// UI settings
 	this.selectedPlayerInventoryFilter = 1;
+	this.selectedPlanetInventoryFilter = 1;
 	
 	this.isNewGame = true;
 	
@@ -61,6 +62,7 @@ function Settings() {
 		localStorage.travelDistanceElapsed = this.travelDistanceElapsed;
 		
 		localStorage.selectedPlayerInventoryFilter = this.selectedPlayerInventoryFilter;
+		localStorage.selectedPlanetInventoryFilter = this.selectedPlanetInventoryFilter;
 		
 		localStorage.isNewGame = this.newGame;
 	};
@@ -82,6 +84,7 @@ function Settings() {
 		this.travelDistanceElapsed = utils.loadFloat("travelDistanceElapsed", 0);
 		
 		this.selectedPlayerInventoryFilter = utils.loadInt('selectedPlayerInventoryFilter', 1);
+		this.selectedPlanetInventoryFilter = utils.loadInt('selectedPlanetInventoryFilter', 1);
 		
 		this.isNewGame = utils.loadBool("isNewGame", true);
 	};

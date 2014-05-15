@@ -67,6 +67,11 @@ body {
 	height:50%;
 }
 
+.panelContent {
+	background-color: rgba(125,125,125,0.5);
+	border: 1px solid rgb(155,155,155);
+}
+
 .panelPlanetDisplay{
 	font-size: 14px;
     font-family: 'overpassregular', Arial, sans-serif;
@@ -369,8 +374,6 @@ body {
 	clear: left;
 	left: 8px;
 	width: calc(100% - 16px);
-	background-color: rgba(125,125,125,0.5);
-	border: 1px solid rgb(155,155,155);
 }
 
 /* Item styles */
@@ -409,6 +412,89 @@ body {
 .itemSlotNonHover {
 	border: 1px solid rgba(0,0,0,0);
 }
+
+/* ship panel */
+.shipPanel {
+}
+
+/* planet panel */
+.planetPanel {
+}
+
+.buildingsPanel {
+	margin-left:10px;
+	margin-top:10px;
+	margin-right:10px;
+	margin-bottom:1px;
+	height: 100%;
+}
+
+.buildingsContent {
+	height: 150px;
+	width: 100%;
+}
+
+/* Gear panel*/
+.gearPanel {
+	margin-left:10px;
+	margin-top:1px;
+	margin-right:10px;
+	margin-bottom:1px;
+}
+
+.playerGearPaperdoll {
+	position: relative;
+	top: 30px;
+	left: 8px;
+	width: 200px;
+	height: 300px;
+}
+
+.gearSlot {
+	width: 50px;
+	height: 50px;
+	background: grey;
+	box-shadow: inset 0 0 15px #000;	
+}
+
+.gearSlot.Head {
+	position: absolute;
+	left: 75px;
+	top: 10px;
+}
+.gearSlot.Chest {
+	position: absolute;
+	left: 75px;
+	top: 80px;
+}
+.gearSlot.Main.Hand {
+	position: absolute;
+	left: 10px;
+	top: 80px;
+}
+.gearSlot.Second.Hand {
+	position: absolute;
+	left: 140px;
+	top: 80px;
+}
+.gearSlot.Legs {
+	position: absolute;
+	left: 75px;
+	top: 170px;
+}
+.gearSlot.Feet {
+	position: absolute;
+	left: 75px;
+	top: 225px;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -573,67 +659,4 @@ body {
 	list-style: none;
 }
 
-/* Gear */
-.gearPanel {
-	margin: 0 auto;
-}
 
-.gearContent {
-	width: 60%;
-	height: 250px;	
-	margin: 0 auto;
-	position: relative;
-	background-color: rgba(125,125,125,0.5);
-	border: 1px solid rgb(155,155,155);
-}
-.gearSlot {
-	width: 40px;
-	height: 40px;
-	background: grey;
-	box-shadow: inset 0 0 15px #000;	
-}
-.gearSlot img {
-	border: none;
-	margin-top: 15%;
-	margin-left: 15%;
-	width: 70%;
-	height: 70%;
-}
-
-.gearSlot.Head {
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-}
-.gearSlot.Chest {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 80px;
-	margin: 0 auto;
-}
-.gearSlot.Main.Hand {
-	position: absolute;
-	left: 0;
-	top: 80px;
-}
-.gearSlot.Second.Hand {
-	position: absolute;
-	right: 0;
-	top: 80px;
-}
-.gearSlot.Legs {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 80px;
-	margin: 0 auto;
-}
-.gearSlot.Feet {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 0 auto;
-}

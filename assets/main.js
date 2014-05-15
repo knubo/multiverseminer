@@ -101,6 +101,17 @@ function onActivateCrafting() {
     ui.showComponent(ui.componentCrafting);
 };
 
+function onActivateEmpire() {
+	// select the button
+	changeLeftCategoryButton(2);
+		
+    // disable and hide
+    ui.hideLeftSideComponents();
+    
+    // activate the category
+    ui.showComponent(ui.componentEmpire);
+};
+
 function onActivatePlayerGear() {
 	// select the button
 	changeRightCategoryButton(0);
@@ -109,23 +120,33 @@ function onActivatePlayerGear() {
     
     // activate the category
     ui.showComponent(ui.componentPlayerGear);
-}
+};
 
-function onActivateElementFinder() {
+function onActivateShip() {
 	// select the button
 	changeRightCategoryButton(1);
 	
     ui.hideRightSideComponents();
     
     // activate the category
-    ui.showComponent(ui.componentElementFinder);
-}
+    ui.showComponent(ui.componentShip);
+};
+
+function onActivatePlanet() {
+	// select the button
+	changeRightCategoryButton(2);
+	
+    ui.hideRightSideComponents();
+    
+    // activate the category
+    ui.showComponent(ui.componentPlanet);
+};
 
 function onSave() {
 	game.save();
 
 	ui.notify("Game saved");
-}
+};
 
 function onReset() {
 	noty({

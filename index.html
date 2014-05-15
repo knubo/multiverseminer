@@ -53,10 +53,10 @@
         		<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">CRAFTING</div>
         	</div>
-        	<div id="leftCategory2" class="genericButton categoryButton clickable noselect">
+        	<div id="leftCategory2" class="genericButton categoryButton clickable noselect" onclick="onActivateEmpire()">
         		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
-	            <div class="categoryButtonText"></div>
-        	</div>        	
+	            <div class="categoryButtonText">EMPIRE</div>
+        	</div>
         	<div id="leftCategory3" class="genericButton categoryButton genericButtonLast clickable noselect">
         		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText"></div>
@@ -72,7 +72,7 @@
         		<div id="playerInventoryContent">
         			<div id="playerInventoryFilter" class="inventoryFilter noselect"></div>
         			
-        			<div id="playerInventorySlots" class="inventoryContent noselect"></div>
+        			<div id="playerInventorySlots" class="inventoryContent panelContent noselect"></div>
         		</div>
         	</div>
         </div>
@@ -84,13 +84,13 @@
         		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">GEAR</div>
         	</div>
-        	<div id="rightCategory1" class="genericButton categoryButton clickable noselect" onclick="onActivateElementFinder()">
+        	<div id="rightCategory1" class="genericButton categoryButton clickable noselect" onclick="onActivateShip()">
         		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
-	            <div class="categoryButtonText">ELEMENTS</div>
+	            <div class="categoryButtonText">SHIP</div>
         	</div>
-        	<div id="rightCategory2" class="genericButton categoryButton clickable noselect">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
-	            <div class="categoryButtonText"></div>
+        	<div id="rightCategory2" class="genericButton categoryButton clickable noselect" onclick="onActivatePlanet()">
+        		<image src="assets/images/planetIcon.png" class="categoryButtonIcon noselect"/>
+	            <div class="categoryButtonText">PLANET</div>
         	</div>
         	<div id="rightCategory3" class="genericButton categoryButton genericButtonLast clickable noselect">
         		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
@@ -100,9 +100,28 @@
         
         <div id="rightCategoryContent" class="categoryContent clearLeftFloat noselect">
         	<div id="playerGearPanel" class="gearPanel noselect">
+        		<div id="playerGearContent">
+        			<div id="playerGearSlots" class="playerGearPaperdoll panelContent noselect"></div>
+        		</div>
     		</div>
     		
-    		<div id="elementFinderPanel" class="craftingPanel noselect">
+    		<div id="playerShipPanel" class="shipPanel noselect">
+    		</div>
+    		
+    		<div id="planetPanel" class="planetPanel noselect">
+    			<div id="planetInventoryPanel" class="inventoryPanel noselect">
+        			<div id="planetInventoryContent">
+        				<div id="planetInventoryFilter" class="inventoryFilter noselect"></div>
+        			
+        				<div id="planetInventorySlots" class="inventoryContent panelContent noselect"></div>
+        			</div>
+        		</div>
+        		
+        		<div id="planetBuildingsPanel" class="buildingsPanel noselect">
+        			<div class="noselect">BUILDINGS</div>
+        			
+        			<div id="planetBuildings" class="buildingsContent panelContent noselect"></div>
+        		</div>
     		</div>
         </div>
     </div>
