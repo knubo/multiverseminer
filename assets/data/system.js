@@ -7,7 +7,7 @@ function System() {
     this.imageRoot = "assets/images/";
     this.iconRoot = this.imageRoot + "itemIcons/";
     
-    this.enableDragDrop = false; // too buggy right now to leave this enabled
+    this.enableDragDrop = true; // too buggy right now to leave this enabled
     this.dragDelay = 300; // delay before starting to drag
     
     this.floatFadeDelay = 300; // delay for floating windows to fade on close 
