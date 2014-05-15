@@ -1,6 +1,6 @@
 function Planet(data) {
 	this.data = data;
-	this.miner = new Miner('planet' + data.id);
+	this.miner = new Miner('planet' + data.id, true);
 	this.storage = new Storage('planet' + data.id);
 	
 	// ---------------------------------------------------------------------------

@@ -1,7 +1,11 @@
-function Miner(id) {
+function Miner(id, autoMine) {
 	this.id = id;
 
 	this.baseMineSpeed = 1;
+	
+	this.previousTime = 0;
+	this.autoMineTime = 1000; // in milliseconds
+	this.autoMine = autoMine;
 	
 	// ---------------------------------------------------------------------------
 	// general
@@ -10,6 +14,19 @@ function Miner(id) {
 	};
 	
 	this.update = function(currentTime) {
+		if(this.autoMine && (currentTime - this.previousTime > this.autoMineTime))
+		{			
+			var items = this.mine();
+			if (items) {
+				for(var i = 0; i < items.length; i++) {
+					var name = game.getItemName(items[i]);
+					var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
+				}			
+				game.player.storage.addItems(items);
+			}
+			
+			this.previousTime = currentTime;
+		}
 	};
 
 	this.gather = function() {
