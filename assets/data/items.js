@@ -152,7 +152,7 @@ addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
 
-addItem(10, 'fuel', 'Fuel', 1000, {
+addItem(10, 'crudeOil', 'Crude Oil', 1000, {
     'icon': sys.iconRoot + "crudeOil.png"
 });
 
