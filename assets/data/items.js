@@ -1167,7 +1167,8 @@ addItem(40050, 'ironPolearm', 'Iron Polearm', ironBasePrice, {
 	'statDecrease': {'agility':1}
 });
 addItem(40051, 'ironSword', 'Iron Sword', ironBasePrice, { 
-	'maxSockets': maxSockets, 
+    'icon': sys.iconRoot + 'ironSword.png',
+    'maxSockets': maxSockets,
 	'statIncrease': {'strength' : 1}, 
 	'statDecrease': {'agility':1}
 });
