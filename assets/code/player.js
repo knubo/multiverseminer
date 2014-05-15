@@ -1,6 +1,6 @@
 function Player() {
 	this.pickPower = 1;
-	this.miner = new Miner('player');
+	this.miner = new Miner('player', false);
 	this.combatant = new Combatant('player');
 	this.storage = new Storage('player');
 	this.gear = new Gear('player');
