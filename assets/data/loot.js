@@ -54,7 +54,7 @@ addTable(100, 'earthAtmosphere', [
 ]);
 
 addTable(101, 'earthMinerals', [
-	[Items.iron.id, 0.99],
+	[Items.iron.id, 0.30],
 	[Items.copper.id, 0.02],
 	[Items.gold.id, 0.005],
 	[Items.silicon.id, 0.27],
@@ -74,7 +74,7 @@ addTable(101, 'earthMinerals', [
 	[Items.nitrogen.id, 0.0005],
 	[Items.nickel.id, 0.0005],
 	[Items.zinc.id, 0.0005],
-	[Items.fuel.id, 0.1],
+	[Items.crudeOil.id, 0.1],
 	[Items.carbon.id, 0.001]
 ]);
 
