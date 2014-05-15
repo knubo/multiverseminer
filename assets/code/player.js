@@ -95,9 +95,12 @@ function Player() {
 				continue;
 			}
 			
-			if(item.gearType == GearType.mainHand)
+			if(item.gearType == GearType.mainHand && item.name.match("Pickaxe") != null)
 			{
+				var diff = item.Power - this.pickPower;
+				
 				this.pickPower = item.power;
+				this.miner.baseMineSpeed = item.power;
 			}
 			
 			this.equip(item.id);
@@ -118,6 +121,10 @@ function Player() {
 		this.gear.unEquip(type);
 	};
 
+	// -----------------------------
+	// Temporal Internal
+	// -----------------------------
+	
 	// ---------------------------------------------------------------------------
 	// loading / saving
 	// ---------------------------------------------------------------------------
