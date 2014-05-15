@@ -16,14 +16,18 @@ function UI() {
     this.playerInventoryFilter = undefined;
     this.playerInventory = undefined;
     
+    this.planetInventoryFilter = undefined;
+    this.planetInventory = undefined;
+    
     this.componentPlayerInventory = undefined;
-    this.componentPlayerGear = undefined;
-    
     this.componentCrafting = undefined;
+    this.componentEmpire = undefined;
     
-    this.componentElementFinder = undefined;
-    
+    this.componentPlayerGear = undefined;
+    this.componentShip = undefined;
     this.componentPlanet = undefined;
+    
+    this.componentPlanetDisplay = undefined;
     
     this.isDragging = false;
     this.pendingDragElementTime = Date.now();
@@ -49,20 +53,29 @@ function UI() {
         this.playerIventoryFilter.min = 1; // To avoid selecting undef
         this.playerIventoryFilter.setSelection(game.settings.selectedPlayerInventoryFilter);
         
-        this.playerInventory = new UIInventory('playerInventorySlots', 30, game.player.storage);
+        this.playerInventory = new UIInventory('playerInventorySlots', 30);
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
         
+        this.planetIventoryFilter = new UISelection('planetInventoryFilter', ItemCategory, this.onPlanetInventoryFilterChanged);
+        this.planetIventoryFilter.init();
+        this.planetIventoryFilter.min = 1; // To avoid selecting undef
+        this.planetIventoryFilter.setSelection(game.settings.selectedPlanetInventoryFilter);
+        
+        this.planetInventory = new UIInventory('planetInventorySlots', 30);
+        this.planetInventory.init();
+        this.planetInventory.setCategory(game.settings.selectedPlanetInventoryFilter);
+        
         this.componentPlayerInventory = new UIComponent('playerInventoryPanel', this.updatePlayerInventoryPanel);
+        this.componentCrafting = new UIComponent('playerCraftingPanel', this.updateCraftingPanel);
+        this.componentEmpire = new UIComponent('empirePanel', this.updateEmpirePanel);
         
         this.componentPlayerGear = new UIComponent('playerGearPanel', this.updatePlayerGearPanel);
+        this.componentShip = new UIComponent('playerShipPanel', this.updateShipPanel);
+        this.componentPlanet = new UIComponent('planetPanel', this.updatePlanetPanel);
         
-        this.componentCrafting = new UIComponent('playerCraftingPanel', this.updateCraftingPanel);    
-        
-        this.componentElementFinder = new UIComponent('elementFinderPanel', this.updateElementFinderPanel);
-        
-        this.componentPlanet = new UIComponent('planetDisplay', this.updatePlanetDisplay);
-        this.componentPlanet.enabled = true;
+        this.componentPlanetDisplay = new UIComponent('planetDisplay', this.updatePlanetDisplay);
+        this.componentPlanetDisplay.enabled = true;
     };
     
     this.update = function(currentTime) {
@@ -86,21 +99,30 @@ function UI() {
             game.player.storage.setStorageChanged(false);
         }
         
+        // Check for planet updates
+        if(game.currentPlanet) {
+        	if(game.currentPlanet.storage.getStorageChanged()) {
+        		this.componentPlanet.invalidate();
+        		game.currentPlanet.storage.setStorageChanged(false);
+        	}
+        }
+        
         // Check for planet change
         if (game.getPlanetChanged()) {
-            this.componentPlanet.invalidate();
+            this.componentPlanetDisplay.invalidate();
             game.setPlanetChanged(false);
         }
         
         // Update the components
         this.componentPlayerInventory.update(currentTime);
-        this.componentPlayerGear.update(currentTime);
-        
         this.componentCrafting.update(currentTime);
+        this.componentEmpire.update(currentTime);
         
-        this.componentElementFinder.update(currentTime);
-        
+        this.componentPlayerGear.update(currentTime);
+        this.componentShip.update(currentTime);
         this.componentPlanet.update(currentTime);
+        
+        this.componentPlanetDisplay.update(currentTime);
         
         // Update floating components
         for(var i = 0; i < this.activeFloats.length; i++) {
@@ -125,21 +147,30 @@ function UI() {
         
         self.playerInventory.update(game.player.storage);
     };
+    
+    this.updatePlanetInventoryPanel = function() {
+    	var self = ui;
+    	
+    	if(!game.currentPlanet) {
+    		return;
+    	}
+    	
+    	self.planetInventory.update(game.currentPlanet.storage);
+    };
         
     this.updatePlayerGearPanel = function() {
         var self = ui;
         
-        $('#playerGearPanel').empty();
+        var parent = $('#playerGearSlots');
+        parent.empty();
 
-        var content = $('<div id="playerGearPanelContent" class="gearContent noselect"></div>');
         var gearSlots = game.player.gear.getSlots();
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
             var slot = self.buildGearSlot(gearSlots[i], itemId);
-            content.append(slot.getMainElement());
+            parent.append(slot.getMainElement());
         }
 
-        $('#playerGearPanel').append(content);
         $('#pickPower').text(game.player.pickPower + " / mpc");
     };
     
@@ -175,6 +206,18 @@ function UI() {
 
         $("#playerCraftingContent").accordion({heightStyle: "content" });
         $("#playerCraftingContent").accordion('option', 'active', activePage);
+    };
+    
+    this.updateEmpirePanel = function() {
+    	// Todo
+    };
+    
+    this.updateShipPanel = function() {
+    	// Todo
+    };
+    
+    this.updatePlanetPanel = function() {
+    	// Todo
     };
     
     this.updateElementFinderPanel = function() {
@@ -248,14 +291,25 @@ function UI() {
         self.componentPlayerInventory.invalidate();
     };
     
+    this.onPlanetInventoryFilterChanged = function() {
+        var self = ui;
+        var category = self.planetIventoryFilter.selection;
+        game.settings.selectedPlanetInventoryFilter = category;
+        self.planetInventory.setCategory(category);
+        
+        self.componentPlanetInventory.invalidate();
+    };
+    
     this.hideLeftSideComponents = function() { 
         this.hideComponent(this.componentPlayerInventory);
         this.hideComponent(this.componentCrafting);
+        this.hideComponent(this.componentEmpire);
     };
     
     this.hideRightSideComponents = function() { 
         this.hideComponent(this.componentPlayerGear);
-        this.hideComponent(this.componentElementFinder);
+        this.hideComponent(this.componentShip);
+        this.hideComponent(this.componentPlanet);
     };
     
     this.hideComponent = function(component) {

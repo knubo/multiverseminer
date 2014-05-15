@@ -30,7 +30,6 @@ function UISlot(classes) {
                 function() { $(this).addClass("itemSlotNonHover noSelect"); $(this).removeClass("itemSlotHover"); }
         );
         
-		this.mainDiv.append('<p class="itemSlotText noSelect">0</p>');
 		this.mainDiv.mousedown({ self: this }, this.onMouseDown );
 		this.mainDiv.mouseup({ self: this }, this.onMouseUp );
 		this.mainDiv.mouseover({ self: this }, this.onMouseOver );
