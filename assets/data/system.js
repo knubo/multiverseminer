@@ -7,6 +7,9 @@ function System() {
     this.imageRoot = "assets/images/";
     this.iconRoot = this.imageRoot + "itemIcons/";
     
+    this.enableDragDrop = false; // too buggy right now to leave this enabled
+    this.dragDelay = 500; // 1 second delay before starting to drag
+    
     // Selection control
     this.selectionArrowBack = this.imageRoot + 'selectionArrowBack.png';
     this.selectionArrowBackFast = this.imageRoot + 'selectionArrowBackFast.png';

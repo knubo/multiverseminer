@@ -32,6 +32,7 @@ body {
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	-o-user-select:none;
 	user-select: none;
 }
 
@@ -40,6 +41,10 @@ body {
 	position: absolute;
 	left: 45%;
 	top: 45%;
+}
+
+.dragDropFloating {
+	position: absolute;
 }
 
 /* main panel classes */

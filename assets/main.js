@@ -32,7 +32,7 @@ Mousetrap.bind('r', function(e) {
 function onDocumentReady() {
     // Initialize the crafting accordion
     $("#playerCraftingContent").accordion();
-      
+
     //Initialize components
     game.init();
     ui.init();
