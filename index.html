@@ -39,40 +39,40 @@
 
     <link href="assets/external/planetarium.css" rel="stylesheet" type="text/css" />
     <link href="assets/external/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css">
-    <link href="index.css" rel="stylesheet" type="text/css" />     
+    <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body text="white">
     <div class="panelPlanetLeft">
     	<div id="leftCategory">
-        	<div id="leftCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerInventory()">
-        		<image src="assets/images/itemIcons/goldBar.png" class="categoryButtonIcon"/>
+        	<div id="leftCategory0" class="genericButton categoryButton clickable noselect" onclick="onActivatePlayerInventory()">
+        		<image src="assets/images/itemIcons/goldBar.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">INVENTORY</div>
         	</div>
-        	<div id="leftCategory1" class="genericButton categoryButton clickable" onclick="onActivateCrafting()">
-        		<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
+        	<div id="leftCategory1" class="genericButton categoryButton clickable noselect" onclick="onActivateCrafting()">
+        		<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">CRAFTING</div>
         	</div>
-        	<div id="leftCategory2" class="genericButton categoryButton clickable">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="leftCategory2" class="genericButton categoryButton clickable noselect">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText"></div>
         	</div>        	
-        	<div id="leftCategory3" class="genericButton categoryButton genericButtonLast clickable">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="leftCategory3" class="genericButton categoryButton genericButtonLast clickable noselect">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText"></div>
         	</div>
         </div>
 
-		<div id="leftCategoryContent" class="categoryContent clearLeftFloat">
-    		<div id="playerCraftingPanel" class="craftingPanel">
+		<div id="leftCategoryContent" class="categoryContent clearLeftFloat noselect">
+    		<div id="playerCraftingPanel" class="craftingPanel noselect">
     			<div id="playerCraftingContent"></div>
     		</div>
     		
-        	<div id="playerInventoryPanel" class="inventoryPanel">
+        	<div id="playerInventoryPanel" class="inventoryPanel noselect">
         		<div id="playerInventoryContent">
-        			<div id="playerInventoryFilter" class="inventoryFilter"></div>
+        			<div id="playerInventoryFilter" class="inventoryFilter noselect"></div>
         			
-        			<div id="playerInventorySlots" class="inventoryContent"></div>
+        			<div id="playerInventorySlots" class="inventoryContent noselect"></div>
         		</div>
         	</div>
         </div>
@@ -80,85 +80,82 @@
 	
 	<div class="panelPlanetRight">
         <div id="rightCategory">
-        	<div id="rightCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerGear()">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="rightCategory0" class="genericButton categoryButton clickable noselect" onclick="onActivatePlayerGear()">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">GEAR</div>
         	</div>
-        	<div id="rightCategory1" class="genericButton categoryButton clickable" onclick="onActivateElementFinder()">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="rightCategory1" class="genericButton categoryButton clickable noselect" onclick="onActivateElementFinder()">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText">ELEMENTS</div>
         	</div>
-        	<div id="rightCategory2" class="genericButton categoryButton clickable">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="rightCategory2" class="genericButton categoryButton clickable noselect">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText"></div>
         	</div>
-        	<div id="rightCategory3" class="genericButton categoryButton genericButtonLast clickable">
-        		<image src="assets/images/empty.png" class="categoryButtonIcon"/>
+        	<div id="rightCategory3" class="genericButton categoryButton genericButtonLast clickable noselect">
+        		<image src="assets/images/empty.png" class="categoryButtonIcon noselect"/>
 	            <div class="categoryButtonText"></div>
         	</div>
         </div>
         
-        <div id="rightCategoryContent" class="categoryContent clearLeftFloat">
-        	<div id="playerGearPanel" class="gearPanel">
+        <div id="rightCategoryContent" class="categoryContent clearLeftFloat noselect">
+        	<div id="playerGearPanel" class="gearPanel noselect">
     		</div>
     		
-    		<div id="elementFinderPanel" class="craftingPanel">
+    		<div id="elementFinderPanel" class="craftingPanel noselect">
     		</div>
         </div>
     </div>
 
-	<div class="panelPlanetDisplay">
-        <img src="assets/images/logo.png" />
+	<div class="panelPlanetDisplay noselect">
+        <img class="logo noselect" src="assets/images/logo.png" />
 		
-		<br /><br /><br /><br />
-		
-        <p>
-        	<button class="mainButton" onclick="onMine()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">DIG AROUND [D]</div>
+        <div class="noselect">
+        	<button class="mainButton noselect" onclick="onMine()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon noselect"/>
+				<div class="categoryButtonText noselect">DIG AROUND [D]</div>
 			</button>
-			<button class="mainButton" onclick="onGather()">
-				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon"/>
-				<div class="categoryButtonText">GATHER OXYGEN [G]</div>
+			<button class="mainButton noselect" onclick="onGather()">
+				<image src="assets/images/itemIcons/pick.png" class="categoryButtonIcon noselect"/>
+				<div class="categoryButtonText noselect">GATHER OXYGEN [G]</div>
 			</button>
-        <p>
-        <center><br /><b>CURRENT DEPTH:</b><br /><span id="depth">0</span> meters<br /></center>
-
-        <div class="planetDisplay">
-        	<div class="planetDisplayBackground" id="planetDisplayBackground"></div>
-        	<div class="planetDisplayNameFrame">
-        		<div class="planetDisplayNameTitle">PLANET</div>
-        		<div class="planetDisplayName">
-        			<div class="planetDisplayNameText" id="planetDisplayNameText"></div>
+        </div>
+        
+        <div class="planetDisplay noselect">
+        	<div class="planetDisplayBackground noselect" id="planetDisplayBackground"></div>
+        	<div class="planetDisplayNameFrame noselect">
+        		<div class="planetDisplayNameTitle noselect">PLANET</div>
+        		<div class="planetDisplayName noselect">
+        			<div class="planetDisplayNameText noselect" id="planetDisplayNameText"></div>
         		</div>
         	</div>
         </div>
     </div>
 	
-    <div class="panelBottom">
-    	<div class="panelBottomRight">
-    		<div id="timeDisplay" class="genericButton bottomBarButton">
+    <div class="panelBottom noselect">
+    	<div class="panelBottomRight noselect">
+    		<div id="timeDisplay" class="genericButton bottomBarButton noselect">
     			<div id="timeDisplayText" class="bottomBarButtonText noSelect"></div>
 	    	</div>
     	</div>
     	
     	<div class="panelBottomLeft">
-	    	<div class="genericButton bottomBarButton clickable" onclick="onSave()">
+	    	<div class="genericButton bottomBarButton clickable noselect" onclick="onSave()">
     			<div class="bottomBarButtonText noSelect">SAVE</div>
 	    	</div>
-    		<div class="genericButton bottomBarButton clickable" onclick="onReset()">
+    		<div class="genericButton bottomBarButton clickable noselect" onclick="onReset()">
 	    		<div class="bottomBarButtonText noSelect">RESET</div>
     		</div>
     	</div>
     	
     	<div class="panelBottomCenter">
-    		<div class="genericButton bottomBarButton clickable" onclick='game.travelTo(Planets.earth.id)'>
+    		<div class="genericButton bottomBarButton clickable noselect" onclick='game.travelTo(Planets.earth.id)'>
     			<div class="bottomBarButtonText noSelect">TEST</div>
 	    	</div>
-	    	<div class="genericButton bottomBarButton clickable" onclick='game.travelTo(Planets.moon.id)'>
+	    	<div class="genericButton bottomBarButton clickable noselect" onclick='game.travelTo(Planets.moon.id)'>
     			<div class="bottomBarButtonText noSelect">TEST 2</div>
 	    	</div>
-	    	<div class="genericButton bottomBarButton clickable">
+	    	<div class="genericButton bottomBarButton clickable noselect">
     			<div class="bottomBarButtonText noSelect">TEST 3</div>
 	    	</div>
     	</div>
