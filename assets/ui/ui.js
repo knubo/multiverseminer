@@ -303,9 +303,11 @@ function UI() {
         });
     };
     
-    this.createFloat = function(position, content, classes) {
-    	var float = new UIFloating(position, content, classes || "genericFloating");
+    this.createFloat = function(content, classes, x, y) {
+    	var float = new UIFloating(content, classes || "genericFloating");
+    	float.parent = $('#floatingArea');
     	float.init();
+    	float.moveTo(x, y);
     	
     	// Todo: use something else as default i guess
     	float.timeOut = Date.now() + 2;

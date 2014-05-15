@@ -8,7 +8,9 @@ function System() {
     this.iconRoot = this.imageRoot + "itemIcons/";
     
     this.enableDragDrop = false; // too buggy right now to leave this enabled
-    this.dragDelay = 500; // 1 second delay before starting to drag
+    this.dragDelay = 300; // delay before starting to drag
+    
+    this.floatFadeDelay = 300; // delay for floating windows to fade on close 
     
     // Selection control
     this.selectionArrowBack = this.imageRoot + 'selectionArrowBack.png';
