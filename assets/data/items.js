@@ -133,6 +133,7 @@ addItem(5, 'gold', 'Gold', 100, {
 });
 
 addItem(6, 'silicon', 'Silicon', 1000, {
+    'icon': sys.iconRoot + 'silicon.png',
     'el': 'Si'
 });
 
