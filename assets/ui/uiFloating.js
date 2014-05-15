@@ -13,17 +13,19 @@ function UIFloating(content, classes) {
 	
 	this.invalidated = true;
 	
+	this.center = true;
+	
 	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
 	this.init = function() {
 		this.mainDiv = $('<div class="'+ this.classes +' noSelect"></div>');
 		this.mainDiv.append(content);
-		
 		if(!this.parent) {
 			$(document.body).append(this.mainDiv);
 		} else {
 			this.parent.append(this.mainDiv);
+			this.mainDiv.offset(this.parent.offset());
 		}
 	};
 	
@@ -42,7 +44,7 @@ function UIFloating(content, classes) {
 	};
 	
 	this.remove = function() {
-		this.mainDiv.fadeOut(500, function() { $(this.mainDiv).remove(); });
+		this.mainDiv.fadeOut(sys.floatFadeDelay, function() { $(this.mainDiv).remove(); });
 	};
 	
 	// ---------------------------------------------------------------------------
@@ -54,6 +56,16 @@ function UIFloating(content, classes) {
 	};
 	
 	this.moveTo = function(x, y) {
+		if(this.parent) {
+			var parentPosition = this.parent.offset();
+			if(this.center) {
+				y += parentPosition.top + (this.parent.height() / 2);
+				x += parentPosition.left + (this.parent.width() / 2);
+			} else {
+				y += parentPosition.top;
+				x += parentPosition.left;
+			}
+		};
 		this.mainDiv.offset({ top: y, left: x});
 	};
 	
