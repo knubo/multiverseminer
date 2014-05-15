@@ -43,6 +43,10 @@ function Gear(id) {
 					+ " in " + itemInfo.type);
 			return;
 		}
+		
+		if(this.slots[itemInfo.gearType]!=-1) {
+			this.unEquip(itemInfo.gearType);
+		}
 
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
