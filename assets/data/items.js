@@ -925,7 +925,7 @@ addItem(40005, 'jackhammer', 'Jackhammer', 10000, {
     ]
 );
 addItem(40006, 'pulsePistol', 'Pulse Pistol', 50000, {
-	'icon': sys.iconRoot + 'pulsePistol.png'
+	'icon': sys.iconRoot + 'pulsePistol.png',
     'statIncrease': {'strength': 1}, 
 	'statDecrease': {'agility': 1}
 }).setCraftingCost(
