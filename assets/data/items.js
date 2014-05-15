@@ -747,7 +747,11 @@ addItem(3005, 'gasCan', 'Gas canister', 50, {
         [Items.ironBar.id, 5]
     ]
 );
-
+addItem(3017, 'fuel', 'Fuel', 50000).setCraftingCost(
+    [
+        [Items.crudeOil.id, 10]
+    ]
+);
 addItem(3006, 'fuelCan', 'Fuel can', 1000).setCraftingCost(
     [
         [Items.fuel.id, 10],
