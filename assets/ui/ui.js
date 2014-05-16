@@ -11,24 +11,9 @@ MouseButtons = {
 // UI Class
 // ---------------------------------------------------------------------------
 function UI() {
-    this.inventoryPlayerCategoryFilter = undefined;
-
-    this.playerInventoryFilter = undefined;
-    this.playerInventory = undefined;
-    
-    this.planetInventoryFilter = undefined;
-    this.planetInventory = undefined;
-    
-    this.componentPlayerInventory = undefined;
-    this.componentCrafting = undefined;
-    this.componentEmpire = undefined;
-    
-    this.componentPlayerGear = undefined;
-    this.componentShip = undefined;
-    this.componentPlanet = undefined;
-    
-    this.componentPlanetDisplay = undefined;
-    
+    this.screenPlanet = undefined;
+    this.screenTravel = undefined;
+	
     this.isDragging = false;
     this.pendingDragElementTime = Date.now();
     this.pendingDragElement = undefined;
@@ -40,6 +25,8 @@ function UI() {
     
     this.cursorPositionX = 0;
     this.cursorPositionY = 0;
+    
+    this.numberFormatter = utils.formatters.raw;
         
     // ---------------------------------------------------------------------------
     // main UI functions
@@ -48,34 +35,20 @@ function UI() {
     	$(document).on('mousemove', this.onMouseMove);
     	$(document).on('mouseup', this.onMouseUp);
     	
-        this.playerIventoryFilter = new UISelection('playerInventoryFilter', ItemCategory, this.onPlayerInventoryFilterChanged);
-        this.playerIventoryFilter.init();
-        this.playerIventoryFilter.min = 1; // To avoid selecting undef
-        this.playerIventoryFilter.setSelection(game.settings.selectedPlayerInventoryFilter);
-        
-        this.playerInventory = new UIInventory('playerInventorySlots', 30);
-        this.playerInventory.init();
-        this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
-        
-        this.planetIventoryFilter = new UISelection('planetInventoryFilter', ItemCategory, this.onPlanetInventoryFilterChanged);
-        this.planetIventoryFilter.init();
-        this.planetIventoryFilter.min = 1; // To avoid selecting undef
-        this.planetIventoryFilter.setSelection(game.settings.selectedPlanetInventoryFilter);
-        
-        this.planetInventory = new UIInventory('planetInventorySlots', 30);
-        this.planetInventory.init();
-        this.planetInventory.setCategory(game.settings.selectedPlanetInventoryFilter);
-        
-        this.componentPlayerInventory = new UIComponent('playerInventoryPanel', this.updatePlayerInventoryPanel);
-        this.componentCrafting = new UIComponent('playerCraftingPanel', this.updateCraftingPanel);
-        this.componentEmpire = new UIComponent('empirePanel', this.updateEmpirePanel);
-        
-        this.componentPlayerGear = new UIComponent('playerGearPanel', this.updatePlayerGearPanel);
-        this.componentShip = new UIComponent('playerShipPanel', this.updateShipPanel);
-        this.componentPlanet = new UIComponent('planetPanel', this.updatePlanetPanel);
-        
-        this.componentPlanetDisplay = new UIComponent('planetDisplay', this.updatePlanetDisplay);
-        this.componentPlanetDisplay.enabled = true;
+    	this.screenPlanet = new UIPlanetScreen();
+    	this.screenPlanet.init();
+    	
+    	this.screenTravel = new UITravelScreen();
+    	this.screenTravel.init();
+    	
+    	// Todo: function to switch screens
+    	if(game.currentPlanet) {
+    		this.screenPlanet.show();
+    		this.screenTravel.hide();
+    	} else {
+    		this.screenPlanet.hide();
+    		this.screenTravel.show();
+    	}
     };
     
     this.update = function(currentTime) {
@@ -87,42 +60,14 @@ function UI() {
 			$('#depth').text(game.currentPlanet.currentDepth);
 		}
 
-        // Check for gear changes
-        if (game.player.gear.gearChanged) {
-            this.componentPlayerGear.invalidate();
-            game.player.gear.gearChanged = false;
-        }
-
-        // Check for inventory changes
-        if (game.player.storage.getStorageChanged()) {
-            this.componentPlayerInventory.invalidate();
-            game.player.storage.setStorageChanged(false);
-        }
-        
-        // Check for planet updates
-        if(game.currentPlanet) {
-        	if(game.currentPlanet.storage.getStorageChanged()) {
-        		this.componentPlanet.invalidate();
-        		game.currentPlanet.storage.setStorageChanged(false);
-        	}
-        }
-        
-        // Check for planet change
-        if (game.getPlanetChanged()) {
-            this.componentPlanetDisplay.invalidate();
-            game.setPlanetChanged(false);
-        }
-        
-        // Update the components
-        this.componentPlayerInventory.update(currentTime);
-        this.componentCrafting.update(currentTime);
-        this.componentEmpire.update(currentTime);
-        
-        this.componentPlayerGear.update(currentTime);
-        this.componentShip.update(currentTime);
-        this.componentPlanet.update(currentTime);
-        
-        this.componentPlanetDisplay.update(currentTime);
+		// Todo: do this a bit more proper maybe with a callback or something
+		if(game.currentPlanet && !ui.screenPlanet.isVisible) {
+			ui.screenTravel.hide();
+			ui.screenPlanet.show();
+		}
+		
+        this.screenPlanet.update(currentTime);
+        this.screenTravel.update(currentTime);
         
         // Update floating components
         for(var i = 0; i < this.activeFloats.length; i++) {
@@ -141,128 +86,7 @@ function UI() {
         	this.pendingDragElement = undefined;
         }
     };
-    
-    this.updatePlayerInventoryPanel = function() {
-        var self = ui;
         
-        self.playerInventory.update(game.player.storage);
-    };
-    
-    this.updatePlanetInventoryPanel = function() {
-    	var self = ui;
-    	
-    	if(!game.currentPlanet) {
-    		return;
-    	}
-    	
-    	self.planetInventory.update(game.currentPlanet.storage);
-    };
-        
-    this.updatePlayerGearPanel = function() {
-        var self = ui;
-        
-        var parent = $('#playerGearSlots');
-        parent.empty();
-
-        var gearSlots = game.player.gear.getSlots();
-        for (var i = 0; i < gearSlots.length; i++) {
-            var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
-            var slot = self.buildGearSlot(gearSlots[i], itemId);
-            parent.append(slot.getMainElement());
-        }
-
-        $('#pickPower').text(game.player.pickPower + " / mpc");
-    };
-    
-    this.updateCraftingPanel = function() {
-        var self = ui;
-        var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        $('#playerCraftingContent').accordion("destroy");
-        $('#playerCraftingContent').empty();
-        
-        for ( var key in ItemCategory) {
-            var items = game.getItemsByCategory(ItemCategory[key]);
-            if (!items || items.length <= 0) {
-                continue;
-            }
-
-            var craftableItems = [];
-            for (var i = 0; i < items.length; i ++) {
-                if (items[i].craftCost && game.player.storage.canAdd(items[i].id)) {
-                    craftableItems.push(items[i]);
-                }
-            }
-
-            if (craftableItems.length <= 0) {
-                continue;
-            }
-
-            var headerContent = $('<div/>');
-            $('#playerCraftingContent').append('<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
-            for (var i = 0; i < craftableItems.length; i ++) {
-                headerContent.append(self.buildCraftingEntry(craftableItems[i]));
-            }
-        }
-
-        $("#playerCraftingContent").accordion({heightStyle: "content" });
-        $("#playerCraftingContent").accordion('option', 'active', activePage);
-    };
-    
-    this.updateEmpirePanel = function() {
-    	// Todo
-    };
-    
-    this.updateShipPanel = function() {
-    	// Todo
-    };
-    
-    this.updatePlanetPanel = function() {
-    	var self = ui;
-        
-        var parent = $('#planetBuildings');
-        parent.empty();
-
-        var gearSlots = game.currentPlanet.gear.getSlots();
-        for (var i = 0; i < gearSlots.length; i++) {
-            var itemId = game.currentPlanet.gear.getItemInSlot(gearSlots[i]);
-            var slot = self.buildGearSlot(gearSlots[i], itemId);
-            parent.append(slot.getMainElement());
-        }
-    };
-    
-    this.updateElementFinderPanel = function() {
-    	$('#elementFinderPanel').text("N/A");
-        /*if (game.currentPlanet) {
-            var tableId = game.currentPlanet.getMiningLootTableId();
-            var table = game.getLootTable(tableId);
-            utils.log(table.entries);
-            var resElement = "<div>";
-            for (var i = 0; i < table.entries.length; i++) {
-            	var item = game.getItem(table[i][0]);
-            	'<div class="element">' + 
-                	'<span class="elementName">' + item.name + '</span>' +
-                	'<span class="elementAbr">' + item.el + '</span>' +
-                '</div>'
-            }
-            $('#elementFinderPanel').html(resElement + "</div>");
-        } else {
-            $('#elementFinderPanel').text("N/A");
-        }*/
-    };
-    
-    this.updatePlanetDisplay = function() {
-        $('#planetDisplayBackground').empty();
-        $('#planetDisplayNameText').empty();
-        if(game.currentPlanet) {
-            var background = game.currentPlanet.getBackground();
-            if(background) {
-                $('#planetDisplayBackground').append('<img class="planetImage noselect" src="' + background + '"/>');
-            }
-            
-            $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
-        }
-    };
-    
     this.onMouseMove = function(parameter) {
     	var self = ui;
     	
@@ -292,67 +116,6 @@ function UI() {
     	self.finishDrag();
     };
     
-    this.onPlayerInventoryFilterChanged = function() {
-        var self = ui;
-        var category = self.playerIventoryFilter.selection;
-        game.settings.selectedPlayerInventoryFilter = category;
-        self.playerInventory.setCategory(category);
-        
-        self.componentPlayerInventory.invalidate();
-    };
-    
-    this.onPlanetInventoryFilterChanged = function() {
-        var self = ui;
-        var category = self.planetIventoryFilter.selection;
-        game.settings.selectedPlanetInventoryFilter = category;
-        self.planetInventory.setCategory(category);
-        
-        self.componentPlanetInventory.invalidate();
-    };
-    
-    this.hideLeftSideComponents = function() { 
-        this.hideComponent(this.componentCrafting);
-        this.hideComponent(this.componentEmpire);
-    };
-    
-    this.hideRightSideComponents = function() { 
-        this.hideComponent(this.componentPlayerInventory);
-        this.hideComponent(this.componentPlayerGear);
-        this.hideComponent(this.componentShip);
-        this.hideComponent(this.componentPlanet);
-    };
-    
-    this.hideComponent = function(component) {
-        component.enabled = false;
-        component.hide();
-    };
-    
-    this.showComponent = function(component) {
-        component.enabled = true;
-        component.show();
-        component.invalidate();
-    };
-    
-    this.updateComponent = function(component) {
-    	component.invalidate();
-    };
-    
-    this.getDefaultItemIcon = function(item) {
-        if(item.category) {
-            if(item.category == ItemCategory.rawMaterial) {
-                return sys.iconPlaceholderRawMaterial;
-            } else if (item.category == ItemCategory.gem) {
-                return sys.iconPlaceholderGem;
-            } else if (item.category == ItemCategory.gearChest) {
-                return sys.iconPlaceholderChest;
-            } else if (item.category == ItemCategory.gearHead) {
-                return sys.iconPlaceholderHead;
-            }
-        };
-        
-        return sys.iconPlaceholder;
-    };
-    
     this.notify = function(message) {
     	noty({
             text : message,
@@ -380,7 +143,7 @@ function UI() {
     	
     	return float;
     };
-        
+    
     this.beginDrag = function(source) {
     	if(!sys.enableDragDrop) {
     		return;
@@ -431,35 +194,6 @@ function UI() {
     // ---------------------------------------------------------------------------
     // building functions
     // ---------------------------------------------------------------------------
-    this.buildCraftingEntry = function(item) {
-        var tooltipContent = this.buildCraftingCostTooltip(item);
-        //TODO: Move this somewhere else and make it take other storages into account
-        var canCraft = true;
-		var cost = game.getCraftingCost(item.id, 1);
-		if (!cost) {
-			canCraft = false;
-		} else {
-			var quantity = game.itemDictionary[item.id].craftResult || 1;
-			var keys = Object.keys(cost);
-			// First pass to check
-			for ( var i = 0; i < keys.length; i++) {
-				var key = keys[i];
-				if (game.player.storage.getItemCount(key) < cost[key]) {
-					canCraft = false;
-				}
-			}
-	    }
-        var content = $('<div class="craftingItemPanel noselect' + (canCraft ? '' : ' opaque') + '" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
-        var icon = this.getDefaultItemIcon(item);
-        if(item.icon) {
-            icon = item.icon;
-        }
-        content.append('<image class="craftingIcon noselect" src="'+icon+'" />');
-        content.append('<span class="craftingText noselect">'+item.name+'</span>').disableSelection();
-        
-        return content;
-    };
-
     this.buildCraftingCostTooltip = function(item) {
         // We are building a text tooltip for now, html will be a bit more work
         //  for html tooltips see: http://api.jqueryui.com/tooltip/#option-content
@@ -473,13 +207,14 @@ function UI() {
         return costEntries.join(', ');
     };
     
-    this.buildGearSlot = function(slot, itemId) {
+    this.buildGearSlot = function(id, slotType, itemId, parent) {
         var item = undefined;
         if(itemId > 0) {
             item = game.getItem(itemId);
         }
         
-        var slot = new UISlot(slot+' gearSlot ');
+        var slot = new UISlot(id + '_' + slotType, parent);
+        slot.classes = slotType + ' gearSlot ';
         slot.init();
         
         if(item != undefined) {
@@ -488,17 +223,9 @@ function UI() {
         
         return slot;
     };
-
-    this.buildInventory = function(targetDiv, storage) {
-        
-    };
     
     this.buildItemTooltip = function(item) {
         // For now only text
         return item.name;
-    };
-
-    this.buildItem = function(item) {
-        
     };
 };

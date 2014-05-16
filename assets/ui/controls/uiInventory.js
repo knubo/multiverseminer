@@ -1,9 +1,13 @@
-var inventoryId = 0;
+UIInventory.prototype = new UIComponent();
+UIInventory.prototype.$super = parent;
+UIInventory.prototype.constructor = UIInventory;
 
-function UIInventory(parent, slotCount) {
-    this.id = inventoryId++;
+function UIInventory(id, parent) {
+    this.id = id;
     this.parent = parent;
-    this.count = slotCount;
+    this.classes = 'itemGrid';
+    
+    this.slotCount = 15;
     
     this.slotElements = [];
     this.slotIdItemIdMap = [];
@@ -11,40 +15,50 @@ function UIInventory(parent, slotCount) {
     this.currentPage = 0;
     this.maxPage = 0;
     
+    this.storage = undefined;
     this.category = undefined;
+    
+    // ---------------------------------------------------------------------------
+    // overrides
+    // ---------------------------------------------------------------------------
+    this.baseInit = this.init;
+    this.baseUpdate = this.update;
     
     // ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
     this.init = function() {
+    	this.baseInit();
+    	
         var slotId = 0;
-        var grid = $('<div class="itemGrid noselect"></div>');
-        for(var x = 0; x < this.count; x++) {
-            var slot = new UISlot();
+        for(var x = 0; x < this.slotCount; x++) {
+            var slot = new UISlot(this.id + '_' + x, this.mainDiv);
             slot.init();
-            
-            grid.append(slot.getMainElement());
-            
+
             this.slotElements.push(slot);
             this.slotIdItemIdMap.push(undefined);
             this._clearSlot(slotId);
             slotId++;
         }
-        
-        $('#' + this.parent).append(grid);
     };
     
-    this.update = function(storage) {
+    this.update = function(currentTime) {
+    	if(!this.baseUpdate(currentTime)) {
+    		return false;
+    	};
+    	
         var items = undefined;
-        if(this.category) {
-            items = storage.getItemsOfCategory(this.category);
-        } else {
-            items = storage.getItems();
+        if(this.storage) {
+        	if(this.category) {
+        		items = this.storage.getItemsOfCategory(this.category);
+        	} else {
+        		items = this.storage.getItems();
+        	}
         }
         
         // Update the paging info
         if(items) {
-            this.maxPage = items.length / this.slotElements.count;
+            this.maxPage = items.length / this.slotElements.length;
         } else {
             this.maxPage = 0;
         }
@@ -88,7 +102,7 @@ function UIInventory(parent, slotCount) {
         for(var i = 0; i < itemsToUpdate.length; i++) {
             var itemId = itemsToUpdate[i];
             var item = game.getItem(itemId);
-            var itemCount = storage.getItemCount(itemId);
+            var itemCount = this.storage.getItemCount(itemId);
                         
             var slotId = this._getSlot(itemId);
             if(slotId == undefined) {
@@ -106,6 +120,12 @@ function UIInventory(parent, slotCount) {
     
     this.setCategory = function(categoryId) {
         this.category = game.getCategoryById(categoryId);
+        this.invalidate();
+    };
+    
+    this.setStorage = function(storage) {
+    	this.storage = storage;
+    	this.invalidate();
     };
     
     // ---------------------------------------------------------------------------

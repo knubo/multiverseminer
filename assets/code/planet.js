@@ -4,6 +4,10 @@ function Planet(data) {
 	this.gear = new Gear('planet' + data.id);
 	this.storage = new Storage('planet' + data.id);
 	
+	this.lastAutoMineTime = 0;
+	this.autoMineTime = 1000; // in milliseconds
+	this.autoMine = false;
+	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
@@ -19,16 +23,38 @@ function Planet(data) {
 	
 	this.update = function(currentTime) {
 		this.miner.update(currentTime);
+		
+		// Temp fix to enable auto-mining on re-load
+		if(this.gear.getItemInSlot(GearType.building) > 0 && !this.autoMine) {
+			this.autoMine = true;
+		}
+		
+		if(this.autoMine && (currentTime - this.lastAutoMineTime > this.autoMineTime))
+		{
+			this.lastAutoMineTime = currentTime;
+			
+			var items = this.miner.mine(this);
+			if (items) {
+				if(game.currentPlanet == this) {
+					for(var i = 0; i < items.length; i++) {
+						var name = game.getItemName(items[i]);
+						var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
+					}
+				}
+				
+				this.storage.addItems(items);
+			}
+		}
 	};
 	
 	this.equip = function(itemId) {
-		if(!itemId || !game.player.storage.hasItem(itemId))
+		if(!itemId || !this.storage.hasItem(itemId))
 		{
 			utils.logError("Unable to equip item, invalid or don't have it");
 			return;
 		}
 		
-		this.gear.equip(itemId, game.player.storage.getItemMetadata(itemId));
+		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 	};
 
 	// ---------------------------------------------------------------------------
@@ -60,6 +86,7 @@ function Planet(data) {
 	this.save = function() {
 		this.miner.save();
 		this.storage.save();
+		this.gear.save();
 
 		var storageKey = this.getStorageKey();
 	};
@@ -67,6 +94,7 @@ function Planet(data) {
 	this.load = function() {
 		this.miner.load();
 		this.storage.load();
+		this.gear.load();
 
 		var storageKey = this.getStorageKey();
 	};

@@ -40,8 +40,6 @@ function Game() {
 		}
 		
 		this.setStartupState();
-		
-		this.player.equipBestGear();
 	};
 	
 	this.setNewGame = function() {
@@ -92,12 +90,12 @@ function Game() {
 
 		this.player.update(currentTime);
 
-		if (this.currentPlanet) {
-			this.currentPlanet.update(currentTime);
+		for(planet in this.planets) {
+			this.planets[planet].update(currentTime);
 		}
 		
 		if(this.settings.travelActive) {
-			this.settings.travelDistanceElapsed += 5000;
+			this.settings.travelDistanceElapsed += this.player.getTravelSpeed();
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
 				this._enterOrbit(this.settings.targetPlanet);
 			}
@@ -109,7 +107,7 @@ function Game() {
 
 	// ---------------------------------------------------------------------------
 	// game functions
-	// ---------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------	
 	this.setStartupState = function() {		
 		// Bring us back to our last position
 		if (this.settings.travelActive) {
@@ -247,6 +245,21 @@ function Game() {
 	    return ItemCategory[Object.keys(ItemCategory)[categoryId]];
 	};
 	
+	this.canTravelTo = function(target) {
+		if (target == undefined || !this.planetDictionary[target]) {
+			return false;
+		}
+		
+		var targetData = this.planetDictionary[target];
+		
+		// Check if we are already there
+		if(this.currentPlanet.data.id == targetData.id) {
+			return false;
+		}
+		
+		return true;
+	};
+	
 	this.travelTo = function(target) {
 		console.log("Traveling to " + target);
 		// Todo: deduct travel cost
@@ -262,10 +275,75 @@ function Game() {
 		// Leave the current planet and adjust the travel distance based on
 		// location
 		if (this.currentPlanet) {
-			this.settings.travelDistanceRemaining = Math
-					.abs(this.settings.travelDistanceRemaining
-							- this.currentPlanet.data.distance);
+			this.settings.travelDistanceRemaining = Math.abs(this.settings.travelDistanceRemaining - this.currentPlanet.data.distance);
 			this._leaveOrbit(target);
+		}
+	};
+	
+	this.getDefaultItemIcon = function(item) {
+        if(item.category) {
+            if(item.category == ItemCategory.rawMaterial) {
+                return sys.iconPlaceholderRawMaterial;
+            } else if (item.category == ItemCategory.gem) {
+                return sys.iconPlaceholderGem;
+            } else if (item.category == ItemCategory.gearChest) {
+                return sys.iconPlaceholderChest;
+            } else if (item.category == ItemCategory.gearHead) {
+                return sys.iconPlaceholderHead;
+            }
+        };
+        
+        return sys.iconPlaceholder;
+    };
+    
+    this.getRemainingTravelTime = function() {
+		return this.settings.travelDistanceRemaining - this.settings.travelDistanceElapsed;
+	};
+	
+	this.moveItems = function(itemId, sourceStorage, targetStorage, count) {
+		// Todo: sanity checks and cheat detection
+		if(!sourceStorage.removeItem(itemId, count)) {
+			return;
+		}
+		
+		if(!targetStorage.addItem(itemId, count)) {
+			// Rewind
+			sourceStorage.addItem(itemId, count);
+		}
+	};
+	
+	this.movePlanetItemsToPlayer = function() {
+		if(!this.currentPlanet) {
+			return false;
+		};
+		
+		var items = this.currentPlanet.storage.getItems();
+		for(var i = 0; i < items.length; i++) {
+			var count = this.currentPlanet.storage.getItemCount(items[i]);
+			if(count <= 0) {
+				continue;
+			}
+			
+			var item = this.getItem(items[i]);
+			switch(item.category) {
+			case ItemCategory.rawMaterial:
+			case ItemCategory.gem:
+				{
+					break;
+				}
+				
+			default:
+				{
+					// Not transfering other categories for now
+					return;
+				}
+			}
+			
+			this.moveItems(items[i], this.currentPlanet.storage, this.player.storage, count);
+			
+			// Todo: test code, remove when we can properly animate this
+			var float = ui.createFloat('+'+count+' '+item.name, 'lootFloating', utils.getRandomInt(800, 900), utils.getRandomInt(-190, -125));
+			float.getMainElement().animate({'marginLeft': '-='+utils.getRandomInt(1500, 1900)+'px'});
 		}
 	};
 	

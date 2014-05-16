@@ -88,7 +88,8 @@ addPlanet(8, 'uranus', 'Uranus', {
 addPlanet(9, 'neptune', 'Neptune', {
 	'gravity': 0.297,
     'baseMultiplier': 1,
-    'distance': 2680000000,
+    'distance': 2680000, // shortened by 000 for testing purposes!
+    'background': 'assets/images/neptune.png',
     'gatherLootTableId': LootTables.neptuneAtmosphere.id
 });
 

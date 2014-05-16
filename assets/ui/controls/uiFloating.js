@@ -1,3 +1,6 @@
+UIFloating.prototype = new UIComponent();
+UIFloating.prototype.constructor = UIFloating;
+
 function UIFloating(content, classes) {
 	
 	this.mainDiv = undefined;

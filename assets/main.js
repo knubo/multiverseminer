@@ -26,6 +26,14 @@ Mousetrap.bind('r', function(e) {
    onReset();
 });
 
+Number.prototype.formatNumber = function() {
+	if(ui.numberFormatter) {
+		return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	return this;
+};
+
 // ---------------------------------------------------------------------------
 // function hooks
 // ---------------------------------------------------------------------------
@@ -41,8 +49,8 @@ function onDocumentReady() {
     ui.update();
     
     // Activate the default panels
-    onActivateCrafting();
     onActivatePlayerInventory();
+    onActivatePlayerGear();
     
     // Set the update interval
     var interval = 1000 / 60;
@@ -65,7 +73,7 @@ function onCraft(what) {
 	}
 
 	if (game.player.craft(what)) {
-		ui.updateCraftingPanel();
+		ui.screenPlanet.componentCrafting.invalidate();
 	}
 };
 
@@ -79,67 +87,51 @@ function onGather() {
 	game.player.gather();
 };
 
-function onActivateCrafting() {
+function onActivatePlayerInventory() {
 	// select the button
 	changeLeftCategoryButton(0);
-		
+
     // disable and hide
-    ui.hideLeftSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentCrafting);
+    ui.screenPlanet.activatePlayerInventory();
+}
+
+function onActivateCrafting() {
+	// select the button
+	changeRightCategoryButton(3);
+		
+    ui.screenPlanet.activateCrafting();
 };
 
 function onActivateEmpire() {
 	// select the button
 	changeLeftCategoryButton(1);
 		
-    // disable and hide
-    ui.hideLeftSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentEmpire);
+    ui.screenPlanet.activateEmpire();
 };
-
-function onActivatePlayerInventory() {
-	// select the button
-	changeRightCategoryButton(0);
-
-    // disable and hide
-    ui.hideRightSideComponents();
-
-    // activate the category
-    ui.showComponent(ui.componentPlayerInventory);
-}
 
 function onActivatePlayerGear() {
 	// select the button
-	changeRightCategoryButton(1);
+	changeRightCategoryButton(0);
 	
-    ui.hideRightSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentPlayerGear);
+    ui.screenPlanet.activatePlayerGear();
 };
 
 function onActivateShip() {
 	// select the button
-	changeRightCategoryButton(2);
+	changeRightCategoryButton(1);
 	
-    ui.hideRightSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentShip);
+    ui.screenPlanet.activatePlayerShip();
 };
 
 function onActivatePlanet() {
 	// select the button
-	changeRightCategoryButton(3);
+	changeRightCategoryButton(2);
 	
-    ui.hideRightSideComponents();
-    
-    // activate the category
-    ui.showComponent(ui.componentPlanet);
+    ui.screenPlanet.activatePlanet();
+};
+
+function onMovePlanetItemsToPlayer() {
+	game.movePlanetItemsToPlayer();
 };
 
 function onSave() {
@@ -159,9 +151,9 @@ function onReset() {
 				game.reset();
 				//TODO: Add reset function to ui
 //				ui.reset();
-
-				onActivateCrafting();
+				
 				onActivatePlayerInventory();
+				onActivatePlayerGear();
 			}
 		}, {
 			text : 'Cancel',
@@ -171,6 +163,16 @@ function onReset() {
 		} ]
 	});
 }
+
+function onTravelToPlanet(target) {
+	if(!game.canTravelTo(target)) {
+		return;
+	}
+	
+	ui.screenPlanet.hide();
+	ui.screenTravel.show();
+	game.travelTo(target);
+};
 
 function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
