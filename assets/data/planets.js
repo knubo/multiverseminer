@@ -29,7 +29,7 @@ addPlanet(1, 'earth', 'Earth', {
 	'gravity': 1,
     'baseMultiplier': 1,
     'distance': 0,
-    'background': 'assets/images/planetBackground_blueLarge.png',
+    'background': 'assets/images/earth.png',
     'gatherLootTableId': LootTables.earthAtmosphere.id,
     'miningLootTableId': LootTables.earthMining.id
 });
