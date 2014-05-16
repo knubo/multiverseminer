@@ -156,7 +156,9 @@ addItem(9, 'sodium', 'Sodium', 1000, {
     'el': 'Na'
 });
 
-addItem(10, 'fuel', 'Fuel', 1000);
+addItem(10, 'fuel', 'Fuel', 1000, {
+    'icon': sys.iconRoot + 'oil.png'
+});
 
 addItem(11, 'potassium', 'Potassium', 1000, {
     'icon': sys.iconRoot + 'potassium.png',
@@ -224,46 +226,57 @@ addItem(23, 'zinc', 'Zinc', 1000, {
 });
 
 addItem(24, 'chromium', 'Chromium', 1000, {
+    'icon': sys.iconRoot + "chromium.png",
     'el': 'Cr'
 });
 
 addItem(25, 'chloride', 'Chloride', 1000, {
+    'icon': sys.iconRoot + "chloride.png",
     'el': 'Cl'
 });
 
 addItem(26, 'carbonDioxide', 'Carbon dioxide', 1000, {
+    'icon': sys.iconRoot + "carbonDioxide.png",
     'el': 'CO2'
 });
 
 addItem(27, 'sulfurDioxide', 'Sulfur Dioxide', 1000, {
+    'icon': sys.iconRoot + "sulfurDioxide.png",
     'el': 'SO2'
 });
 
 addItem(28, 'carbonMonoxide', 'Carbon Monoxide', 1000, {
+    'icon': sys.iconRoot + "carbonMonoxide.png",
     'el': 'CO'
 });
 
 addItem(29, 'helium', 'Helium', 1000, {
+    'icon': sys.iconRoot + "helium.png",
     'el': 'He'
 });
 
 addItem(30, 'neon', 'Neon', 1000, {
+    'icon': sys.iconRoot + "neon.png",
     'el': 'Ne'
 });
 
 addItem(31, 'methane', 'Methane', 10000, {
+    'icon': sys.iconRoot + "methane.png",
     'el': 'CH4'
 });
 
 addItem(32, 'argon', 'Argon', 10000, {
+    'icon': sys.iconRoot + "argon.png",
     'el': 'Ar'
 });
 
 addItem(33, 'xenon', 'Xenon', 100000, {
+    'icon': sys.iconRoot + "xenon.png",
     'el': 'Xe'
 });
 
 addItem(34, 'krypton', 'Krypton', 100000, {
+    'icon': sys.iconRoot + "krypton.png",
     'el': 'Kr'
 });
 
@@ -273,6 +286,7 @@ addItem(35, 'silver', 'Silver', 50, {
 });
 
 addItem(36, 'ceasium', 'Ceasium', 100000, {
+    'icon': sys.iconRoot + "ceasium.png",
     'el': 'Cs'
 });
 
