@@ -40,6 +40,8 @@ function Game() {
 		}
 		
 		this.setStartupState();
+		
+		this.player.equipBestGear();
 	};
 	
 	this.setNewGame = function() {

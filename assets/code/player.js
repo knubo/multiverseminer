@@ -1,6 +1,6 @@
 function Player() {
 	this.pickPower = 1;
-	this.miner = new Miner('player', false);
+	this.miner = new Miner('player');
 	this.combatant = new Combatant('player');
 	this.storage = new Storage('player');
 	this.gear = new Gear('player');
@@ -94,7 +94,7 @@ function Player() {
 			if(!item || !item.gearType) {
 				continue;
 			}
-			
+		
 			if(item.gearType == GearType.mainHand && item.name.match("Pickaxe") != null)
 			{
 				var diff = item.Power - this.pickPower;
@@ -103,7 +103,16 @@ function Player() {
 				this.miner.baseMineSpeed = item.power;
 			}
 			
-			this.equip(item.id);
+			if(item.gearType == GearType.building)
+			{
+				if(game.currentPlanet)
+				{
+					game.currentPlanet.equip(item.id);
+					game.currentPlanet.miner.autoMine = true;
+				}
+			}
+			else
+				this.equip(item.id);
 		}
 	};
 	

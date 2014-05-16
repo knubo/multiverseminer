@@ -22,6 +22,9 @@ GearType = {
     'secondHand': 'Second Hand',
     'legs': 'Legs',
     'feet': 'Feet',
+
+	// planet gear
+	'building': 'Building',
 };
 
 Items = {};
@@ -82,6 +85,7 @@ function setItemProperties() {
             item.category = ItemCategory.component;
         } else if (item.id >= 4000 && item.id < 5000) {
             item.category = ItemCategory.gearBuilding;
+			item.gearType = GearType.building;
         } else if (item.id >= 5000 && item.id < 6000) {
             item.category = ItemCategory.usable;
         } else if (item.id >= 40000 && item.id < 41000) {
@@ -857,7 +861,9 @@ addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
 // Buildings
 // ---------------------------------------------------------------------------
 addItem(4000, 'miningRig', 'Mining Rig', 50000, {
-    'storageLimit': 1
+    'storageLimit': 1,
+	'autoMineTime': 1000,
+	'icon': sys.iconRoot + 'mining_rig.png', 
 }).setCraftingCost([
     [Items.iron.id, 100]
 ]);
