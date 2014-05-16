@@ -38,7 +38,7 @@ addPlanet(2, 'moon', 'Moon', {
 	'gravity': 0.166,
     'baseMultiplier': 1,
     'distance': 10000,
-    'background': 'assets/images/planetBackground_greySmall.png',
+    'background': 'assets/images/moon.png',
     'gatherLootTableId': LootTables.moonAtmosphere.id,
     'miningLootTableId': LootTables.moonMinerals.id
 });
