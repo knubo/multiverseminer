@@ -109,6 +109,7 @@ function Player() {
 				{
 					game.currentPlanet.equip(item.id);
 					game.currentPlanet.miner.autoMine = true;
+					game.currentPlanet.miner.autoMineTime = item.autoMineTime;
 				}
 			}
 			else
