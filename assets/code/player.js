@@ -128,8 +128,16 @@ function Player() {
 		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 	};
 	
+	this.canEquip = function(itemId) {
+		return this.gear.canEquip(itemId);
+	};
+	
 	this.unEquip = function(type) {
 		this.gear.unEquip(type);
+	};
+	
+	this.hasEquipped = function(type) {
+		return this.gear.getItemInSlot(type) != undefined;
 	};
 
 	this.getTravelSpeed = function() {

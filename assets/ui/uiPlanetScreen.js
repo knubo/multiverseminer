@@ -51,6 +51,7 @@ function UIPlanetScreen() {
         
         this.playerInventory = new UIInventory('playerInventorySlots', 30);
         this.playerInventory.setStorage(game.player.storage);
+        this.playerInventory.itemContext = game.itemContexts.playerInventory;
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
         
@@ -62,6 +63,7 @@ function UIPlanetScreen() {
         this.planetInventoryFilter.setSelection(game.settings.selectedPlanetInventoryFilter);
         
         this.planetInventory = new UIInventory('planetInventorySlots', 30);
+        this.planetInventory.itemContext = game.itemContexts.planetInventory;
         this.planetInventory.init();
         this.planetInventory.setCategory(game.settings.selectedPlanetInventoryFilter);
         
@@ -84,14 +86,17 @@ function UIPlanetScreen() {
         this.componentEmpire.updateCallback = this.updateEmpirePanel;
         
         this.componentPlayerGear = new UIComponent('playerGearPanel');
+        this.componentPlayerGear.itemContext = game.itemContexts.playerGear;
         this.componentPlayerGear.init();
         this.componentPlayerGear.updateCallback = this.updatePlayerGearPanel;
         
         this.componentPlayerShip = new UIComponent('playerShipPanel');
+        this.componentPlayerShip.itemContext = game.itemContexts.playerShip;
         this.componentPlayerShip.init();
         this.componentPlayerShip.updateCallback = this.updateShipPanel;
         
         this.componentPlanet = new UIComponent('planetPanel');
+        this.componentPlanet.itemContext = game.itemContexts.planetGear;
         this.componentPlanet.init();
         this.componentPlanet.updateCallback = this.updatePlanetPanel;
         
@@ -161,6 +166,8 @@ function UIPlanetScreen() {
     	this.componentLeftPanel.show("left");
     	this.componentRightPanel.show("right");
     	this.invalidate();
+    	
+    	game.clearItemContexts();
     };
     
     this.hide = function() {
@@ -168,6 +175,8 @@ function UIPlanetScreen() {
     	this.mainDiv.animate({opacity: 0}, 500, function() { $(this).hide(); });
     	this.componentLeftPanel.hide("left");
     	this.componentRightPanel.hide("right");
+    	
+    	game.clearItemContexts();
     };
     
     // ---------------------------------------------------------------------------
@@ -189,7 +198,8 @@ function UIPlanetScreen() {
     	self.planetInventory.update(game.currentPlanet.storage);
     };
         
-    this.updatePlayerGearPanel = function() {        
+    this.updatePlayerGearPanel = function() {
+    	var self = ui.screenPlanet;
         var parent = $('#playerGearSlots');
         parent.empty();
 
@@ -197,6 +207,7 @@ function UIPlanetScreen() {
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
             var slot = ui.buildGearSlot('playerGear', gearSlots[i], itemId, parent);
+            slot.itemContext = self.componentPlayerGear.itemContext;
             parent.append(slot.getMainElement());
         }
     };
@@ -244,6 +255,7 @@ function UIPlanetScreen() {
     };
     
     this.updatePlanetPanel = function() {
+    	var self = ui.screenPlanet;
     	var parent = $('#planetBuildings');
         parent.empty();
 
@@ -251,6 +263,7 @@ function UIPlanetScreen() {
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.currentPlanet.gear.getItemInSlot(gearSlots[i]);
             var slot = ui.buildGearSlot('planetBuildings', gearSlots[i], itemId, parent);
+            slot.itemContext = self.componentPlanet.itemContext;
             parent.append(slot.getMainElement());
         }
     };
@@ -307,6 +320,8 @@ function UIPlanetScreen() {
     this.hideLeftSideComponents = function() {
     	this.componentPlayerInventory.hide();
     	this.componentEmpire.hide();
+    	
+    	game.clearItemContext(this.playerInventory.itemContext);
     };
     
     this.hideRightSideComponents = function() {
@@ -314,11 +329,18 @@ function UIPlanetScreen() {
     	this.componentPlayerShip.hide();
     	this.componentPlanet.hide();
     	this.componentCrafting.hide();
+    	
+    	game.clearItemContext(this.componentPlayerGear.itemContext);
+    	game.clearItemContext(this.componentPlayerShip.itemContext);
+    	game.clearItemContext(this.componentPlanet.itemContext);
+    	game.clearItemContext(this.planetInventory.itemContext);
     };
     
     this.activatePlayerInventory = function() {
     	this.hideLeftSideComponents();
     	this.componentPlayerInventory.show();
+    	
+    	game.setItemContext(this.playerInventory.itemContext);
     };
     
     this.activateCrafting = function() {
@@ -334,16 +356,22 @@ function UIPlanetScreen() {
     this.activatePlayerGear = function() {
     	this.hideRightSideComponents();
     	this.componentPlayerGear.show();
+    	
+    	game.setItemContext(this.componentPlayerGear.itemContext);
     };
     
     this.activatePlayerShip = function() {
     	this.hideRightSideComponents();
     	this.componentPlayerShip.show();
+    	
+    	game.setItemContext(this.componentPlayerShip.itemContext);
     };
     
     this.activatePlanet = function() {
     	this.hideRightSideComponents();
     	this.componentPlanet.show();
+    	
+    	game.setItemContext(this.planetInventory.itemContext);
     };
     
     this.buildCraftingEntry = function(item) {

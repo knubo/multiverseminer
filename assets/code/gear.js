@@ -28,6 +28,20 @@ function Gear(id) {
 		this.slots[type] = -1;
 		this.slotMetadata[type] = undefined;
 	};
+	
+	this.canEquip = function(itemId) {
+		var itemInfo = game.getItem(itemId);
+
+		if (!itemInfo || !itemInfo.gearType) {
+			return false;
+		}
+
+		if (!this.slots[itemInfo.gearType]) {
+			return false;
+		}
+		
+		return true;
+	};
 
 	this.equip = function(itemId, metadata) {	
 		// get the item info

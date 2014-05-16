@@ -58,7 +58,8 @@ function UITravelScreen() {
     // travel functions
     // ---------------------------------------------------------------------------
     this.updateTravelDisplay = function() {
-    	var remaining = game.getRemainingTravelTime();    	
-    	$('#travelDistance').text(game.getRemainingTravelTime().formatNumber() + ' km - ETA: ' + remaining);
+    	var remaining = game.getRemainingTravelTime();
+    	var remainingTime = Math.floor(remaining / game.player.getTravelSpeed()) * 1000;
+    	$('#travelDistance').text(game.getRemainingTravelTime().formatNumber() + ' km - ETA: ' + utils.getShortTimeDisplay(remainingTime));
     };
 };

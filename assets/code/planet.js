@@ -56,6 +56,14 @@ function Planet(data) {
 		
 		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 	};
+	
+	this.canEquip = function(itemId) {
+		return this.gear.canEquip(itemId);
+	};
+	
+	this.unEquip = function(type) {
+		this.gear.unEquip(type);
+	};
 
 	// ---------------------------------------------------------------------------
 	// planet functions

@@ -9,6 +9,8 @@ function UIInventory(id, parent) {
     
     this.slotCount = 15;
     
+    this.itemContext = undefined;
+    
     this.slotElements = [];
     this.slotIdItemIdMap = [];
     
@@ -33,6 +35,7 @@ function UIInventory(id, parent) {
         var slotId = 0;
         for(var x = 0; x < this.slotCount; x++) {
             var slot = new UISlot(this.id + '_' + x, this.mainDiv);
+            slot.itemContext = this.itemContext;
             slot.init();
 
             this.slotElements.push(slot);
