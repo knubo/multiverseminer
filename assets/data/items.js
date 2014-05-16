@@ -882,7 +882,7 @@ addItem(5004, 'resurrectionPotion', 'Resurrection Potion', 100000, {
 // ---------------------------------------------------------------------------
 addItem(4000, 'miningRig', 'Mining Rig', 50000, {
     'storageLimit': 1,
-	'autoMineTime': 1000,
+	'autoMineTime': 250,
 	'icon': sys.iconRoot + 'mining_rig.png', 
 }).setCraftingCost([
     [Items.iron.id, 100]
