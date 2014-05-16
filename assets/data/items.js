@@ -767,7 +767,9 @@ addItem(3005, 'gasCan', 'Gas canister', 50, {
         [Items.ironBar.id, 5]
     ]
 );
-addItem(3018, 'fuel', 'Fuel', 50000).setCraftingCost(
+addItem(3018, 'fuel', 'Fuel', 50000, {
+    'icon': sys.iconRoot + 'fuel.png'
+}).setCraftingCost(
     [
         [Items.crudeOil.id, 10]
     ]
@@ -810,7 +812,9 @@ addItem(3012, 'glass', 'Glass', 5000, {
     ]
 );
 
-addItem(3014, 'steelBar', 'Steel bar', 5000).setCraftingCost(
+addItem(3014, 'steelBar', 'Steel bar', 5000, {
+    'icon': sys.iconRoot + "steelBar.png"
+}).setCraftingCost(
     [
         [Items.ironBar.id, 1],
         [Items.carbon.id, 1]
