@@ -11,6 +11,7 @@ function Game() {
 
 	this.lastUpdateTime = Date.now();
 	this.lastAutoSaveTime = Date.now();
+	this.lastTravelTime = Date.now();
 	
 	this.planetChanged = true;
 	
@@ -88,8 +89,9 @@ function Game() {
 	};
 
 	this.update = function(currentTime) {
-		elapsed = currentTime - this.lastUpdateTime;
-		elapsedSinceAutoSave = currentTime - this.lastAutoSaveTime;
+		var elapsed = currentTime - this.lastUpdateTime;
+		var elapsedSinceAutoSave = currentTime - this.lastAutoSaveTime;
+		var elapsedSinceTravel = currentTime - this.lastTravelTime;
 
 		if (this.settings.autoSaveEnabled
 				&& elapsedSinceAutoSave > this.settings.autoSaveInterval) {
@@ -104,7 +106,8 @@ function Game() {
 			this.planets[planet].update(currentTime);
 		}
 		
-		if(this.settings.travelActive) {
+		if(this.settings.travelActive && elapsedSinceTravel > 1000) {
+			this.elapsedSinceTravel = currentTime;
 			this.settings.travelDistanceElapsed += this.player.getTravelSpeed();
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
 				this._enterOrbit(this.settings.targetPlanet);
