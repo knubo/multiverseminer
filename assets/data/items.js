@@ -781,7 +781,7 @@ addItem(3010, 'hyperCell', 'Hyper cell', 10000);
 
 addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
     [
-        [Items.silica.id, 1],
+        [Items.silicon.id, 1],
         [Items.oxygen.id, 2]
     ]
 );
