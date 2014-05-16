@@ -805,7 +805,7 @@ addItem(3011, 'silica', 'Silica', 2500).setCraftingCost(
 );
 
 addItem(3012, 'glass', 'Glass', 5000, {
-    'icon': sys.iconRoot + "Glass.png"
+    'icon': sys.iconRoot + "glass.png"
 }).setCraftingCost(
     [
         [Items.silica.id, 2]
