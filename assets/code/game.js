@@ -107,7 +107,7 @@ function Game() {
 		}
 		
 		if(this.settings.travelActive && elapsedSinceTravel > 1000) {
-			this.elapsedSinceTravel = currentTime;
+			this.lastTravelTime = currentTime;
 			this.settings.travelDistanceElapsed += this.player.getTravelSpeed();
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
 				this._enterOrbit(this.settings.targetPlanet);
