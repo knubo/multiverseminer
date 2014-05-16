@@ -4,7 +4,7 @@ var ui = new UI();
 
 // Initialize notification window
 $.noty.defaults.layout = 'bottomRight';
-$.noty.defaults.timeout = 3000;
+$.noty.defaults.timeout = 1000;
 
 // Initialize tooltip
 $(document).tooltip();
