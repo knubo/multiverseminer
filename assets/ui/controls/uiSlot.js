@@ -75,7 +75,15 @@ function UISlot(id, parent) {
 	this.onMouseUp = function(parameters) {
 		var self = parameters.data.self;
 		
-		// utils.log('SlotMouseUp: '  + parameters.which+" "+ self.item, true);
+		// If we don't have content don't do anything
+		if(!self.item) {
+			return;
+		}
+		
+		// Right click to activate the item context action
+		if(parameters.which == MouseButtons.right) {
+			game.activateItemContext(self.item.id, self.itemContext);
+		}
 	};
 	
 	this.onMouseOver = function(parameters) {
@@ -100,7 +108,7 @@ function UISlot(id, parent) {
 			return;
 		}
 		
-		// utils.log('SlotDBLC: '  + parameters.which+" "+ self.item, true);
+		game.useItemContext(self.item.id);
 	};
 	
 	// ---------------------------------------------------------------------------

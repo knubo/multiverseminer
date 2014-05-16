@@ -15,6 +15,16 @@ function Game() {
 	this.planetChanged = true;
 	
 	this.version = 0.1;
+	
+	this.itemContexts = {
+			'playerInventory': 1,
+			'planetInventory': 2,
+			'playerGear': 3,
+			'planetGear': 4,
+			'playerShip': 5
+	};
+	
+	this.activeItemContexts = [];
 
 	// ---------------------------------------------------------------------------
 	// main functions
@@ -312,6 +322,11 @@ function Game() {
 		}
 	};
 	
+	this.removeItems = function(itemId, storage, count) {
+		// Todo: sanity checks and cheat detection
+		storage.removeItem(itemId, count);
+	};
+	
 	this.movePlanetItemsToPlayer = function() {
 		if(!this.currentPlanet) {
 			return false;
@@ -347,9 +362,194 @@ function Game() {
 		}
 	};
 	
+	this.setItemContext = function(context) {
+		if (jQuery.inArray(context, this.activeItemContexts) != -1) {
+			return;
+		}
+		
+		this.activeItemContexts.push(context);
+	};
+	
+	this.clearItemContexts = function() {
+		this.activeItemContexts = [];
+	};
+		
+	this.clearItemContext = function(context) {
+		this.activeItemContexts = jQuery.grep(this.activeItemContexts, function(value){ return value != context; });
+	};
+	
+	this.getItemContext = function(sourceContext) {
+		// Gets the first active item context that is not the source
+		for(var i = 0; i < this.activeItemContexts.length; i++)
+		{
+			if(this.activeItemContexts[i] != sourceContext) {
+				return this.activeItemContexts[i];
+			}
+		}
+	};
+	
+	this.canProcessItemContext = function(itemId, sourceContext) {
+		var target = this.getItemContext(sourceContext)
+		if(!target) {
+			return false;
+		}
+		
+		var item = this.getItem(itemId);
+		return item != undefined;
+	};
+	
+	this.activateItemContext = function(itemId, sourceContext) {
+		if(!this.canProcessItemContext(itemId)) {
+			return false;
+		}
+		
+		var target = this.getItemContext(sourceContext);
+		
+		// Todo
+		switch(sourceContext) {
+			case this.itemContexts.playerInventory: return this._processItemContextPlayerInventory(itemId, target);
+			case this.itemContexts.planetInventory: return this._processItemContextPlanetInventory(itemId, target);
+			case this.itemContexts.playerGear: return this._processItemContextPlayerGear(itemId, target);
+			case this.itemContexts.planetGear: return this._processItemContextPlanetGear(itemId, target);
+			case this.itemContexts.playerShip: return this._processItemContextPlayerShip(itemId, target);
+			default: throw new Error('Not implemented context type: ' + this.activeItemContextSource);
+		}
+	};
+	
+	this.canUseItemContext = function(itemId, sourceContext) {
+		if(!sourceContext) {
+			return false;
+		}
+		
+		var item = this.getItem(itemId);
+		if(!item || item.use != 1) {
+			return false;
+		}
+		
+		switch(sourceContext) {
+			case this.itemContexts.playerInventory: return true;
+			case this.itemContexts.planetInventory: return true;
+			default: return false;
+		}
+	};
+	
+	this.useItemContext = function(itemId, sourceContext) {
+		if(!this.canUseItemContext(itemId, sourceContext)) {
+			return false;
+		}
+		
+		var item = this.getItem(itemId);
+		if(!item || item.use != 1) {
+			return false;
+		}
+		
+		var target = this.getItemContext(sourceContext);
+		utils.log("useItemContext: " + itemId+" "+sourceContext+" -> "+target);
+		
+		switch(sourceContext) {
+			case this.itemContexts.playerInventory: {
+				this.removeItems(itemId, this.player.storage, 1);
+				return this._applyItemUseEffect(item, target);
+			}
+			case this.itemContexts.planetInventory: {
+				this.removeItems(itemId, this.currentPlanet.storage, 1);
+				return this._applyItemUseEffect(item, target);
+			}
+			default: return false;
+		}
+	};
+	
 	// ---------------------------------------------------------------------------
 	// internal functions
 	// ---------------------------------------------------------------------------
+	this._applyItemUseEffect = function(item, targetContext) {
+		// Todo: evaluate what the item does and apply the effect
+		throw new Error('Used item: ' + item.id);
+		return false;
+	};
+	
+	this._processItemContextPlayerInventory = function(itemId, targetContext) {
+		switch(targetContext) {
+			case this.itemContexts.playerInventory: return false;
+		
+			case this.itemContexts.planetInventory: {
+				this.moveItems(itemId, this.player.storage, this.currentPlanet.storage, this.player.storage.getItemCount(itemId));
+				return true;
+			}
+			
+			case this.itemContexts.playerGear: {
+				if(this.player.canEquip(itemId)) {
+					this.player.equip(itemId);
+				}
+				
+				return true;
+			}
+			
+			case this.itemContexts.planetGear: {
+				if(this.currentPlanet.canEquip(itemId)) {
+					// Move the item to the planet and equip
+					this.moveItems(itemId, this.player.storage, this.currentPlanet.storage, this.player.storage.getItemCount(itemId));
+					this.currentPlanet.equip(itemId);
+				}
+				
+				return true;
+			}
+			
+			case this.itemContexts.playerShip: {
+				// Todo: add when ship is added
+				/*if(this.player.ship.canEquip(item.id)) {
+					this.player.ship.equip(item.id);
+				}*/
+				return true;
+			}
+			
+			default: return false;
+		}
+	};
+	
+	this._processItemContextPlanetInventory = function(itemId, targetContext) {
+		switch(targetContext) {		
+			case this.itemContexts.playerInventory: {
+				this.moveItems(itemId, this.currentPlanet.storage, this.player.storage, this.currentPlanet.storage.getItemCount(itemId));
+				return true;
+			}
+			
+			case this.itemContexts.planetGear: {
+				if(this.currentPlanet.canEquip(itemId)) {
+					this.currentPlanet.equip(itemId);
+				}
+				
+				return true;
+			}
+			
+			default: return false;
+		}
+	};
+	
+	this._processItemContextPlayerGear = function(itemId, targetContext) {
+		var item = this.getItem(itemId);
+		
+		switch(targetContext) {	
+		case this.itemContexts.playerInventory: {
+			if(this.player.hasEquipped(item.gearType)) {
+				this.player.unEquip(item.gearType);
+			}
+			
+			return true;
+		}
+		
+		default: return false;
+	}
+	};
+	
+	this._processItemContextPlanetGear = function(item, targetContext) {
+		
+	};
+	
+	this._processItemContextPlayerShip = function(item, targetContext) {
+		
+	};
+	
 	this._pickLootTableEntries = function(table, results) {
 		switch(table.mode) {
 			case LootMode.single: {
