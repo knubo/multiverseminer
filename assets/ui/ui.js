@@ -311,12 +311,12 @@ function UI() {
     };
     
     this.hideLeftSideComponents = function() { 
-        this.hideComponent(this.componentPlayerInventory);
         this.hideComponent(this.componentCrafting);
         this.hideComponent(this.componentEmpire);
     };
     
     this.hideRightSideComponents = function() { 
+        this.hideComponent(this.componentPlayerInventory);
         this.hideComponent(this.componentPlayerGear);
         this.hideComponent(this.componentShip);
         this.hideComponent(this.componentPlanet);

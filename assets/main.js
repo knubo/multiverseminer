@@ -41,8 +41,8 @@ function onDocumentReady() {
     ui.update();
     
     // Activate the default panels
+    onActivateCrafting();
     onActivatePlayerInventory();
-    onActivatePlayerGear();
     
     // Set the update interval
     var interval = 1000 / 60;
@@ -79,20 +79,9 @@ function onGather() {
 	game.player.gather();
 };
 
-function onActivatePlayerInventory() {
-	// select the button
-	changeLeftCategoryButton(0);
-
-    // disable and hide
-    ui.hideLeftSideComponents();
-
-    // activate the category
-    ui.showComponent(ui.componentPlayerInventory);
-}
-
 function onActivateCrafting() {
 	// select the button
-	changeLeftCategoryButton(1);
+	changeLeftCategoryButton(0);
 		
     // disable and hide
     ui.hideLeftSideComponents();
@@ -103,7 +92,7 @@ function onActivateCrafting() {
 
 function onActivateEmpire() {
 	// select the button
-	changeLeftCategoryButton(2);
+	changeLeftCategoryButton(1);
 		
     // disable and hide
     ui.hideLeftSideComponents();
@@ -112,9 +101,20 @@ function onActivateEmpire() {
     ui.showComponent(ui.componentEmpire);
 };
 
-function onActivatePlayerGear() {
+function onActivatePlayerInventory() {
 	// select the button
 	changeRightCategoryButton(0);
+
+    // disable and hide
+    ui.hideRightSideComponents();
+
+    // activate the category
+    ui.showComponent(ui.componentPlayerInventory);
+}
+
+function onActivatePlayerGear() {
+	// select the button
+	changeRightCategoryButton(1);
 	
     ui.hideRightSideComponents();
     
@@ -124,7 +124,7 @@ function onActivatePlayerGear() {
 
 function onActivateShip() {
 	// select the button
-	changeRightCategoryButton(1);
+	changeRightCategoryButton(2);
 	
     ui.hideRightSideComponents();
     
@@ -134,7 +134,7 @@ function onActivateShip() {
 
 function onActivatePlanet() {
 	// select the button
-	changeRightCategoryButton(2);
+	changeRightCategoryButton(3);
 	
     ui.hideRightSideComponents();
     
@@ -159,9 +159,9 @@ function onReset() {
 				game.reset();
 				//TODO: Add reset function to ui
 //				ui.reset();
-				
+
+				onActivateCrafting();
 				onActivatePlayerInventory();
-				onActivatePlayerGear();
 			}
 		}, {
 			text : 'Cancel',
