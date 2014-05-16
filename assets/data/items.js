@@ -157,7 +157,7 @@ addItem(9, 'sodium', 'Sodium', 1000, {
 });
 
 addItem(10, 'fuel', 'Fuel', 1000, {
-    'icon': sys.iconRoot + 'oil.png'
+    'icon': sys.iconRoot + 'fuel.png'
 });
 
 addItem(11, 'potassium', 'Potassium', 1000, {
