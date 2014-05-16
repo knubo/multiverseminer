@@ -733,7 +733,9 @@ addItem(3002, 'goldBar', 'Gold bar', 1000, {
     ]
 );
 
-addItem(3017, 'titaniumBar', 'Titanium Bar', 2500).setCraftingCost(
+addItem(3017, 'titaniumBar', 'Titanium Bar', 2500, {
+    'icon': sys.iconRoot + 'titaniumBar.png'
+}).setCraftingCost(
     [
         [Items.titanium.id, 10]
     ]
