@@ -774,7 +774,9 @@ addItem(3018, 'fuel', 'Fuel', 50000, {
         [Items.crudeOil.id, 10]
     ]
 );
-addItem(3006, 'fuelCan', 'Fuel can', 1000).setCraftingCost(
+addItem(3006, 'fuelCan', 'Fuel can', 1000, {
+    'icon': sys.iconRoot + 'fuelCan.png'
+}).setCraftingCost(
     [
         [Items.fuel.id, 10],
         [Items.ironBar.id, 1]
@@ -788,7 +790,9 @@ addItem(3007, 'fuelTank', 'Fuel tank', 1000).setCraftingCost(
     ]
 );
 
-addItem(3009, 'plasmaCell', 'Plasma cell', 10000).setCraftingCost(
+addItem(3009, 'plasmaCell', 'Plasma cell', 10000, {
+    'icon': sys.iconRoot + 'plasmaCell.png'
+}).setCraftingCost(
     [
         [Items.ceasium.id, 10],
         [Items.ironBar.id, 1]
