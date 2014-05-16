@@ -542,6 +542,9 @@ body {
 	cursor: pointer;
 	cursor: hand;
 }
+.opaque{
+	opacity: 0.4;
+}
 
 #playerCraftingContent .ui-accordion-content {  
     padding: 0;

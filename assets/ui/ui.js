@@ -433,7 +433,23 @@ function UI() {
     // ---------------------------------------------------------------------------
     this.buildCraftingEntry = function(item) {
         var tooltipContent = this.buildCraftingCostTooltip(item);
-        var content = $('<div class="craftingItemPanel noselect" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
+        //TODO: Move this somewhere else and make it take other storages into account
+        var canCraft = true;
+		var cost = game.getCraftingCost(item.id, 1);
+		if (!cost) {
+			canCraft = false;
+		} else {
+			var quantity = game.itemDictionary[item.id].craftResult || 1;
+			var keys = Object.keys(cost);
+			// First pass to check
+			for ( var i = 0; i < keys.length; i++) {
+				var key = keys[i];
+				if (game.player.storage.getItemCount(key) < cost[key]) {
+					canCraft = false;
+				}
+			}
+	    }
+        var content = $('<div class="craftingItemPanel noselect' + (canCraft ? '' : ' opaque') + '" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
         var icon = this.getDefaultItemIcon(item);
         if(item.icon) {
             icon = item.icon;
