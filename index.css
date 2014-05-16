@@ -560,7 +560,8 @@ body {
     line-height: 16pt;
 }
 #playerCraftingContent .ui-accordion-content div {
-	margin-bottom: 10px;
+	text-align: left;
+    margin-bottom: 10px;
 	border-radius: 0;
 	background: #333;
 }
