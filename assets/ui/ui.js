@@ -217,7 +217,17 @@ function UI() {
     };
     
     this.updatePlanetPanel = function() {
-    	// Todo
+    	var self = ui;
+        
+        var parent = $('#planetBuildings');
+        parent.empty();
+
+        var gearSlots = game.currentPlanet.gear.getSlots();
+        for (var i = 0; i < gearSlots.length; i++) {
+            var itemId = game.currentPlanet.gear.getItemInSlot(gearSlots[i]);
+            var slot = self.buildGearSlot(gearSlots[i], itemId);
+            parent.append(slot.getMainElement());
+        }
     };
     
     this.updateElementFinderPanel = function() {

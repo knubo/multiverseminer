@@ -1,18 +1,34 @@
 function Planet(data) {
 	this.data = data;
-	this.miner = new Miner('planet' + data.id, true);
+	this.miner = new Miner('planet' + data.id);
+	this.gear = new Gear('planet' + data.id);
 	this.storage = new Storage('planet' + data.id);
 	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
+		this.gear.initialize();
+		
+		// Add the slots we can wear
+		this.gear.addSlot(GearType.building);
+		
 		this.miner.initialize();
 		this.storage.initialize();
 	};
 	
 	this.update = function(currentTime) {
 		this.miner.update(currentTime);
+	};
+	
+	this.equip = function(itemId) {
+		if(!itemId || !game.player.storage.hasItem(itemId))
+		{
+			utils.logError("Unable to equip item, invalid or don't have it");
+			return;
+		}
+		
+		this.gear.equip(itemId, game.player.storage.getItemMetadata(itemId));
 	};
 
 	// ---------------------------------------------------------------------------

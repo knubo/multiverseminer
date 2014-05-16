@@ -1,11 +1,11 @@
-function Miner(id, autoMine) {
+function Miner(id) {
 	this.id = id;
 
 	this.baseMineSpeed = 1;
 	
 	this.previousTime = 0;
 	this.autoMineTime = 1000; // in milliseconds
-	this.autoMine = autoMine;
+	this.autoMine = false;
 	
 	// ---------------------------------------------------------------------------
 	// general
