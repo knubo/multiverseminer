@@ -1,24 +1,42 @@
-var nextUISelectionKey = 0;
+UISelection.prototype = new UIComponent();
+UISelection.prototype.$super = parent;
+UISelection.prototype.constructor = UISelection;
 
-function UISelection(parent, values, selectionChangedCallback) {
-    this.key = nextUISelectionKey++;
+function UISelection(id, parent) {
+    this.id = id;
     this.parent = parent;
-    this.keys = Object.keys(values);
-    this.values = values;
-    this.callback = selectionChangedCallback;
+    
+    this.values = undefined;
+    this.callback = undefined;
+    this.keys = undefined;
     
     this.min = 0;
-    this.max = this.keys.length - 1;
+    this.max = 0;
     
     this.selection = -1;
     this.selectionTextElement = undefined;
     
     this.loop = false;
     
+ // ---------------------------------------------------------------------------
+    // overrides
+    // ---------------------------------------------------------------------------
+    this.baseInit = this.init;
+    this.baseUpdate = this.update;
+    
     // ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
-    this.init = function() {        
+    this.init = function() {
+    	this.baseInit();
+    	
+    	if(!this.values || !this.callback) {
+    		throw new Error("Values and callback must be set!");
+    	}
+    	
+    	this.keys = Object.keys(this.values);
+    	this.max = this.keys.length - 1;
+    	
         this.selectionFirstElement = $('<img class="selectPrevious clickable noSelect" src="'+ sys.selectionArrowBackFast + '"/>');
         this.selectionFirstElement.click({self: this}, this.onSelectFirst);
         
@@ -34,15 +52,19 @@ function UISelection(parent, values, selectionChangedCallback) {
         this.selectionLastElement.click({self: this}, this.onSelectLast);
         
         // have to add the right floating elements first
-        $('#' + this.parent).append(this.selectionLastElement);
-        $('#' + this.parent).append(this.selectionNextElement);
+        this.mainDiv.append(this.selectionLastElement);
+        this.mainDiv.append(this.selectionNextElement);
         
-        $('#' + this.parent).append(this.selectionFirstElement);
-        $('#' + this.parent).append(this.selectionPrevElement);
-        $('#' + this.parent).append(this.selectionTextElement);
+        this.mainDiv.append(this.selectionFirstElement);
+        this.mainDiv.append(this.selectionPrevElement);
+        this.mainDiv.append(this.selectionTextElement);
     };
     
-    this.update = function(id) {
+    this.update = function(currentTime) {
+    	if(!this.baseUpdate(currentTime)) {
+    		return;
+    	};
+    	
         var key = this.keys[this.selection];
         this.selectionTextElement.text(this.values[key].toUpperCase());
     };
@@ -54,7 +76,7 @@ function UISelection(parent, values, selectionChangedCallback) {
         }
         
         this.selection = id;
-        this.update();
+        this.invalidate();
     };
         
     this.selectPrevious = function() {
@@ -68,7 +90,7 @@ function UISelection(parent, values, selectionChangedCallback) {
             this.selection--;
         }
         
-        this.update();
+        this.invalidate();
         this.callback(this.selection);
     };
     
@@ -83,7 +105,7 @@ function UISelection(parent, values, selectionChangedCallback) {
             this.selection++;
         }
         
-        this.update();
+        this.invalidate();
         this.callback(this.selection);
     };
     

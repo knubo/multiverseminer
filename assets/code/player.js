@@ -50,7 +50,7 @@ function Player() {
 
 		game.settings.addStat('manualDigCount');
 
-		var items = this.miner.mine();
+		var items = this.miner.mine(game.currentPlanet);
 		if (items) {
 			for(var i = 0; i < items.length; i++) {
 				var name = game.getItemName(items[i]);
@@ -68,7 +68,7 @@ function Player() {
 
 		game.settings.addStat('manualGatherCount');
 
-		var items = this.miner.gather();
+		var items = this.miner.gather(game.currentPlanet);
 		if (items) {
 			this.storage.addItems(items);
 		}
@@ -78,6 +78,17 @@ function Player() {
 		// For now we craft with our inventory into our inventory
 		if(!game.craft(this.storage, this.storage, itemId, count)) {
 			return false;
+		}
+		
+		var item = game.getItem(itemId);
+		if(item.gearType == GearType.building && game.currentPlanet)
+		{
+			game.moveItems(itemId, this.storage, game.currentPlanet.storage, 1);
+			
+			// Todo: Planet needs to evaluate this
+			game.currentPlanet.equip(item.id);
+			game.currentPlanet.autoMineTime = item.autoMineTime;
+			game.currentPlanet.autoMine = true;
 		}
 		
 		this.equipBestGear();
@@ -103,17 +114,7 @@ function Player() {
 				this.miner.baseMineSpeed = item.power;
 			}
 			
-			if(item.gearType == GearType.building)
-			{
-				if(game.currentPlanet)
-				{
-					game.currentPlanet.equip(item.id);
-					game.currentPlanet.miner.autoMine = true;
-					game.currentPlanet.miner.autoMineTime = item.autoMineTime;
-				}
-			}
-			else
-				this.equip(item.id);
+			this.equip(item.id);
 		}
 	};
 	
@@ -131,9 +132,10 @@ function Player() {
 		this.gear.unEquip(type);
 	};
 
-	// -----------------------------
-	// Temporal Internal
-	// -----------------------------
+	this.getTravelSpeed = function() {
+		// Todo: hardcoded for now until ship is done
+		return 5000;
+	};
 	
 	// ---------------------------------------------------------------------------
 	// loading / saving

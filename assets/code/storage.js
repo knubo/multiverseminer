@@ -41,7 +41,7 @@ function Storage(id) {
 		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
 			utils.logError("attempt to add unknown item: " + id);
-			return;
+			return false;
 		}
 		
 		// Add it to the storage
@@ -60,14 +60,20 @@ function Storage(id) {
 		if(silent == undefined || !silent) {
 		    this.storageChanged = true;
 		}
+		
+		return true;
 	};
 
 	this.addItems = function(items) {
 		for ( var i = 0; i < items.length; i++) {
-			this.addItem(items[i], 1, true);
+			if(!this.addItem(items[i], 1, true)) {
+				// Todo: rewind what we just added
+				return false;
+			}
 		}
 		
 		this.storageChanged = true;
+		return true;
 	};
 
 	this.hasItem = function(id)
@@ -112,14 +118,14 @@ function Storage(id) {
 		var itemInfo = game.getItem(id);
 		if (!itemInfo) {
 			utils.logError("attempt to remove unknown item: " + id);
-			return;
+			return false;
 		}
 		
 		if (!this.items[id] || this.items[id] < value) {
 			utils.logError("RemoveItem of " + id
 					+ " called with insufficient items: " + id + " was "
 					+ this.items[id]);
-			return;
+			return false;
 		}
 
 		this.items[id] -= value;
@@ -138,6 +144,7 @@ function Storage(id) {
 		}
 		
 		this.storageChanged = true;
+		return true;
 	};
 	
 	this.setItemMetadata = function(id, metadata) {

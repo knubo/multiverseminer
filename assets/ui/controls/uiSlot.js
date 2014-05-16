@@ -1,11 +1,18 @@
-function UISlot(classes) {
+UISlot.prototype = new UIComponent();
+UISlot.prototype.$super = parent;
+UISlot.prototype.constructor = UISlot;
+
+function UISlot(id, parent) {
+	this.id = id;
+    
+    this.parent = parent;
+	
 	this.controlType = 'UISlot';
+	this.classes = 'itemSlot itemSlotNonHover';
 	
 	this.mainDiv = undefined;
 	this.iconDisplay = undefined;
 	this.countDisplay = undefined;
-	
-	this.classes = classes || 'itemSlot';
 	
 	this.isClear = true;
 	
@@ -21,10 +28,16 @@ function UISlot(classes) {
 	this.count = 0;
 	
 	// ---------------------------------------------------------------------------
+    // overrides
+    // ---------------------------------------------------------------------------
+    this.baseInit = this.init;
+    
+	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
 	this.init = function() {
-		this.mainDiv = $('<div class="' + this.classes + ' itemSlotNonHover noSelect"></div>');
+		this.baseInit();
+		
 		this.mainDiv.hover(
                 function() { $(this).addClass("itemSlotHover noSelect"); $(this).removeClass("itemSlotNonHover"); },
                 function() { $(this).addClass("itemSlotNonHover noSelect"); $(this).removeClass("itemSlotHover"); }
@@ -101,7 +114,7 @@ function UISlot(classes) {
 		this.item = item;
 		this.count = count;
 		
-		var icon = item.icon || ui.getDefaultItemIcon(item);
+		var icon = item.icon || game.getDefaultItemIcon(item);
 		
 		this.iconDisplay = $('<img class="itemSlotIcon noselect" src="' + icon + '"/>');
 		this.countDisplay = $('<div class="itemSlotText noselect"></div>');
@@ -117,7 +130,7 @@ function UISlot(classes) {
 		if (!count) count = 0;
 		this.count = count;
 		
-		var countDisplayValue = count.toString();		
+		var countDisplayValue = count.formatNumber();		
 		if(count <= 0) {
 			countDisplayValue = this.displayZero ? '0' : '';
 		};
