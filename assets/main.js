@@ -83,9 +83,13 @@ function onMine() {
 };
 
 function onGather() {
-	// To make.
-	// game.settings.addStat('gatherCount');
-	// game.player.gather();
+	game.settings.addStat('gatherCount');
+	game.player.gather();
+};
+
+function onScavenge() {
+	game.settings.addStat('scavengeCount');
+	game.player.scavenge();
 };
 
 function onActivatePlayerInventory() {

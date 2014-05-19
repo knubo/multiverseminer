@@ -74,6 +74,19 @@ function Player() {
 		}
 	};
 
+	this.scavenge = function() {
+		if (!game.currentPlanet) {
+			return;
+		}
+
+		game.settings.addStat('manualScavengeCount');
+
+		var items = this.miner.scavenge(game.currentPlanet);
+		if (items) {
+			this.storage.addItems(items);
+		}
+	};
+
 	this.craft = function(itemId, count) {
 		// For now we craft with our inventory into our inventory
 		if(!game.craft(this.storage, this.storage, itemId, count)) {

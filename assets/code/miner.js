@@ -22,6 +22,11 @@ function Miner(id) {
 		return this._dropResources(tableId);
 	};
 
+	this.scavenge = function(location) {
+		var tableId = 1000;
+		return this._dropResources(tableId);
+	};
+
 	// ---------------------------------------------------------------------------
 	// internal
 	// ---------------------------------------------------------------------------
