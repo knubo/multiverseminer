@@ -83,8 +83,9 @@ function onMine() {
 };
 
 function onGather() {
-	game.settings.addStat('gatherCount');
-	game.player.gather();
+	// To make.
+	// game.settings.addStat('gatherCount');
+	// game.player.gather();
 };
 
 function onActivatePlayerInventory() {
