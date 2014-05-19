@@ -285,3 +285,13 @@ addTable(900, 'plutoAtmosphere', [
 	[Items.methane.id, 0.05],
 	[Items.carbonMonoxide.id, 0.05]
 ]);
+
+// ---------------------------------------------------------------------------
+// Scavenge resources
+// ---------------------------------------------------------------------------
+
+// TODO: Add items to drop when scavenging.
+
+addTable(1000, 'earthScavengeRes', [
+	[Items.oxygen.id, 1.0]
+]);
