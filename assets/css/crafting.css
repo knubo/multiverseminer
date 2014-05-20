@@ -1,0 +1,39 @@
+.craftingIcon {
+vertical-align:middle;
+width:30px;
+height:30px;
+cursor:hand;
+margin:10px;
+}
+
+.craftingText .clickable {
+vertical-align:middle;
+cursor:hand;
+}
+
+#playerCraftingContent .ui-accordion-content {
+margin-bottom:10px;
+border-radius:0;
+border:none;
+background:none;
+color:#777;
+font-size:10pt;
+line-height:16pt;
+padding:0;
+}
+
+#playerCraftingContent .ui-accordion-content div {
+text-align:left;
+margin-bottom:10px;
+border-radius:0;
+background:#333;
+}
+
+#playerCraftingContent .ui-accordion-header {
+margin-bottom:10px;
+border-radius:0;
+border:none;
+background:#fff;
+color:#555;
+box-shadow:inset 0 0 20px #000;
+}

@@ -22,3 +22,14 @@ Fascinated in the advancements in geology, physics, and time-travel, you decide 
 
 [Visit our subreddit](http://reddit.com/r/multiverseminer)
 
+
+
+Installation
+================
+
+- Get npm from https://www.npmjs.org/
+- in the project's root type "npm install"
+  This will download a bunch of modules used by the project and grunt
+- build the project by typing "grunt" in the command line
+
+The game will now be done in the bin/ folder. All required files are copied there as part of the process.
