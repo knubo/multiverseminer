@@ -6,6 +6,7 @@ var sys = new System();
 function System() {	
     this.imageRoot = "assets/images/";
     this.iconRoot = this.imageRoot + "itemIcons/";
+    this.gemIconRoot = this.iconRoot + "gems/";
     
     this.enableDragDrop = true; // too buggy right now to leave this enabled
     this.dragDelay = 300; // delay before starting to drag
