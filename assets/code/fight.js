@@ -1,6 +1,6 @@
 function Fight() {
 	
-	this.inFight = false;
+	this.inBattle = false;
 
 	this.teams = [];
 	
@@ -36,19 +36,20 @@ function Fight() {
 		            	  'value': fighterB
 		              }
 		             ];
-		this.inFight = true;
+		this.inBattle = true;
 		this.turn = 0;
 		this.nextTurn();
 	};
 	
 	this.stopBattle = function() {
 		this.teams = []
-		this.inFight = false;
+		this.inBattle = false;
 		this.turn = -1;
 		this.counter = -1;
 	}
 	
 	this.nextTurn = function() {
+		if(!this.inBattle) return false;
 		this.counter ++;
 		if(this.counter < this.teams[this.turn].value.length) {
 			var currentCombatant = this.teams[this.turn].value[this.counter], currentAction, currentTarget;
@@ -80,6 +81,7 @@ function Fight() {
 	};
 	
 	this.action = function(type, target, value, alive) {
+		if(!this.inBattle) return false;
 		//TODO: change this too -.-
 		//TODO: add combatant info to the display (teams[turn].value[counter].info ?)
 		//TODO: display target info
@@ -100,6 +102,7 @@ function Fight() {
 	};
 	
 	this.win = function() { //the winner is the person whose turn it is (that line is weird to say)
+		if(!this.inBattle) return false;
 		console.log("Team " + this.teams[this.turn].name + " wins!");
 		this.stopBattle();
 	};
