@@ -2555,9 +2555,7 @@ addItem(50009, 'landingGear', 'Landing Gear', 10000).setCraftingCost([
 // Scavenge Junk
 // ---------------------------------------------------------------------------
 
-addItem(60000, 'tableLeg', 'Table Leg', 1000).decompPrice(
-    [Items.wood.id, 1]
-);
+addItem(60000, 'tableLeg', 'Table Leg', 1000);
 // ---------------------------------------------------------------------------
 // Set the item categories and types
 // ---------------------------------------------------------------------------
