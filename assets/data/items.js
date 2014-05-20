@@ -2556,7 +2556,7 @@ addItem(50009, 'landingGear', 'Landing Gear', 10000).setCraftingCost([
 // ---------------------------------------------------------------------------
 
 addItem(60000, 'tableLeg', 'Table Leg', 1000).decompPrice(
-    [Item.wood.id, 1]
+    [Items.wood.id, 1]
 );
 // ---------------------------------------------------------------------------
 // Set the item categories and types
