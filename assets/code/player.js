@@ -14,6 +14,7 @@ function Player() {
 	this.initialize = function() {
 		this.miner.initialize();
 		this.combatant.initialize();
+		this.combatant.setPlayerControlled(true);
 		this.storage.initialize();
 		this.gear.initialize();
 		
