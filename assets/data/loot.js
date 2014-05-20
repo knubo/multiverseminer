@@ -293,5 +293,5 @@ addTable(900, 'plutoAtmosphere', [
 // TODO: Add items to drop when scavenging.
 
 addTable(1000, 'earthScavengeRes', [
-	[Items.oxygen.id, 1.0]
+	[Items.tableLeg.id, 1.0]
 ]);
