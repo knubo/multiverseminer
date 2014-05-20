@@ -179,6 +179,10 @@ function onTravelToPlanet(target) {
 	game.travelTo(target);
 };
 
+function onFight() {
+	game.onFight(); //TODO: change this to know if its duel or ship duel
+};
+
 function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
 	

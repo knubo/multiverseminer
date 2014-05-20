@@ -15,6 +15,8 @@ function Game() {
 	
 	this.planetChanged = true;
 	
+	this.fight = new Fight(); //TODO: rename this
+	
 	this.version = 0.1;
 	
 	this.itemContexts = {
@@ -460,6 +462,17 @@ function Game() {
 			}
 			default: return false;
 		}
+	};
+	
+	this.onFight = function() { //for testing purposes, TODO: refactor?
+		var enemy = new Combatant('enemy');
+		enemy.initialize();
+		enemy.setAI(function(info) {
+			//normally this would analyze info (enemies' hp, potential damage, potential defense, and make a decision based on it
+			//this one will just randomly attack any enemy
+			return ['hit', 'any'];
+		});
+		this.fight.startBattle([this.player.combatant], [enemy]); //not even gonna add the todo, it's obvious
 	};
 	
 	// ---------------------------------------------------------------------------
