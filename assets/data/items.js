@@ -299,7 +299,8 @@ addItem(37, 'crudeOil', 'Crude Oil', 10000, {
 // TODO: Gems need descriptions. Figure out the stat boosts.
 addItem(2000, "agate", "Agate", 10000, { 
 	"statIncrease":  {"agility": 1},
-	"statDecrease": {"strength": 1}
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "agate.png"
 });
 addItem(2001, "alexandrite", "Alexandrite", 10000, {
 	"statIncrease":  {"agility": 1},
@@ -307,19 +308,23 @@ addItem(2001, "alexandrite", "Alexandrite", 10000, {
 });
 addItem(2002, "almandineGarnet", "Almandine Garnet", 10000, {
 	"statIncrease":  {"agility": 1},
-	"statDecrease": {"strength": 1}
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "almandineGarnet.png"
 });
 addItem(2003, "amazonite", "Amazonite", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1} ,
+    'icon': sys.gemIconRoot + "amazonite.png"
 });
 addItem(2004, "amber", "Amber", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "amber.png"
 });
 addItem(2005, "amethyst", "Amethyst", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "amethyst.png"
 });
 addItem(2006, "ametrine", "Ametrine", 10000, { 
 	"statIncrease":  {"agility": 1}, 
@@ -335,11 +340,13 @@ addItem(2008, "andalusite", "Andalusite", 10000, {
 });
 addItem(2009, "andesineLabradorite", "Andesine Labradorite", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "andesineLabradorite.png"
 });
 addItem(2010, "andraditeGarnet", "Andradite Garnet", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "andraditeGarnet.png"
 });
 addItem(2011, "apatite", "Apatite", 10000, { 
 	"statIncrease":  {"agility": 1}, 
@@ -347,7 +354,8 @@ addItem(2011, "apatite", "Apatite", 10000, {
 });
 addItem(2012, "aquamarine", "Aquamarine", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "aquamarine.png"
 });
 addItem(2013, "aventurine", "Aventurine", 10000, { 
 	"statIncrease":  {"agility": 1}, 
@@ -367,7 +375,8 @@ addItem(2016, "bloodstone", "Bloodstone", 10000, {
 });
 addItem(2017, "boulderOpal", "Boulder Opal", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "boulderOpal.png"
 });
 addItem(2018, "carnelian", "Carnelian", 10000, { 
 	"statIncrease":  {"agility": 1}, 
@@ -387,11 +396,13 @@ addItem(2021, "chysoberyl", "Chrysoberyl", 10000, {
 });
 addItem(2022, "chrysocolla", "Chrysocolla", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "chrysocolla.png"
 });
 addItem(2023, "chrysoprase", "Chrysoprase", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "chrysoprase.png"
 });
 addItem(2024, "citrine", "Citrine", 10000, { 
 	"statIncrease":  {"agility": 1}, 
@@ -407,19 +418,23 @@ addItem(2026, "danburite", "Danburite", 10000, {
 });
 addItem(2027, "diamond", "Diamond", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "diamond.png"
 });
 addItem(2028, "diaspore", "Diaspore", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "diaspore.png" 
 });
 addItem(2029, "emerald", "Emerald", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "emerald.png"
 });
 addItem(2030, "flourite", "Fluorite", 10000, { 
 	"statIncrease":  {"agility": 1}, 
-	"statDecrease": {"strength": 1} 
+	"statDecrease": {"strength": 1},
+    'icon': sys.gemIconRoot + "flourite.png"
 });
 addItem(2031, "fossilCoral", "Fossil Coral", 10000, { 
 	"statIncrease":  {"agility": 1}, 
