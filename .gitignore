@@ -1,5 +1,12 @@
 # Eclipse stuff
 .settings
 .project
+
+# system stuff
+Thumbs.db
 .DS_Store
-.gitignore
+
+# grunt and node.js stuff
+bin
+node_modules
+npm-debug.log
