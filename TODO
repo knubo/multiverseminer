@@ -1,0 +1,12 @@
+combat:
+
+When scavenging:
+
+"A bum crawls out of the woodwork, and see's you scavenging in his plot. He lunges at you!"
+>>> Bum strikes you for 10
+<<< You attack bum with iron sword for 25
+
+When flying:
+
+Show two ships images
+Same as above as far as combat text goes.
