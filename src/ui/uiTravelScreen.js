@@ -1,4 +1,4 @@
-require([ "starfield" ]);
+require([ "uistarfield" ]);
 
 UITravelScreen.prototype = new UIComponent();
 UITravelScreen.prototype.$super = parent;
@@ -8,6 +8,8 @@ function UITravelScreen() {
 	this.id = 'travelScreen';
 	
 	this.parent = undefined;
+	
+	this.starfield = undefined;
 	
 	this.componentTravelDisplay = undefined;
 	
@@ -33,7 +35,13 @@ function UITravelScreen() {
         this.componentTravelDisplay.updateCallback = this.updateTravelDisplay;
         
         // Todo: refactor, just a test for now
-        $('#travelBackground').starfield({ speed: 10, mouseMove: false });
+        this.starfield = new UIStarfield();
+        this.starfield.classes = 'panelTravelBackground';
+        this.starfield.parent = $('#travelScreen');
+        this.starfield.updateWhenNeededOnly = false;
+        this.starfield.reachedMinSpeed = function(self) { self.hide(); };
+        this.starfield.init();
+        this.starfield.hide();
     };
     
     this.update = function(currentTime) {
@@ -43,17 +51,23 @@ function UITravelScreen() {
     	
     	this.componentTravelDisplay.invalidate();
     	this.componentTravelDisplay.update(currentTime);
+    	
+    	this.starfield.update(currentTime);
     };
     
     this.show = function() {
-    	this.isVisible = true;
-    	this.mainDiv.show().animate({opacity: 1}, 500);
+    	this.baseShow();
+    	
+    	this.starfield.accelerate();
+    	this.starfield.show();
     	this.invalidate();
     };
     
     this.hide = function() {
-    	this.isVisible = false;
-    	this.mainDiv.animate({opacity: 0}, 500, function() { $(this).hide(); });
+    	this.baseHide();
+    	
+    	// Don't need to hide it, decelerate will do
+    	this.starfield.decelerate();
     };
     
     // ---------------------------------------------------------------------------

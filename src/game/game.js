@@ -394,7 +394,7 @@ function Game() {
 	};
 	
 	this.canProcessItemContext = function(itemId, sourceContext) {
-		var target = this.getItemContext(sourceContext)
+		var target = this.getItemContext(sourceContext);
 		if(!target) {
 			return false;
 		}

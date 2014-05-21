@@ -6,12 +6,31 @@ ErrorLevel = {
 	'error': 'ERROR'
 };
 
+function Vector3(x, y, z) {
+	this.x = x;
+	this.y = y;
+	this.z = z;
+};
+
+function Vector2(x, y) {
+	this.x = x;
+	this.y = y;
+};
+
 function Utils() {
 	this.startTime = Date.now();
 	
 	// ---------------------------------------------------------------------------
 	// misc utility functions
 	// ---------------------------------------------------------------------------
+	this.rgba = function(r, g, b, a) {
+		  r = Math.floor(r) || 0;
+		  g = Math.floor(g) || 0;
+		  b = Math.floor(b) || 0;
+		  a = a || 1;
+		  return ["rgba(", r, ",", g,",", b, ",", a,")"].join("");
+	};
+	
 	this.pad = function(n, width, z) {
 		z = z || '0';
 		n = n + '';
