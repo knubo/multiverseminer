@@ -123,7 +123,10 @@ function Game() {
 	// ---------------------------------------------------------------------------
 	// game functions
 	// ---------------------------------------------------------------------------	
-	this.setStartupState = function() {		
+	this.setStartupState = function() {
+
+		this.loadAllPlanets();
+
 		// Bring us back to our last position
 		if (this.settings.travelActive) {
 			// Todo: resume travelling
@@ -131,7 +134,15 @@ function Game() {
 			this._enterOrbit(this.settings.currentPlanet);
 		}
 	};
-	
+
+	this.loadAllPlanets = function() {
+		var self = this;
+		$.each(this.planetDictionary, function(target, planet) {
+			self.planets[target] = new Planet(self.planetDictionary[target]);
+			self.planets[target].initialize();
+		});
+	}
+
 	this.craft = function(storageSource, storageTarget, what, count) {
 		if (!count) {
 			count = 1;
@@ -615,12 +626,6 @@ function Game() {
 	};
 
 	this._enterOrbit = function(target) {
-		if (!this.planets[target]) {
-			// We have not visited this planet this session, load it up
-			this.planets[target] = new Planet(this.planetDictionary[target]);
-			this.planets[target].initialize();
-		}
-
 		this.currentPlanet = this.planets[target];
 		this.currentPlanet.load();
 		this.planetChanged = true;
