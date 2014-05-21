@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 					uglify2 : {
 						mangle : true
 					},
+
 					paths : {
 						game           : 'src/game/game',
 						gamecombatant  : 'src/game/combatant',
