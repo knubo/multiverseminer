@@ -30,6 +30,10 @@ GearType = {
 
 Items = {};
 
+exports.items = Items;
+exports.itemCategory = ItemCategory;
+exports.gearType = GearType;
+
 // ---------------------------------------------------------------------------
 // helper functions
 // ---------------------------------------------------------------------------
@@ -37,6 +41,7 @@ Items = {};
 function addItem(id, internalName, name, baseValue, metadata) {
     var item = {
         'id': id,
+        'internalName': internalName,
         'name': name,
         'baseValue': baseValue,
         'setCraftingCost': _setItemCraftingCost,

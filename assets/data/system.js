@@ -3,6 +3,13 @@
 // ---------------------------------------------------------------------------
 var sys = new System();
 
+// Temp hack to define exports if we are including the scripts outside of build environment
+if(!exports) {
+	var exports = {};
+}
+
+exports.sys = sys;
+
 function System() {	
     this.imageRoot = "assets/images/";
     this.iconRoot = this.imageRoot + "itemIcons/";
