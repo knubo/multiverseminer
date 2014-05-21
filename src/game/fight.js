@@ -108,4 +108,30 @@ function Fight() {
 	// loading / saving
 	// ---------------------------------------------------------------------------
 	//TODO: add save/load
+	
+	
+	// ---------------------------------------------------------------------------
+	// inner class
+	// ---------------------------------------------------------------------------
+	function Team() {
+		this.alive; //Number
+		this.dead; //Number
+		this.members; //Array of some sort, maybe combatants, or maybe ID
+		
+		this.getRandomMember = function() {
+		
+		}
+		
+		this.getAlive = function() {
+		
+		}
+		
+		this.getDead = function() {
+		
+		}
+		
+		this.areAllDead = function() {
+		
+		}
+	}
 };
