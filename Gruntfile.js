@@ -33,6 +33,7 @@ module.exports = function(grunt) {
 						uiinventory    : 'src/ui/controls/uiInventory',
 						uiselection    : 'src/ui/controls/uiSelection',
 						uislot         : 'src/ui/controls/uiSlot',
+						uistarfield    : 'src/ui/controls/uiStarfield',
 						uiplanetscreen : 'src/ui/uiPlanetScreen',
 						uitravelscreen : 'src/ui/uiTravelScreen',
 
@@ -52,8 +53,9 @@ module.exports = function(grunt) {
 				files : {
 					'bin/<%= pkg.name %>.min.css' : [
 						'assets/css/*.css',
+						'assets/fonts/overpass/*.css',
 						'src/ui/controls/*.css',
-						'src/external/*.css'
+						'src/external/*.css',
 					]
 				}
 			}
@@ -65,7 +67,9 @@ module.exports = function(grunt) {
 					{ cwd: 'www', src: '**/*', dest: 'bin', expand: true },
 					{ cwd: 'src/external/images', src: '**/*', dest: 'bin/images', expand: true },
 					{ cwd: 'assets/images', src: '**/*', dest: 'bin/assets/images', expand: true },
-					{ cwd: 'assets/fonts', src: '**/*', dest: 'bin/assets/fonts', expand: true }
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.ttf', dest: 'bin/', expand: true },
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.svg', dest: 'bin/', expand: true },
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true }
 				]
 			}
 		}
@@ -80,7 +84,6 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask('default', [
 		'requirejs',
-		//'uglify',
 		'cssmin',
 		'copy'
 	]);

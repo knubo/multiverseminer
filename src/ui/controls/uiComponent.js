@@ -2,7 +2,7 @@ function UIComponent(id) {
     this.id = id;
     
     this.parent = undefined;
-    this.classes = '';
+    this.classes = undefined;
     
     this.mainDiv = undefined;
     
@@ -23,7 +23,11 @@ function UIComponent(id) {
     	// Check if the component holder exist, if not create it
     	this.mainDiv = $('#' + this.id);
     	if(this.mainDiv.length == 0) {
-    		this.mainDiv = $('<div id="' + this.id + '" class="'+ this.classes +'"></div>');
+    		this.mainDiv = $('<div id="' + this.id + '"></div>');
+    		if(this.classes) {
+    			this.mainDiv.addClass(this.classes);
+    		}
+    		
     		// We are creating it so either append to body or a given parent
     		if(!this.parent) {
     			$(document.body).append(this.mainDiv);
@@ -33,14 +37,14 @@ function UIComponent(id) {
     	}
     };
     
-    this.hide = function(direction) {
+    this.hide = function() {
     	this.isVisible = false;
-    	this.mainDiv.hide("slide", { direction: direction || "left"  }, 200);
+    	this.mainDiv.hide();
     };
     
-    this.show = function(direction) {
+    this.show = function() {
     	this.isVisible = true;
-    	this.mainDiv.show("slide", { direction: direction || "right"  }, 200);
+    	this.mainDiv.show();
     	this.invalidate();
     };
     

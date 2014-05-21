@@ -103,8 +103,6 @@ function Player() {
 			
 			// Todo: Planet needs to evaluate this
 			game.currentPlanet.equip(item.id);
-			game.currentPlanet.autoMineTime = item.autoMineTime;
-			game.currentPlanet.autoMine = true;
 		}
 		
 		this.equipBestGear();
