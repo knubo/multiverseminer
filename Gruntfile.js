@@ -72,6 +72,13 @@ module.exports = function(grunt) {
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true }
 				]
 			}
+		},
+		
+		dataExport: {
+			build: {
+				src: 'assets/data/',
+				dest: 'export/'
+			}
 		}
 	});
 
@@ -80,11 +87,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	
+	grunt.loadTasks("./src/build/");
 
 	// Default task(s).
 	grunt.registerTask('default', [
 		'requirejs',
 		'cssmin',
-		'copy'
+		'copy',
+		//'dataExport'
 	]);
 };
