@@ -3,6 +3,11 @@
     height: 100%;
     background-color: #000;
 }
+a{text-decoration:none;}
+span {color:#C8C8C8;}
+	
+}
+
 
 #solarsystem {
     position: absolute;
@@ -74,3 +79,52 @@
 .pluto:before {
     content: url('img/pluto.png');
 }
+
+/* HOVER INFO */
+
+.planet:hover {
+	text-decoration:none; 
+	color:#fff;
+} 
+
+.planet span {
+    z-index:0;
+    display:none; 
+    padding:14px 20px;
+    margin-top:60px; 
+    margin-left:-160px;
+    width:240px; 
+    line-height:16px;
+}
+.planet:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #333;  
+    background:#000;
+}
+
+.info {
+	z-index:0;border:0;left:-520px;font color:#fff
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
