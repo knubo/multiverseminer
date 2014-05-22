@@ -84,6 +84,7 @@
     margin-left:-160px;
     width:240px; 
     line-height:16px;
+    font-size:12px;
 }
 .planet:hover span{
     display:inline; position:absolute; 
