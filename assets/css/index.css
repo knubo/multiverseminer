@@ -81,3 +81,7 @@ margin:0 auto;
 float:right;
 margin-right:4px;
 }
+
+.hidden{
+	display: none;
+}

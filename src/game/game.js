@@ -56,6 +56,8 @@ function Game() {
 	};
 	
 	this.setNewGame = function() {
+		var tutorial = $("#tutorial-dialog");
+		tutorial.dialog({ autoOpen: false });
 		// Give the player some basic items
 		this.player.storage.addItem(Items.woodenPick.id);
 		this.player.equipBestGear();
@@ -66,6 +68,7 @@ function Game() {
 		// Set some basic things in settings
 		this.settings.isNewGame = false;
 		this.settings.savedVersion = this.version;
+		tutorial.dialog("open");
 	};
 
 	this.reset = function(fullReset) {
