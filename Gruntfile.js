@@ -2,48 +2,55 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg : grunt.file.readJSON('package.json'),
+		
+		dataImport: {
+			build: {
+				src: 'assets/data/',
+				dest: 'src/data/'
+			}
+		},
+	
+		clean: ["bin/"],
 
 		requirejs : {
 			compile : {
 				options : {
-					baseUrl  : "./",
+					baseUrl  : "./src",
 					out      : "bin/MultiverseMiner.min.js",
 					optimize : 'uglify',
-					name     : 'src/main.js',
+					name     : 'main',
 
 					uglify2 : {
 						mangle : true
 					},
 
 					paths : {
-						game           : 'src/game/game',
-						gamecombatant  : 'src/game/combatant',
-						gamegear       : 'src/game/gear',
-						gameminer      : 'src/game/miner',
-						gamenpc        : 'src/game/npc',
-						gameplanet     : 'src/game/planet',
-						gameplayer     : 'src/game/player',
-						gamesettings   : 'src/game/settings',
-						gamestatistics : 'src/game/statistics',
-						gamestorage    : 'src/game/storage',
-						gamefight      : 'src/game/fight',
+						game           : 'game/game',
+						gamecombatant  : 'game/combatant',
+						gamegear       : 'game/gear',
+						gameminer      : 'game/miner',
+						gamenpc        : 'game/npc',
+						gameplanet     : 'game/planet',
+						gameplayer     : 'game/player',
+						gamesettings   : 'game/settings',
+						gamestatistics : 'game/statistics',
+						gamestorage    : 'game/storage',
+						gamefight      : 'game/fight',
 
-						ui             : 'src/ui/ui',
-						uicomponent    : 'src/ui/controls/uiComponent',
-						uifloating     : 'src/ui/controls/uiFloating',
-						uiinventory    : 'src/ui/controls/uiInventory',
-						uiselection    : 'src/ui/controls/uiSelection',
-						uislot         : 'src/ui/controls/uiSlot',
-						uistarfield    : 'src/ui/controls/uiStarfield',
-						uiplanetscreen : 'src/ui/uiPlanetScreen',
-						uitravelscreen : 'src/ui/uiTravelScreen',
+						ui             : 'ui/ui',
+						uicomponent    : 'ui/controls/uiComponent',
+						uifloating     : 'ui/controls/uiFloating',
+						uiinventory    : 'ui/controls/uiInventory',
+						uiselection    : 'ui/controls/uiSelection',
+						uislot         : 'ui/controls/uiSlot',
+						uistarfield    : 'ui/controls/uiStarfield',
+						uiplanetscreen : 'ui/uiPlanetScreen',
+						uitravelscreen : 'ui/uiTravelScreen',
 
-						utils : 'src/utils',
-
-						jquery    : 'src/external/jquery-2.1.1.min',
-						jqueryui  : 'src/external/jquery-ui-1.10.4.custom.min',
-						jgrowl    : 'src/external/jquery.jgrowl.min',
-						starfield : 'src/external/starfield'
+						jquery    : 'external/jquery-2.1.1.min',
+						jqueryui  : 'external/jquery-ui-1.10.4.custom.min',
+						jgrowl    : 'external/jquery.jgrowl.min',
+						starfield : 'external/starfield'
 					}
 				}
 			}
@@ -88,11 +95,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	
 	grunt.loadTasks("./src/build/");
 
 	// Default task(s).
 	grunt.registerTask('default', [
+        //'dataImport',
+		'clean',
 		'requirejs',
 		'cssmin',
 		'copy',
