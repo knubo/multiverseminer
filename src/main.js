@@ -1,4 +1,4 @@
-require([ "assets/data/system", "assets/data/items", "assets/data/loot", "assets/data/planets", "game", "ui", "jquery", "jqueryui" ]);
+require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui" ]);
 
 // Create components
 var game = new Game();
