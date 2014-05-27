@@ -107,6 +107,7 @@ function Settings() {
 		this.travelDistanceElapsed = 0;
 		
 		this.isNewGame = true;
+		this.showTutorial = true;
 
 		if (fullReset) {
 			this.totalStats = new Statistics('total');
