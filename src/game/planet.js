@@ -17,7 +17,7 @@ function Planet(data) {
 		this.gear.initialize();
 		
 		// Add the slots we can wear
-		this.gear.addSlot(GearType.building);
+		this.gear.addSlot('building');
 		
 		this.miner.initialize();
 		this.storage.initialize();
@@ -27,7 +27,7 @@ function Planet(data) {
 		this.miner.update(currentTime);
 		
 		// Temp fix to enable auto-mining on re-load
-		if(this.gear.getItemInSlot(GearType.building) > 0 && !this.autoMine) {
+		if(this.gear.getItemInSlot('building') > 0 && !this.autoMine) {
 			this.autoMine = true;
 		}
 		
@@ -89,14 +89,14 @@ function Planet(data) {
 	// ---------------------------------------------------------------------------
 	this._updateStats = function() {
 		// Todo: support multiple buildings etc
-		var itemId = this.gear.getItemInSlot(GearType.building);
+		var itemId = this.gear.getItemInSlot('building');
 		if(!itemId) {
 			return;
 		}
 
 		var item = game.getItem(itemId);
-		if(item && item.autoMineTime) {
-			this.autoMineTime = item.autoMineTime;
+		if(item && item.automine) {
+			this.autoMineTime = item.automine;
 			this.autoMine = true;
 		}
 	};

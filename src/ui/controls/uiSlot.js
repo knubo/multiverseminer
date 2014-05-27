@@ -124,7 +124,7 @@ function UISlot(id, parent) {
 		
 		var icon = item.icon || game.getDefaultItemIcon(item);
 		
-		this.iconDisplay = $('<img class="itemSlotIcon" src="' + icon + '"/>');
+		this.iconDisplay = $('<img class="itemSlotIcon" src="' + sys.iconRoot + icon + '"/>');
 		this.countDisplay = $('<div class="itemSlotText"></div>');
 		
 		this.mainDiv.attr('title', item.name);

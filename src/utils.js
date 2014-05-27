@@ -1,5 +1,7 @@
 var utils = new Utils();
 
+exports.utils = utils;
+
 ErrorLevel = {
 	'debug': 'DEBUG',
 	'info': 'INFO',

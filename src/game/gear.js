@@ -54,7 +54,7 @@ function Gear(id) {
 
 		if (!this.slots[itemInfo.gearType]) {
 			utils.logError("attempt to equip item but slot was not set: " + itemId
-					+ " in " + itemInfo.type);
+					+ " in " + itemInfo.gearType);
 			return;
 		}
 		
@@ -138,11 +138,11 @@ function Gear(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 		for(var key in this.slots) {
-			var itemId = utils.loadInt(storageKey + key, undefined);
-			if(!itemId || itemId < 0) {
+			var itemId = utils.load(storageKey + key, undefined);
+			if(!itemId || itemId == -1) {
 				continue;
 			}
-
+			
 			this.equip(itemId);
 			// Todo: load metadata
 		}

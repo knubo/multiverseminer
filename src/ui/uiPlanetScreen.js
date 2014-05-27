@@ -221,7 +221,7 @@ function UIPlanetScreen() {
         $('#playerCraftingContent').empty();
         
         for ( var key in ItemCategory) {
-            var items = game.getItemsByCategory(ItemCategory[key]);
+            var items = game.getItemsByCategory(key);
             if (!items || items.length <= 0) {
                 continue;
             }
@@ -396,7 +396,7 @@ function UIPlanetScreen() {
  			}
  		}
         }
-        var content = $('<div class="craftingItemPanel' + (canCraft ? '' : ' opaque') + '" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
+        var content = $('<div class="craftingItemPanel' + (canCraft ? '' : ' opaque') + '" onclick="onCraft(\'' + item.id + '\')" title="' + tooltipContent +'"/>');
         
         
         //var content = $('<div class="craftingItemPanel" onclick="onCraft(' + item.id + ')" title="' + tooltipContent +'"/>');
@@ -404,7 +404,7 @@ function UIPlanetScreen() {
         if(item.icon) {
             icon = item.icon;
         }
-        content.append('<image class="craftingIcon" src="'+icon+'" />');
+        content.append('<image class="craftingIcon" src="'+sys.iconRoot+icon+'" />');
         content.append('<span class="craftingText">'+item.name+'</span>').disableSelection();
         
         return content;

@@ -226,7 +226,7 @@ function UI() {
     
     this.buildGearSlot = function(id, slotType, itemId, parent) {
         var item = undefined;
-        if(itemId > 0) {
+        if(itemId) {
             item = game.getItem(itemId);
         }
         

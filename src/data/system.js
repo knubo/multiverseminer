@@ -27,9 +27,9 @@ function System() {
     this.selectionArrowForwardFast = this.imageRoot + 'selectionArrowForwardFast.png';
     
     // Icons
-    this.iconPlaceholder = this.iconRoot + 'icon_placeholder.png';
-    this.iconPlaceholderRawMaterial = this.iconRoot + 'icon_placeholderRawMaterial.png';
-    this.iconPlaceholderGem = this.iconRoot + 'icon_placeholderGem.png';
-    this.iconPlaceholderChest = this.iconRoot + 'icon_placeholderGearChest.png';
-    this.iconPlaceholderHead = this.iconRoot + 'icon_placeholderGearHelmet.png';
+    this.iconPlaceholder = 'icon_placeholder.png';
+    this.iconPlaceholderRawMaterial = 'icon_placeholderRawMaterial.png';
+    this.iconPlaceholderGem = 'icon_placeholderGem.png';
+    this.iconPlaceholderChest = 'icon_placeholderGearChest.png';
+    this.iconPlaceholderHead = 'icon_placeholderGearHelmet.png';
 };
