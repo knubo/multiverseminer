@@ -124,7 +124,7 @@ function UIInventory(id, parent) {
     };
     
     this.setCategory = function(categoryId) {
-        this.category = game.getCategoryById(categoryId);
+        this.category = game.getCategoryKeyById(categoryId);
         this.invalidate();
     };
     

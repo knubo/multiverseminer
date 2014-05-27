@@ -21,12 +21,12 @@ function Player() {
 		this.gear.initialize();
 		
 		// Add the slots we can wear
-		this.gear.addSlot(GearType.head);
-		this.gear.addSlot(GearType.chest);
-		this.gear.addSlot(GearType.mainHand);
-		this.gear.addSlot(GearType.secondHand);
-		this.gear.addSlot(GearType.legs);	
-		this.gear.addSlot(GearType.feet);
+		this.gear.addSlot('head');
+		this.gear.addSlot('chest');
+		this.gear.addSlot('mainHand');
+		this.gear.addSlot('secondHand');
+		this.gear.addSlot('legs');	
+		this.gear.addSlot('feet');
 	};
 	
 	this.update = function(currentTime) {
@@ -97,7 +97,7 @@ function Player() {
 		}
 		
 		var item = game.getItem(itemId);
-		if(item.gearType == GearType.building && game.currentPlanet)
+		if(item.gearType == 'building' && game.currentPlanet)
 		{
 			game.moveItems(itemId, this.storage, game.currentPlanet.storage, 1);
 			
@@ -120,7 +120,7 @@ function Player() {
 				continue;
 			}
 		
-			if(item.gearType == GearType.mainHand && item.name.match("Pickaxe") != null)
+			if(item.gearType == 'mainHand' && item.name.match("Pickaxe") != null)
 			{
 				var diff = item.Power - this.pickPower;
 				

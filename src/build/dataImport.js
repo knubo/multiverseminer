@@ -4,53 +4,99 @@ module.exports = function (grunt) {
 		var path = require('path');
 		var fs = require('fs');
 		var xls = require('xlsjs');
+		var enums = require('../enums');
 		
 		grunt.log.write('\n Importing data ...\n');
 		fs.mkdir('tmp');
 		
 		// helper function
-		function safeString(value) {
-			return value.replace('\'', '\\\'');
+		function getJsonValue(key, value, indentation) {
+			var safeValue = value.replace('\'', '\\\'');
+			if(!indentation) indentation = '';
+			
+			if(!isNaN(value)) {
+				return indentation+'\''+key+'\': '+safeValue+',';
+			}
+			
+			return indentation+'\''+key+'\': \''+safeValue+'\',';
 		};
 				
 		// Open items
 		var dataRoot = 'assets/data/';
 		
-		var destFile = 'src/data/items_autogen.js';
+		var destFile = 'src/data/items.js';
 		
-		var sourceFiles = ['buildings.xls', 'components.xls', 
-		                   'gear - chest.xls', 'gear - feet.xls', 
-		                   'gear - head.xls', 'gear - legs.xls', 
-		                   'gear - picks.xls', 'gear - weapons.xls',
-		                   'gems.xls', 'materials.xls', 'potions.xls'];
+		var sourceFiles = {
+				'buildings.xls': [['category', 'gearBuilding'], ['gearType', 'building']],
+				'components.xls': [['category', 'component']],
+		        'gear - chest.xls': [['category', 'gearChest'], ['gearType', 'chest']],
+		        'gear - feet.xls': [['category', 'gearFeet'], ['gearType', 'feet']], 
+		        'gear - head.xls': [['category', 'gearHead'], ['gearType', 'head']],
+		        'gear - legs.xls': [['category', 'gearLegs'], ['gearType', 'legs']], 
+		        'gear - picks.xls': [['category', 'gearMainHand'], ['gearType', 'mainHand']],
+		        'gear - weapons.xls': [['category', 'gearMainHand'], ['gearType', 'mainHand']],
+		        'gems.xls': [['category', 'gem']],
+		        'materials.xls': [['category', 'rawMaterial']],
+		        'potions.xls': [['category', 'usable']]
+		};
 		
 		var importData = [];
+		importData.push('// ------------------------------------------------------------------------');
+		importData.push('// AUTO-GENERATED, DO NOT EDIT MANUALLY');
+		importData.push('//  Generated @ '+new Date().toString());
+		importData.push('// ------------------------------------------------------------------------');
+		importData.push('');
 		importData.push('Items = {');
-		for(var i = 0; i < sourceFiles.length; i++) {
-			var workbook = xls.readFile(dataRoot + sourceFiles[i]);
+		for(var sourceFile in sourceFiles) {
+			var staticData = sourceFiles[sourceFile];
+			var workbook = xls.readFile(dataRoot + sourceFile);
 			var sheetNames = workbook.SheetNames;
 			var sheet = xls.utils.sheet_to_row_object_array(workbook.Sheets[sheetNames[0]]);
-			grunt.log.write('Importing: '+sourceFiles[i]+'\n');
+			grunt.log.write('\nImporting: '+sourceFile+'\n');
 			
 			importData.push('\t// -------------------------------------------');
-			importData.push('\t// '+sourceFiles[i]);
+			importData.push('\t// '+sourceFile);
 			importData.push('\t// -------------------------------------------');
 			for(var r = 0; r < sheet.length; r++) {
-				
+				grunt.log.write('.');
 				var row = sheet[r];
+				var craftCost = [];
+				var currentCraftCostEntry = undefined;
 				
 				// Todo: data checks, crafting etc and proper formatting, this is just a test!
-				importData.push('\t'+row['id']+': {');
+				importData.push('\t\''+row['id']+'\': {');
+				for(var i = 0; i < staticData.length; i++) {
+					importData.push(getJsonValue(staticData[i][0], staticData[i][1], '\t\t'));					
+				}
+				
 				for(column in row) {
+					var value = row[column];
 					column = column.toLowerCase();
 					
 					// Skip underscore columns and some other special ones
-					if(column[0] == '_' || column == 'id') {
+					if(column[0] == '_') {
 						continue;
 					}
 					
 					if(column.indexOf('craft') == 0) {
 						// Todo: Crafting cost
+						if(column[column.length - 1] == '#') {
+							if(!value || value == '') {
+								// No crafting info set
+								continue;
+							}
+							
+							if(!currentCraftCostEntry) {
+								throw new Error("Invalid data!");
+							}
+							
+							currentCraftCostEntry.push(value);
+							craftCost.push(currentCraftCostEntry);
+							currentCraftCostEntry = undefined;
+						} else {
+							currentCraftCostEntry = [value];
+						}
+						
 						continue;
 					}
 					
@@ -59,13 +105,16 @@ module.exports = function (grunt) {
 						continue;
 					}
 					
-					var value = row[column];
-					if(!isNaN(value)) {
-						importData.push('\t\t\''+column+'\': '+row[column]+',');
-						continue;
+					importData.push(getJsonValue(column, row[column], '\t\t'));
+				}
+				
+				if(craftCost.length > 0) {
+					importData.push('\t\t\'craftCost\': {');
+					for(var n = 0; n < craftCost.length; n++) {
+						importData.push(getJsonValue(craftCost[n][0], craftCost[n][1], '\t\t\t'));
 					}
 					
-					importData.push('\t\t\''+column+'\': \''+safeString(row[column])+'\',');
+					importData.push('\t\t},');
 				}
 				
 				importData.push('\t},');

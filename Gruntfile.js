@@ -101,7 +101,7 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask('default', [
-        //'dataImport',
+        'dataImport',
 		'clean',
 		'requirejs',
 		'cssmin',

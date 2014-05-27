@@ -5,37 +5,37 @@ background:grey;
 box-shadow:inset 0 0 15px #000;
 }
 
-.gearSlot.Head {
+.gearSlot.head {
 position:absolute;
 left:75px;
 top:10px;
 }
 
-.gearSlot.Chest {
+.gearSlot.chest {
 position:absolute;
 left:75px;
 top:80px;
 }
 
-.gearSlot.Main.Hand {
+.gearSlot.mainHand {
 position:absolute;
 left:10px;
 top:80px;
 }
 
-.gearSlot.Second.Hand {
+.gearSlot.secondHand {
 position:absolute;
 left:140px;
 top:80px;
 }
 
-.gearSlot.Legs {
+.gearSlot.legs {
 position:absolute;
 left:75px;
 top:170px;
 }
 
-.gearSlot.Feet {
+.gearSlot.feet {
 position:absolute;
 left:75px;
 top:225px;

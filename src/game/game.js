@@ -277,6 +277,10 @@ function Game() {
 	    return ItemCategory[Object.keys(ItemCategory)[categoryId]];
 	};
 	
+	this.getCategoryKeyById = function(categoryId) {
+		return Object.keys(ItemCategory)[categoryId];
+	};
+	
 	this.canTravelTo = function(target) {
 		if (target == undefined || !this.planetDictionary[target]) {
 			return false;
@@ -314,13 +318,13 @@ function Game() {
 	
 	this.getDefaultItemIcon = function(item) {
         if(item.category) {
-            if(item.category == ItemCategory.rawMaterial) {
+            if(item.category == 'rawMaterial') {
                 return sys.iconPlaceholderRawMaterial;
-            } else if (item.category == ItemCategory.gem) {
+            } else if (item.category == 'gem') {
                 return sys.iconPlaceholderGem;
-            } else if (item.category == ItemCategory.gearChest) {
+            } else if (item.category == 'gearChest') {
                 return sys.iconPlaceholderChest;
-            } else if (item.category == ItemCategory.gearHead) {
+            } else if (item.category == 'gearHead') {
                 return sys.iconPlaceholderHead;
             }
         };
@@ -363,8 +367,8 @@ function Game() {
 			
 			var item = this.getItem(items[i]);
 			switch(item.category) {
-			case ItemCategory.rawMaterial:
-			case ItemCategory.gem:
+			case 'rawMaterial':
+			case 'gem':
 				{
 					break;
 				}
