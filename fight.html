@@ -1,0 +1,78 @@
+<html>
+<head>
+<script type="text/javascript">
+var c = 0;
+var t;
+var timer_is_on = 0;
+
+var strength = 30; //Your strength level
+var health = 100; //Your health level
+
+var ostrength = 30; //Opponents strength level
+var ohealth = 100; //Opponents health level
+
+function fight() //Begin the fight
+{
+//update each turn
+document.getElementById('status').value = status;
+document.getElementById('ohealth').value = ohealth;
+document.getElementById('health').value = health;
+
+
+	if(health > 0 & ohealth > 0){
+	
+	    //Your turn
+		hit = Math.random()*strength;
+		hit = Math.round(hit); 
+		ohealth = ohealth - hit;
+		document.getElementById('ohealth').value = ohealth;
+		status = "You hit a " + hit;
+        document.getElementById('status').value = status;
+		
+		pausecomp(1000);
+
+		//Opponents turn
+		ohit = Math.random()*ostrength;
+		ohit = Math.round(ohit); 
+		health = health - ohit;
+		document.getElementById('health').value = health;
+		status = "Your opponent hit a " + ohit;
+		document.getElementById('status').value = status;
+		
+		
+		t=setTimeout("fight()",2000);
+		
+	} else {
+	
+	if(health <= 0) {
+	status = "You Died.";
+	} else {
+	status = "You Won.";
+	}
+	document.getElementById('status').value = status;
+	}
+
+}
+
+function pausecomp(millis)
+{
+var date = new Date();
+var curDate = null;
+
+do { curDate = new Date(); }
+while(curDate-date < millis);
+} 
+
+</script>
+</head>
+
+<body>
+<form>
+<input type="button" value="Fight!" onClick="fight()"><br>
+Opponents Health:<input type="text" size="1" id="ohealth">
+ Health:<input type="text" size="1" id="health">
+ <br>
+ Status:<input type="text" size="30" id="status">
+</form>
+</body>
+</html>
