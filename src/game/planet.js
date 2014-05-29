@@ -132,6 +132,10 @@ function Planet(data) {
 		this.autoScavenge = false;
 		
 		var items = this.storage.getItemsOfCategory('gearBuilding');
+		if(!items) {
+			return;
+		}
+		
 		for(var i = 0; i < items.length; i++) {
 			var item = game.getItem(items[i]);
 			if(item.automine) {
