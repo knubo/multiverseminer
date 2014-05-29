@@ -376,7 +376,7 @@ function Game() {
 			default:
 				{
 					// Not transfering other categories for now
-					return;
+					continue;
 				}
 			}
 			
