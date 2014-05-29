@@ -10,7 +10,8 @@ function addPlanet(id, internalName, name, metadata) {
 	        'id': id,
 	        'name': name,
 	        'gatherLootTableId': undefined,
-	        'miningLootTableId': undefined
+	        'miningLootTableId': undefined,
+	        'scavengeLootTableId': undefined
 	    };
 	
 	if (metadata) {
@@ -33,7 +34,8 @@ addPlanet(1, 'earth', 'Earth', {
     'distance': 0,
     'background': 'assets/images/earth.png',
     'gatherLootTableId': LootTables.earthAtmosphere.id,
-    'miningLootTableId': LootTables.earthMining.id
+    'miningLootTableId': LootTables.earthMining.id,
+    'scavengeLootTableId': LootTables.earthScavengeRes.id
 });
 
 addPlanet(2, 'moon', 'Moon', {
