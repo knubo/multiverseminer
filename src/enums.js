@@ -13,7 +13,8 @@ ItemCategory = {
     'gearBuilding': 'Buildings',
     'machines': 'Machines',
     'usable': 'Usable',
-    'spaceship': 'Spaceship'
+    'spaceship': 'Spaceship',
+    'scavenge': 'Scavenge'
 };
 
 GearType = {
