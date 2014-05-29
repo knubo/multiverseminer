@@ -6,9 +6,9 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Multiverse Miner</title>
     <script src="require.js" type="text/javascript"></script>
-    <script src="MultiverseMiner.min.js" type="text/javascript"></script>    
+    <script src="MultiverseMiner.min.js" type="text/javascript"></script>
     <link href="MultiverseMiner.min.css" rel="stylesheet" type="text/css" />
-    
+
     <style>
     html {
 		background:url(assets/images/stardust.jpg) no-repeat center center fixed;
@@ -41,22 +41,22 @@
 		            <div class="categoryButtonText"></div>
 	        	</div>
 	        </div>
-	
+
 			<div id="leftCategoryContent" class="categoryContent clearLeftFloat">
 				<div id="playerInventoryPanel" class="inventoryPanel">
 	        		<div id="playerInventoryContent">
 	        			<div id="playerInventoryFilter" class="inventoryFilter"></div>
-	        			
+
 	        			<div id="playerInventorySlots" class="inventoryContent panelContent"></div>
 	        		</div>
 	        	</div>
-	    		
+
 	    		<div id="empirePanel" class="empirePanel">
 	    			<div id="empireContent"></div>
 	    		</div>
 	        </div>
 	    </div>
-		
+
 		<div id="panelPlanetRight" class="panelPlanetRight">
 	        <div id="rightCategory">
 	        	<div id="rightCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerGear()">
@@ -76,44 +76,44 @@
 		            <div class="categoryButtonText">CRAFTING</div>
 	        	</div>
 	        </div>
-	        
+
 	        <div id="rightCategoryContent" class="categoryContent clearLeftFloat">
 	        	<div id="playerGearPanel" class="gearPanel">
 	        		<div id="playerGearContent">
 	        			<div id="playerGearSlots" class="playerGearPaperdoll panelContent"></div>
 	        		</div>
 	    		</div>
-	    		
+
 	    		<div id="playerShipPanel" class="shipPanel">
 	    		</div>
-	    		
+
 	    		<div id="planetPanel" class="planetPanel">
 	    			<div id="planetInventoryPanel" class="inventoryPanel">
 	        			<div id="planetInventoryContent">
 	        				<div id="planetInventoryFilter" class="inventoryFilter"></div>
-	        			
+
 	        				<div id="planetInventorySlots" class="inventoryContent panelContent"></div>
 	        			</div>
 	        		</div>
-	        		
+
 	        		<div class="clickable" onclick="onMovePlanetItemsToPlayer()">Get all</div>
-	        		
+
 	        		<div id="planetBuildingsPanel" class="buildingsPanel">
 	        			<div>BUILDINGS</div>
-	        			
+
 	        			<div id="planetBuildings" class="buildingsContent panelContent"></div>
 	        		</div>
 	    		</div>
-	    		
+
 	    		<div id="playerCraftingPanel" class="craftingPanel">
 	    			<div id="playerCraftingContent"></div>
 	    		</div>
 	        </div>
 	    </div>
-	
+
 		<div id="planetDisplay" class="panelPlanetDisplay">
 	        <img class="logo" src="assets/images/logo.png" />
-			
+
 	        <div>
 	        	<button id="mineButton" class="mainButton" onclick="onMine()">
 					<image src="assets/images/itemIcons/pick_1.png" class="categoryButtonIcon"/>
@@ -140,15 +140,15 @@
 	        <div id="floatingArea" class="floatingArea"></div>
 	    </div>
     </div>
-    
-    <div id="travelScreen" class="screen">    	
+
+    <div id="travelScreen" class="screen">
     	<div id="travelDisplay" class="panelTravelDisplay">
     		<div id="travelDistance"></div>
     	</div>
     </div>
 
     <div id="solarsystem"> <!-- Universe - Milkey Way - Sol -->
-   	 	<div class="sun"></div> 
+   	 	<div class="sun"></div>
 
         <div>
         	<a href="#" class="mercury planet info">
@@ -159,7 +159,7 @@
                     </div>
         		</span>
 			</a>
-        </div> 
+        </div>
 
 	 	<div>
 	 		<a href="#" class="venus planet info">
@@ -171,8 +171,8 @@
                     </div>
         		</span>
 			</a>
-   	 	</div> 
-        
+   	 	</div>
+
        	<div>
        		<a href="#" class="earth planet info">
        			<span>
@@ -183,8 +183,8 @@
                     </div>
         		</span>
 			</a>
-        </div> 
- 
+        </div>
+
 
        	<div>
        		<a href="#" class="earthmoon planet info">
@@ -196,9 +196,9 @@
                     </div>
         		</span>
 			</a>
-        </div> 
- 
-   	 	
+        </div>
+
+
        	<div>
        		<a href="#" class="mars planet info">
        			<span>
@@ -209,8 +209,8 @@
                     </div>
         		</span>
 			</a>
-        </div> 
-  	 	
+        </div>
+
 
        	<div>
        		<a href="#" class="asteroid planet info">
@@ -220,10 +220,10 @@
         			ITEM, ITEM, ITEM, ITEM, ITEM
         		</span>
 			</a>
-        </div> 
- 
- 
-   	 	
+        </div>
+
+
+
        	<div>
        		<a href="#" class="jupiter planet info">
        			<span>
@@ -234,9 +234,9 @@
                     </div>
         		</span>
 			</a>
-        </div> 
- 
-   	 	
+        </div>
+
+
        	<div>
        		<a href="#" class="saturn planet info">
        			<span>
@@ -247,7 +247,7 @@
                     </div>
         		</span>
 			</a>
-        </div> 
+        </div>
 
        	<div>
        		<a href="#" class="neptune planet info">
@@ -259,9 +259,9 @@
                     </div>
         		</span>
 			</a>
-        </div> 
- 
- 
+        </div>
+
+
 
        	<div>
        		<a href="#" class="uranus planet info">
@@ -273,8 +273,8 @@
                     </div>
         		</span>
 			</a>
-        </div> 
- 
+        </div>
+
 
        	<div>
        		<a href="#" class="pluto planet info">
@@ -286,7 +286,7 @@
                     </div>
         		</span>
 			</a>
-        </div> 
+        </div>
     </div>
     <div class="panelBottom" style="background:url(assets/images/bottomBarBackground.png) no-repeat center; background-size:100% 50px;">
     	<div class="panelBottomRight">
@@ -300,7 +300,7 @@
     			<div id="timeDisplayText" class="bottomBarButtonText"></div>
 	    	</div>
     	</div>
-    	
+
     	<div class="panelBottomLeft">
 	    	<div class="genericButton bottomBarButton clickable" onclick="onSave()">
     			<div class="bottomBarButtonText">SAVE</div>
