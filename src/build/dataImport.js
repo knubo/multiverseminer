@@ -37,7 +37,8 @@ module.exports = function (grunt) {
 		        'gear - weapons.xls': [['category', 'gearMainHand'], ['gearType', 'mainHand']],
 		        'gems.xls': [['category', 'gem']],
 		        'materials.xls': [['category', 'rawMaterial']],
-		        'potions.xls': [['category', 'usable']]
+		        'potions.xls': [['category', 'usable']],
+		        'scavenge.xls': [['category', 'scavenge']]
 		};
 		
 		var importData = [];
