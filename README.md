@@ -27,6 +27,7 @@ Fascinated in the advancements in geology, physics, and time-travel, you decide 
 Installation
 ================
 
+- Install node - http://nodejs.org/download/
 - Get npm from https://www.npmjs.org/
 - in the project's root type "npm install"
   This will download a bunch of modules used by the project and grunt
