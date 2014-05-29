@@ -142,6 +142,25 @@ function UIPlanetScreen() {
         	this.planetInventory.setStorage(game.currentPlanet.storage);
             this.componentPlanetDisplay.invalidate();
             game.setPlanetChanged(false);
+            
+            // Temporary place to switch on / off the planet options
+            if(game.currentPlanet.data.miningLootTableId) {
+            	$('#mineButton').show();
+            } else {
+            	$('#mineButton').hide();
+            }
+            
+            if(game.currentPlanet.data.gatherLootTableId) {
+            	$('#gatherButton').show();
+            } else {
+            	$('#gatherButton').hide();
+            }
+            
+            if(game.currentPlanet.data.scavengeLootTableId) {
+            	$('#scavengeButton').show();
+            } else {
+            	$('#scavengeButton').hide();
+            }
         }
         
         // Update the components
