@@ -88,7 +88,8 @@ module.exports = function (grunt) {
 							}
 							
 							if(!currentCraftCostEntry) {
-								throw new Error("Invalid data!");
+								grunt.log.write('\n Invalid crafting data in XLS: '+sourceFile+'\n');
+								continue;
 							}
 							
 							currentCraftCostEntry.push(value);
