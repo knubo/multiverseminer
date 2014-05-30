@@ -54,6 +54,7 @@ function UIPlanetScreen() {
         this.playerInventory = new UIInventory('playerInventorySlots', 30);
         this.playerInventory.setStorage(game.player.storage);
         this.playerInventory.itemContext = game.itemContexts.playerInventory;
+        this.playerInventory.slotCount = 30;
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
         
