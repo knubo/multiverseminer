@@ -1,0 +1,111 @@
+module.exports = function(grunt) {
+	// Project configuration.
+	grunt.initConfig({
+		pkg : grunt.file.readJSON('package.json'),
+		
+		dataImport: {
+			build: {
+				src: 'assets/data/',
+				dest: 'src/data/'
+			}
+		},
+	
+		clean: ["bin/"],
+
+		requirejs : {
+			compile : {
+				options : {
+					baseUrl  : "./src",
+					out      : "bin/MultiverseMiner.min.js",
+					optimize : 'uglify',
+					name     : 'main',
+
+					uglify2 : {
+						mangle : true
+					},
+
+					paths : {
+						game           : 'game/game',
+						gamecombatant  : 'game/combatant',
+						gamegear       : 'game/gear',
+						gameminer      : 'game/miner',
+						gamenpc        : 'game/npc',
+						gameplanet     : 'game/planet',
+						gameplayer     : 'game/player',
+						gamesettings   : 'game/settings',
+						gamestatistics : 'game/statistics',
+						gamestorage    : 'game/storage',
+						gamefight      : 'game/fight',
+
+						ui             : 'ui/ui',
+						uicomponent    : 'ui/controls/uiComponent',
+						uifloating     : 'ui/controls/uiFloating',
+						uiinventory    : 'ui/controls/uiInventory',
+						uiselection    : 'ui/controls/uiSelection',
+						uislot         : 'ui/controls/uiSlot',
+						uistarfield    : 'ui/controls/uiStarfield',
+						uiplanetscreen : 'ui/uiPlanetScreen',
+						uitravelscreen : 'ui/uiTravelScreen',
+
+						jquery    : 'external/jquery-2.1.1.min',
+						jqueryui  : 'external/jquery-ui-1.10.4.custom.min',
+						jgrowl    : 'external/jquery.jgrowl.min',
+						starfield : 'external/starfield'
+					}
+				}
+			}
+		},
+
+		cssmin : {
+			combine : {
+				files : {
+					'bin/<%= pkg.name %>.min.css' : [
+						'assets/css/*.css',
+						'assets/fonts/overpass/*.css',
+						'src/ui/controls/*.css',
+						'src/external/*.css',
+					]
+				}
+			}
+		},
+
+		copy : {
+			main : {
+				files : [
+					{ cwd: 'www', src: '**/*', dest: 'bin', expand: true },
+					{ cwd: 'src/external/images', src: '**/*', dest: 'bin/images', expand: true },
+					{ cwd: 'assets/images', src: '**/*', dest: 'bin/assets/images', expand: true },
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.ttf', dest: 'bin/', expand: true },
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.svg', dest: 'bin/', expand: true },
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true }
+				]
+			}
+		},
+		
+		dataExport: {
+			build: {
+				src: 'assets/data/',
+				dest: 'export/'
+			}
+		}
+	});
+
+	// Load the plugin that provides the "uglify" task.
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	
+	grunt.loadTasks("./src/build/");
+
+	// Default task(s).
+	grunt.registerTask('default', [
+        'dataImport',
+		'clean',
+		'requirejs',
+		'cssmin',
+		'copy',
+		//'dataExport'
+	]);
+};
