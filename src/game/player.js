@@ -121,7 +121,7 @@ function Player() {
 				continue;
 			}
 		
-			if(item.gearType == 'mainHand' && item.name.match("Pickaxe") != null)
+			if(item.gearType == 'miningGear' && item.name.match("Pickaxe") != null)
 			{
 				var diff = item.Power - this.pickPower;
 				
