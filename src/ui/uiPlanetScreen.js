@@ -241,7 +241,8 @@ function UIPlanetScreen() {
         var parent = $('#playerCraftingContent');
         if(parent.html() !== "") {
         	
-        	for ( var key in ItemCategory) {
+        	// Broken -.-
+        	/*for ( var key in ItemCategory) {
             		var items = game.getItemsByCategory(key);
             		if (!items || items.length <= 0) {
                 		continue;
@@ -275,7 +276,7 @@ function UIPlanetScreen() {
                 			element.addClass('opaque');
                 		}
         		}
-        	}
+        	}*/
         	
         	// Skip re-building this for now
         	return;
