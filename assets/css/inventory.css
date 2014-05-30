@@ -15,3 +15,11 @@ left:8px;
 width:calc(100%-16px);
 height:250px;
 }
+
+.inventoryContentPlayer {
+position:relative;
+clear:left;
+left:8px;
+width:calc(100%-16px);
+height:450px;
+}
