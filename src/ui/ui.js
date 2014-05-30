@@ -219,7 +219,8 @@ function UI() {
         for(var key in cost) {
             var costItem = game.getItem(key);
             if(costItem === undefined) {
-            	utils.logError("Invalid item in crafting for " + item.id + ": " + key);
+            	utils.log("Invalid item in crafting for " + item.id + ": " + key);
+            	costEntries.push('NaN !ERR!');
             	continue;
             }
             
