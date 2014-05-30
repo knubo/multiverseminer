@@ -246,11 +246,11 @@ function UIPlanetScreen() {
             		if (!items || items.length <= 0) {
                 		continue;
             		}
-            	
+            		utils.log("Checking canCraft for "+key);
         		// TODO: Move this somewhere else and make it take other storages into account
         		for (var i = 0; i < items.length; i ++) {
         			var item = items[i];
-        			var element = $('#craft_'+item.id)
+        			var element = $('#craft_'+item.id);
         			var canCraft = false;
                 		if (item.craftCost && game.player.storage.canAdd(item.id)) {
                 			var cost = game.getCraftingCost(item.id, 1);
