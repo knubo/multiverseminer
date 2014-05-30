@@ -239,7 +239,10 @@ function UIPlanetScreen() {
         //$('#playerCraftingContent').accordion("destroy");
         //$('#playerCraftingContent').empty();
         var parent = $('#playerCraftingContent');
-        parent.empty();
+        if(parent.html() !== "") {
+        	// Skip re-building this for now
+        	return;
+        }
         
         for ( var key in ItemCategory) {
             var items = game.getItemsByCategory(key);
