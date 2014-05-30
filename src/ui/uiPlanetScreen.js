@@ -240,6 +240,43 @@ function UIPlanetScreen() {
         //$('#playerCraftingContent').empty();
         var parent = $('#playerCraftingContent');
         if(parent.html() !== "") {
+        	
+        	for ( var key in ItemCategory) {
+            		var items = game.getItemsByCategory(key);
+            		if (!items || items.length <= 0) {
+                		continue;
+            		}
+            	
+        		// TODO: Move this somewhere else and make it take other storages into account
+        		for (var i = 0; i < items.length; i ++) {
+        			var item = items[i];
+        			var element = $('#craft_'+item.id)
+        			var canCraft = false;
+                		if (item.craftCost && game.player.storage.canAdd(item.id)) {
+                			var cost = game.getCraftingCost(item.id, 1);
+                			var quantity = game.itemDictionary[item.id].craftResult || 1;
+ 					var keys = Object.keys(cost);
+ 					
+ 					var pass = 0;
+ 					for ( var i = 0; i < keys.length; i++) {
+ 						var key = keys[i];
+ 						if (game.player.storage.getItemCount(key) >= cost[key]) {
+ 							pass++;
+ 						}
+ 					}
+ 					if(pass === keys.length) {
+ 						canCraft = true;
+ 					}
+                		}
+                		
+                		if(canCraft) {
+                			element.removeClass('opaque');
+                		} else {
+                			element.addClass('opaque');
+                		}
+        		}
+        	}
+        	
         	// Skip re-building this for now
         	return;
         }
