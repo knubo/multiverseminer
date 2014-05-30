@@ -218,6 +218,10 @@ function UI() {
         var costEntries = [];
         for(var key in cost) {
             var item = game.getItem(key);
+            if(item === undefined) {
+            	utils.logError("Invalid item in crafting for " + item.id + ": " + key);
+            	continue;
+            }
             costEntries.push(cost[key]+' '+item.name);
         }
         
