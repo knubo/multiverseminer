@@ -235,9 +235,13 @@ function UIPlanetScreen() {
     
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
-        var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        $('#playerCraftingContent').accordion("destroy");
-        $('#playerCraftingContent').empty();
+        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
+        //$('#playerCraftingContent').accordion("destroy");
+        //$('#playerCraftingContent').empty();
+        var parent = $('#playerCraftingContent');
+        if(parent.html() === "") {
+        	return;
+        }
         
         for ( var key in ItemCategory) {
             var items = game.getItemsByCategory(key);
@@ -257,14 +261,14 @@ function UIPlanetScreen() {
             }
 
             var headerContent = $('<div/>');
-            $('#playerCraftingContent').append('<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
+            parent.append('<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
             for (var i = 0; i < craftableItems.length; i ++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
             }
         }
 
-        $("#playerCraftingContent").accordion({heightStyle: "content" });
-        $("#playerCraftingContent").accordion('option', 'active', activePage);
+        //$("#playerCraftingContent").accordion({heightStyle: "content" });
+        //$("#playerCraftingContent").accordion('option', 'active', activePage);
     };
     
     this.updateEmpirePanel = function() {
