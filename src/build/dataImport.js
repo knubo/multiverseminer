@@ -35,7 +35,6 @@ module.exports = function (grunt) {
 		        'gear - legs.xls': [['category', 'gearLegs'], ['gearType', 'legs']], 
 		        'gear - picks.xls': [['category', 'gearMainHand'], ['gearType', 'mainHand']],
 		        'gear - weapons.xls': [['category', 'gearMainHand'], ['gearType', 'mainHand']],
-                'gear - picks.xls': [['category', 'gearMainHand'], ['gearType', 'miningGear']],
 		        'gems.xls': [['category', 'gem']],
 		        'materials.xls': [['category', 'rawMaterial']],
 		        'potions.xls': [['category', 'usable']],
