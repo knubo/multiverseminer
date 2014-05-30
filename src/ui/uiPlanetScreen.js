@@ -246,7 +246,7 @@ function UIPlanetScreen() {
             		if (!items || items.length <= 0) {
                 		continue;
             		}
-            		utils.log("Checking canCraft for "+key);
+            		
         		// TODO: Move this somewhere else and make it take other storages into account
         		for (var i = 0; i < items.length; i ++) {
         			var item = items[i];
