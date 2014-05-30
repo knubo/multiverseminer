@@ -27,6 +27,7 @@ function Player() {
 		this.gear.addSlot('secondHand');
 		this.gear.addSlot('legs');	
 		this.gear.addSlot('feet');
+        this.gear.addSlot('miningGear');
 	};
 	
 	this.update = function(currentTime) {

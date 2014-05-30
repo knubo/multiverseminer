@@ -40,3 +40,9 @@ position:absolute;
 left:75px;
 top:225px;
 }
+
+.gearSlot.miningGear {
+position:absolute;
+left:10px;
+top:10px;
+}
