@@ -65,6 +65,7 @@ function Game() {
 	this.setNewGame = function() {
 		// Give the player some basic items
 		this.player.storage.addItem(Items.woodenPick.id);
+        this.player.storage.addItem(Items.copperSword.id);
 		this.player.equipBestGear();
 		
 		// make earth our current planet
