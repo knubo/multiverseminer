@@ -1,8 +1,9 @@
 ﻿#solarsystem {
+    font-size: 0.1px;
+    min-width: 400px;
     position: absolute;
     text-align: center;
-    font-size: 0.1px; /* IE 9/10 hate font-size: 0; */
-    min-width: 400px;
+    bottom: -292px;
 }
 
 #solarsystem div {
