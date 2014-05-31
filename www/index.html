@@ -114,7 +114,13 @@
       <img class="logo" src="assets/images/logo.png" alt="logo" />
 
       <div>
-        <button id="mineButton" class="mainButton" onclick="onMine()">
+          <script type="text/javascript">
+            $('#mineButton').powerTip({
+          	placement: 'se' // south-east tooltip position
+          });
+          </script>
+          
+        <button id="mineButton" class="mainButton" onclick="onMine()" title="HELLO">
           <img src="assets/images/itemIcons/pick_1.png" alt="pick_1" class="categoryButtonIcon" />
           <div class="categoryButtonText">DIG [D]</div>
         </button>
