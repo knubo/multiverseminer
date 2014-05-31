@@ -175,6 +175,8 @@ function onTravelToPlanet(target) {
 		return;
 	}
 
+    $("#solarsystem").dialog("close");
+
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
