@@ -17,9 +17,10 @@ height:250px;
 }
 
 .inventoryContentPlayer {
-position:relative;
-clear:left;
-left:8px;
-width:calc(100%-16px);
-height:450px;
+clear: left;
+height: 100%;
+width: 100%;
+left: 8px;
+position: relative;
+overflow: auto;
 }
