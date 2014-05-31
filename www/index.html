@@ -115,6 +115,13 @@
       <img class="logo" src="assets/images/logo.png" alt="logo" />
 
       <div>
+          <script type="text/javascript">
+            jQuery(function(){
+                $('.mineButton').powerTip({
+          	        placement: 'n'
+          });
+      );
+          </script>
         <button id="mineButton" class="mainButton" title="Some alt text" onclick="onMine()">
           <img src="assets/images/itemIcons/pick_1.png" alt="pick_1" class="categoryButtonIcon" />
           <div class="categoryButtonText">DIG [D]</div>
@@ -128,12 +135,6 @@
           <div class="categoryButtonText">SCAVENGE</div>
         </button>
       </div>
-        <script type="text/javascript">
-  $('#mineButton').powerTip({
-	placement: 'se' // south-east tooltip position
-});
-
-</script>
       <div class="planetDisplay">
         <div class="planetDisplayBackground" id="planetDisplayBackground"></div>
         <div class="planetDisplayNameFrame">
