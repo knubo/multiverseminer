@@ -1,14 +1,11 @@
 ﻿#solarsystem {
     font-size: 0.1px;
     min-width: 400px;
-    position: absolute;
     text-align: center;
-    bottom: -292px;
 }
 
 #solarsystem div {
     display: inline-block;
-    padding-left: 10px;
     vertical-align: middle;
 }
 
