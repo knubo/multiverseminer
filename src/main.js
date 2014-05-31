@@ -188,8 +188,8 @@ function onSetInventoryFilter(filter) {
 
 function showSolar() {
     $("#solarsystem").dialog({
-        width: 1200,
-        height: 500
+        minWidth: "auto",
+        minHeight: "auto"
     });
 }
 
