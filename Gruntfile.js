@@ -48,7 +48,6 @@ module.exports = function(grunt) {
 						uitravelscreen : 'ui/uiTravelScreen',
 
 						jquery    : 'external/jquery-2.1.1.min',
-						
 						jqueryui  : 'external/jquery-ui-1.10.4.custom.min',
 						jgrowl    : 'external/jquery.jgrowl.min',
 						starfield : 'external/starfield',
