@@ -197,6 +197,16 @@ function showSolar() {
 
 function onCombat() {
 	game.testCombat(); //TODO: change this to know if its duel or ship duel
+    $("#fight-dialog").dialog({
+        title: "Fight",
+        height: 200,
+        width: 350,
+        buttons: {
+            "Hit": function() {},
+            "Auto-Attack": function() {},
+            "Heal": function() {}
+        }
+    });
 };
 
 function changeLeftCategoryButton(selected) {
