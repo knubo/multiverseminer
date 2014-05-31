@@ -59,7 +59,6 @@ function Game() {
 			tutorial.dialog("open");
 			this.settings.showTutorial = false;
 		}
-		console.log(this.settings.showTutorial, "FASEGERG");
 	};
 	
 	this.setNewGame = function() {
