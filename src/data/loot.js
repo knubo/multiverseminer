@@ -57,28 +57,28 @@ addTable(100, 'earthAtmosphere', [
 ]);
 
 addTable(101, 'earthMinerals', [
-	[Items.iron.id, 0.30],
-	[Items.copper.id, 0.02],
-	[Items.gold.id, 0.005],
-	[Items.silicon.id, 0.27],
-	[Items.aluminum.id, 0.08],
-	[Items.calcium.id, 0.03],
-	[Items.sodium.id, 0.02],
-	[Items.potassium.id, 0.02],
-	[Items.magnesium.id, 0.02],
-	[Items.titanium.id, 0.044],
-	[Items.hydrogen.id, 0.014],
-	[Items.phosphorus.id, 0.012],
-	[Items.manganese.id, 0.01],
-	[Items.fluorine.id, 0.008],
-	[Items.barium.id, 0.0001],
-	[Items.carbon.id, 0.003],
-	[Items.sulfur.id, 0.005],
-	[Items.nitrogen.id, 0.0005],
-	[Items.nickel.id, 0.0005],
-	[Items.zinc.id, 0.0005],
-	[Items.crudeOil.id, 0.1],
-	[Items.carbon.id, 0.001]
+	[Items.silicon.id, 0.020],
+	[Items.calcium.id, 0.015],
+	[Items.sodium.id, 0.005],
+	[Items.potassium.id, 0.002],
+	[Items.magnesium.id, 0.002],
+	[Items.crudeOil.id, 0.0018],
+	[Items.hydrogen.id, 0.0014],
+	[Items.phosphorus.id, 0.0012],
+	[Items.copper.id, 0.001],
+	[Items.manganese.id, 0.001],
+	[Items.iron.id, 0.0008],
+	[Items.aluminum.id, 0.0008],
+	[Items.fluorine.id, 0.0008],
+	[Items.sulfur.id, 0.0005],
+	[Items.carbon.id, 0.0003],
+	[Items.carbon.id, 0.0001],
+	[Items.gold.id, 0.00007],
+	[Items.titanium.id, 0.00006],
+	[Items.barium.id, 0.00005],
+	[Items.nitrogen.id, 0.00005],
+	[Items.nickel.id, 0.00005],
+	[Items.zinc.id, 0.00005]
 ]);
 
 addSingleTable(102, 'earthGemsCommon', [
@@ -187,8 +187,8 @@ addSingleTable(103, 'earthGemsRare', [
   ]);
 
 addTable(104, 'earthMining', [
-	[LootTables.earthGemsRare, 0.005],
-	[LootTables.earthGemsCommon, 0.1],
+	[LootTables.earthGemsRare, 0.00008],
+	[LootTables.earthGemsCommon, 0.005s],
     [LootTables.earthMinerals, 1],
 ]);
 
