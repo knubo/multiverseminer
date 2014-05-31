@@ -114,13 +114,7 @@
       <img class="logo" src="assets/images/logo.png" alt="logo" />
 
       <div>
-          <script type="text/javascript">
-            $('#mineButton').powerTip({
-          	placement: 'se' // south-east tooltip position
-          });
-          </script>
-          
-        <button id="mineButton" class="mainButton" onclick="onMine()" title="HELLO">
+        <button id="mineButton" class="mainButton" onclick="onMine()" title="Click to mine.">
           <img src="assets/images/itemIcons/pick_1.png" alt="pick_1" class="categoryButtonIcon" />
           <div class="categoryButtonText">DIG [D]</div>
         </button>
@@ -142,10 +136,14 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+        $('#mineButton').powerTip({
+      	placement: 's'
+      });
+      </script>
       <div id="floatingArea" class="floatingArea"></div>
     </div>
   </div>
-
   <div id="travelScreen" class="screen">
     <div id="travelDisplay" class="panelTravelDisplay">
       <div id="travelDistance"></div>
