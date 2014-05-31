@@ -19,7 +19,7 @@ Number.prototype.formatNumber = function() {
 	if(ui.numberFormatter) {
 		return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
-	
+
 	return this;
 };
 
@@ -28,21 +28,21 @@ Number.prototype.formatNumber = function() {
 // ---------------------------------------------------------------------------
 function onDocumentReady() {
 	$(document).bind('keypress', onKeyPress);
-	
+
     // Initialize the crafting accordion
     $("#playerCraftingContent").accordion();
 
     //Initialize components
     game.init();
     ui.init();
-    
+
     // Call one round of UI Updates
     ui.update();
-    
+
     // Activate the default panels
     onActivatePlayerInventory();
     onActivatePlayerGear();
-    
+
     // Set the update interval
     var interval = 1000 / 60;
     setInterval(function() {
@@ -52,7 +52,7 @@ function onDocumentReady() {
 
 function onKeyPress(event) {
 	var char = String.fromCharCode(event.which).toLowerCase();
-	
+
 	switch(char) {
 	case 'd': {
 			onMine();
@@ -75,7 +75,7 @@ function onKeyPress(event) {
 
 function onUpdate() {
     var currentTime = Date.now();
-    
+
 	game.update(currentTime);
 	ui.update(currentTime);
 };
@@ -117,35 +117,35 @@ function onActivatePlayerInventory() {
 function onActivateCrafting() {
 	// select the button
 	changeRightCategoryButton(3);
-		
+
     ui.screenPlanet.activateCrafting();
 };
 
 function onActivateEmpire() {
 	// select the button
 	changeLeftCategoryButton(1);
-		
+
     ui.screenPlanet.activateEmpire();
 };
 
 function onActivatePlayerGear() {
 	// select the button
 	changeRightCategoryButton(0);
-	
+
     ui.screenPlanet.activatePlayerGear();
 };
 
 function onActivateShip() {
 	// select the button
 	changeRightCategoryButton(1);
-	
+
     ui.screenPlanet.activatePlayerShip();
 };
 
 function onActivatePlanet() {
 	// select the button
 	changeRightCategoryButton(2);
-	
+
     ui.screenPlanet.activatePlanet();
 };
 
@@ -164,7 +164,7 @@ function onReset() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
-		
+
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
 	});
@@ -174,7 +174,7 @@ function onTravelToPlanet(target) {
 	if(!game.canTravelTo(target)) {
 		return;
 	}
-	
+
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
@@ -182,8 +182,15 @@ function onTravelToPlanet(target) {
 
 function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
-	
+
 	ui.updateComponent(ui.componentPlayerInventory);
+}
+
+function showSolar() {
+    $("#solarsystem").dialog({
+        width: 800,
+        height: 500
+    });
 }
 
 function onCombat() {
@@ -196,7 +203,7 @@ function changeLeftCategoryButton(selected) {
 		var name = document.getElementById("leftCategory" + i);
 		name.className="genericButton categoryButton clickable";
     }
-	
+
 	var name = document.getElementById("leftCategory" + selected);
 	name.className="genericButtonSelected categoryButton clickable";
 }
@@ -206,7 +213,7 @@ function changeRightCategoryButton(selected) {
 		var name = document.getElementById("rightCategory" + i);
 		name.className="genericButton categoryButton clickable";
     }
-	
+
 	var name = document.getElementById("rightCategory" + selected);
 	name.className="genericButtonSelected categoryButton clickable";
 }
