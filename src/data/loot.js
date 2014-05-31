@@ -188,7 +188,7 @@ addSingleTable(103, 'earthGemsRare', [
 
 addTable(104, 'earthMining', [
 	[LootTables.earthGemsRare, 0.00008],
-	[LootTables.earthGemsCommon, 0.005s],
+	[LootTables.earthGemsCommon, 0.005],
     [LootTables.earthMinerals, 1],
 ]);
 
