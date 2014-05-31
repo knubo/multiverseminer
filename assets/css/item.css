@@ -1,35 +1,39 @@
 .itemGrid {
-overflow:hidden;
+	overflow: hidden;
 }
 
 .itemSlot {
-width:50px;
-height:50px;
-float:left;
-margin:2px;
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin: 1px;
+	border: 1px dotted #474747;
+	background-color: #474747;
+	cursor: pointer;
 }
 
 .itemSlotIcon {
-width:30px;
-height:30px;
-margin-left:10px;
-margin-top:6px;
-pointer-events:none;
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	margin-top: 6px;
+	pointer-events: none;
 }
 
 .itemSlotText {
-position:relative;
-margin-top:-5px;
-margin-right:10px;
-float:right;
-font-size:12px;
-cursor:pointer;
+	position: relative;
+	margin-top: -5px;
+	margin-right: 10px;
+	float: right;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 .itemSlotHover {
-border:1px solid #a7a7a7;
+	border:1px solid #a7a7a7;
 }
 
 .itemSlotNonHover {
-border:1px solid rgba(0,0,0,0);
+	border: 1px dotted #474747;
+	background-color: transparent;
 }
