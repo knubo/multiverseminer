@@ -1,4 +1,5 @@
 function Fight(teamList) {
+	game.
 	this.teams = [];
 	this.log = [];
 	this.status = {
@@ -32,7 +33,9 @@ function Fight(teamList) {
     // ---------------------------------------------------------------------------
     // fight functions
     // ---------------------------------------------------------------------------
-
+    this.attack = function(){
+    	//placeholder. "Attack" button triggers this.
+    };
 
 	this.nextTurn = function() {
 		this.checkStatus();
