@@ -11,6 +11,7 @@ $(document).ready(onDocumentReady);
 $.jGrowl.defaults.position = 'bottom-right';
 $.jGrowl.defaults.animateOpen = { height: 'show'};
 $.jGrowl.defaults.life = 1000;
+$.jGrowl.defaults.pool = 1;
 
 // Setup key bindings
 $(window).delegate('*', 'keypress', onKeyPress);
