@@ -4,9 +4,9 @@ function Player() {
 	this.id = 'player';
 	this.pickPower = 1;
 	this.miner = new Miner('player');
-	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
 	this.storage = new Storage('player');
 	this.gear = new Gear('player');
+	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
 
 	this.oxygenConsumption = 1;
 	this.lastOxygenConsumption = Date.now();
