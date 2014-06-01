@@ -7,12 +7,17 @@ function Fight(teamList) {
 	};
 	this.counter = -1; //counter for teams
 
-	if(teamList.length < 2){return "Need at least two teams to start a fight";}
-	for(var i=0;i<teamList.length;i++){
-		this.teams.push(
-			new Team(teamList[i])
-		);
-	}
+	// if(teamList.length < 2){return "Need at least two teams to start a fight";}
+	// for(var i=0;i<teamList.length;i++){
+	// 	this.teams.push(
+	// 		new Team(teamList[i])
+	// 	);
+	// }
+	var npc = new NPC();
+	this.teams = [
+		new Team([game.player]),
+		new Team([npc])
+	];
 
 	// ---------------------------------------------------------------------------
     // main functions
@@ -33,7 +38,7 @@ function Fight(teamList) {
     // fight functions
     // ---------------------------------------------------------------------------
     this.attack = function(){
-    	//placeholder. "Attack" button triggers this.
+		//placeholder. "Attack" button triggers this.
     };
 
 	this.nextTurn = function() {
