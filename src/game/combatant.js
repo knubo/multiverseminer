@@ -1,17 +1,20 @@
-function Combatant(id) {
-	this.id = id;
-	this.health = 100;
-	this.maxHealth = 100;
-	this.defense = 100;
-	this.attack = 50;
+function Combatant(opts) {
+	this.opts=opts;
+	this.name = opts.name || "npc";
+	this.id = opts.id;
+	this.npc = opts.npc;
 	this.alive = true;
+	this.autoAttack = true;
+	this.health = 100;
 
-	this.baseAttackSpeed = 1;
+	this.stats = this.opts.player.gear.getStats() || {};
+	this.stats.damage = 1;
 
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
-	this.initialize = function() {	
+	this.initialize = function() {
+		
 	};
 
 	this.update = function(currentTime) {
@@ -20,31 +23,34 @@ function Combatant(id) {
 	// ---------------------------------------------------------------------------
 	// combatant functions
 	// ---------------------------------------------------------------------------
-	this.hit = function(fight, target) { //target is a combatant
-		var damage = this.attack; //TODO: add defense to formula
-		var alive = target.takeDamage(fight, damage); //TODO: rename, probably not even use a function
-		fight.action('attack', target, damage, alive); //TODO: use enum
-		return true;
+
+	this.requestMove = function(fight,team,opponentTeam){
+		var move;
+		if(this.autoAttack){
+			var source = this;
+			var target = opponentTeam.members[0];
+			setTimeout(function(){fight.action("attack",source,target);},100);
+			return this;
+		}
+		if(this.npc){
+			move = this.player.requestMove(fight,team,opponentTeam);
+		}else{
+			//ask player for move
+		}
 	};
 
 	this.takeDamage = function(fight, damage) {
 		this.health -= damage;
-		return this.checkIsAlive(); //unsure if unnecessary function, but it can be used outside of combat
+		return this; //unsure if unnecessary function, but it can be used outside of combat
 	};
 
-	this.heal = function(fight, target) {
-		target = target == undefined ? this : target;
-		var healing = 60;
-		if(target.health + healing > target.maxHealth) {
-			healing = target.maxHealth - target.health;
-		}
-		target.health += healing;
-		fight.action('heal', target, healing); 
-		target.checkIsAlive();
-		return true;
+	this.heal = function(fight, amount) {
+		if(!this.alive){return "Player is dead";}
+		this.health += amount;
+		return this;
 	};
 
-	this.checkIsAlive = function() {
+	this.isAlive = function() {
 		if(this.health <= 0) {
 			this.health = 0;
 			this.alive = false;
@@ -86,15 +92,5 @@ function Combatant(id) {
 		this.alive = utils.loadBool(storageKey + 'alive', true);
 
 		this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
-	};
-
-	this.reset = function(fullReset) {
-		this.health = 100;
-		this.maxHealth = 100;
-		this.attack = 50;
-		this.defense = 100;
-		this.alive = true;
-
-		this.baseAttackSpeed = 1;
 	};
 }

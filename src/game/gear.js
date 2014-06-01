@@ -43,7 +43,7 @@ function Gear(id) {
 		return true;
 	};
 
-	this.equip = function(itemId, metadata) {	
+	this.equip = function(itemId, metadata) {
 		// get the item info
 		var itemInfo = game.getItem(itemId);
 

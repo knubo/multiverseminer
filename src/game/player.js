@@ -4,7 +4,7 @@ function Player() {
 	this.id = 'player';
 	this.pickPower = 1;
 	this.miner = new Miner('player');
-	this.combatant = new Combatant('player');
+	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
 	this.storage = new Storage('player');
 	this.gear = new Gear('player');
 
@@ -25,7 +25,7 @@ function Player() {
 		this.gear.addSlot('chest');
 		this.gear.addSlot('mainHand');
 		this.gear.addSlot('secondHand');
-		this.gear.addSlot('legs');	
+		this.gear.addSlot('legs');
 		this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
 	};
