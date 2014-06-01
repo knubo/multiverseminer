@@ -1,5 +1,4 @@
 function Fight(teamList) {
-	game.
 	this.teams = [];
 	this.log = [];
 	this.status = {
