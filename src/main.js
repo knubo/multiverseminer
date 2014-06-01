@@ -200,6 +200,7 @@ function showFight() {
         minWidth: 1200,
         minHeight: "auto"
     });
+    game.currentFight = new Fight();
 }
 function onCombat() {
 	game.testCombat(); //TODO: change this to know if its duel or ship duel
