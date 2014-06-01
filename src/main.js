@@ -195,7 +195,12 @@ function showSolar() {
         minHeight: "auto"
     });
 }
-
+function showFight() {
+    $("#fight-dialog").dialog({
+        minWidth: 1200,
+        minHeight: "auto"
+    });
+}
 function onCombat() {
 	game.testCombat(); //TODO: change this to know if its duel or ship duel
     $("#fight-dialog").dialog({
