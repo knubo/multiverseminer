@@ -3,13 +3,7 @@ function Combatant(opts) {
 	this.name = opts.name || "npc";
 	this.id = opts.id;
 	this.npc = opts.npc;
-	this.alive = true;
-	this.autoAttack = false;
-	if(this.npc){this.autoAttack=true;}
-	this.health = 10;
-
-	this.stats = this.opts.player.gear.getStats() || {};
-	this.stats.damage = 1;
+	this.reset();
 
 	// ---------------------------------------------------------------------------
 	// general
@@ -73,6 +67,12 @@ function Combatant(opts) {
 	// ---------------------------------------------------------------------------
 	this.reset = function(){
 		//placeholder
+		this.health = 10;
+		this.stats = this.opts.player.gear.getStats() || {};
+		this.stats.damage = 1;
+		this.alive = true;
+		this.autoAttack = false;
+		if(this.npc){this.autoAttack=true;}
 	};
 	this.save = function() {
 		var storageKey = this._getStorageKey();
