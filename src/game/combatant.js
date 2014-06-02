@@ -4,7 +4,8 @@ function Combatant(opts) {
 	this.id = opts.id;
 	this.npc = opts.npc;
 	this.alive = true;
-	this.autoAttack = true;
+	this.autoAttack = false;
+	if(this.npc){this.autoAttack=true;}
 	this.health = 100;
 
 	this.stats = this.opts.player.gear.getStats() || {};
