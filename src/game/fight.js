@@ -39,6 +39,9 @@ function Fight(teamList) {
     // ---------------------------------------------------------------------------
     this.attack = function(){
 		//placeholder. "Attack" button triggers this.
+
+		//very bad, will change
+		this.action("attack",this.teams[0].members[0],this.teams[1].members[0]);
     };
 
 	this.nextTurn = function() {
@@ -54,24 +57,34 @@ function Fight(teamList) {
 			var targetStats = target.stats;
 
 			var damage = sourceStats.damage;
-			this.log.push(source.name+" hits "+target.name+" for "+damage+" hp.");
+			var log = source.name+" hits "+target.name+" for "+damage+" hp.";
+			this.log.push(log);
+			console.log(log);
+			$('#combat-log').append(log+"<br>");
 			target.takeDamage(this,damage);
 		}else if(action == "heal"){
 			var sourceStats = source.stats;
 			var targetStats = target.stats;
 
 			var heal = sourceStats.damage;
-			this.log.push(source.name+" heals "+target.name+" for "+damage+" hp.");
+			var log = source.name+" heals "+target.name+" for "+damage+" hp.";
+			this.log.push(log);
+			console.log(log);
+			$('#combat-log').append(log+"<br>");
 			target.heal(this,heal);
 		}
+		this.nextTurn();
 	};
 
 	this.checkStatus = function(){
 		for(var team=0;team<this.teams.length;team++){
-			for(var member=0;member<this.teams[team].length;member++){
-				var combatant = this.teams[team][member];
-				if(!isAlive){
-					this.log.push("combatant "+combatant.name+" is dead");
+			for(var member=0;member<this.teams[team].members.length;member++){
+				var combatant = this.teams[team].members[member];
+				if(combatant.isAlive() === false){
+					var log = "combatant "+combatant.name+" is dead";
+					this.log.push(log);
+					console.log(log);
+					$('#combat-log').append(log+"<br>");
 					this.status.active = false; //disable fight when somebody dies
 				}
 			}
