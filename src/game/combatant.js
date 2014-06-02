@@ -3,7 +3,6 @@ function Combatant(opts) {
 	this.name = opts.name || "npc";
 	this.id = opts.id;
 	this.npc = opts.npc;
-	this.reset();
 
 	// ---------------------------------------------------------------------------
 	// general
@@ -74,6 +73,7 @@ function Combatant(opts) {
 		this.autoAttack = false;
 		if(this.npc){this.autoAttack=true;}
 	};
+	this.reset();
 	this.save = function() {
 		var storageKey = this._getStorageKey();
 
