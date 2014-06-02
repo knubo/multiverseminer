@@ -7,6 +7,8 @@ function Fight(teamList) {
 	};
 	this.counter = -1; //counter for teams
 
+	$('#combat-log').html(''); //clear log
+
 	// if(teamList.length < 2){return "Need at least two teams to start a fight";}
 	// for(var i=0;i<teamList.length;i++){
 	// 	this.teams.push(
