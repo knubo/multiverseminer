@@ -195,6 +195,12 @@ function showSolar() {
         minHeight: "auto"
     });
 }
+function showChat() {
+    $("#chat-modal").dialog({
+        minWidth: 800,
+        minHeight: 800
+    });
+}
 function showFight() {
     $("#fight-dialog").dialog({
         minWidth: 1200,
