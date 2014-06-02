@@ -1,0 +1,40 @@
+{
+	name: "Kill some Space Pirates",
+	description: "Go to Earth, sector G12 and kill some Space Pirates to demonstrate your combat skills in space.",
+	
+	number_of_objectives = 2
+	available_actions: ['kill']
+	available_action_ids: [
+		{'kill': 
+			[1, 2, 3]
+		}
+	]
+	available_rewards: ['item', 'material']
+	available_reward_ids: [
+		{'item':
+			['ironChest', 'copperChest']
+		},
+		{'material':
+			['ironBar', 'copperBar']
+		}
+	]
+	
+	load: function(){
+		// randomize index between 0 and available_actions.length.
+		// Generate objectives like:
+		// {type: "kill", id: 3, quantity: 5, current: 0}
+		
+		// randomize rewards as objectives are done:
+		// {type: 'material', id: 'ironBar', quantity: 10}
+	}
+	
+	objectives: [],
+	meetObjective: function(obj){
+		// loop trough objective checking obj.type and if condition is met, augment current +1 and verify finish
+	},
+	
+	reward: []
+	finish: function( player ){
+		// Loop over rewards and Give player reward
+	}
+}
