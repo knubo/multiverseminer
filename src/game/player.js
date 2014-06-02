@@ -9,6 +9,7 @@ function Player() {
 	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
 
 	this.oxygenConsumption = 1;
+    this.canBreathe = true;
 	this.lastOxygenConsumption = Date.now();
 
 	// ---------------------------------------------------------------------------
@@ -33,15 +34,17 @@ function Player() {
 	this.update = function(currentTime) {
 		this.miner.update(currentTime);
 		this.combatant.update(currentTime);
-		
-		if (currentTime - this.lastOxygenConsumption > 1000) {
-			// Todo: need to do something when this runs out
-			if (this.storage.getItemCount(Items.oxygen.id) > 0) {
-				this.storage.removeItem(Items.oxygen.id);
-			}
-
-			this.lastOxygenConsumption = currentTime;
-		}
+		this.checkPlanet();
+        
+        if (!this.canBreathe) {
+            if (currentTime - this.lastOxygenConsumption > 1000) {
+                // Todo: need to do something when this runs out
+                if (this.storage.getItemCount(Items.oxygen.id) > 0) {
+                    this.storage.removeItem(Items.oxygen.id);
+                }
+                this.lastOxygenConsumption = currentTime;
+            }
+        }
 	};
 
 	// ---------------------------------------------------------------------------
@@ -110,6 +113,17 @@ function Player() {
 		
 		return true;
 	};
+    
+    this.checkPlanet = function() {
+        if (game.currentPlanet != null) {
+            if (game.currentPlanet.data.name == 'Earth') {
+                this.canBreathe = true;
+            }
+            else {
+                this.canBreathe = false;
+            }
+        }
+    }
 	
 	this.equipBestGear = function() {
 		// TODO: needs actual selection of best gear, right now it selects the latest found + proper pickPower assignment
