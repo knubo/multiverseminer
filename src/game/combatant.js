@@ -71,6 +71,9 @@ function Combatant(opts) {
 	// ---------------------------------------------------------------------------
 	// loading / saving
 	// ---------------------------------------------------------------------------
+	this.reset = function(){
+		//placeholder
+	};
 	this.save = function() {
 		var storageKey = this._getStorageKey();
 
