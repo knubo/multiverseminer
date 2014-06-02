@@ -6,7 +6,7 @@ function Combatant(opts) {
 	this.alive = true;
 	this.autoAttack = false;
 	if(this.npc){this.autoAttack=true;}
-	this.health = 100;
+	this.health = 10;
 
 	this.stats = this.opts.player.gear.getStats() || {};
 	this.stats.damage = 1;
