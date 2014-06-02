@@ -103,6 +103,7 @@ function Fight(teamList) {
 	function Team(memberList) {
 		this.members = [];
 		for(var i=0;i<memberList.length;i++){
+			memberList[i].combatant.reset();
 			this.members.push(
 				memberList[i].combatant
 			);
