@@ -3,7 +3,7 @@ require(["gamecombatant", "gamestorage", "gamegear" ]);
 function NPC(id) {
 	this.storage = new Storage('npc_' + id);
 	this.gear = new Gear('npc_' + id);
-	this.combatant = new Combatant({id:'npc_' + id,npc:false,player:this});
+	this.combatant = new Combatant({id:'npc_' + id,npc:true,player:this});
 	this.NPC = true;
 	
 	this.AI = undefined;
