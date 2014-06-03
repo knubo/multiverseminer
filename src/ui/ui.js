@@ -100,7 +100,15 @@ function UI() {
 		var self = ui;
 		var char = String.fromCharCode(paremeter.which).toLowerCase();
 		
-		if(!self.hasModalDialog) {
+		var skipBindings = false;
+		if(self.hasModalDialog) {
+			skipBindings = true;
+		} else if($(document.activeElement).is("input")) {
+			skipBindings = true;
+		}
+		// Add more reasons to skip the keyboard shortcuts around here.
+		
+		if(!skipBindings) {
 			var callback = self.keyBindings[char];
 			if(callback) {
 				callback();
