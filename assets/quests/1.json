@@ -5,10 +5,17 @@
 	predecessors: [1],
 	
 	number_of_objectives = 2
+	number_of_optional_objectives = 1
 	available_actions: ['kill']
 	available_action_ids: [
 		{'kill': 
 			[1, 2, 3]
+		}
+	]
+	available_optional_actions = ['talk'],
+	available_optional_ids: [
+		{'talk':
+			[2]
 		}
 	]
 	available_rewards: ['item', 'material']
@@ -19,7 +26,13 @@
 		{'material':
 			['ironBar', 'copperBar']
 		}
-	]
+	],
+	available_optional_rewards: ['material']
+	available_optional_rewards_ids: [
+		{'material':
+			['ironBar']
+		}
+	],
 	
 	meetRequirement: function(){
 		// test if all requirements have been met to take the quest
