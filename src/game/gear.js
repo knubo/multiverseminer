@@ -106,9 +106,7 @@ function Gear(id) {
 		for(var type in this.slots) {
 			if(this.slots[type] != -1) {
 				var item = game.getItem(this.slots[type]);
-				console.log(item);
 				for(var i=0;i<statNames.length;i++){
-					console.log(statNames[i]);
 					if(item[statNames[i]]){
 						if(!stats[statNames[i]]){stats[statNames[i]]=0;}
 						stats[statNames[i]] += item[statNames[i]];
