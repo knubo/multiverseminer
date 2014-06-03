@@ -329,16 +329,18 @@
                         Reset
                     </div>
                 </div>
-        <div id="fight-dialog" class="hidden">
+        <div id="fight-dialog" class="hidden fightDialog">
                 <div class="genericButton clickable noselect" onclick="game.currentFight.attack()">
                     <div class="genericButton">Attack</div>
                 </div>
+                
+                <div class"genericButton clickable noselect" onclick="game.currentFight.heal()">
+                    <div class="genericButton">Heal</div>
+                
                 <br>
-                    <div class="combatText"><p>
-                        <div id="combat-log"></div>
-                </div>
+                    <div class="combatText" id="combat-log"><p>
+                    </div>
             </p>
-        </div>
     </div>
             <script type="text/javascript">
                 (function (i, s, o, g, r, a, m) {
