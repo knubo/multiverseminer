@@ -3,7 +3,6 @@ ItemCategory = {
     'rawMaterial': 'Raw materials',
     'gem': 'Gems',
     'component': 'Components',
-    'scavenged': 'Scavenged',
     'gearMainHand': 'Gear - Main Hand',
     'gearSecondHand': 'Gear - Second Hand',
     'gearHead': 'Gear - Head',
@@ -24,7 +23,6 @@ GearType = {
     'secondHand': 'Second Hand',
     'legs': 'Legs',
     'feet': 'Feet',
-
     // planet gear
     'building': 'Building',
 };
