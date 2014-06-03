@@ -328,6 +328,14 @@
                     </div>
                 </div>
         <div id="fight-dialog" class="hidden fightDialog">
+                <div style="border: 1px solid black; background-color: grey;">
+                    <div id="playerHP" style="background-color: red; width: 100%;"></div>
+                </div>
+                <div style="border: 1px solid black; background-color: grey;">
+                    <div id="enemyHP" style="background-color: red; width: 100%;"></div>
+                </div>
+                <div class="enemyHealth" id="enemyHP"></div>
+                <p><p>
                 <div class="genericButton clickable noselect" onclick="game.currentFight.attack()">
                     <div class="genericButton">Attack</div>
                 </div>
@@ -335,7 +343,7 @@
                 <div class"genericButton clickable noselect" onclick="game.currentFight.heal()">
                     <div class="genericButton">Heal</div>
                 
-                <br>
+                <p>
                     <div class="combatText" id="combat-log"><p>
                     </div>
             </p>
@@ -356,61 +364,6 @@
                     ga('send', 'pageview');
             </script>
         <div id="chat-modal" class="hidden">
-                <script>
-                	function randomInt (low, high) {
-                 	    return Math.floor(Math.random() * (high - low + 1) + low);
-                	}
-
-                	var socket = io.connect('http://chat.multiverseminer.com:8080');
-                	var user   = 'User'+randomInt(1,999);
-                	// on connection to server, ask for user's name with an anonymous callback
-                	socket.on('connect', function(){
-                		// call the server-side function 'adduser' and send one parameter (value of prompt)
-		
-                		socket.emit('adduser', user);
-                	});
-
-                	// listener, whenever the server emits 'updatechat', this updates the chat body
-                	socket.on('updatechat', function (username, data) {
-                		$('#conversation').append('\<b>'+username + ':\</b> ' + data + '\<br>');
-                	});
-
-                	// listener, whenever the server emits 'updaterooms', this updates the room the client is in
-                	socket.on('updaterooms', function(rooms, current_room) {
-                		$('#rooms').empty();
-                		$.each(rooms, function(key, value) {
-                			if(value == current_room){
-                				$('#rooms').append('\<div>' + value + '\</div>');
-                			}
-                			else {
-                				$('#rooms').append('\<div>\<a href="#" onclick="switchRoom(\''+value+'\')">' + value + '\</a>\</div>');
-                			}
-                		});
-                	});
-
-                	function switchRoom(room){
-                		socket.emit('switchRoom', room);
-                	}
-
-                	// on load of page
-                	$(function(){
-                		// when the client clicks SEND
-                		$('#datasend').click( function() {
-                			var message = $('#data').val();
-                			$('#data').val('');
-                			// tell server to execute 'sendchat' and send along one parameter
-                			socket.emit('sendchat', message);
-                		});
-
-                		// when the client hits ENTER on their keyboard
-                		$('#data').keypress(function(e) {
-                			if(e.which == 13) {
-                				$(this).blur();
-                				$('#datasend').focus().click();
-                			}
-                		});
-                	});
-                </script>
                 <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
                 	<b>ROOMS</b>
                 	<div id="rooms"></div>
@@ -422,5 +375,60 @@
                 </div>
             </div>
         </div>
+        <script>
+        	function randomInt (low, high) {
+         	    return Math.floor(Math.random() * (high - low + 1) + low);
+        	}
+
+        	var socket = io.connect('http://chat.multiverseminer.com:8080');
+        	var user   = 'User'+randomInt(1,999);
+        	// on connection to server, ask for user's name with an anonymous callback
+        	socket.on('connect', function(){
+        		// call the server-side function 'adduser' and send one parameter (value of prompt)
+
+        		socket.emit('adduser', user);
+        	});
+
+        	// listener, whenever the server emits 'updatechat', this updates the chat body
+        	socket.on('updatechat', function (username, data) {
+        		$('#conversation').append('\<b>'+username + ':\</b> ' + data + '\<br>');
+        	});
+
+        	// listener, whenever the server emits 'updaterooms', this updates the room the client is in
+        	socket.on('updaterooms', function(rooms, current_room) {
+        		$('#rooms').empty();
+        		$.each(rooms, function(key, value) {
+        			if(value == current_room){
+        				$('#rooms').append('\<div>' + value + '\</div>');
+        			}
+        			else {
+        				$('#rooms').append('\<div>\<a href="#" onclick="switchRoom(\''+value+'\')">' + value + '\</a>\</div>');
+        			}
+        		});
+        	});
+
+        	function switchRoom(room){
+        		socket.emit('switchRoom', room);
+        	}
+
+        	// on load of page
+        	$(function(){
+        		// when the client clicks SEND
+        		$('#datasend').click( function() {
+        			var message = $('#data').val();
+        			$('#data').val('');
+        			// tell server to execute 'sendchat' and send along one parameter
+        			socket.emit('sendchat', message);
+        		});
+
+        		// when the client hits ENTER on their keyboard
+        		$('#data').keypress(function(e) {
+        			if(e.which == 13) {
+        				$(this).blur();
+        				$('#datasend').focus().click();
+        			}
+        		});
+        	});
+        </script>
     </body>
 </html>
