@@ -101,7 +101,10 @@ function UI() {
 		var char = String.fromCharCode(paremeter.which).toLowerCase();
 		
 		if(!self.hasModalDialog) {
-			self.keyBindings[char]();
+			var callback = self.keyBindings[char];
+			if(callback) {
+				callback();
+			}
 		}
 	};
 	
