@@ -91,7 +91,6 @@ function Player() {
 		var items = this.miner.scavenge(game.currentPlanet);
 		if (items) {
 			this.storage.addItems(items);
-            console.log(items);
 		}
 	};
     
