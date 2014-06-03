@@ -7,7 +7,7 @@ function Fight(teamList) {
 	};
 	this.counter = -1; //counter for teams
 
-	$('#combat-log').html(''); //clear log
+	$('#combat-log').html(' '); //clear log
 
 	// if(teamList.length < 2){return "Need at least two teams to start a fight";}
 	// for(var i=0;i<teamList.length;i++){
@@ -46,7 +46,7 @@ function Fight(teamList) {
 		this.action("attack",this.teams[0].members[0],this.teams[1].members[0]);
     };
     this.heal = function(){
-        this.action("heal", this.teams[0].members[0],this.teams[0].members[0])
+        this.action("heal", this.teams[0].members[0],this.teams[0].members[0]);
     };
 	this.nextTurn = function() {
 		this.checkStatus();
