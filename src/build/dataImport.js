@@ -107,7 +107,7 @@ module.exports = function (grunt) {
 						continue;
 					}
 					
-					importData.push(getJsonValue(column, row[column], '\t\t'));
+					importData.push(getJsonValue(column, value, '\t\t'));
 				}
 				
 				if(craftCost.length > 0) {
