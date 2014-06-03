@@ -2,6 +2,8 @@
 	name: "Kill some Space Pirates",
 	description: "Go to Earth, sector G12 and kill some Space Pirates to demonstrate your combat skills in space.",
 	
+	predecessors: [1],
+	
 	number_of_objectives = 2
 	available_actions: ['kill']
 	available_action_ids: [
@@ -18,6 +20,12 @@
 			['ironBar', 'copperBar']
 		}
 	]
+	
+	meetRequirement: function(){
+		// test if all requirements have been met to take the quest
+		// Iterate over predecessors for now.
+		// This should be call when accessing to NPCs quest list offering
+	},
 	
 	load: function(){
 		// randomize index between 0 and available_actions.length.
