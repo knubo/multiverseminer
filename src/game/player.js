@@ -6,6 +6,7 @@ function Player() {
 	this.miner = new Miner('player');
 	this.storage = new Storage('player');
 	this.gear = new Gear('player');
+    this.stats = {"stats":[]};
 	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
 
 	this.oxygenConsumption = 1;
