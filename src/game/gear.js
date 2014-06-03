@@ -101,15 +101,18 @@ function Gear(id) {
 	
 	this.getStats = function() {
 		// Todo: calculate all the stats for the current gear and return it
+		var statNames = ["strength", "accuracy", "defense", "evasion", "speed", "health", "miningLuck", "scavengeLuck", "lootLuck", "counter", "regeneration", "resillience", "perception"];
 		var stats = {};
 		for(var type in this.slots) {
 			if(this.slots[type] != -1) {
 				var item = game.getItem(this.slots[type]);
-				for(var prop in item.statIncrease) {
-					stats[prop] = stats[prop]==undefined ? item.statIncrease[prop] : stats[prop] + item.statIncrease[prop];
-				}
-				for(var prop in item.statDecrease) {
-					stats[prop] = stats[prop]==undefined ? -item.statDecrease[prop] : stats[prop] - item.statDecrease[prop];
+				console.log(item);
+				for(var i=0;i<statNames.length;i++){
+					console.log(statNames[i]);
+					if(item[statNames[i]]){
+						if(!stats[statNames[i]]){stats[statNames[i]]=0;}
+						stats[statNames[i]] += item[statNames[i]];
+					}
 				}
 			}
 		}
