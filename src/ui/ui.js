@@ -29,14 +29,21 @@ function UI() {
     this.cursorPositionY = 0;
     
     this.numberFormatter = utils.formatters.raw;
-        
+	
+	this.keyBindings = {};
+	this.modalDialogs = 0;
+	this.hasModalDialog = false;
+	
     // ---------------------------------------------------------------------------
     // main UI functions
     // ---------------------------------------------------------------------------
     this.init = function() {
-    	$(document).on('mousemove', this.onMouseMove);
+		// Setup key bindings
+		$(window).delegate('*', 'keypress', this.onKeyPress);
+		$(document).bind('keypress', this.onKeyPress);   
+		$(document).on('mousemove', this.onMouseMove);
     	$(document).on('mouseup', this.onMouseUp);
-    	
+		
     	this.screenPlanet = new UIPlanetScreen();
     	this.screenPlanet.init();
     	
@@ -88,7 +95,27 @@ function UI() {
         	this.pendingDragElement = undefined;
         }
     };
-        
+	
+	this.onKeyPress = function(paremeter) {
+		var self = ui;
+		var char = String.fromCharCode(paremeter.which).toLowerCase();
+		
+		var skipBindings = false;
+		if(self.hasModalDialog) {
+			skipBindings = true;
+		} else if($(document.activeElement).is("input")) {
+			skipBindings = true;
+		}
+		// Add more reasons to skip the keyboard shortcuts around here.
+		
+		if(!skipBindings) {
+			var callback = self.keyBindings[char];
+			if(callback) {
+				callback();
+			}
+		}
+	};
+	
     this.onMouseMove = function(parameter) {
     	var self = ui;
     	
@@ -188,6 +215,7 @@ function UI() {
     };
     
     this.showDialog = function(buttonSuccess, buttonCancel, title, callback) {
+		var self = ui;
     	var buttons = {};
     	buttons[buttonSuccess] = function() {
     		callback();
@@ -197,17 +225,35 @@ function UI() {
     		$(this).dialog("close");
     	};
     	
-    	$('<div></div>').dialog({
+		self.addModalLayer()
+		$('<div></div>').dialog({
     		autoOpen: true,
     		title: title,
     		modal: true,
     		buttons: buttons,
     		open: function() {
     			$(this).siblings('.ui-dialog-buttonpane').find('button:eq(1)').focus();
-    		    }
+			},
+			close: function() {
+				self.removeModalLayer();
+			}
     	});
     };
     
+	this.bindKey = function(key, callback) {
+		this.keyBindings[key] = callback;
+	};
+	
+	this.addModalLayer = function() {
+		this.modalDialogs++;
+		this.hasModalDialog = true;
+	};
+	
+	this.removeModalLayer = function() {
+		this.modalDialogs--;
+		this.hasModalDialog = this.modalDialogs.length > 0;
+	};
+	
     // ---------------------------------------------------------------------------
     // building functions
     // ---------------------------------------------------------------------------

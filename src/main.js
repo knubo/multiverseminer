@@ -13,9 +13,6 @@ $.jGrowl.defaults.animateOpen = { height: 'show'};
 $.jGrowl.defaults.life = 1000;
 $.jGrowl.defaults.pool = 1;
 
-// Setup key bindings
-$(window).delegate('*', 'keypress', onKeyPress);
-
 Number.prototype.formatNumber = function() {
 	if(ui.numberFormatter) {
 		return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -28,14 +25,16 @@ Number.prototype.formatNumber = function() {
 // function hooks
 // ---------------------------------------------------------------------------
 function onDocumentReady() {
-	$(document).bind('keypress', onKeyPress);
-
     // Initialize the crafting accordion
     $("#playerCraftingContent").accordion();
 
     //Initialize components
     game.init();
     ui.init();
+	ui.bindKey("d", onMine);
+	ui.bindKey("g", onGather);
+	ui.bindKey("s", onSave);
+	ui.bindKey("r", onReset);
 
     // Call one round of UI Updates
     ui.update();
@@ -49,29 +48,6 @@ function onDocumentReady() {
     setInterval(function() {
         onUpdate();
     }, interval);
-};
-
-function onKeyPress(event) {
-	var char = String.fromCharCode(event.which).toLowerCase();
-
-	switch(char) {
-	case 'd': {
-			onMine();
-			break;
-	}
-	case 'g': {
-		onGather();
-		break;
-	}
-	case 's': {
-		onSave();
-		break;
-	}
-	case 'r': {
-		onReset();
-		break;
-	}
-	}
 };
 
 function onUpdate() {
