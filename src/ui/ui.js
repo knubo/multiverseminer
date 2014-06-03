@@ -31,6 +31,8 @@ function UI() {
     this.numberFormatter = utils.formatters.raw;
 	
 	this.keyBindings = {};
+	this.modalDialogs = 0;
+	this.hasModalDialog = false;
 	
     // ---------------------------------------------------------------------------
     // main UI functions
@@ -97,7 +99,10 @@ function UI() {
 	this.onKeyPress = function(paremeter) {
 		var self = ui;
 		var char = String.fromCharCode(paremeter.which).toLowerCase();
-		self.keyBindings[char]();
+		
+		if(!self.hasModalDialog) {
+			self.keyBindings[char]();
+		}
 	};
 	
     this.onMouseMove = function(parameter) {
@@ -199,6 +204,7 @@ function UI() {
     };
     
     this.showDialog = function(buttonSuccess, buttonCancel, title, callback) {
+		var self = ui;
     	var buttons = {};
     	buttons[buttonSuccess] = function() {
     		callback();
@@ -208,19 +214,33 @@ function UI() {
     		$(this).dialog("close");
     	};
     	
-    	$('<div></div>').dialog({
+		self.addModalLayer()
+		$('<div></div>').dialog({
     		autoOpen: true,
     		title: title,
     		modal: true,
     		buttons: buttons,
     		open: function() {
     			$(this).siblings('.ui-dialog-buttonpane').find('button:eq(1)').focus();
-    		    }
+			},
+			close: function() {
+				self.removeModalLayer();
+			}
     	});
     };
     
 	this.bindKey = function(key, callback) {
 		this.keyBindings[key] = callback;
+	};
+	
+	this.addModalLayer = function() {
+		this.modalDialogs++;
+		this.hasModalDialog = true;
+	};
+	
+	this.removeModalLayer = function() {
+		this.modalDialogs--;
+		this.hasModalDialog = this.modalDialogs.length > 0;
 	};
 	
     // ---------------------------------------------------------------------------
