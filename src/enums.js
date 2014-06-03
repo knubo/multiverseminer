@@ -3,7 +3,6 @@ ItemCategory = {
     'rawMaterial': 'Raw materials',
     'gem': 'Gems',
     'component': 'Components',
-    'scavenged': 'Scavenged',
     'gearMainHand': 'Gear - Main Hand',
     'gearSecondHand': 'Gear - Second Hand',
     'gearHead': 'Gear - Head',
