@@ -328,6 +328,9 @@
                     </div>
                 </div>
         <div id="fight-dialog" class="hidden fightDialog">
+                <div class="playerHealth" id="playerHP"></div>
+                <div class="enemyHealth" id="enemyHP"></div>
+                <p><p>
                 <div class="genericButton clickable noselect" onclick="game.currentFight.attack()">
                     <div class="genericButton">Attack</div>
                 </div>
@@ -335,7 +338,7 @@
                 <div class"genericButton clickable noselect" onclick="game.currentFight.heal()">
                     <div class="genericButton">Heal</div>
                 
-                <br>
+                <p>
                     <div class="combatText" id="combat-log"><p>
                     </div>
             </p>
@@ -356,7 +359,6 @@
                     ga('send', 'pageview');
             </script>
         <div id="chat-modal" class="hidden">
-
                 <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
                 	<b>ROOMS</b>
                 	<div id="rooms"></div>
