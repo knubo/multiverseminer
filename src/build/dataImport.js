@@ -63,6 +63,7 @@ module.exports = function (grunt) {
 				var row = sheet[r];
 				var craftCost = [];
 				var currentCraftCostEntry = undefined;
+                var storageLimit = undefined;
 				
 				// Todo: data checks, crafting etc and proper formatting, this is just a test!
 				importData.push('\t\''+row['id']+'\': {');
@@ -101,7 +102,10 @@ module.exports = function (grunt) {
 						
 						continue;
 					}
-					
+					if(column == 'storagelimit') {
+					    storageLimit = [value];
+                        craftCost.push(storageLimit);
+					}
 					if(column == 'type') {
 						// Todo: use the enums value
 						continue;
