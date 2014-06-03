@@ -67,6 +67,7 @@ function Combatant(opts) {
 	this.reset = function(){
 		//placeholder
 		this.health = 10;
+		this.maxHealth = this.health;
 		this.stats = this.opts.player.gear.getStats() || {};
 		this.stats.damage = 1;
 		this.alive = true;
