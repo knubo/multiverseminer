@@ -336,16 +336,10 @@
             <div style="height:10px; border: 1px solid black; background-color: grey;">
                 <div id="enemyHP" style="height:10px; background-color: red; width: 100%;"></div>
             </div>
-                <div class="enemyHealth" id="enemyHP"></div>
                 <p><p>
-                <div class="genericButton clickable noselect" onclick="game.currentFight.attack()">
-                    <div class="genericButton">Attack</div>
-                </div>
-                
-                <div class"genericButton clickable noselect" onclick="game.currentFight.heal()">
-                    <div class="genericButton">Heal</div><br>
-                
-                <p>
+                <div class="attackButton" onclick="game.currentFight.attack()">Attack</div>
+                <div class="attackButton" onclick="game.currentFight.heal()">Heal</div>
+                <br><p>
                     <div class="combatText" id="combat-log"><p></div>
     </div>
             <script type="text/javascript">
