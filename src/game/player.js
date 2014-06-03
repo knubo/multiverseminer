@@ -91,8 +91,33 @@ function Player() {
 		var items = this.miner.scavenge(game.currentPlanet);
 		if (items) {
 			this.storage.addItems(items);
+            console.log(items);
 		}
 	};
+    
+    this.decomposeScavenged = function() {
+        // Decomposing scavenged items
+        tmpItems = this.storage.getItems();
+        scavengedItems = [];
+        
+        for (var i = 0; i < tmpItems.length; i++) {
+            if (game.getItem(tmpItems[i]).category == 'scavenge') {
+                scavengedItems.push(game.getItem(tmpItems[i]));
+            }
+        }
+        
+        if(!scavengedItems) {
+            return;
+        }
+        
+        for (var i = 0; i < scavengedItems.length; i++) {
+            for (var key in scavengedItems[i].craftCost) {
+                this.storage.addItem(key);
+                this.storage.removeItem(scavengedItems[i].id);
+            }
+        }
+        delete scavengedItems;
+    };
 
 	this.craft = function(itemId, count) {
 		// For now we craft with our inventory into our inventory
