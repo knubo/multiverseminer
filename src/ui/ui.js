@@ -29,14 +29,19 @@ function UI() {
     this.cursorPositionY = 0;
     
     this.numberFormatter = utils.formatters.raw;
-        
+	
+	this.keyBindings = {};
+	
     // ---------------------------------------------------------------------------
     // main UI functions
     // ---------------------------------------------------------------------------
     this.init = function() {
-    	$(document).on('mousemove', this.onMouseMove);
+		// Setup key bindings
+		$(window).delegate('*', 'keypress', this.onKeyPress);
+		$(document).bind('keypress', this.onKeyPress);   
+		$(document).on('mousemove', this.onMouseMove);
     	$(document).on('mouseup', this.onMouseUp);
-    	
+		
     	this.screenPlanet = new UIPlanetScreen();
     	this.screenPlanet.init();
     	
@@ -88,7 +93,13 @@ function UI() {
         	this.pendingDragElement = undefined;
         }
     };
-        
+	
+	this.onKeyPress = function(paremeter) {
+		var self = ui;
+		var char = String.fromCharCode(paremeter.which).toLowerCase();
+		self.keyBindings[char]();
+	};
+	
     this.onMouseMove = function(parameter) {
     	var self = ui;
     	
@@ -208,6 +219,10 @@ function UI() {
     	});
     };
     
+	this.bindKey = function(key, callback) {
+		this.keyBindings[key] = callback;
+	};
+	
     // ---------------------------------------------------------------------------
     // building functions
     // ---------------------------------------------------------------------------
