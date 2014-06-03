@@ -102,10 +102,6 @@ module.exports = function (grunt) {
 						
 						continue;
 					}
-					if(column == 'storagelimit') {
-					    storageLimit = [value];
-                        craftCost.push(storageLimit);
-					}
 					if(column == 'type') {
 						// Todo: use the enums value
 						continue;
