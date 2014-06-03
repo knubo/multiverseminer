@@ -328,7 +328,12 @@
                     </div>
                 </div>
         <div id="fight-dialog" class="hidden fightDialog">
-                <div class="playerHealth" id="playerHP"></div>
+                <div style="border: 1px solid black; background-color: grey;">
+                    <div id="playerHP" style="background-color: red; width: 100%;"></div>
+                </div>
+                <div style="border: 1px solid black; background-color: grey;">
+                    <div id="enemyHP" style="background-color: red; width: 100%;"></div>
+                </div>
                 <div class="enemyHealth" id="enemyHP"></div>
                 <p><p>
                 <div class="genericButton clickable noselect" onclick="game.currentFight.attack()">
