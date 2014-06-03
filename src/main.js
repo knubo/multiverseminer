@@ -203,24 +203,25 @@ function showChat() {
 }
 function showFight() {
     $("#fight-dialog").dialog({
-        minWidth: 1200,
+        title: "Fight",
+        minWidth: 350,
         minHeight: "auto"
     });
     game.currentFight = new Fight();
 }
-function onCombat() {
-	game.testCombat(); //TODO: change this to know if its duel or ship duel
-    $("#fight-dialog").dialog({
-        title: "Fight",
-        height: 200,
-        width: 350,
-        buttons: {
-            "Hit": function() {},
-            "Auto-Attack": function() {},
-            "Heal": function() {}
-        }
-    });
-};
+//function onCombat() {
+//	game.testCombat(); //TODO: change this to know if its duel or ship duel
+//    $("#fight-dialog").dialog({
+//        title: "Fight",
+//        height: 200,
+//        width: 300,
+//        buttons: {
+//            "Hit": function() {},
+//            "Auto-Attack": function() {},
+//            "Heal": function() {}
+//        }
+//    });
+//};
 
 function changeLeftCategoryButton(selected) {
 	for(var i = 0; i < 4; i++)

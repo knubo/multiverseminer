@@ -87,6 +87,11 @@ margin-right:4px;
 }
 
 .combatText{
-    height:auto;
+    height:200;
+    max-height:200px;
+    width:300px;
+    overflow:scroll;
+}
+.fightDialog{
     width:300px;
 }

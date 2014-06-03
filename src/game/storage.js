@@ -24,7 +24,7 @@ function Storage(id) {
 		}
 
 		// See if this item has limited storage capacity
-		var limit = game.getItem(id).storageLimit;
+		var limit = game.getItem(id).storagelimit;
 		if (!limit) {
 			return true;
 		}
