@@ -23,7 +23,6 @@ GearType = {
     'secondHand': 'Second Hand',
     'legs': 'Legs',
     'feet': 'Feet',
-
     // planet gear
     'building': 'Building',
 };
