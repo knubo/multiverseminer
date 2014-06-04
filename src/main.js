@@ -180,10 +180,7 @@ function showSolar() {
 }
 function showChat() {
     $("#chat-modal").dialog({
-        minWidth: 450,
-        minHeight: 250,
         height: "auto",
-        maxHeight: 250,
         width: "auto"
     });
 }
