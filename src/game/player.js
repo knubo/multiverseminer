@@ -102,11 +102,9 @@ function Player() {
         for (var i = 0; i < tmpItems.length; i++) {
             scavengedItems.push([game.getItem(tmpItems[i]), this.storage.items[tmpItems[i]]]);
         }
-        
         if(!scavengedItems) {
             return;
         }
-        
         for (var i = 0; i < scavengedItems.length; i++) {
             for(var n = 0; n < scavengedItems[i][1]; n++) {
                 for (var key in scavengedItems[i][0].craftCost) {
