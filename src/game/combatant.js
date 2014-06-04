@@ -4,6 +4,12 @@ function Combatant(opts) {
 	this.id = opts.id;
 	this.npc = opts.npc;
 
+	this.inCombat = false;
+
+	this.health = 10;
+	this.maxHealth = this.health;
+	this.alive = true;
+
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
@@ -66,11 +72,8 @@ function Combatant(opts) {
 	// ---------------------------------------------------------------------------
 	this.reset = function(){
 		//placeholder
-		this.health = 10;
-		this.maxHealth = this.health;
 		this.stats = this.opts.player.gear.getStats() || {};
 		this.stats.damage = this.stats.strength || 1;
-		this.alive = true;
 		this.autoAttack = false;
 		if(this.npc){this.autoAttack=true;}
 	};
