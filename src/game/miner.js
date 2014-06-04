@@ -1,6 +1,5 @@
 function Miner(id) {
 	this.id = id;
-
 	this.baseMineSpeed = 1;
 	
 	// ---------------------------------------------------------------------------
@@ -35,9 +34,10 @@ function Miner(id) {
 		if (!table || table.length <= 0) {
 			return;
 		}
-		
-		// Todo: apply modifiers and tools etc		
+		// Todo: apply modifiers and tools etc	
 		items = game.loot(table, this.baseMineSpeed);
+        console.log("ITEMS:");
+        console.log(items);
 		return items;
 	};
 
@@ -50,13 +50,11 @@ function Miner(id) {
 	// ---------------------------------------------------------------------------
 	this.save = function() {
 		var storageKey = this._getStorageKey();
-
 		localStorage[storageKey + 'baseMineSpeed'] = this.baseMineSpeed;
 	};
 
 	this.load = function() {
 		var storageKey = this._getStorageKey();
-
 		this.baseMineSpeed = utils.loadFloat(storageKey + 'baseMineSpeed', 1);
 	};
 

@@ -1,4 +1,4 @@
-require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils"]);
+require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils" ]);
 
 function Game() {
 	this.player = new Player();
@@ -66,6 +66,8 @@ function Game() {
 		this.player.storage.addItem(Items.woodenPick.id);
         this.player.storage.addItem(Items.copperSword.id);
 		this.player.equipBestGear();
+        this.player.storage.removeItem(Items.woodenPick.id);
+        this.player.storage.removeItem(Items.copperSword.id);
 		
 		// make earth our current planet
 		this.settings.currentPlanet = Planets.earth.id;
@@ -130,9 +132,7 @@ function Game() {
 	// game functions
 	// ---------------------------------------------------------------------------	
 	this.setStartupState = function() {
-
 		this.loadAllPlanets();
-
 		// Bring us back to our last position
 		if (this.settings.travelActive) {
 			// Todo: resume travelling
@@ -153,15 +153,12 @@ function Game() {
 		if (!count) {
 			count = 1;
 		}
-
 		var targetItem = game.itemDictionary[what];
-
 		// Check if we have enough storage to store the result
 		if (!storageTarget.canAdd(what, count)) {
 			ui.notifyError("Can not craft, storage limit exceeded!");
 			return false;
 		}
-
 		var cost = this.getCraftingCost(what, count);
 		if (!cost) {
 			return false;
@@ -202,7 +199,6 @@ function Game() {
 				continue;
 			}
 		}
-		
 		return results;
 	};
 	
@@ -584,7 +580,7 @@ function Game() {
 	};
 	
 	this._pickLootTableEntries = function(table, results) {
-		switch(table.mode) {
+        switch(table.mode) {
 			case LootMode.single: {
 				this._pickSingleLootTableEntry(table, results);
 				break;

@@ -266,14 +266,12 @@ function Planet(data) {
 		this.miner.load();
 		this.storage.load();
 		this.gear.load();
-		
 		this._updateStats();
 	};
 
 	this.reset = function() {
 		this.miner.reset();
 		this.storage.reset();
-
 		this.currentDepth = 0;
 	};
 }

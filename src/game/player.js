@@ -159,11 +159,9 @@ function Player() {
 			if(!item || !item.gearType) {
 				continue;
 			}
-		
 			if(item.gearType == 'miningGear' && item.name.match("Pickaxe") != null)
 			{
 				var diff = item.Power - this.pickPower;
-				
 				this.pickPower = item.power;
 				this.miner.baseMineSpeed = item.power;
 			}
@@ -207,7 +205,6 @@ function Player() {
 		this.combatant.save();
 		this.storage.save();
 		this.gear.save();
-
 		localStorage.playerOxygenConsumption = this.oxygenConsumption;
 	};
 
@@ -216,7 +213,6 @@ function Player() {
 		this.combatant.load();
 		this.storage.load();
 		this.gear.load();
-
 		this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
 	};
 
@@ -225,8 +221,8 @@ function Player() {
 		this.combatant.reset(fullReset);
 		this.storage.reset(fullReset);
 		this.gear.reset(fullReset);
-		
 		this.oxygenConsumption = 1;
 		this.pickPower = 1;
+        this.baseMineSpeed = 1;
 	};
 }
