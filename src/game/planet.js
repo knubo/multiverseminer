@@ -23,6 +23,9 @@ function Planet(data) {
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
+        if($("#playerInventoryFilter").text() == "Scavenge") {
+            $("#decompButton").show();
+        }
 		this.gear.initialize();
 		
 		// Add the slots we can wear
