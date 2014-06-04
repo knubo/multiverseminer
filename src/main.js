@@ -187,8 +187,7 @@ function showFight() {
         minHeight: "auto"
     }).bind('dialogclose', function(event) {
     	$("#fightText").val("");
-    	game.currentFight.close();
-    	game.currentFight = {};
+    	game.currentFight.disableFight();
 	});
      game.currentFight = new Fight();
 }
