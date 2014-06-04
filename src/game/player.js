@@ -98,6 +98,7 @@ function Player() {
     this.decomposeScavenged = function() {
         // Decomposing scavenged items
         tmpItems = this.storage.getItems();
+        console.log(tmpItems);
         scavengedItems = [];
         
         for (var i = 0; i < tmpItems.length; i++) {
