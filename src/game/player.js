@@ -126,15 +126,14 @@ function Player() {
 		}
 		gainedString.substring(0, gainedString.length-2);
 		
-		var removedString = "Lost ";
+		var removedString = "Lost: ";
 		for(var key in removed) {
 			removedString += game.getItem(key).name + ": " + removed[key] + ", ";
 		}
 		removedString.substring(0, removedString.length-2);
-        $("#scavmodal").dialog({
-                height: "auto",
-                width: "auto"
-        }).empty().append(gainedString + "<p>" + removedString);
+        gainedString = gainedString.substring(0, gainedString.length-2);
+        $('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} });
+        $("#scavmodal").append(gainedString + "<p>" + removedString);
         delete scavengedItems;
     };
 
