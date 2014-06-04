@@ -1,4 +1,4 @@
-require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums", "vex" ]);
+require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums", "vex"]);
 
 // Create components
 var game = new Game();
@@ -139,19 +139,21 @@ function onSave() {
 
 function reset() {
     vex.dialog.confirm({
-      message: 'Are you absolutely sure you want to reset?',
+      message: 'Are you absolutely sure you want to destroy the alien planet?',
       callback: function(value) {
         return console.log(value);
       }
-    })
+    });
 };
 
 function onReset() {
+	ui.showDialog('Yes', 'No', 'Confirm reset', function() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
+	});
 };
 
 function onTravelToPlanet(target) {
@@ -181,7 +183,8 @@ function showSolar() {
 function showChat() {
     $("#chat-modal").dialog({
         height: "auto",
-        width: "auto"
+        maxHeight: 600,
+        width: 300
     });
 }
 function showFight() {

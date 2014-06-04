@@ -1,4 +1,4 @@
-require([ "uiplanetscreen", "uitravelscreen", "uifloating", "jquery", "jqueryui", "jgrowl", "powertip", "ui" ]);
+require([ "uiplanetscreen", "uitravelscreen", "uifloating", "jquery", "jqueryui", "jgrowl", "powertip", "vex" ]);
 
 // ---------------------------------------------------------------------------
 // Some const values used in ui code
