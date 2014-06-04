@@ -152,6 +152,9 @@ function onTravelToPlanet(target) {
 		return;
 	}
     $("#solarsystem").dialog("close");
+    $(window).one("scroll",function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
