@@ -52,7 +52,6 @@ function onDocumentReady() {
 
 function onUpdate() {
     var currentTime = Date.now();
-
 	game.update(currentTime);
 	ui.update(currentTime);
 };
@@ -132,7 +131,6 @@ function onMovePlanetItemsToPlayer() {
 
 function onSave() {
 	game.save();
-
 	ui.notify("Game saved");
 };
 
@@ -141,7 +139,6 @@ function onReset() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
-
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
 	});
@@ -151,9 +148,7 @@ function onTravelToPlanet(target) {
 	if(!game.canTravelTo(target)) {
 		return;
 	}
-
     $("#solarsystem").dialog("close");
-
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
@@ -161,7 +156,6 @@ function onTravelToPlanet(target) {
 
 function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
-
 	ui.updateComponent(ui.componentPlayerInventory);
 }
 
@@ -188,20 +182,6 @@ function showFight() {
     });
     game.currentFight = new Fight();
 }
-//function onCombat() {
-//	game.testCombat(); //TODO: change this to know if its duel or ship duel
-//    $("#fight-dialog").dialog({
-//        title: "Fight",
-//        height: 200,
-//        width: 300,
-//        buttons: {
-//            "Hit": function() {},
-//            "Auto-Attack": function() {},
-//            "Heal": function() {}
-//        }
-//    });
-//};
-
 function changeLeftCategoryButton(selected) {
 	for(var i = 0; i < 4; i++)
 	{
