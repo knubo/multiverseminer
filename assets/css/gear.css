@@ -32,13 +32,13 @@ top:80px;
 .gearSlot.legs {
 position:absolute;
 left:75px;
-top:170px;
+top:150px;
 }
 
 .gearSlot.feet {
 position:absolute;
 left:75px;
-top:225px;
+top:220px;
 }
 
 .gearSlot.miningGear {

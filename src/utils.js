@@ -203,7 +203,6 @@ function Utils() {
 		if (localStorage[property] == undefined) {
 			return defaultValue;
 		}
-	
 		return parseFloat(loadedValue);
 	};
 		
