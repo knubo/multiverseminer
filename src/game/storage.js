@@ -270,27 +270,21 @@ function Storage(id) {
 
 	this.load = function() {
 		var storageKey = this._getStorageKey();
-
 		var keys = game.getItems();
 		for ( var i = 0; i < keys.length; i++) {
 			var key = keys[i];
 			if (!localStorage[storageKey + key]) {
 				continue;
 			}
-
 			this.addItem(key, utils.loadInt(storageKey + key, 0));
 		}
-		
 		this.storageChanged = true;
 	};
-
 	this.reset = function(fullReset) {
-		this.items = {};
-		
+		this.items = {};	
 		this.itemCategoryDictionary = {};
 	    this.gearTypeDictionary = {};
 	    this.itemMetadata = {};
-	    
 	    this.storageChanged = true;
 	};
 };

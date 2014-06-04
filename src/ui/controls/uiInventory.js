@@ -35,6 +35,7 @@ function UIInventory(id, parent) {
     	this.baseInit();
     	
         var slotId = 0;
+        
         for(var x = 0; x < this.slotCount; x++) {
             var slot = new UISlot(this.id + '_' + x, this.mainDiv);
             slot.itemContext = this.itemContext;
@@ -54,13 +55,17 @@ function UIInventory(id, parent) {
         var items = undefined;
         if(this.storage) {
         	if(this.category) {
+                if(this.category == "scavenge") {
+                    $("#decompButton").show()
+                }
+                else {
+                    $("#decompButton").hide()
+                }
         		items = this.storage.getItemsOfCategory(this.category);
-                console.log(this.category);
         	} else {
         		items = this.storage.getItems();
         	}
         }
-        
         // Update the paging info
         if(items) {
             this.maxPage = items.length / this.slotElements.length;
