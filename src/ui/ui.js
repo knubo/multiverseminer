@@ -297,8 +297,4 @@ function UI() {
         // For now only text
         return item.name;
     };
-    this.resetHP = function() {
-    	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
-    	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
-    };
 };
