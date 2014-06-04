@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "gamegear" ]);
+require(["gameminer", "gamecombatant", "gamestorage", "gamegear", "ui" ]);
 
 function Player() {
 	this.id = 'player';
@@ -95,7 +95,7 @@ function Player() {
 		}
 	};
     
-    this.decomposeScavenged = function() {
+	this.decomposeScavenged = function() {
         // Decomposing scavenged items
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
         var scavengedItems = [];
@@ -119,8 +119,22 @@ function Player() {
             removed[item.id] = removed[item.id] ? removed[item.id] + count : count;
             this.storage.removeItem(item.id, count);
         }
-        console.log(gained);
-        console.log(removed);
+		
+		var gainedString = "Gained: ";
+		for(var key in gained) {
+			gainedString += game.getItem(key).name + ": " + gained[key] + ", ";
+		}
+		gainedString.substring(0, gainedString.length-2);
+		
+		var removedString = "Lost ";
+		for(var key in removed) {
+			removedString += game.getItem(key).name + ": " + removed[key] + ", ";
+		}
+		removedString.substring(0, removedString.length-2);
+        $("#scavmodal").dialog({
+                height: "auto",
+                width: "auto"
+        }).empty().append(gainedString + "<p>" + removedString);
         delete scavengedItems;
     };
 
