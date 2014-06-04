@@ -29,14 +29,16 @@ opacity:0.4;
 }
 
 .logo {
-max-width:642px;
+max-width:600px;
 max-height:89px;
 width:65%;
 height:auto;
 }
+
 .decompbutton {
     height:auto;
 }
+
 .screen {
 width:100%;
 height:calc(100% - 50px);
