@@ -31,13 +31,12 @@ function Miner(id) {
 	// ---------------------------------------------------------------------------
 	this._dropResources = function(tableId) {
 		var table = game.getLootTable(tableId);
+        console.log(table);
 		if (!table || table.length <= 0) {
 			return;
 		}
 		// Todo: apply modifiers and tools etc	
 		items = game.loot(table, this.baseMineSpeed);
-        console.log("ITEMS:");
-        console.log(items);
 		return items;
 	};
 
