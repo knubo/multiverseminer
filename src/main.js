@@ -182,8 +182,10 @@ function showFight() {
         title: "Fight",
         minWidth: 350,
         minHeight: "auto"
-    });
-    game.currentFight = new Fight();
+    }).bind('dialogclose', function(event) {
+    $("#fightText").val("");
+ });
+     game.currentFight = new Fight();
 }
 function changeLeftCategoryButton(selected) {
 	for(var i = 0; i < 4; i++)
