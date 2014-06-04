@@ -33,7 +33,6 @@ function UIInventory(id, parent) {
     // ---------------------------------------------------------------------------
     this.init = function() {
     	this.baseInit();
-    	
         var slotId = 0;
         
         for(var x = 0; x < this.slotCount; x++) {
