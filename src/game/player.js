@@ -132,7 +132,7 @@ function Player() {
 		}
 		removedString.substring(0, removedString.length-2);
         gainedString = gainedString.substring(0, gainedString.length-2);
-        $('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} });
+        $('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} }).empty();
         $("#scavmodal").append(gainedString + "<p>" + removedString);
         delete scavengedItems;
     };
