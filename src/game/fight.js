@@ -5,17 +5,11 @@ function Fight(teamList) {
 		turn: Math.round(Math.random()), //random starter. Opposite of this number starts
 		active:true
 	};
-	this.counter = -1; //counter for teams
 
 	$('#combat-log').html(' '); //clear log
     
+	this.winner = -1;
 
-	// if(teamList.length < 2){return "Need at least two teams to start a fight";}
-	// for(var i=0;i<teamList.length;i++){
-	// 	this.teams.push(
-	// 		new Team(teamList[i])
-	// 	);
-	// }
 	var npc = new NPC();
 	this.teams = [
 		new Team([game.player]),
@@ -43,16 +37,24 @@ function Fight(teamList) {
     // ---------------------------------------------------------------------------
     this.attack = function(){
 		//placeholder. "Attack" button triggers this.
-
-		//very bad, will change
-		this.action("attack",this.teams[0].members[0],this.teams[1].members[0]);
+		if(this.status.active){
+			//very bad, will change
+			this.action("attack",this.teams[0].members[0],this.teams[1].members[0]);
+		}
     };
     this.heal = function(){
-        this.action("heal", this.teams[0].members[0],this.teams[0].members[0]);
+    	if(this.status.active){
+        	this.action("heal", this.teams[0].members[0],this.teams[0].members[0]);
+        }
     };
 	this.nextTurn = function() {
 		this.checkStatus();
-		if(!this.status.active){return this;}
+		if(!this.status.active){
+			//no combat
+			this.teams[0].members[0].inCombat = false;
+			this.teams[1].members[0].inCombat = false;
+			return this;
+		}
 		this.status.turn = 1-this.status.turn; //switch turn to other player
 		this.teams[this.status.turn].requestMove(this,this.teams[1-this.status.turn]);
 	};
@@ -92,6 +94,7 @@ function Fight(teamList) {
 					console.log(log);
 					$('#combat-log').prepend(log+"<br>");
 					this.status.active = false; //disable fight when somebody dies
+					this.winner = this.teams[1-team].members[0];
 				}
 			}
 		}
@@ -112,6 +115,7 @@ function Fight(teamList) {
 		this.members = [];
 		for(var i=0;i<memberList.length;i++){
 			memberList[i].combatant.reset();
+			memberList[i].combatant.inCombat = true;
 			this.members.push(
 				memberList[i].combatant
 			);
