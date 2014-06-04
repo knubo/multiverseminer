@@ -137,16 +137,16 @@ function onSave() {
 	ui.notify("Game saved");
 };
 
-function onReset() {
+function reset() {
     vex.dialog.confirm({
       message: 'Are you absolutely sure you want to reset?',
       callback: function(value) {
-        return reset(value);
+        return console.log(value);
       }
     })
 };
 
-function reset() {
+function onReset() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
