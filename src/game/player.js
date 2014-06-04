@@ -97,14 +97,10 @@ function Player() {
     
     this.decomposeScavenged = function() {
         // Decomposing scavenged items
-        tmpItems = this.storage.getItems();
-        console.log(tmpItems);
+        tmpItems = this.storage.getItemsOfCategory("scavenge");
         scavengedItems = [];
-        
         for (var i = 0; i < tmpItems.length; i++) {
-            if (game.getItem(tmpItems[i]).category == 'scavenge') {
-                scavengedItems.push(game.getItem(tmpItems[i]));
-            }
+            scavengedItems.push([game.getItem(tmpItems[i]), this.storage.items[tmpItems[i]]]);
         }
         
         if(!scavengedItems) {
@@ -112,9 +108,11 @@ function Player() {
         }
         
         for (var i = 0; i < scavengedItems.length; i++) {
-            for (var key in scavengedItems[i].craftCost) {
-                this.storage.addItem(key);
-                this.storage.removeItem(scavengedItems[i].id);
+            for(var n = 0; n < scavengedItems[i][1]; n++) {
+                for (var key in scavengedItems[i][0].craftCost) {
+                    this.storage.addItem(key);
+                }
+                this.storage.removeItem(scavengedItems[i][0].id);
             }
         }
         delete scavengedItems;

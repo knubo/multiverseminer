@@ -53,6 +53,7 @@ function Game() {
 		}
 		
 		this.setStartupState();
+        
 		if(this.settings.showTutorial){
 			var tutorial = $("#tutorial-dialog");
 			tutorial.dialog({ autoOpen: false });
