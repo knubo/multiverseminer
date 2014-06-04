@@ -36,7 +36,7 @@ function Fight(teamList) {
 		this.teams[0].members[0].inCombat = false;
 		this.teams[1].members[0].inCombat = false;
 		this.status.active = false;
-	}
+	};
 
     // ---------------------------------------------------------------------------
     // fight functions
