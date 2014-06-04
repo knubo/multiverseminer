@@ -97,22 +97,30 @@ function Player() {
     
     this.decomposeScavenged = function() {
         // Decomposing scavenged items
-        tmpItems = this.storage.getItemsOfCategory("scavenge");
-        scavengedItems = [];
+        var tmpItems = this.storage.getItemsOfCategory("scavenge");
+        var scavengedItems = [];
+        var gained = {};
+        var removed = {};
+        
         for (var i = 0; i < tmpItems.length; i++) {
             scavengedItems.push([game.getItem(tmpItems[i]), this.storage.items[tmpItems[i]]]);
         }
         if(!scavengedItems) {
             return;
         }
+ 
         for (var i = 0; i < scavengedItems.length; i++) {
-            for(var n = 0; n < scavengedItems[i][1]; n++) {
-                for (var key in scavengedItems[i][0].craftCost) {
-                    this.storage.addItem(key);
-                }
-                this.storage.removeItem(scavengedItems[i][0].id);
+            var item = scavengedItems[i][0];
+            var count = scavengedItems[i][1]; //how many of each item being decomposed
+            for (var key in item.craftCost) {
+                this.storage.addItem(key, item.craftCost[key]);
+                gained[key] = gained[key] ? gained[key] + item.craftCost[key] * count : item.craftCost[key] * count;
             }
+            removed[item.id] = removed[item.id] ? removed[item.id] + count : count;
+            this.storage.removeItem(item.id, count);
         }
+        console.log(gained);
+        console.log(removed);
         delete scavengedItems;
     };
 
