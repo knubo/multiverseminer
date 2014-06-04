@@ -1,120 +1,108 @@
 .panelPlanetDisplay {
-font-size:14px;
-font-family:overpassregular, Arial, sans-serif;
-font-weight:400;
-font-style:normal;
-letter-spacing:1px;
-text-align:center;
-/* position:fixed; */
-left:24%;
-height:90%;
+    font-family: overpassregular,Arial,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    height: 90%;
+    left: 24%;
+    letter-spacing: 1px;
+    overflow: hidden;
+    text-align: center;
 }
-
 .panelPlanetLeft {
-font-size:20px;
-font-family:overpassregular, Arial, sans-serif;
-font-weight:400;
-font-style:normal;
-text-align:center;
-letter-spacing:1px;
-background-color:rgba(37,37,37,.75);
-float:left;
-min-width:300px;
-width:20%;
-height:calc(100% - 10px);
-border:5px solid #000;
-outline:solid 1px #8a8a8a;
+    background-color: rgba(37, 37, 37, 0.75);
+    border: 5px solid #000000;
+    float: left;
+    font-family: overpassregular,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    height: calc(100% - 10px);
+    letter-spacing: 1px;
+    min-width: 300px;
+    outline: 1px solid #8A8A8A;
+    text-align: center;
+    width: 20%;
 }
-
 .panelPlanetRight {
-font-size:20px;
-font-family:overpassregular, Arial, sans-serif;
-font-weight:400;
-font-style:normal;
-text-align:center;
-letter-spacing:1px;
-background-color:rgba(37,37,37,.75);
-float:right;
-min-width:300px;
-width:20%;
-height:calc(100% - 10px);
-border:5px solid #000;
-outline:solid 1px #8a8a8a;
+    background-color: rgba(37, 37, 37, 0.75);
+    border: 5px solid #000000;
+    float: right;
+    font-family: overpassregular,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    height: calc(100% - 10px);
+    letter-spacing: 1px;
+    min-width: 300px;
+    outline: 1px solid #8A8A8A;
+    text-align: center;
+    width: 20%;
 }
-
 .planetDisplay {
-position:absolute;
-top:40%;
-height:50%;
-width:100%;
+    height: 50%;
+    position: inherit;
+    top: 40%;
+    width: 100%;
 }
-
 .planetDisplayBackground {
-position:absolute;
-height:100%;
-width:100%;
-margin:0 auto;
+    height: 100%;
+    margin: 0 auto;
+    position: inherit;
+    width: 100%;
 }
-
 .planetImage {
-max-width:100%;
-max-height:100%;
+    max-height: 100%;
+    max-width: 100%;
+    padding-top:100px;
 }
-
 .planetDisplayNameTitle {
-font-size:20px;
-font-family:overpassregular, Arial, sans-serif;
-font-weight:400;
-font-style:normal;
-text-align:center;
-letter-spacing:1px;
-color:#ccc;
+    color: #CCCCCC;
+    font-family: overpassregular,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
 }
-
 .planetDisplayNameText {
-font-size:25px;
-font-family:overpassregular, Arial, sans-serif;
-font-weight:700;
-font-style:normal;
-text-align:center;
-letter-spacing:1px;
-margin-top:15px;
+    font-family: overpassregular,Arial,sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    text-align: center;
 }
-
 .planetDisplayNameFrame {
-position:absolute;
-top:60%;
-width:100%;
-height:91px;
+    height: 91px;
+    position: inherit;
+    top: 60%;
+    width: 100%;
 }
-
 .planetDisplayName {
-display:inline-block;
-height:100%;
-width:295px;
-margin:0 auto;
+    display: inline-block;
+    height: 100%;
+    margin: 0 auto;
+    width: 295px;
 }
-
 .buildingsPanel {
-height:100%;
-margin:10px 10px 1px;
+    height: 100%;
+    margin: 10px 10px 1px;
 }
-
 .buildingsContent {
-height:150px;
-width:100%;
+    height: 150px;
+    width: 100%;
 }
-
 .gearPanel {
-margin:1px 10px;
+    margin: 1px 10px;
 }
-
 .playerGearPaperdoll {
-position:relative;
-top:30px;
-left:8px;
-width:200px;
-height:285px;
+    height: 285px;
+    left: 8px;
+    position: relative;
+    top: 30px;
+    width: 200px;
 }
 
 .craftingItemPanel {
