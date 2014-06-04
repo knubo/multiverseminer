@@ -50,6 +50,7 @@
                         <div id="playerInventoryContent">
                             <div id="playerInventoryFilter" class="inventoryFilter"></div>
                             <div id="playerInventorySlots" class="inventoryContentPlayer panelContent"></div>
+                            <div id="decompButton" style="display:none;" class="decompbutton"><button id="decomp" title="Click to decompose" onclick="game.player.decomposeScavenged()">Decompose All</div>
                         </div>
                     </div>
                     <div id="empirePanel" class="empirePanel">
@@ -137,11 +138,7 @@
                             <div class="planetDisplayNameText" id="planetDisplayNameText"></div>
                         </div>
                     </div>
-                </div><script type="text/javascript">
-                    $('#mineButton').powerTip({
-                placement: 's'
-                });
-                </script>
+                </div>
                 <div id="floatingArea" class="floatingArea"></div>
             </div>
         </div>
@@ -161,7 +158,6 @@
       <div id="solarsystem" class="hidden">
         <!-- Universe - Milkey Way - Sol -->
         <div class="sun"></div>
-
         <div>
           <div class="mercury planet info">
             <span>
@@ -328,6 +324,7 @@
                     </div>
                 </div>
         <div id="fight-dialog" class="hidden fightDialog">
+            <div id="fightText">
             Player:
             <div style="height:10px; border: 1px solid black; background-color: grey;">
                 <div id="playerHP" style="height:10px; background-color: red; width: 100%;"></div>
@@ -341,6 +338,7 @@
                 <div class="attackButton" onclick="game.currentFight.heal()">Heal</div>
                 <br><p>
                     <div class="combatText" id="combat-log"><p></div>
+            </div>
     </div>
             <script type="text/javascript">
                 (function (i, s, o, g, r, a, m) {
@@ -359,8 +357,7 @@
             </script>
         <div id="chat-modal" class="hidden">
             <div class="chatInputs">
-                <input id="data" style="width:200px;" />
-                <input type="button" id="datasend" value="send" />
+                <input id="data" style="width:200px;" /><input type="button" id="datasend" value="send" />
             </div>
                 <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
                 	<b>ROOMS</b>
@@ -371,6 +368,7 @@
                 </div>
             </div>
         </div>
+        <div id="scavmodal" class="hidden" style="margin-left:auto;margin-right:auto;"><div>
         <script>
         	function randomInt (low, high) {
          	    return Math.floor(Math.random() * (high - low + 1) + low);

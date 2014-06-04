@@ -38,7 +38,10 @@ function onDocumentReady() {
 
     // Call one round of UI Updates
     ui.update();
-
+    if($("#playerInventoryFilter").text() == "Scavenge") {
+        $("#decompButton").show();
+    }
+    
     // Activate the default panels
     onActivatePlayerInventory();
     onActivatePlayerGear();
@@ -52,7 +55,6 @@ function onDocumentReady() {
 
 function onUpdate() {
     var currentTime = Date.now();
-
 	game.update(currentTime);
 	ui.update(currentTime);
 };
@@ -132,7 +134,6 @@ function onMovePlanetItemsToPlayer() {
 
 function onSave() {
 	game.save();
-
 	ui.notify("Game saved");
 };
 
@@ -141,7 +142,6 @@ function onReset() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
-
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
 	});
@@ -151,9 +151,10 @@ function onTravelToPlanet(target) {
 	if(!game.canTravelTo(target)) {
 		return;
 	}
-
     $("#solarsystem").dialog("close");
-
+    $(window).one("scroll",function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    })
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
@@ -161,7 +162,6 @@ function onTravelToPlanet(target) {
 
 function onSetInventoryFilter(filter) {
 	ui.inventoryPlayerCategoryFilter = filter;
-
 	ui.updateComponent(ui.componentPlayerInventory);
 }
 
@@ -185,23 +185,11 @@ function showFight() {
         title: "Fight",
         minWidth: 350,
         minHeight: "auto"
-    });
-    game.currentFight = new Fight();
+    }).bind('dialogclose', function(event) {
+    $("#fightText").val("");
+ });
+     game.currentFight = new Fight();
 }
-//function onCombat() {
-//	game.testCombat(); //TODO: change this to know if its duel or ship duel
-//    $("#fight-dialog").dialog({
-//        title: "Fight",
-//        height: 200,
-//        width: 300,
-//        buttons: {
-//            "Hit": function() {},
-//            "Auto-Attack": function() {},
-//            "Heal": function() {}
-//        }
-//    });
-//};
-
 function changeLeftCategoryButton(selected) {
 	for(var i = 0; i < 4; i++)
 	{

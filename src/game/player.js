@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "gamegear" ]);
+require(["gameminer", "gamecombatant", "gamestorage", "gamegear", "ui" ]);
 
 function Player() {
 	this.id = 'player';
@@ -95,27 +95,45 @@ function Player() {
 		}
 	};
     
-    this.decomposeScavenged = function() {
+	this.decomposeScavenged = function() {
         // Decomposing scavenged items
-        tmpItems = this.storage.getItems();
-        scavengedItems = [];
+        var tmpItems = this.storage.getItemsOfCategory("scavenge");
+        var scavengedItems = [];
+        var gained = {};
+        var removed = {};
         
         for (var i = 0; i < tmpItems.length; i++) {
-            if (game.getItem(tmpItems[i]).category == 'scavenge') {
-                scavengedItems.push(game.getItem(tmpItems[i]));
-            }
+            scavengedItems.push([game.getItem(tmpItems[i]), this.storage.items[tmpItems[i]]]);
         }
-        
         if(!scavengedItems) {
             return;
         }
-        
+ 
         for (var i = 0; i < scavengedItems.length; i++) {
-            for (var key in scavengedItems[i].craftCost) {
-                this.storage.addItem(key);
-                this.storage.removeItem(scavengedItems[i].id);
+            var item = scavengedItems[i][0];
+            var count = scavengedItems[i][1]; //how many of each item being decomposed
+            for (var key in item.craftCost) {
+                this.storage.addItem(key, item.craftCost[key]);
+                gained[key] = gained[key] ? gained[key] + item.craftCost[key] * count : item.craftCost[key] * count;
             }
+            removed[item.id] = removed[item.id] ? removed[item.id] + count : count;
+            this.storage.removeItem(item.id, count);
         }
+		
+		var gainedString = "Gained: ";
+		for(var key in gained) {
+			gainedString += game.getItem(key).name + ": " + gained[key] + ", ";
+		}
+		gainedString.substring(0, gainedString.length-2);
+		
+		var removedString = "Lost: ";
+		for(var key in removed) {
+			removedString += game.getItem(key).name + ": " + removed[key] + ", ";
+		}
+		removedString = removedString.substring(0, removedString.length-2);
+        gainedString = gainedString.substring(0, gainedString.length-2);
+        $('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} }).empty();
+        $("#scavmodal").append(gainedString + "<p>" + removedString);
         delete scavengedItems;
     };
 
@@ -159,11 +177,9 @@ function Player() {
 			if(!item || !item.gearType) {
 				continue;
 			}
-		
 			if(item.gearType == 'miningGear' && item.name.match("Pickaxe") != null)
 			{
 				var diff = item.Power - this.pickPower;
-				
 				this.pickPower = item.power;
 				this.miner.baseMineSpeed = item.power;
 			}
@@ -207,7 +223,6 @@ function Player() {
 		this.combatant.save();
 		this.storage.save();
 		this.gear.save();
-
 		localStorage.playerOxygenConsumption = this.oxygenConsumption;
 	};
 
@@ -216,7 +231,6 @@ function Player() {
 		this.combatant.load();
 		this.storage.load();
 		this.gear.load();
-
 		this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
 	};
 
@@ -225,8 +239,8 @@ function Player() {
 		this.combatant.reset(fullReset);
 		this.storage.reset(fullReset);
 		this.gear.reset(fullReset);
-		
 		this.oxygenConsumption = 1;
 		this.pickPower = 1;
+        this.baseMineSpeed = 1;
 	};
 }

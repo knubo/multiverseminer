@@ -32,9 +32,12 @@ function UIInventory(id, parent) {
     // main functions
     // ---------------------------------------------------------------------------
     this.init = function() {
+        if(this.category == "scavenge") {
+            $("#decompButton").show()
+        }
     	this.baseInit();
-    	
         var slotId = 0;
+        
         for(var x = 0; x < this.slotCount; x++) {
             var slot = new UISlot(this.id + '_' + x, this.mainDiv);
             slot.itemContext = this.itemContext;
@@ -46,7 +49,6 @@ function UIInventory(id, parent) {
             slotId++;
         }
     };
-    
     this.update = function(currentTime) {
     	if(!this.baseUpdate(currentTime)) {
     		return false;
@@ -55,12 +57,17 @@ function UIInventory(id, parent) {
         var items = undefined;
         if(this.storage) {
         	if(this.category) {
+                if(this.category == "scavenge") {
+                    $("#decompButton").show()
+                }
+                else {
+                    $("#decompButton").hide()
+                }
         		items = this.storage.getItemsOfCategory(this.category);
         	} else {
         		items = this.storage.getItems();
         	}
         }
-        
         // Update the paging info
         if(items) {
             this.maxPage = items.length / this.slotElements.length;
@@ -126,6 +133,8 @@ function UIInventory(id, parent) {
     this.setCategory = function(categoryId) {
         this.category = game.getCategoryKeyById(categoryId);
         this.invalidate();
+        // READ CURRENT CATEGORY
+        //console.log(this.category);
     };
     
     this.setStorage = function(storage) {

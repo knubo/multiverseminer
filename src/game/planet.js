@@ -23,6 +23,9 @@ function Planet(data) {
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
+        if($("#playerInventoryFilter").text() == "Scavenge") {
+            $("#decompButton").show();
+        }
 		this.gear.initialize();
 		
 		// Add the slots we can wear
@@ -266,14 +269,12 @@ function Planet(data) {
 		this.miner.load();
 		this.storage.load();
 		this.gear.load();
-		
 		this._updateStats();
 	};
 
 	this.reset = function() {
 		this.miner.reset();
 		this.storage.reset();
-
 		this.currentDepth = 0;
 	};
 }

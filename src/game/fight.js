@@ -8,6 +8,7 @@ function Fight(teamList) {
 	this.counter = -1; //counter for teams
 
 	$('#combat-log').html(' '); //clear log
+    
 
 	// if(teamList.length < 2){return "Need at least two teams to start a fight";}
 	// for(var i=0;i<teamList.length;i++){
@@ -20,7 +21,8 @@ function Fight(teamList) {
 		new Team([game.player]),
 		new Team([npc])
 	];
-
+	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
+	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
@@ -31,7 +33,7 @@ function Fight(teamList) {
 	};
 	
 	this.show = function() {
-	};
+    };
 	
 	this.hide = function() {
 	};
@@ -61,7 +63,7 @@ function Fight(teamList) {
 			var targetStats = target.stats;
 
 			var damage = sourceStats.damage;
-			var log = source.name+" hits "+target.name+" for "+damage+" hp.";
+            var log = source.name+" hit "+target.name+" for "+damage+" hp.";
 			this.log.push(log);
 			console.log(log);
 			$('#combat-log').prepend(log+"<br>");
