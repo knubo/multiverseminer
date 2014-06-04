@@ -1,10 +1,7 @@
 function Gear(id) {
-
 	this.id = id;
-
 	this.slots = {};
 	this.slotMetadata = {};
-	
 	this.gearChanged = false;
 
 	// ---------------------------------------------------------------------------
@@ -150,13 +147,12 @@ function Gear(id) {
 		
 		this.gearChanged = true;
 	};
-
+    
 	this.reset = function(fullReset) {
 		for(var key in this.slots) {
 			if(!this.hasGearEquipped(key)) {
 				continue;
 			}
-			
 			this.unEquip(key);
 		}
 	};
