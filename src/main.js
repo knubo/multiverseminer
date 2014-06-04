@@ -1,4 +1,4 @@
-require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums" ]);
+require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums", "vex" ]);
 
 // Create components
 var game = new Game();
@@ -138,14 +138,21 @@ function onSave() {
 };
 
 function onReset() {
-	ui.showDialog('Yes', 'No', 'Confirm reset', function() {
+    vex.dialog.confirm({
+      message: 'Are you absolutely sure you want to reset?',
+      callback: function(value) {
+        return reset(value);
+      }
+    })
+};
+
+function reset() {
 		game.reset();
 		//TODO: Add reset function to ui
 //		ui.reset();
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
-	});
-}
+};
 
 function onTravelToPlanet(target) {
 	if(!game.canTravelTo(target)) {
