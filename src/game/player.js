@@ -218,6 +218,7 @@ function Player() {
 			return;
 		}
 		
+		var itemId = this.gear.getItemInSlot(type);
 		this.gear.unEquip(type);
 		
 		// Add the item back to the player's inventory
