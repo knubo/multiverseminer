@@ -79,7 +79,8 @@ module.exports = function(grunt) {
 					{ cwd: 'assets/images', src: '**/*', dest: 'bin/assets/images', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.ttf', dest: 'bin/', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.svg', dest: 'bin/', expand: true },
-					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true }
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true },
+					{ cwd: 'assets/sounds', src: '**/*', dest: 'bin/assets/sounds', expand: true }
 				]
 			}
 		},
