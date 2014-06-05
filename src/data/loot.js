@@ -296,15 +296,16 @@ addTable(900, 'plutoAtmosphere', [
 // TODO: Add items to drop when scavenging.
 
 addTable(1000, 'earthScavengeRes', [
-    [Items.tableLeg.id, 1.0],
-    [Items.tinyStone.id, 0.1],
-    [Items.aluminumRing.id, 0.1],
+    [Items.tableLeg.id, 0.05],
+    [Items.tinyStone.id, 0.9],
+    [Items.aluminumRing.id, 0.09],
     [Items.brokenKnife.id, 0.1],
     [Items.depletedBattery.id, 0.1],
-    [Items.oldShipPart.id, 0.1],
+    [Items.oldShipPart.id, 0.01],
     [Items.bigRock.id, 0.1],
     [Items.bluntPencil.id, 0.1],
     [Items.woodenSpoon.id, 0.1],
     [Items.computer.id, 0.1],
-    [Items.television.id, 0.1]
+    [Items.television.id, 0.1],
+    [Items.handheldMirror.id, 0.05]
 ]);
