@@ -323,7 +323,11 @@ function UIPlanetScreen() {
                     content: self.buildCraftingTooltip(craftableItems[i]),
                     theme: 'tooltipster-punk',
                     contentAsHTML: true,
-                    position: "bottom"
+                    position: "bottom",
+                    delay: 100,
+                    onlyOne: true,
+                    timer: 50
+                    
                 });
             }
         }
