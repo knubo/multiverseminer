@@ -1,104 +1,109 @@
 function Combatant(opts) {
-	this.opts=opts;
-	this.name = opts.name || "npc";
-	this.id = opts.id;
-	this.npc = opts.npc;
+    this.opts = opts;
+    this.name = opts.name || "npc";
+    this.id = opts.id;
+    this.npc = opts.npc;
 
-	this.inCombat = false;
+    this.inCombat = false;
 
-	this.health = 10;
-	this.maxHealth = this.health;
-	this.alive = true;
+    this.health = 10;
+    this.maxHealth = this.health;
+    this.alive = true;
 
-	// ---------------------------------------------------------------------------
-	// general
-	// ---------------------------------------------------------------------------
-	this.initialize = function() {
-		
-	};
+    // ---------------------------------------------------------------------------
+    // general
+    // ---------------------------------------------------------------------------
+    this.initialize = function() {
 
-	this.update = function(currentTime) {
-	};
+    };
 
-	// ---------------------------------------------------------------------------
-	// combatant functions
-	// ---------------------------------------------------------------------------
+    this.update = function(currentTime) {};
 
-	this.requestMove = function(fight,team,opponentTeam){
-		var move;
-		if(this.autoAttack){
-			var source = this;
-			var target = opponentTeam.members[0];
-			setTimeout(function(){fight.action("attack",source,target);},100);
-			return this;
-		}
-		if(this.npc){
-			move = this.player.requestMove(fight,team,opponentTeam);
-		}else{
-			//ask player for move
-		}
-	};
+    // ---------------------------------------------------------------------------
+    // combatant functions
+    // ---------------------------------------------------------------------------
 
-	this.takeDamage = function(fight, damage) {
-		this.health -= damage;
-		return this; //unsure if unnecessary function, but it can be used outside of combat
-	};
+    this.requestMove = function(fight, team, opponentTeam) {
+        var move;
+        if (this.autoAttack) {
+            var source = this;
+            var target = opponentTeam.members[0];
+            setTimeout(function() {
+                fight.action("attack", source, target);
+            }, 100);
+            return this;
+        }
+        if (this.npc) {
+            move = this.player.requestMove(fight, team, opponentTeam);
+        } else {
+            //ask player for move
+        }
+    };
 
-	this.heal = function(fight, amount) {
-		if(!this.alive){return "Player is dead";}
-		this.health += amount;
-		return this;
-	};
+    this.takeDamage = function(fight, damage) {
+        this.health -= damage;
+        return this; //unsure if unnecessary function, but it can be used outside of combat
+    };
 
-	this.isAlive = function() {
-		if(this.health <= 0) {
-			this.health = 0;
-			this.alive = false;
-		} else {
-			this.alive = true;
-		}
-		return this.alive;
-	};
+    this.heal = function(fight, amount) {
+        if (!this.alive) {
+            return "Player is dead";
+        }
+        this.health += amount;
+        return this;
+    };
 
-	// ---------------------------------------------------------------------------
-	// internal
-	// ---------------------------------------------------------------------------
-	this._getStorageKey = function() {
-		return 'combatant_' + this.id + '_';
-	};
+    this.isAlive = function() {
+        if (this.health <= 0) {
+            this.health = 0;
+            this.alive = false;
+        } else {
+            this.alive = true;
+        }
+        return this.alive;
+    };
 
-	// ---------------------------------------------------------------------------
-	// loading / saving
-	// ---------------------------------------------------------------------------
-	this.reset = function(){
-		//placeholder
-		this.stats = this.opts.player.gear.getStats() || {};
-		this.stats.damage = this.stats.strength || 1;
-		this.autoAttack = false;
-		if(this.npc){this.autoAttack=true;}
-	};
-	this.reset();
-	this.save = function() {
-		var storageKey = this._getStorageKey();
+    // ---------------------------------------------------------------------------
+    // internal
+    // ---------------------------------------------------------------------------
+    this._getStorageKey = function() {
+        return 'combatant_' + this.id + '_';
+    };
 
-		localStorage[storageKey + 'health'] = this.health;
-		localStorage[storageKey + 'maxHealth'] = this.maxHealth;
-		localStorage[storageKey + 'attack'] = this.attack;
-		localStorage[storageKey + 'defense'] = this.defense;
-		localStorage[storageKey + 'alive'] = this.alive;
+    // ---------------------------------------------------------------------------
+    // loading / saving
+    // ---------------------------------------------------------------------------
+    this.reset = function() {
+        //placeholder
+        this.stats = this.opts.player.gear.getStats() || {};
+        this.stats.damage = this.stats.strength || 1;
+        this.autoAttack = false;
+        if (this.npc) {
+            this.autoAttack = true;
+        }
+    };
+    this.reset();
+    this.save = function() {
+        var storageKey = this._getStorageKey();
 
-		localStorage[storageKey + 'baseAttackSpeed'] = this.baseAttackSpeed;
-	};
+        localStorage[storageKey + 'health'] = this.health;
+        localStorage[storageKey + 'maxHealth'] = this.maxHealth;
+        localStorage[storageKey + 'attack'] = this.attack;
+        localStorage[storageKey + 'defense'] = this.defense;
+        localStorage[storageKey + 'alive'] = this.alive;
 
-	this.load = function() {
-		var storageKey = this._getStorageKey();
+        localStorage[storageKey + 'baseAttackSpeed'] = this.baseAttackSpeed;
+    };
 
-		this.health = utils.loadFloat(storageKey + 'health', 0);
-		this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 0);
-		this.attack = utils.loadFloat(storageKey + 'attack', 0);
-		this.defense = utils.loadFloat(storageKey + 'defense', 0);
-		this.alive = utils.loadBool(storageKey + 'alive', true);
+    this.load = function() {
+        var storageKey = this._getStorageKey();
 
-		this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
-	};
+        this.health = utils.loadFloat(storageKey + 'health', 0);
+        this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 0);
+        this.attack = utils.loadFloat(storageKey + 'attack', 0);
+        this.defense = utils.loadFloat(storageKey + 'defense', 0);
+        this.alive = utils.loadBool(storageKey + 'alive', true);
+
+        this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
+    };
 }
