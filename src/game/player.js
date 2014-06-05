@@ -53,7 +53,7 @@ function Player() {
 	// ---------------------------------------------------------------------------	
 	this.mine = function() {
 		if (!game.currentPlanet) {
-			return;
+			return false;
 		}
 
 		game.settings.addStat('manualDigCount');
@@ -66,12 +66,15 @@ function Player() {
 			}
 			
 			this.storage.addItems(items);
+			return true;
 		}
+		
+		return false;
 	};
 
 	this.gather = function() {
 		if (!game.currentPlanet) {
-			return;
+			return false;
 		}
 
 		game.settings.addStat('manualGatherCount');
@@ -79,12 +82,15 @@ function Player() {
 		var items = this.miner.gather(game.currentPlanet);
 		if (items) {
 			this.storage.addItems(items);
+			return true;
 		}
+		
+		return false;
 	};
 
 	this.scavenge = function() {
 		if (!game.currentPlanet) {
-			return;
+			return false;
 		}
 
 		game.settings.addStat('manualScavengeCount');
@@ -92,7 +98,10 @@ function Player() {
 		var items = this.miner.scavenge(game.currentPlanet);
 		if (items) {
 			this.storage.addItems(items);
+			return true;
 		}
+		
+		return false;
 	};
     
 	this.decomposeScavenged = function() {
