@@ -5,12 +5,12 @@ ItemCategory = {
     'component': 'Components',
     'gearMainHand': 'Gear - Main Hand',
     'gearSecondHand': 'Gear - Second Hand',
+    'miningGear': 'Gear - Mining',
     'gearHead': 'Gear - Head',
     'gearChest': 'Gear - Chest',
     'gearLegs': 'Gear - Legs',
     'gearFeet': 'Gear - Feet',
     'gearBuilding': 'Buildings',
-    'miningGear': 'Gear - Mining',
     'machines': 'Machines',
     'usable': 'Usable',
     'spaceship': 'Spaceship',
@@ -20,11 +20,11 @@ ItemCategory = {
 GearType = {
     'head': 'Head',
     'chest': 'Chest',
+    'miningGear': 'Pickaxe',
     'mainHand': 'Main Hand',
     'secondHand': 'Second Hand',
     'legs': 'Legs',
     'feet': 'Feet',
-    'miningGear': 'Pickaxe',
     // planet gear
     'building': 'Building'
 };
