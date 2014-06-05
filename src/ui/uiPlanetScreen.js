@@ -294,6 +294,11 @@ function UIPlanetScreen() {
         }
         
         for ( var key in ItemCategory) {
+            // Todo: remove this when scavenging items no longer have craftCost as their attribute
+            if(key === 'scavenge') {
+            	continue;
+            }
+            
             var items = game.getItemsByCategory(key);
             if (!items || items.length <= 0) {
                 continue;

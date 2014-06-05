@@ -50,9 +50,11 @@ module.exports = function(grunt) {
 						jquery      : 'external/jquery-2.1.1.min',
 						jqueryui    : 'external/jquery-ui-1.10.4.custom.min',
 						jgrowl      : 'external/jquery.jgrowl.min',
+                        vex         : 'external/vex.min',
 						starfield   : 'external/starfield',
                         vex         : 'external/vex',
                         tooltipster : 'external/jquery.tooltipster.min',
+                        tooltipster : 'external/jquery.tooltipster.min'
 					}
 				}
 			}
@@ -79,7 +81,8 @@ module.exports = function(grunt) {
 					{ cwd: 'assets/images', src: '**/*', dest: 'bin/assets/images', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.ttf', dest: 'bin/', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.svg', dest: 'bin/', expand: true },
-					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true }
+					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true },
+					{ cwd: 'assets/sound', src: '**/*', dest: 'bin/assets/sound', expand: true }
 				]
 			}
 		},

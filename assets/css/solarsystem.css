@@ -33,8 +33,8 @@
 
 .earthmoon:before {
     content: url('assets/images/earthmoon.png');
-    margin-left: -40px; /* Optional use 25% */
-    padding-left: -40px; /* Preserve Spacing */
+    margin-left: -50px;
+    margin-right: -10px;
 }
 
 .mars:before {
