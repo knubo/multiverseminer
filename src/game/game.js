@@ -67,8 +67,6 @@ function Game() {
 		this.player.storage.addItem(Items.woodenPick.id);
         this.player.storage.addItem(Items.copperSword.id);
 		this.player.equipBestGear();
-        this.player.storage.removeItem(Items.woodenPick.id);
-        this.player.storage.removeItem(Items.copperSword.id);
 		
 		// make earth our current planet
 		this.settings.currentPlanet = Planets.earth.id;
