@@ -151,7 +151,11 @@ function UISlot(id, parent) {
 	this.clear = function() {
 		this.item = undefined;
 		this.count = 0;
-				
+		
+		if($("#" + this.id).hasClass("tooltipstered")) {
+			$("#" + this.id).tooltipster("destroy");
+		}
+
 		this.mainDiv.empty();
 		this.mainDiv.attr('title', '');
 	};
