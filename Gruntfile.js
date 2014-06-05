@@ -47,12 +47,12 @@ module.exports = function(grunt) {
 						uiplanetscreen : 'ui/uiPlanetScreen',
 						uitravelscreen : 'ui/uiTravelScreen',
 
-						jquery    : 'external/jquery-2.1.1.min',
-						jqueryui  : 'external/jquery-ui-1.10.4.custom.min',
-						jgrowl    : 'external/jquery.jgrowl.min',
-						starfield : 'external/starfield',
-                        powertip  : 'external/jquery.powertip.min',
-                        vex       : 'external/vex'
+						jquery      : 'external/jquery-2.1.1.min',
+						jqueryui    : 'external/jquery-ui-1.10.4.custom.min',
+						jgrowl      : 'external/jquery.jgrowl.min',
+						starfield   : 'external/starfield',
+                        vex         : 'external/vex',
+                        tooltipster : 'external/jquery.tooltipster.min'
 					}
 				}
 			}
