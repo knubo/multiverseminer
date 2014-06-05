@@ -40,7 +40,6 @@ function Player() {
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
                 // Todo: need to do something when this runs out
-                console.log('removed oxygen');
                 if (this.storage.getItemCount(Items.oxygen.id) > 0) {
                     this.storage.removeItem(Items.oxygen.id);
                 }
