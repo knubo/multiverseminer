@@ -143,11 +143,14 @@ function onSave() {
 	ui.notify("Game saved");
 };
 
-function reset() {
-    vex.dialog.confirm({
-      message: 'Are you absolutely sure you want to destroy the alien planet?',
-      callback: function(value) {
-        return console.log(value);
+function test() {
+    vex.open({
+      content: '<div>Content</div>',
+      afterOpen: function($vexContent) {
+        return $vexContent.append($el);
+      },
+      afterClose: function() {
+        return console.log('vexClose');
       }
     });
 };
