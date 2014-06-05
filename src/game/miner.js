@@ -31,7 +31,6 @@ function Miner(id) {
 	// ---------------------------------------------------------------------------
 	this._dropResources = function(tableId) {
 		var table = game.getLootTable(tableId);
-        console.log(table);
 		if (!table || table.length <= 0) {
 			return;
 		}
