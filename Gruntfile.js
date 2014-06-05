@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.ttf', dest: 'bin/', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.svg', dest: 'bin/', expand: true },
 					{ cwd: 'assets/fonts/overpass/', src: '**/*.woff', dest: 'bin/', expand: true },
-					{ cwd: 'assets/sounds', src: '**/*', dest: 'bin/assets/sounds', expand: true }
+					{ cwd: 'assets/sound', src: '**/*', dest: 'bin/assets/sound', expand: true }
 				]
 			}
 		},
