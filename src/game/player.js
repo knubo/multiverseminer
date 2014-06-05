@@ -168,7 +168,7 @@ function Player() {
     
     this.checkPlanet = function() {
         if (game.currentPlanet != null) {
-            if (game.currentPlanet.data.name == 'Earth') {
+            if (game.currentPlanet.data.oxygen == true) {
                 this.canBreathe = true;
             }
             else {
