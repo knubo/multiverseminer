@@ -148,7 +148,8 @@ module.exports = function (grunt) {
 		        'gear - weapons.xls': {'category': 'gearMainHand', 'gearType': 'mainHand'},
 		        'gems.xls': {'category': 'gem'},
 		        'materials.xls': {'category': 'rawMaterial'},
-		        'potions.xls': {'category': 'usable'}
+		        'potions.xls': {'category': 'usable'},
+		        'scavenge.xls': {}
 		};
 		importData(sourceFiles, 'src/data/items.js');
 		
@@ -175,11 +176,5 @@ module.exports = function (grunt) {
 			'npc.xls': {},
 		};
 		importData(sourceFiles, 'src/data/npc.js', 'NPC');
-		
-		// Scavenge
-		sourceFiles = {
-			'scavenge.xls': {},
-		};
-		importData(sourceFiles, 'src/data/scavenge.js', 'ItemsScavenging');
 	});
 };
