@@ -1,4 +1,4 @@
-require([ "jquery", "tooltipster" ]);
+require([ "jquery", "tooltipster", "enums" ]);
 UISlot.prototype = new UIComponent();
 UISlot.prototype.$super = parent;
 UISlot.prototype.constructor = UISlot;
@@ -119,6 +119,36 @@ function UISlot(id, parent) {
 		return this.mainDiv;
 	};
 	
+	this.generateItemTooltip = function(item) {
+		content = "<b>"+item.name+"</b></br>"
+		content+="<i style='font-size: 10pt;'>"+ItemCategory[item.category]+"</i></br>"
+		content+="<div style='font-size: 9pt;'>"
+		switch(item.category) {
+			case "gearMainHand":
+				content+="Strength: "+item.strength + "</br>";
+				content+="Accuracy: "+item.accuracy + "</br>";
+				content+="Defense: "+item.defense + "</br>";
+				content+="Evasion: "+item.evasion + "</br>";
+				break;
+			case "rawMaterial":
+				content+="Value: "+item.value;
+				break;
+			case "gem":
+				content+="Value: "+item.value;
+				break;
+			case "miningGear":
+				content+="Accuracy: "+item.accuracy + "</br>";
+				content+="Mining Luck: "+item.miningLuck + "</br>";
+				content+="Loot Luck: "+item.lootLuck + "</br>";
+				content+="Scavenge Luck: "+item.scavengeLuck + "</br>";
+				break;
+			case "gearChest":
+			cas
+		}
+		content+="</div>"
+		return content
+	}
+
 	this.set = function(item, count) {
 		this.item = item;
 		this.count = count;
@@ -129,7 +159,7 @@ function UISlot(id, parent) {
 		this.countDisplay = $('<div class="itemSlotText"></div>');
 		
 		this.mainDiv.attr('title', item.name);
-		$("#"+this.id).tooltipster({content: "<b>"+item.name+"</b></br>"+ (item.description || ""), theme: 'tooltipster-punk', contentAsHTML: true});
+		$("#"+this.id).tooltipster({content: this.generateItemTooltip(item), theme: 'tooltipster-punk', contentAsHTML: true});
 		this.mainDiv.append(this.iconDisplay);
 		this.mainDiv.append(this.countDisplay);
 		

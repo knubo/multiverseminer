@@ -10,6 +10,7 @@ ItemCategory = {
     'gearLegs': 'Gear - Legs',
     'gearFeet': 'Gear - Feet',
     'gearBuilding': 'Buildings',
+    'miningGear': 'Gear - Mining',
     'machines': 'Machines',
     'usable': 'Usable',
     'spaceship': 'Spaceship',
