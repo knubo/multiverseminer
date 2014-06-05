@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 						jqueryui    : 'external/jquery-ui-1.10.4.custom.min',
 						jgrowl      : 'external/jquery.jgrowl.min',
 						starfield   : 'external/starfield',
-                        vex         : 'external/vex'
+                        vex         : 'external/vex',
                         tooltipster : 'external/jquery.tooltipster.min'
 					}
 				}
