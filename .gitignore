@@ -13,3 +13,5 @@ tmp
 node_modules
 npm-debug.log
 src/data/items.js
+src/data/planets_autogen.js
+src/data/races.js
