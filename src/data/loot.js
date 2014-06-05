@@ -297,7 +297,7 @@ addTable(900, 'plutoAtmosphere', [
 
 addTable(1000, 'earthScavengeRes', [
     [Items.tableLeg.id, 0.05],
-    [Items.tinyStone.id, 0.9],
+    [Items.tinyStone.id, 0.2],
     [Items.aluminumRing.id, 0.09],
     [Items.brokenKnife.id, 0.1],
     [Items.depletedBattery.id, 0.1],
