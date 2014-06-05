@@ -9,7 +9,6 @@ ItemCategory = {
     'gearChest': 'Gear - Chest',
     'gearLegs': 'Gear - Legs',
     'gearFeet': 'Gear - Feet',
-    'miningGear': 'Gear - Mining',
     'gearBuilding': 'Buildings',
     'miningGear': 'Gear - Mining',
     'machines': 'Machines',
@@ -26,5 +25,5 @@ GearType = {
     'legs': 'Legs',
     'feet': 'Feet',
     // planet gear
-    'building': 'Building',
+    'building': 'Building'
 };
