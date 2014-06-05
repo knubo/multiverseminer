@@ -25,8 +25,10 @@ Number.prototype.formatNumber = function() {
 // function hooks
 // ---------------------------------------------------------------------------
 function onDocumentReady() {
-    // Initialize the crafting accordion
-    $("#playerCraftingContent").accordion();
+
+    //Initialize the audio
+    $('#audioDig').trigger('load');
+    $('#audioDigSuccess').trigger('load');
 
     //Initialize components
     game.init();
@@ -72,7 +74,11 @@ function onCraft(what) {
 
 function onMine() {
 	game.settings.addStat('mineCount');
-	game.player.mine();
+	if(game.player.mine()) {
+		$('#audioDigSuccess').trigger('play');
+	} else {
+		$('#audioDig').trigger('play');
+	}
 };
 
 function onGather() {
