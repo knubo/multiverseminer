@@ -52,7 +52,10 @@ function UI() {
 
         $(".tooltip").tooltipster({
             theme: 'tooltipster-punk',
-            contentAsHTML: true
+            contentAsHTML: true,
+            delay: 100,
+            position: "bottom",
+            onlyOne: true
         });
 
     	// Todo: function to switch screens
