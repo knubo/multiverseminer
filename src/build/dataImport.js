@@ -164,6 +164,12 @@ module.exports = function (grunt) {
 		};
 		importData(sourceFiles, 'src/data/planets_autogen.js', 'Planets');
 		
+		// Races
+		sourceFiles = {
+			'races.xls': {},
+		};
+		importData(sourceFiles, 'src/data/races.js', 'Races');
+		
 		// NPC
 		sourceFiles = {
 			'npc.xls': {},
