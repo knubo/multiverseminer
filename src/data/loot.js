@@ -189,7 +189,7 @@ addSingleTable(103, 'earthGemsRare', [
 addTable(104, 'earthMining', [
     [LootTables.earthGemsRare, 0.00008],
     [LootTables.earthGemsCommon, 0.005],
-    [LootTables.earthMinerals, 1],
+    [LootTables.earthMinerals, 1]
 ]);
 
 // ---------------------------------------------------------------------------
@@ -233,7 +233,12 @@ addTable(400, 'venusAtmosphere', [
     [Items.sulfurDioxide.id, 0.015],
     [Items.argon.id, 0.007],
     [Items.carbonMonoxide.id, 0.0017],
-    [Items.neon.id, 0.0007]
+    [Items.neon.id, 0.0007],
+    [Items.helium.id, 0.0012]
+]);
+addTable(401, 'venusMinerals', [
+    [Items.silicon.id, 1.0],
+    [Items.iron.id, 0.5]
 ]);
 
 // ---------------------------------------------------------------------------
@@ -253,7 +258,7 @@ addTable(500, 'mercuryAtmosphere', [
 ]);
 addTable(501, 'mercuryMinerals', [
     [Items.aluminum.id, .01],
-    [Items.iron.id, .1],
+    [Items.iron.id, 0.1],
     [Items.magnesium.id, .02],
     [Items.silicon.id, .01]
 ]);
@@ -323,5 +328,5 @@ addTable(1000, 'earthScavengeRes', [
 //NPC loot
 //---------------------------------------------------------------------------
 addTable(1500, 'npcGenericLoot', [
-   [Items.copperBar.id, 0.5],
+   [Items.copperBar.id, 0.5]
 ]);
