@@ -1,3 +1,4 @@
+require([ "jquery", "tooltipster" ]);
 UISlot.prototype = new UIComponent();
 UISlot.prototype.$super = parent;
 UISlot.prototype.constructor = UISlot;
@@ -128,6 +129,7 @@ function UISlot(id, parent) {
 		this.countDisplay = $('<div class="itemSlotText"></div>');
 		
 		this.mainDiv.attr('title', item.name);
+		$("#"+this.id).tooltipster({content: "<b>"+item.name+"</b></br>"+ (item.description || ""), theme: 'tooltipster-punk', contentAsHTML: true});
 		this.mainDiv.append(this.iconDisplay);
 		this.mainDiv.append(this.countDisplay);
 		
