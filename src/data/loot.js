@@ -243,15 +243,19 @@ addTable(500, 'mercuryAtmosphere', [
     [Items.oxygen.id, .01],
     [Items.argon.id, .01],
     [Items.nitrogen.id, .01],
-    [Items.carbonDioxide.id, .01]
-]);
-addTable(501, 'mercuryMinerals', [
+    [Items.carbonDioxide.id, .01],
     [Items.xenon.id, .01],
     [Items.krypton.id, .01],
     [Items.neon.id, .01],
     [Items.hydrogen.id, .22],
     [Items.helium.id, .06],
     [Items.potassium.id, .05]
+]);
+addTable(501, 'mercuryMinerals', [
+    [Items.aluminum.id, .01],
+    [Items.iron.id, .1],
+    [Items.magnesium.id, .02],
+    [Items.silicon.id, .01]
 ]);
 
 // ---------------------------------------------------------------------------

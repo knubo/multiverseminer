@@ -55,7 +55,8 @@ addPlanet(3, 'mercury', 'Mercury', {
     'oxygen': false,
     'baseMultiplier': 1,
     'distance': 12000,
-    'gatherLootTableId': LootTables.mercuryAtmosphere.id
+    'gatherLootTableId': LootTables.mercuryAtmosphere.id,
+    'miningLootTableId': LootTables.mercuryMinerals.id
 });
 
 addPlanet(4, 'venus', 'Venus', {
