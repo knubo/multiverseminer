@@ -65,7 +65,8 @@ addPlanet(4, 'venus', 'Venus', {
     'oxygen': false,
     'baseMultiplier': 1,
     'distance': 23000,
-    'gatherLootTableId': LootTables.venusAtmosphere.id
+    'gatherLootTableId': LootTables.venusAtmosphere.id,
+    'miningLootTableId': LootTables.venusMinerals.id
 });
 
 addPlanet(5, 'mars', 'Mars', {
