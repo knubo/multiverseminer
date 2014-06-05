@@ -49,7 +49,12 @@ function UI() {
     	
     	this.screenTravel = new UITravelScreen();
     	this.screenTravel.init();
-    	
+
+        $(".tooltip").tooltipster({
+            theme: 'tooltipster-punk',
+            contentAsHTML: true
+        });
+
     	// Todo: function to switch screens
     	if(game.currentPlanet) {
     		this.screenPlanet.show();
