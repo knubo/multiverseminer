@@ -234,6 +234,16 @@ function UIPlanetScreen() {
         }
     };
     
+    this.buildCraftingTooltip = function(item) {
+        content = "<b>"+item.name+"</b></br>";
+        if(item.craftCost) {
+            for(cost in item.craftCost) {
+                content += item.craftCost[cost]+" x "+game.getItemName(cost) + "</br>";
+            }
+        }
+        return content;
+    }
+
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
         //var activePage = $('#playerCraftingContent').accordion('option', 'active');
@@ -305,7 +315,7 @@ function UIPlanetScreen() {
             for (var i = 0; i < craftableItems.length; i ++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
                 $("#craft_"+craftableItems[i].id).tooltipster({
-                    content: "<b>"+craftableItems[i].name+"</b></br>"+ (craftableItems[i].description || ""),
+                    content: self.buildCraftingTooltip(craftableItems[i]),
                     theme: 'tooltipster-punk',
                     contentAsHTML: true
                 });
