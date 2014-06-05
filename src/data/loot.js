@@ -243,7 +243,9 @@ addTable(500, 'mercuryAtmosphere', [
     [Items.oxygen.id, .01],
     [Items.argon.id, .01],
     [Items.nitrogen.id, .01],
-    [Items.carbonDioxide.id, .01],
+    [Items.carbonDioxide.id, .01]
+]);
+addTable(501, 'mercuryMinerals', [
     [Items.xenon.id, .01],
     [Items.krypton.id, .01],
     [Items.neon.id, .01],

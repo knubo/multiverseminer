@@ -25,8 +25,10 @@ Number.prototype.formatNumber = function() {
 // function hooks
 // ---------------------------------------------------------------------------
 function onDocumentReady() {
-    // Initialize the crafting accordion
-    $("#playerCraftingContent").accordion();
+
+    //Initialize the audio
+    $('#audioDig').trigger('load');
+    $('#audioDigSuccess').trigger('load');
 
     //Initialize components
     game.init();
@@ -72,7 +74,11 @@ function onCraft(what) {
 
 function onMine() {
 	game.settings.addStat('mineCount');
-	game.player.mine();
+	if(game.player.mine()) {
+		$('#audioDigSuccess').trigger('play');
+	} else {
+		$('#audioDig').trigger('play');
+	}
 };
 
 function onGather() {
@@ -137,11 +143,14 @@ function onSave() {
 	ui.notify("Game saved");
 };
 
-function reset() {
-    vex.dialog.confirm({
-      message: 'Are you absolutely sure you want to destroy the alien planet?',
-      callback: function(value) {
-        return console.log(value);
+function test() {
+    vex.open({
+      content: '<div>Content</div>',
+      afterOpen: function($vexContent) {
+        return $vexContent.append($el);
+      },
+      afterClose: function() {
+        return console.log('vexClose');
       }
     });
 };
