@@ -307,5 +307,8 @@ addTable(1000, 'earthScavengeRes', [
     [Items.woodenSpoon.id, 0.1],
     [Items.computer.id, 0.1],
     [Items.television.id, 0.1],
-    [Items.handheldMirror.id, 0.05]
+    [Items.handheldMirror.id, 0.05],
+    [Items.waterBottle.id, 0.1],
+    [Items.telescope.id, 0.05],
+    [Items.silverCoin.id, 0.01]
 ]);
