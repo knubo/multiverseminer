@@ -304,6 +304,11 @@ function UIPlanetScreen() {
             parent.append('<h4>' + ItemCategory[key]+'</h4>').append(headerContent);
             for (var i = 0; i < craftableItems.length; i ++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
+                $("#craft_"+craftableItems[i].id).tooltipster({
+                    content: "<b>"+craftableItems[i].name+"</b></br>"+ (craftableItems[i].description || ""),
+                    theme: 'tooltipster-punk',
+                    contentAsHTML: true
+                });
             }
         }
 
@@ -442,7 +447,7 @@ function UIPlanetScreen() {
     this.buildCraftingEntry = function(item) {
         var tooltipContent = ui.buildCraftingCostTooltip(item);
         
-        var content = $('<div id="craft_'+item.id+'" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" title="' + tooltipContent +'"/>');
+        var content = $('<div id="craft_'+item.id+'" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" />');
         
         var icon = game.getDefaultItemIcon(item);
         if(item.icon) {
