@@ -309,3 +309,10 @@ addTable(1000, 'earthScavengeRes', [
     [Items.television.id, 0.1],
     [Items.handheldMirror.id, 0.05]
 ]);
+
+//---------------------------------------------------------------------------
+//NPC loot
+//---------------------------------------------------------------------------
+addTable(1500, 'npcGenericLoot', [
+   [Items.copperBar.id, 0.5],
+]);
