@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 						jgrowl      : 'external/jquery.jgrowl.min',
 						starfield   : 'external/starfield',
                         vex         : 'external/vex',
-                        tooltipster : 'external/jquery.tooltipster.min'
+                        tooltipster : 'external/jquery.tooltipster.min',
 					}
 				}
 			}
