@@ -322,7 +322,8 @@ function UIPlanetScreen() {
                 $("#craft_"+craftableItems[i].id).tooltipster({
                     content: self.buildCraftingTooltip(craftableItems[i]),
                     theme: 'tooltipster-punk',
-                    contentAsHTML: true
+                    contentAsHTML: true,
+                    position: "bottom"
                 });
             }
         }
