@@ -204,6 +204,8 @@ function Player() {
 			return;
 		}
 		
+		// Remove the item from the storage while it's equipped
+		this.storage.removeItem(itemId);
 		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 	};
 	
@@ -212,7 +214,14 @@ function Player() {
 	};
 	
 	this.unEquip = function(type) {
+		if(!this.hasEquipped(type)) {
+			return;
+		}
+		
 		this.gear.unEquip(type);
+		
+		// Add the item back to the player's inventory
+		this.storage.addItem(itemId);
 	};
 	
 	this.hasEquipped = function(type) {
