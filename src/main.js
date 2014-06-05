@@ -182,9 +182,9 @@ function showSolar() {
 }
 function showChat() {
     $("#chat-modal").dialog({
-        height: "auto",
-        maxHeight: 600,
-        width: 300
+        height: 500,
+        maxHeight: 800,
+        width: 500
     });
 }
 function showFight() {
