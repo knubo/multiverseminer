@@ -24,6 +24,7 @@ GearType = {
     'secondHand': 'Second Hand',
     'legs': 'Legs',
     'feet': 'Feet',
+    'miningGear': 'Pickaxe',
     // planet gear
     'building': 'Building'
 };
