@@ -122,7 +122,7 @@ function Player() {
             var item = scavengedItems[i][0];
             var count = scavengedItems[i][1]; //how many of each item being decomposed
             for (var key in item.craftCost) {
-                this.storage.addItem(key, item.craftCost[key]);
+                this.storage.addItem(key, item.craftCost[key] * count);
                 gained[key] = gained[key] ? gained[key] + item.craftCost[key] * count : item.craftCost[key] * count;
             }
             removed[item.id] = removed[item.id] ? removed[item.id] + count : count;
