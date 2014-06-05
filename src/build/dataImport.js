@@ -149,7 +149,7 @@ module.exports = function (grunt) {
 		        'gems.xls': {'category': 'gem'},
 		        'materials.xls': {'category': 'rawMaterial'},
 		        'potions.xls': {'category': 'usable'},
-		        'scavenge.xls': {'category': 'scavenge'}
+		        'scavenge.xls': {}
 		};
 		importData(sourceFiles, 'src/data/items.js');
 		
