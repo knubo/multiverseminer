@@ -308,18 +308,18 @@ addTable(900, 'plutoAtmosphere', [
 
 addTable(1000, 'earthScavengeRes', [
     [Items.tableLeg.id, 0.05],
-    [Items.tinyStone.id, 0.2],
+    [Items.tinyStone.id, 0.08],
     [Items.aluminumRing.id, 0.09],
-    [Items.brokenKnife.id, 0.1],
-    [Items.depletedBattery.id, 0.1],
+    [Items.brokenKnife.id, 0.09],
+    [Items.depletedBattery.id, 0.09],
     [Items.oldShipPart.id, 0.01],
-    [Items.bigRock.id, 0.1],
-    [Items.bluntPencil.id, 0.1],
-    [Items.woodenSpoon.id, 0.1],
-    [Items.computer.id, 0.1],
-    [Items.television.id, 0.1],
+    [Items.bigRock.id, 0.06],
+    [Items.bluntPencil.id, 0.01],
+    [Items.woodenSpoon.id, 0.01],
+    [Items.computer.id, 0.02],
+    [Items.television.id, 0.03],
     [Items.handheldMirror.id, 0.05],
-    [Items.waterBottle.id, 0.1],
+    [Items.waterBottle.id, 0.05],
     [Items.telescope.id, 0.05],
     [Items.silverCoin.id, 0.01]
 ]);
