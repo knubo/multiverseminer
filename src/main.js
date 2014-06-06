@@ -142,23 +142,41 @@ function onSave() {
 	game.save();
 	ui.notify("Game saved");
 };
-function test(){
-    $('#slide').on('click', function ( e ) {
-        $.fn.custombox( this, {
-            effect: 'slide',
-            position: slide_position[Math.floor( Math.random() * slide_position.length )]
-        });
-        e.preventDefault();
+
+function test() {
+    $.fn.custombox( this, {
+        overlay: false,
+        effect: 'fadein'
     });
-}
+    e.preventDefault();
+};
+
 function onReset() {
+	$(this).custombox({
+		// This is where you'd put the ID or class of the modal,
+		// Or you can use a URL and load it via ajax.
+		// url: '#modal-id',
+		overlay: false,
+		effect: 'fadein',
+		error: 'This is a test!'
+	});
+	/***
+	There will need to be an actual reset button that is tied to
+	the HTML buttons inside the modal, so when the "yes" button fires,
+	that function will fire:
+	game.reset();
+	// ui.reset();
+	onActivatePlayerInventory();
+	onActivatePlayerGear(); */
+	
+	/*** Old jQueryUI version 
 	ui.showDialog('Yes', 'No', 'Confirm reset', function() {
 		game.reset();
-//      TODO: Add reset function to ui
-//		ui.reset();
+		// TODO: Add reset function to ui
+		// ui.reset();
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
-	});
+	}); */
 };
 
 function onTravelToPlanet(target) {
