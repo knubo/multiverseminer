@@ -1,0 +1,10 @@
+/* -------------------------------------- */
+/* Custom CSS for the reset button */
+/* -------------------------------------- */
+
+.custombox-modal.resetGame {
+  background: #000000;
+  border: 1px solid #7A7A7A;
+  border-radius: 2px; 
+  padding: 10px;
+}

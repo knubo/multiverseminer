@@ -156,7 +156,9 @@ function onReset() {
 		// This is where you'd put the ID or class of the modal,
 		// Or you can use a URL and load it via ajax.
 		url: '#newReset',
-		overlay: true,
+		overlay: 'true',
+		overlayOpacity: '0.9',
+		customClass: 'resetGame',
 		effect: 'fadein',
 		error: 'This is a test!'
 	});
