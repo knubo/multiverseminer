@@ -3,7 +3,8 @@ require(["gamecombatant", "gamestorage", "gamegear" ]);
 function NPC(id) {
 	this.storage = new Storage('npc_' + id);
 	this.gear = new Gear('npc_' + id);
-	this.combatant = new Combatant({id:'npc_' + id,npc:true,player:this});
+	this.combatant = undefined;
+	this.opts = {id:'npc_' + id,npc:true,player:this};
 	this.NPC = true;
 	
 	this.AI = undefined;
@@ -19,6 +20,8 @@ function NPC(id) {
 		} else {
 			this._loadActors(id);
 		}
+		
+		this.combatant = new Combatant(this.opts);
 		
 		this.combatant.initialize();
 		this.storage.initialize();
@@ -50,7 +53,10 @@ function NPC(id) {
 	
 	this._loadActors = function(id) {
 		var actor = Actors[id];
-		
+		this.opts = actor;
+		this.opts.id = 'npc_' + id;
+		this.opts.npc = true;
+		this.opts.player = this;
 	};
 
 	// ---------------------------------------------------------------------------
