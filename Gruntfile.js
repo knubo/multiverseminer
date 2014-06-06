@@ -50,9 +50,9 @@ module.exports = function(grunt) {
 						jquery      : 'external/jquery-2.1.1.min',
 						jqueryui    : 'external/jquery-ui-1.10.4.custom.min',
 						jgrowl      : 'external/jquery.jgrowl.min',
-                        vex         : 'external/vex.min',
 						starfield   : 'external/starfield',
-                        tooltipster : 'external/jquery.tooltipster.min'
+                        tooltipster : 'external/jquery.tooltipster.min',
+                        custombox   : 'external/jquery.custombox'
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums", "vex" ]);
+require([ "data/system", "data/items", "data/loot", "data/planets", "game", "ui", "jquery", "jqueryui", "enums", "custombox" ]);
 
 // Create components
 var game = new Game();
@@ -144,15 +144,11 @@ function onSave() {
 };
 
 function test() {
-    vex.open({
-      content: '<div>Content</div>',
-      afterOpen: function($vexContent) {
-        return $vexContent.append($el);
-      },
-      afterClose: function() {
-        return console.log('vexClose');
-      }
+    $.fn.custombox( this, {
+        overlay: false,
+        effect: 'fadein'
     });
+    e.preventDefault();
 };
 
 function onReset() {
@@ -172,7 +168,7 @@ function onTravelToPlanet(target) {
     $("#solarsystem").dialog("close");
     $(window).one("scroll",function() {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-    })
+    });
 	ui.screenPlanet.hide();
 	ui.screenTravel.show();
 	game.travelTo(target);
