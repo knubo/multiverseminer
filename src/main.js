@@ -155,8 +155,8 @@ function onReset() {
 	$(this).custombox({
 		// This is where you'd put the ID or class of the modal,
 		// Or you can use a URL and load it via ajax.
-		// url: '#modal-id',
-		overlay: false,
+		url: '#newReset',
+		overlay: true,
 		effect: 'fadein',
 		error: 'This is a test!'
 	});
@@ -177,6 +177,11 @@ function onReset() {
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
 	}); */
+};
+function doReset() {
+    game.reset();
+    onActivatePlayerInventory();
+    onActivatePlayerGear();
 };
 
 function onTravelToPlanet(target) {
