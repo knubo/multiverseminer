@@ -225,6 +225,7 @@ function showFight() {
     	game.currentFight.disableFight();
 	});
      game.currentFight = new Fight();
+     game.currentFight.init();
 }
 function changeLeftCategoryButton(selected) {
 	for(var i = 0; i < 4; i++)

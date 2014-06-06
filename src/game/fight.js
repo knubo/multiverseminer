@@ -10,18 +10,18 @@ function Fight(teamList) {
     
 	this.winner = -1;
 
-	var npc = new NPC();
-	this.teams = [
-		new Team([game.player]),
-		new Team([npc])
-	];
-	
-	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
-	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
 	this.init = function() {
+		var npc = new NPC((['policeMan', 'thug'])[Math.floor(Math.random()*2)]);
+		npc.initialize();
+		this.teams = [
+			new Team([game.player]),
+			new Team([npc])
+		];
+		$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
+		$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	};
 	
 	this.update = function() {
@@ -37,8 +37,8 @@ function Fight(teamList) {
 		this.teams[0].members[0].inCombat = false;
 		this.teams[1].members[0].inCombat = false;
 		this.status.active = false;
-		$('#combat-end-log')[0].innerText = ""; //clear it
-		$('#combat-log')[0].style.display = ""; //show it again
+		$('#combat-end-log')[0].innerHTML = ""; //clear it
+		$('#combat-log')[0].classList.remove("hidden");
 		
 	};
 
@@ -75,7 +75,7 @@ function Fight(teamList) {
 			var targetStats = target.stats;
 
 			var damage = sourceStats.damage;
-            var log = source.name+" hit "+target.name+" for "+damage+" hp.";
+            var log = (source.opts.description || source.name) + (source.opts.attackText ? (source.opts.attackText + source.opts.weaponName) : (" hit " + target.opts.description.toLowerCase() || target.name)) + " for " + damage + " hp.";
 			this.log.push(log);
 			console.log(log);
 			$('#combat-log').prepend(log+"<br>");
@@ -85,7 +85,7 @@ function Fight(teamList) {
 			var targetStats = target.stats;
             var damage = sourceStats.damage;
 			var heal = sourceStats.damage;
-			var log = source.name+" heals "+target.name+" for "+damage+" hp.";
+			var log = (source.opts.description || source.name) + " heals " + (target.opts.description || target.name) + " for " + damage + " hp.";
 			this.log.push(log);
 			console.log(log);
 			$('#combat-log').prepend(log+"<br>");
@@ -105,7 +105,7 @@ function Fight(teamList) {
 					$('#combat-log').prepend(log+"<br>");*/
 					
 					//TODO: put this in the HTML and hidden, put this into a function
-						$('#combat-log')[0].style.display = "none";
+						$('#combat-log')[0].classList.add("hidden");
 						var lootTable = game.getLootTable(1500); //npcGenericLoot
 						var items = game.loot(lootTable, this.teams[1].members.length); //for now, it'll loot once per enemy in the enemy team
 						//TODO: make this loot depending on each enemy
@@ -114,10 +114,11 @@ function Fight(teamList) {
 							if(!lootedItems[items[i]]) lootedItems[items[i]] = 0;
 							lootedItems[items[i]]++;
 						}
+						this.teams[0].members[0].opts.player.storage.addItems(items);
 						var text = $('#combat-end-log')[0];
-						text.innerText = "Battle won!\nYou've earned 10 xp.\n\nLoot:";
+						text.innerHTML = "Battle won!<br>You've earned " + this.teams[1].members[0].opts.xpGain + " xp.<br><br>Loot:";
 						for(var k in lootedItems) {
-							text.innerText += "\n" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
+							text.innerHTML += "<br>" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
 						}
 					
 					this.status.active = false; //disable fight when somebody dies
