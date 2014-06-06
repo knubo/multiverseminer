@@ -12,6 +12,14 @@ function NPC(id) {
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
+		
+		if(!Actors[id]) {
+			console.log("ERROR: Invalid ID");
+			//return false;
+		} else {
+			this._loadActors(id);
+		}
+		
 		this.combatant.initialize();
 		this.storage.initialize();
 		this.gear.initialize();
@@ -20,6 +28,7 @@ function NPC(id) {
 		this.AI = function(info) {
 						//normally this would analyze info (enemies' hp, potential damage, potential defense, and make a decision based on it
 						//this one will just randomly attack any enemy
+						//or it'll use random numbers
 						return ['hit', 'any'];
 					};
 	};
@@ -37,6 +46,11 @@ function NPC(id) {
 	
 	this.getAI = function() {
 		return this.AI;
+	};
+	
+	this._loadActors = function(id) {
+		var actor = Actors[id];
+		
 	};
 
 	// ---------------------------------------------------------------------------
