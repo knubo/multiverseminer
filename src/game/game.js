@@ -1,4 +1,4 @@
-require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils", "vex" ]);
+require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils" ]);
 
 function Game() {
 	this.player = new Player();
