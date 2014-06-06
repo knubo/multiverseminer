@@ -146,3 +146,21 @@ margin-right:4px;
 .chatInputs {
     right:35em;
 }
+.idk, .yes, .no {
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    margin: 18px 0 0 20px;
+    padding: 8px 18px;
+    text-align: center;
+    text-decoration: none;
+}
+.yes {
+    background: none repeat scroll 0 0 rgba(71, 186, 255, 0.8);
+}
+.no {
+    background: none repeat scroll 0 0 rgba(241, 118, 122, 0.8);
+}
+.idk {
+    background: none repeat scroll 0 0 rgba(83, 83, 83, 0.8);
+}
