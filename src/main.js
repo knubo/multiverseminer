@@ -142,19 +142,19 @@ function onSave() {
 	game.save();
 	ui.notify("Game saved");
 };
-
-function test() {
-    $.fn.custombox( this, {
-        overlay: false,
-        effect: 'fadein'
+function test(){
+    $('#slide').on('click', function ( e ) {
+        $.fn.custombox( this, {
+            effect: 'slide',
+            position: slide_position[Math.floor( Math.random() * slide_position.length )]
+        });
+        e.preventDefault();
     });
-    e.preventDefault();
-};
-
+}
 function onReset() {
 	ui.showDialog('Yes', 'No', 'Confirm reset', function() {
 		game.reset();
-		//TODO: Add reset function to ui
+//      TODO: Add reset function to ui
 //		ui.reset();
 		onActivatePlayerInventory();
 		onActivatePlayerGear();
