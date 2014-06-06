@@ -19,14 +19,13 @@
 	margin-top: 6px;
 	pointer-events: none;
 }
-
 .itemSlotText {
-	position: relative;
-	margin-top: -5px;
-	margin-right: 10px;
-	float: right;
-	font-size: 12px;
-	cursor: pointer;
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    margin-right: 0px;
+    margin-top: -9px;
+    position: relative;
 }
 
 .itemSlotHover {
@@ -35,4 +34,10 @@
 
 .itemSlotNonHover {
 	border: 1px dotted #474747;
+}
+.itemSlot img {
+    display: block;
+    height: 45px;
+    margin: 0;
+    width: 45px;
 }
