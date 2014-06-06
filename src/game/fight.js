@@ -15,6 +15,9 @@ function Fight(teamList) {
 		new Team([game.player]),
 		new Team([npc])
 	];
+	
+	this.text = undefined; //TODO: add this to the HTML, its only experimental for now.
+	
 	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
 	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	// ---------------------------------------------------------------------------
@@ -36,6 +39,9 @@ function Fight(teamList) {
 		this.teams[0].members[0].inCombat = false;
 		this.teams[1].members[0].inCombat = false;
 		this.status.active = false;
+		$('#fightText')[0].removeChild(this.text);
+		$('#combat-log')[0].style.display = "";
+		
 	};
 
     // ---------------------------------------------------------------------------
@@ -95,10 +101,28 @@ function Fight(teamList) {
 			for(var member=0;member<this.teams[team].members.length;member++){
 				var combatant = this.teams[team].members[member];
 				if(combatant.isAlive() === false){
-					var log = "combatant "+combatant.name+" is dead";
+					/*var log = "combatant "+combatant.name+" is dead";
 					this.log.push(log);
 					console.log(log);
-					$('#combat-log').prepend(log+"<br>");
+					$('#combat-log').prepend(log+"<br>");*/
+					
+					//TODO: put this in the HTML and hidden, put this into a function
+						$('#combat-log')[0].style.display = "none";
+						this.text = document.createElement("div");
+						$('#fightText')[0].appendChild(this.text);
+						var lootTable = game.getLootTable(1500); //npcGenericLoot
+						var items = game.loot(lootTable, this.teams[1].members.length); //for now, it'll loot once per enemy in the enemy team
+						//TODO: make this loot depending on each enemy
+						var lootedItems = [];
+						for(var i = 0; i < items.length; i++) {
+							if(!lootedItems[items[i]]) lootedItems[items[i]] = 0;
+							lootedItems[items[i]]++;
+						}
+						this.text.innerText = "Battle won!\nYou've earned 10 xp.\n\nLoot:";
+						for(var k in lootedItems) {
+							this.text.innerText += "\n" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
+						}
+					
 					this.status.active = false; //disable fight when somebody dies
 					this.winner = this.teams[1-team].members[0];
 				}
@@ -130,23 +154,33 @@ function Fight(teamList) {
 			this.members[0].requestMove(fight,this,opponent);
 		};
 		this.getStatus = function(){
-			//returns number of dead/alive people etc.
+			//TODO: add more stats
+			return {'alive': this.getAlive().length, 'dead': this.getDead().length};
 		};
 
 		this.getRandomMember = function() {
-			//returns a random member
+			var alive = getAlive();
+			return alive[Math.floor((Math.random() * alive.length * 3) % alive.length)]; //made it *3 to increase randomness
 		};
 		
 		this.getAlive = function() {
-			//returns the members that are alive
+			var alive = [];
+			for(var i = 0; i < this.members.length; i++)
+				if(this.members[i].isAlive())
+					alive.push(this.members[i]);
+			return alive;
 		};
 		
 		this.getDead = function() {
-			//returns the members that are dead
+			var dead = [];
+			for(var i = 0; i < this.members.length; i++)
+				if(!this.members[i].isAlive())
+					dead.push(this.members[i]);
+			return dead;
 		};
 		
 		this.areAllDead = function() {
-			//returns true/false
+			return this.getDead().length == this.members.length;
 		};
 	}
 }

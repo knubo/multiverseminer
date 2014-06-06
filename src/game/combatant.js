@@ -9,15 +9,33 @@ function Combatant(opts) {
     this.health = 10;
     this.maxHealth = this.health;
     this.alive = true;
+    
+    //local variables, change later
+    this.regenCounter = 0; //used for timed regen
+    this.delta = 0;
+    this.last = 0;
 
     // ---------------------------------------------------------------------------
     // general
     // ---------------------------------------------------------------------------
     this.initialize = function() {
-
+    	if(this.npc) {
+    		
+    	}
     };
 
-    this.update = function(currentTime) {};
+    this.update = function(currentTime) {
+    	if(!this.inCombat) {
+    		this.delta = currentTime-this.last;
+    		this.regenCounter += this.delta;
+	    	if(this.regenCounter > 1000) {//TODO: add regen per fraction once we have a health regen stat
+	    		if(this.health < this.maxHealth)
+	    			this.health ++;
+	    		this.regenCounter -= 1000;
+	    	}
+    	} else this.regenCounter = 0;
+    	this.last = currentTime;
+    };
 
     // ---------------------------------------------------------------------------
     // combatant functions
@@ -42,6 +60,7 @@ function Combatant(opts) {
 
     this.takeDamage = function(fight, damage) {
         this.health -= damage;
+        this.isAlive();
         return this; //unsure if unnecessary function, but it can be used outside of combat
     };
 
@@ -49,6 +68,8 @@ function Combatant(opts) {
         if (!this.alive) {
             return "Player is dead";
         }
+        if(this.health + amount > this.maxHealth)
+        	amount = this.maxHealth - this.health;
         this.health += amount;
         return this;
     };
