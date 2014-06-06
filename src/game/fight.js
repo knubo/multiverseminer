@@ -16,8 +16,6 @@ function Fight(teamList) {
 		new Team([npc])
 	];
 	
-	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
-	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
