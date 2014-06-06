@@ -16,8 +16,6 @@ function Fight(teamList) {
 		new Team([npc])
 	];
 	
-	this.text = undefined; //TODO: add this to the HTML, its only experimental for now.
-	
 	$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
 	$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	// ---------------------------------------------------------------------------
@@ -39,8 +37,8 @@ function Fight(teamList) {
 		this.teams[0].members[0].inCombat = false;
 		this.teams[1].members[0].inCombat = false;
 		this.status.active = false;
-		$('#fightText')[0].removeChild(this.text);
-		$('#combat-log')[0].style.display = "";
+		$('#combat-end-log')[0].innerText = ""; //clear it
+		$('#combat-log')[0].style.display = ""; //show it again
 		
 	};
 
@@ -108,8 +106,6 @@ function Fight(teamList) {
 					
 					//TODO: put this in the HTML and hidden, put this into a function
 						$('#combat-log')[0].style.display = "none";
-						this.text = document.createElement("div");
-						$('#fightText')[0].appendChild(this.text);
 						var lootTable = game.getLootTable(1500); //npcGenericLoot
 						var items = game.loot(lootTable, this.teams[1].members.length); //for now, it'll loot once per enemy in the enemy team
 						//TODO: make this loot depending on each enemy
@@ -118,9 +114,10 @@ function Fight(teamList) {
 							if(!lootedItems[items[i]]) lootedItems[items[i]] = 0;
 							lootedItems[items[i]]++;
 						}
-						this.text.innerText = "Battle won!\nYou've earned 10 xp.\n\nLoot:";
+						var text = $('#combat-end-log')[0];
+						text.innerText = "Battle won!\nYou've earned 10 xp.\n\nLoot:";
 						for(var k in lootedItems) {
-							this.text.innerText += "\n" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
+							text.innerText += "\n" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
 						}
 					
 					this.status.active = false; //disable fight when somebody dies
