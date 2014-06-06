@@ -173,8 +173,8 @@ module.exports = function (grunt) {
 		
 		// NPC
 		sourceFiles = {
-			'npc.xls': {},
+			'actors.xls': {},
 		};
-		importData(sourceFiles, 'src/data/npc.js', 'NPC');
+		importData(sourceFiles, 'src/data/actors.js', 'Actors');
 	});
 };
