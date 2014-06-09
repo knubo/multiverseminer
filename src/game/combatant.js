@@ -11,6 +11,7 @@ function Combatant(opts) {
     this.alive = true;
 
     this.exp = 0;
+    this.expRequired = 500;
     this.level = 1;
     
     //local variables, change later
@@ -28,6 +29,8 @@ function Combatant(opts) {
 
         this.health = 10;
         this.maxHealth = this.health;
+        
+		this.updateUI();
     };
 
     this.update = function(currentTime) {
@@ -35,8 +38,10 @@ function Combatant(opts) {
     		this.delta = currentTime-this.last;
     		this.regenCounter += this.delta;
 	    	if(this.regenCounter > 1000) {//TODO: add regen per fraction once we have a health regen stat
-	    		if(this.health < this.maxHealth)
+	    		if(this.health < this.maxHealth) {
 	    			this.health ++;
+	    			this.updateUI(); //TODO: move this to its proper UI file
+	    		}
 	    		this.regenCounter -= 1000;
 	    	}
     	} else this.regenCounter = 0;
@@ -66,6 +71,7 @@ function Combatant(opts) {
 
     this.takeDamage = function(fight, damage) {
         this.health -= damage;
+		this.updateUI(); //TODO: move this to its proper UI file
         this.isAlive();
         return this; //unsure if unnecessary function, but it can be used outside of combat
     };
@@ -96,12 +102,24 @@ function Combatant(opts) {
 	}
 	
 	this.checkLevel = function() {
-		var next = Math.pow(1.125, this.level-1) * 500;
-		if(this.exp >= next) {
-			this.level ++;
-			this.exp -= next;
-			this.checkLevel(); //for chain leveling
+		this.expRequired = Math.pow(1.125, this.level-1) * 500; //TODO: move this to a function
+		if(this.exp >= this.expRequired) {
+			this.level ++; //TODO: move this to a function so we can recalculate stats
+			this.exp -= this.expRequired;
+			this.checkLevel();
+			return true;
 		}
+		this.expRequired = Math.pow(1.125, this.level-1) * 500; //TODO: fix the display bug with the required hp
+		//maybe split the exp / expRequired display into 2 DOM elements
+		this.updateUI();
+		return false;
+	}
+	
+	this.updateUI = function() { //TODO: move to its own UI section
+		if(this.id!='player') return false;
+		$('#combatantHP')[0].innerHTML = "HP: " + this.health + " / " + this.maxHealth;
+		$('#combatantXP')[0].innerHTML = "Combat XP: " + Math.floor(this.exp) + " / " + Math.ceil(this.expRequired);
+		$('#combatantLevel')[0].innerHTML = "Combat Level: " + this.level;
 	}
 
     // ---------------------------------------------------------------------------
@@ -114,7 +132,7 @@ function Combatant(opts) {
     // ---------------------------------------------------------------------------
     // loading / saving
     // ---------------------------------------------------------------------------
-    this.reset = function() {
+    this.reset = function(fullReset) {
         //placeholder
         this.stats = this.opts.player.gear.getStats() || {};
         this.stats.damage = this.stats.strength || 1;
@@ -125,6 +143,13 @@ function Combatant(opts) {
 
         this.health = 10;
         this.maxHealth = this.health;
+        
+        if(fullReset) { //TODO: find a way around this
+	        this.exp = 0;
+	        this.expRequired = 500;
+	        this.level = 1;
+        }
+        
     };
     this.reset(); //Why is this here?
     this.save = function() {
@@ -137,6 +162,7 @@ function Combatant(opts) {
         localStorage[storageKey + 'alive'] = this.alive;
 
         localStorage[storageKey + 'exp'] = this.exp;
+        localStorage[storageKey + 'expRequired'] = this.expRequired;
         localStorage[storageKey + 'level'] = this.level;
         
         localStorage[storageKey + 'baseAttackSpeed'] = this.baseAttackSpeed;
@@ -152,6 +178,7 @@ function Combatant(opts) {
         this.alive = utils.loadBool(storageKey + 'alive', true);
 
         this.health = utils.loadFloat(storageKey + 'exp', 0);
+        this.health = utils.loadFloat(storageKey + 'expRequired', 500);
         this.maxHealth = utils.loadFloat(storageKey + 'level', 1);
         
         this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);

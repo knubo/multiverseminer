@@ -1,14 +1,17 @@
 function Miner(id) {
 	this.id = id;
 	this.baseMineSpeed = 1;
-	
+
+	//TODO: All the TODO from the exp and level on the combatant.js will also apply here, reffer to combatant.js, same functions and variables
 	this.exp = 0;
+	this.expRequired = 500;
 	this.level = 1;
 	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {		
+		this.updateUI();
 	};
 	
 	this.update = function(currentTime) {
@@ -36,12 +39,23 @@ function Miner(id) {
 	}
 	
 	this.checkLevel = function() {
-		var next = Math.pow(1.125, this.level-1) * 500;
-		if(this.exp >= next) {
+		this.expRequired = Math.pow(1.125, this.level-1) * 500;
+		if(this.exp >= this.expRequired) {
 			this.level ++;
-			this.exp -= next;
-			this.checkLevel(); //for chain leveling
+			this.exp -= this.expRequired;
+			this.checkLevel();
+			return true;
 		}
+		if(this.id == 'player') {
+			this.expRequired = Math.pow(1.125, this.level-1) * 500;
+			this.updateUI();
+		}
+		return false;
+	}
+	
+	this.updateUI = function() { //TODO: move to its own UI section
+		$('#minerXP')[0].innerHTML = "Miner XP: " + Math.floor(this.exp) + " / " + Math.ceil(this.expRequired);
+		$('#minerLevel')[0].innerHTML = "Miner Level: " + this.level;
 	}
 
 	// ---------------------------------------------------------------------------
@@ -70,6 +84,7 @@ function Miner(id) {
 		var storageKey = this._getStorageKey();
 		localStorage[storageKey + 'baseMineSpeed'] = this.baseMineSpeed;
 		localStorage[storageKey + 'exp'] = this.exp;
+		localStorage[storageKey + 'expRequired'] = this.expRequired;
 		localStorage[storageKey + 'level'] = this.level;
 	};
 
@@ -77,10 +92,15 @@ function Miner(id) {
 		var storageKey = this._getStorageKey();
 		this.baseMineSpeed = utils.loadFloat(storageKey + 'baseMineSpeed', 1);
 		this.baseMineSpeed = utils.loadFloat(storageKey + 'exp', 0);
+		this.baseMineSpeed = utils.loadFloat(storageKey + 'expRequired', 500);
 		this.baseMineSpeed = utils.loadFloat(storageKey + 'level', 1);
 	};
 
 	this.reset = function(fullReset) {
 		this.baseMineSpeed = 1;
+        
+        this.exp = 0;
+        this.expRequired = 500;
+        this.level = 1;
 	};
 }
