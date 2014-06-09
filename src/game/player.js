@@ -58,7 +58,7 @@ function Player() {
 
 		game.settings.addStat('manualDigCount');
 
-		var items = this.miner.mine(game.currentPlanet);
+		var items = this.miner.mine(game.currentPlanet, this.pickPower);
 		if (items) {
 			for(var i = 0; i < items.length; i++) {
 				var name = game.getItemName(items[i]);
@@ -188,9 +188,7 @@ function Player() {
 			}
 			if(item.gearType == 'miningGear' && item.name.match("Pickaxe") != null)
 			{
-				var diff = item.Power - this.pickPower;
 				this.pickPower = item.power;
-				this.miner.baseMineSpeed = item.power;
 			}
 			
 			this.equip(item.id);
