@@ -324,7 +324,9 @@ function UIPlanetScreen() {
                     theme: 'tooltipster-punk',
                     contentAsHTML: true,
                     position: "bottom",
-                    onlyOne: true
+                    onlyOne: true,
+					interactiveTolerance: 10,
+					speed: 10
                 });
             }
         }

@@ -159,7 +159,9 @@ function UISlot(id, parent) {
 		this.countDisplay = $('<div class="itemSlotText"></div>');
 		
 		this.mainDiv.attr('title', item.name);
-		$("#"+this.id).tooltipster({content: this.generateItemTooltip(item), theme: 'tooltipster-punk', contentAsHTML: true, position: "bottom",onlyOne:true});
+		console.log("Tooltip");
+		$("#"+this.id).tooltipster({content: this.generateItemTooltip(item), theme: 'tooltipster-punk', contentAsHTML: true, position: "bottom", onlyOne: true,
+									interactiveTolerance: 10, speed: 10});
 		this.mainDiv.append(this.iconDisplay);
 		this.mainDiv.append(this.countDisplay);
 		
@@ -183,7 +185,7 @@ function UISlot(id, parent) {
 		this.count = 0;
 		
 		if($("#" + this.id).hasClass("tooltipstered")) {
-			$("#" + this.id).tooltipster("destroy");
+			//$("#" + this.id).tooltipster("hide");
 		}
 
 		this.mainDiv.empty();
