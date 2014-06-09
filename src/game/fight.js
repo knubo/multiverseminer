@@ -22,6 +22,9 @@ function Fight(teamList) {
 		];
 		$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
 		$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
+		//this is in case we use the fight button many times in a row, rather than closing and opening the way we are supposed to.
+		$('#combat-end-log')[0].innerHTML = ""; //clear it
+		$('#combat-log')[0].classList.remove("hidden");
 	};
 	
 	this.update = function() {
@@ -159,7 +162,7 @@ function Fight(teamList) {
 	function Team(memberList) {
 		this.members = [];
 		for(var i=0;i<memberList.length;i++){
-			memberList[i].combatant.reset();
+			memberList[i].combatant.reset(false); //UGLY FIX
 			memberList[i].combatant.inCombat = true;
 			this.members.push(
 				memberList[i].combatant
