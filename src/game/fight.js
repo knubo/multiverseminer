@@ -39,7 +39,6 @@ function Fight(teamList) {
 		this.status.active = false;
 		$('#combat-end-log')[0].innerHTML = ""; //clear it
 		$('#combat-log')[0].classList.remove("hidden");
-		
 	};
 
     // ---------------------------------------------------------------------------
@@ -95,37 +94,52 @@ function Fight(teamList) {
 	};
 
 	this.checkStatus = function(){
-		for(var team=0;team<this.teams.length;team++){
+		/*for(var team=0;team<this.teams.length;team++){
 			for(var member=0;member<this.teams[team].members.length;member++){
 				var combatant = this.teams[team].members[member];
 				if(combatant.isAlive() === false){
-					/*var log = "combatant "+combatant.name+" is dead";
+					var log = "combatant "+combatant.name+" is dead";
 					this.log.push(log);
 					console.log(log);
-					$('#combat-log').prepend(log+"<br>");*/
-					
-					//TODO: put this in the HTML and hidden, put this into a function
-						$('#combat-log')[0].classList.add("hidden");
-						var lootTable = game.getLootTable(1500); //npcGenericLoot
-						var items = game.loot(lootTable, this.teams[1].members.length); //for now, it'll loot once per enemy in the enemy team
-						//TODO: make this loot depending on each enemy
-						var lootedItems = [];
-						for(var i = 0; i < items.length; i++) {
-							if(!lootedItems[items[i]]) lootedItems[items[i]] = 0;
-							lootedItems[items[i]]++;
-						}
-						this.teams[0].members[0].opts.player.storage.addItems(items);
-						var text = $('#combat-end-log')[0];
-						text.innerHTML = "Battle won!<br>You've earned " + this.teams[1].members[0].opts.xpGain + " xp.<br><br>Loot:";
-						for(var k in lootedItems) {
-							text.innerHTML += "<br>" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
-						}
-					
-					this.status.active = false; //disable fight when somebody dies
-					this.winner = this.teams[1-team].members[0];
+					$('#combat-log').prepend(log+"<br>");
 				}
 			}
+		}*/ //old method just in case
+		
+		if(this.teams[0].areAllDead()) { //your team dies, you lose
+			//TODO: put this into a function
+			$('#combat-log')[0].classList.add("hidden");
+			var text = $('#combat-end-log')[0];
+			text.innerHTML = "Battle Lost!<br>Wait 60 seconds to revive.";
+			
+			this.status.active = false; //disable fight when somebody dies
+			this.winner = this.teams[1];
+
+			onPlayerDied();
+			
+			
+		} else if(this.teams[1].areAllDead()) { //enemy team dies, you win
+			//TODO: put this into a function
+			$('#combat-log')[0].classList.add("hidden");
+			var lootTable = game.getLootTable(1500); //npcGenericLoot
+			var items = game.loot(lootTable, this.teams[1].members.length); //for now, it'll loot once per enemy in the enemy team
+			//TODO: make this loot depending on each enemy
+			var lootedItems = [];
+			for(var i = 0; i < items.length; i++) {
+				if(!lootedItems[items[i]]) lootedItems[items[i]] = 0;
+				lootedItems[items[i]]++;
+			}
+			this.teams[0].members[0].opts.player.storage.addItems(items);
+			var text = $('#combat-end-log')[0];
+			text.innerHTML = "Battle won!<br>You've earned " + this.teams[1].members[0].opts.xpGain + " xp.<br><br>Loot:";
+			for(var k in lootedItems) {
+				text.innerHTML += "<br>" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
+			}
+			
+			this.status.active = false; //disable fight when somebody dies
+			this.winner = this.teams[0];
 		}
+		
 		$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
 		$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 	};

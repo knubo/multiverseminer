@@ -73,6 +73,8 @@ function onCraft(what) {
 };
 
 function onMine() {
+	if(game.playerDied > 0)
+		return false;
 	game.settings.addStat('mineCount');
 	if(game.player.mine()) {
 		$('#audioDigSuccess').trigger('play');
@@ -82,11 +84,15 @@ function onMine() {
 };
 
 function onGather() {
+	if(game.playerDied > 0)
+		return false;
 	game.settings.addStat('gatherCount');
 	game.player.gather();
 };
 
 function onScavenge() {
+	if(game.playerDied > 0)
+		return false;
 	game.settings.addStat('scavengeCount');
 	game.player.scavenge();
 };
@@ -180,6 +186,16 @@ function onReset() {
 		onActivatePlayerGear();
 	}); */
 };
+
+//TODO: check for the right place for this
+function onPlayerDied() {
+	game.playerDied = new Date();
+	$('#mineButton')[0].classList.add("hidden");
+	$('#gatherButton')[0].classList.add("hidden");
+	$('#scavengeButton')[0].classList.add("hidden");
+	$('#fightButton')[0].classList.add("hidden");
+};
+
 function doReset() {
     game.reset();
     onActivatePlayerInventory();
@@ -218,6 +234,8 @@ function showChat() {
     });
 }
 function showFight() {
+	if(game.playerDied > 0)
+		return false;
     $("#fight-dialog").dialog({
         title: "Fight",
         minWidth: 350,
