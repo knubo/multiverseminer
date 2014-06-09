@@ -159,7 +159,6 @@ function UISlot(id, parent) {
 		this.countDisplay = $('<div class="itemSlotText"></div>');
 		
 		this.mainDiv.attr('title', item.name);
-		console.log("Tooltip");
 		$("#"+this.id).tooltipster({content: this.generateItemTooltip(item), theme: 'tooltipster-punk', contentAsHTML: true, position: "bottom", onlyOne: true,
 									interactiveTolerance: 10, speed: 10});
 		this.mainDiv.append(this.iconDisplay);
