@@ -22,6 +22,9 @@ function Combatant(opts) {
     	if(this.npc) {
     		
     	}
+
+        this.health = 10;
+        this.maxHealth = this.health;
     };
 
     this.update = function(currentTime) {
@@ -102,15 +105,18 @@ function Combatant(opts) {
         if (this.npc) {
             this.autoAttack = true;
         }
+
+        this.health = 10;
+        this.maxHealth = this.health;
     };
-    this.reset();
+    this.reset(); //Why is this here?
     this.save = function() {
         var storageKey = this._getStorageKey();
 
         localStorage[storageKey + 'health'] = this.health;
         localStorage[storageKey + 'maxHealth'] = this.maxHealth;
-        localStorage[storageKey + 'attack'] = this.attack;
-        localStorage[storageKey + 'defense'] = this.defense;
+        localStorage[storageKey + 'attack'] = this.attack; //we have stats.damage, not this.attack?
+        localStorage[storageKey + 'defense'] = this.defense; //same as attack
         localStorage[storageKey + 'alive'] = this.alive;
 
         localStorage[storageKey + 'baseAttackSpeed'] = this.baseAttackSpeed;
@@ -119,10 +125,10 @@ function Combatant(opts) {
     this.load = function() {
         var storageKey = this._getStorageKey();
 
-        this.health = utils.loadFloat(storageKey + 'health', 0);
-        this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 0);
-        this.attack = utils.loadFloat(storageKey + 'attack', 0);
-        this.defense = utils.loadFloat(storageKey + 'defense', 0);
+        this.health = utils.loadFloat(storageKey + 'health', 10); //changed default to 10
+        this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 10); //changed default to 10
+        this.attack = utils.loadFloat(storageKey + 'attack', 0); //we have stats.damage, not this.attack?
+        this.defense = utils.loadFloat(storageKey + 'defense', 0); //same as attack
         this.alive = utils.loadBool(storageKey + 'alive', true);
 
         this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
