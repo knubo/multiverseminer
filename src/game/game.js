@@ -2,6 +2,8 @@ require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "ut
 
 function Game() {
 	this.player = new Player();
+	this.playerDied = -1;
+	
 	this.settings = new Settings();
 
 	this.planets = {};
@@ -55,6 +57,7 @@ function Game() {
 		this.setStartupState();
         
 		if(this.settings.showTutorial){
+			//TODO: This is for the tutorial, add infomartion about the way the game works, in this case, it needs to explain how you can't mine/scavenge/fight for 60 seconds after you die
 			var tutorial = $("#tutorial-dialog");
 			tutorial.dialog({ autoOpen: false });
 			tutorial.dialog("open");
@@ -121,6 +124,14 @@ function Game() {
 			if(this.settings.travelDistanceElapsed >= this.settings.travelDistanceRemaining) {
 				this._enterOrbit(this.settings.targetPlanet);
 			}
+		}
+		
+		if(currentTime-60*1000 > this.playerDied && this.playerDied > 0) {
+			this.playerDied = -1;
+			$('#mineButton')[0].classList.remove("hidden");
+			$('#gatherButton')[0].classList.remove("hidden");
+			$('#scavengeButton')[0].classList.remove("hidden");
+			$('#fightButton')[0].classList.remove("hidden");
 		}
 
 		this.lastUpdateTime = currentTime;
@@ -478,13 +489,6 @@ function Game() {
 			}
 			default: return false;
 		}
-	};
-	
-	this.testCombat = function() { //for testing purposes, TODO: refactor?
-		var fight = new Fight();
-		var enemy = new NPC('testEnemy');
-		enemy.initialize();
-		fight.startBattle([this.player], [enemy]); //not even gonna add the todo, it's obvious
 	};
 	
 	// ---------------------------------------------------------------------------
