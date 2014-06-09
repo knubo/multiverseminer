@@ -9,6 +9,9 @@ function Combatant(opts) {
     this.health = 10;
     this.maxHealth = this.health;
     this.alive = true;
+
+    this.exp = 0;
+    this.level = 1;
     
     //local variables, change later
     this.regenCounter = 0; //used for timed regen
@@ -86,6 +89,20 @@ function Combatant(opts) {
         }
         return this.alive;
     };
+	
+	this.gainExp = function(value) {
+		this.exp += value;
+		this.checkLevel();
+	}
+	
+	this.checkLevel = function() {
+		var next = Math.pow(1.125, this.level-1) * 500;
+		if(this.exp >= next) {
+			this.level ++;
+			this.exp -= next;
+			this.checkLevel(); //for chain leveling
+		}
+	}
 
     // ---------------------------------------------------------------------------
     // internal
@@ -119,6 +136,9 @@ function Combatant(opts) {
         localStorage[storageKey + 'defense'] = this.defense; //same as attack
         localStorage[storageKey + 'alive'] = this.alive;
 
+        localStorage[storageKey + 'exp'] = this.exp;
+        localStorage[storageKey + 'level'] = this.level;
+        
         localStorage[storageKey + 'baseAttackSpeed'] = this.baseAttackSpeed;
     };
 
@@ -131,6 +151,9 @@ function Combatant(opts) {
         this.defense = utils.loadFloat(storageKey + 'defense', 0); //same as attack
         this.alive = utils.loadBool(storageKey + 'alive', true);
 
+        this.health = utils.loadFloat(storageKey + 'exp', 0);
+        this.maxHealth = utils.loadFloat(storageKey + 'level', 1);
+        
         this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
     };
 }
