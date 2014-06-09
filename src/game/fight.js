@@ -132,6 +132,9 @@ function Fight(teamList) {
 			this.teams[0].members[0].opts.player.storage.addItems(items);
 			var text = $('#combat-end-log')[0];
 			text.innerHTML = "Battle won!<br>You've earned " + this.teams[1].members[0].opts.xpGain + " xp.<br><br>Loot:";
+
+			this.teams[0].members[0].gainExp(this.teams[1].members[0].opts.xpGain); //gainExp
+			
 			for(var k in lootedItems) {
 				text.innerHTML += "<br>" + lootedItems[k] + " " + game.getItem(k).name; // # item ej: 3 Copper Bar
 			}
