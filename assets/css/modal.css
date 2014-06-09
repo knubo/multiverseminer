@@ -3,8 +3,8 @@
 /* -------------------------------------- */
 
 .custombox-modal.resetGame {
-  background: #000000;
-  /* border: 1px solid #7A7A7A; */
-  border-radius: 2px; 
+  border-style: solid;
+  border-width: 27px 27px 27px 30px;
+  border-image: url(assets/images/resetBorder.png) 27 27 27 35 stretch;
   padding: 10px;
 }
