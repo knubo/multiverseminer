@@ -108,7 +108,7 @@ module.exports = function(grunt) {
 		'clean',
 		'requirejs',
 		'cssmin',
-		'copy',
+		'copy'
 		//'dataExport'
 	]);
 };
