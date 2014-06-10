@@ -21,8 +21,8 @@ function Fight(teamList) {
 			new Team([npc])
 		];
         this.teams[0].members[0].health
-		//$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
-		//$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
+		$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
+		$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
 		$('#combat-end-log')[0].innerHTML = ""; //clear it
 		$('#combat-log')[0].classList.remove("hidden");
 	};
@@ -161,7 +161,6 @@ function Fight(teamList) {
     function Team(memberList) {
         this.members = [];
         for (var i = 0; i < memberList.length; i++) {
-            memberList[i].combatant.reset(false); //UGLY FIX
             memberList[i].combatant.inCombat = true;
             this.members.push(
                 memberList[i].combatant
