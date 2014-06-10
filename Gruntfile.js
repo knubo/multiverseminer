@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 					name     : 'main',
 
 					uglify2 : {
-						mangle : true
+						mangle : false
 					},
 
 					paths : {
