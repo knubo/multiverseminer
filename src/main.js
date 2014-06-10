@@ -231,7 +231,7 @@ function showSolar() {
     var $solarSystem = $('#solarsystem')
         .load('solar.html')
         .dialog({
-            autoOpen: false,
+            autoOpen: true,
             minWidth: 1200,
             minHeight: "auto",
             modal: true
