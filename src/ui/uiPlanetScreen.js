@@ -335,8 +335,8 @@ function UIPlanetScreen() {
         $("#playerCraftingContent").accordion({
             heightStyle: "content"
         });
-        var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        $("#playerCraftingContent").accordion('option', 'active', activePage);
+        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
+        //$("#playerCraftingContent").accordion('option', 'active', activePage);
     };
 
     this.updateEmpirePanel = function() {
