@@ -1,4 +1,4 @@
-require([ "data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils" ]);
+require([ "data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "pageguide" ]);
 
 // Create components
 var game = new Game();
@@ -6,13 +6,16 @@ var ui = new UI();
 
 // Add hook for document ready
 $(document).ready(onDocumentReady);
+$(document).ready(function() {
+    var pageguide = tl.pg.init();
+});
 
 // Setup notifications
 $.jGrowl.defaults.position = 'top-right';
 $.jGrowl.defaults.animateOpen = { height: 'show'};
 $.jGrowl.defaults.life = 300;
 $.jGrowl.defaults.pool = 1;
-
+var pageguide = tl.pg.init();
 Number.prototype.formatNumber = function() {
 	if(ui.numberFormatter) {
 		return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -225,10 +228,14 @@ function onSetInventoryFilter(filter) {
 }
 
 function showSolar() {
-    $("#solarsystem").dialog({
-        minWidth: 1200,
-        minHeight: "auto"
-    });
+    var $solarSystem = $('')
+        .load('/solar.html')
+        .dialog({
+            autoOpen: false,
+            minWidth: 1200,
+            minHeight: "auto",
+            modal: true
+        });
 }
 function showChat() {
     $("#chat-modal").dialog({

@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 						starfield   : 'external/starfield',
                         tooltipster : 'external/jquery.tooltipster.min',
                         custombox   : 'external/jquery.custombox',
-                        earth3d     : 'external/jquery.earth-3d'
+                        pageguide   : 'external/pageguide.min'
 					}
 				}
 			}

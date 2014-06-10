@@ -1,4 +1,4 @@
-require(["uicomponent", "uiinventory", "uiselection", "widget", "earth3d"]);
+require(["uicomponent", "uiinventory", "uiselection", "pageguide" ]);
 
 UIPlanetScreen.prototype = new UIComponent();
 UIPlanetScreen.prototype.$super = parent;
