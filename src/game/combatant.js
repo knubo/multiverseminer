@@ -27,7 +27,7 @@ function Combatant(opts) {
     		
     	}
 
-        this.health = 10;
+        this.health = 5;
         this.maxHealth = this.health;
         
 		this.updateUI();
