@@ -6,7 +6,6 @@ function NPC(id) {
 	this.combatant = undefined;
 	this.opts = {id:'npc_' + id,npc:true,player:this};
 	this.NPC = true;
-	
 	this.AI = undefined;
 
 	// ---------------------------------------------------------------------------
@@ -29,11 +28,11 @@ function NPC(id) {
 		
 		// Give npc's a default basic ai, move somewhere else later
 		this.AI = function(info) {
-						//normally this would analyze info (enemies' hp, potential damage, potential defense, and make a decision based on it
-						//this one will just randomly attack any enemy
-						//or it'll use random numbers
-						return ['hit', 'any'];
-					};
+		//normally this would analyze info (enemies' hp, potential damage, potential defense, and make a decision based on it
+		//this one will just randomly attack any enemy
+		//or it'll use random numbers
+            return ['hit', 'any'];
+		};
 	};
 	
 	this.update = function(currentTime) {
