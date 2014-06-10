@@ -8,9 +8,9 @@ var ui = new UI();
 $(document).ready(onDocumentReady);
 
 // Setup notifications
-$.jGrowl.defaults.position = 'bottom-right';
+$.jGrowl.defaults.position = 'top-right';
 $.jGrowl.defaults.animateOpen = { height: 'show'};
-$.jGrowl.defaults.life = 1000;
+$.jGrowl.defaults.life = 300;
 $.jGrowl.defaults.pool = 1;
 
 Number.prototype.formatNumber = function() {
