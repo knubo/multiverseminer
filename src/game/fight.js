@@ -1,29 +1,31 @@
 function Fight(teamList) {
-    this.teams = [];
-    this.teams[0] = new Team([game.player]);
-    this.log = [];
-    this.status = {
-        turn: Math.round(Math.random()), //random starter. Opposite of this number starts
-        active: true
-    };
+	this.teams = [];
+	this.log = [];
+	this.status = {
+		turn: Math.round(Math.random()), //random starter. Opposite of this number starts
+		active:true
+	};
 
-    $('#combat-log').html(' '); //clear log
-
-    this.winner = -1;
-
-    // ---------------------------------------------------------------------------
+	$('#combat-log').html(' '); //clear log
+    
+	this.winner = -1;
+	
+	// ---------------------------------------------------------------------------
     // main functions
     // ---------------------------------------------------------------------------
-    this.init = function() {
-        var npc = new NPC((['policeMan', 'thug'])[Math.floor(Math.random() * 2)]);
-        npc.initialize();
-        this.teams[1] = new Team([npc]);;
-        $('#playerHP').width((this.teams[0].members[0].health / this.teams[0].members[0].maxHealth) * 100 + "%");
-        $('#enemyHP').width((this.teams[1].members[0].health / this.teams[1].members[0].maxHealth) * 100 + "%");
-        //this is in case we use the fight button many times in a row, rather than closing and opening the way we are supposed to.
-        $('#combat-end-log')[0].innerHTML = ""; //clear it
-        $('#combat-log')[0].classList.remove("hidden");
-    };
+	this.init = function() {
+		var npc = new NPC((['policeMan', 'thug'])[Math.floor(Math.random()*2)]);
+		npc.initialize();
+		this.teams = [
+			new Team([game.player]),
+			new Team([npc])
+		];
+        this.teams[0].members[0].health
+		//$('#playerHP').width((this.teams[0].members[0].health/this.teams[0].members[0].maxHealth)*100+"%");
+		//$('#enemyHP').width((this.teams[1].members[0].health/this.teams[1].members[0].maxHealth)*100+"%");
+		$('#combat-end-log')[0].innerHTML = ""; //clear it
+		$('#combat-log')[0].classList.remove("hidden");
+	};
 
     this.update = function() {};
 
@@ -139,6 +141,7 @@ function Fight(teamList) {
 
             this.status.active = false; //disable fight when somebody dies
             this.winner = this.teams[0];
+            
         }
 
         $('#playerHP').width((this.teams[0].members[0].health / this.teams[0].members[0].maxHealth) * 100 + "%");

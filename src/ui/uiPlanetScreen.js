@@ -207,7 +207,7 @@ function UIPlanetScreen() {
     this.updatePlayerInventoryPanel = function() {
         var self = ui.screenPlanet;
         
-        self.playerInventory.update(game.player.storage);
+        // self.playerInventory.update(game.player.storage);
     };
     
     this.updatePlanetInventoryPanel = function() {
@@ -383,9 +383,12 @@ function UIPlanetScreen() {
         if(game.currentPlanet) {
             var background = game.currentPlanet.getBackground();
             if(background) {
+                if (game.currentPlanet.getName() === "Earth") {
+                    $('#planetDisplayBackground').append('<img class="planetImage" src="assets/images/bigEarth.png"/>');
+                } else {
                 $('#planetDisplayBackground').append('<img class="planetImage" src="' + background + '"/>');
             }
-            
+        }
             $('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
         }
     };
