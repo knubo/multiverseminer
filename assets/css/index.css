@@ -1,3 +1,11 @@
+html {
+    background: url(assets/images/bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 98%;
+}
 body {
 color: white;
 height: 97.5%;
