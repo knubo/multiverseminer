@@ -118,7 +118,12 @@ function onActivateEmpire() {
 
     ui.screenPlanet.activateEmpire();
 };
+function onActivateStats() {
+	// select the button
+	changeLeftCategoryButton(2);
 
+    ui.screenPlanet.activateStats();
+};
 function onActivatePlayerGear() {
 	// select the button
 	changeRightCategoryButton(0);

@@ -21,6 +21,7 @@ function UIPlanetScreen() {
     this.componentPlayerInventory = undefined;
     this.componentCrafting = undefined;
     this.componentEmpire = undefined;
+    this.componentStats = undefined;
 
     this.componentPlayerGear = undefined;
     this.componentPlayerShip = undefined;
@@ -87,6 +88,10 @@ function UIPlanetScreen() {
         this.componentEmpire = new UIComponent('empirePanel');
         this.componentEmpire.init();
         this.componentEmpire.updateCallback = this.updateEmpirePanel;
+        
+        this.componentStats = new UIComponent('statsPanel');
+        this.componentStats.init();
+        this.componentStats.updateCallback = this.updateStatsPanel;
 
         this.componentPlayerGear = new UIComponent('playerGearPanel');
         this.componentPlayerGear.itemContext = game.itemContexts.playerGear;
@@ -445,7 +450,10 @@ function UIPlanetScreen() {
         this.hideLeftSideComponents();
         this.componentEmpire.show();
     };
-
+    this.activateStats = function() {
+        this.hideLeftSideComponents();
+        this.componentStats.show();
+    };
     this.activatePlayerGear = function() {
         this.hideRightSideComponents();
         this.componentPlayerGear.show();
