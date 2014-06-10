@@ -156,8 +156,6 @@ function UISlot(id, parent) {
                 content += "Loot Luck: " + item.lootLuck + "</br>";
                 content += "Scavenge Luck: " + item.scavengeLuck + "</br>";
                 break;
-            case "gearChest":
-                cas
         };
         content += "</div>"
         return content;
@@ -204,7 +202,7 @@ function UISlot(id, parent) {
         this.count = 0;
 
         if ($("#" + this.id).hasClass("tooltipstered")) {
-            //$("#" + this.id).tooltipster("hide");
+            $("#" + this.id).tooltipster("destroy");
         }
         this.mainDiv.empty();
         this.mainDiv.attr('title', '');
