@@ -207,7 +207,7 @@ function UIPlanetScreen() {
     this.updatePlayerInventoryPanel = function() {
         var self = ui.screenPlanet;
         
-        // self.playerInventory.update(game.player.storage);
+        self.playerInventory.update(game.player.storage);
     };
     
     this.updatePlanetInventoryPanel = function() {
