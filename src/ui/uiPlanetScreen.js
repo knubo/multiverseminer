@@ -269,28 +269,31 @@ function UIPlanetScreen() {
                 }
                 items.forEach(function(item) {
                     var item = items[i];
-                    var element = $('#craft_' + item.id);
-                    var canCraft = false;
-                    if (item.craftCost && game.player.storage.canAdd(item.id)) {
-                        var cost = game.getCraftingCost(item.id, 1);
-                        var quantity = game.itemDictionary[item.id].craftResult || 1;
-                        var keys = Object.keys(cost);
-                        var pass = 0;
-                        keys.forEach(function(key) {
-                            if (game.player.storage.getItemCount(key) >= cost[key]) {
-                                pass++;
+                    if(item.id) {
+                        var element = $('#craft_' + item.id);
+                        var canCraft = false;
+                        if (item.craftCost && game.player.storage.canAdd(item.id)) {
+                            var cost = game.getCraftingCost(item.id, 1);
+                            var quantity = game.itemDictionary[item.id].craftResult || 1;
+                            var keys = Object.keys(cost);
+                            var pass = 0;
+                            for (var x = 0; x < keys.length; x++) {
+                                var key = keys[x];
+                                if (game.player.storage.getItemCount(key) >= cost[key]) {
+                                    pass++;
+                                }
                             }
-                        });
-                        if (pass === keys.length) {
-                            canCraft = true;
+                            if (pass === keys.length) {
+                                canCraft = true;
+                            }
+                        }
+                        if (canCraft) {
+                            element.removeClass('opaque');
+                        } else {
+                            element.addClass('opaque');
                         }
                     }
-                    if (canCraft) {
-                        element.removeClass('opaque');
-                    } else {
-                        element.addClass('opaque');
-                    }
-                });
+                }
             }
             // Skip re-building this for now
             return;
