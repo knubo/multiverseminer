@@ -25,9 +25,9 @@ Number.prototype.formatNumber = function() {
 };
 
 function selectClass(race) {
-    console.log(race);
     game.player.race = race;
     $("#race-pick").dialog("close");
+    game.save()
 }
 
 // ---------------------------------------------------------------------------
