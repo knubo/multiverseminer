@@ -88,6 +88,10 @@ function UIPlanetScreen() {
         this.componentEmpire = new UIComponent('empirePanel');
         this.componentEmpire.init();
         this.componentEmpire.updateCallback = this.updateEmpirePanel;
+        
+        this.componentStats = new UIComponent('statsPanel');
+        this.componentStats.init();
+        this.componentStats.updateCallback = this.updateStatsPanel;
 
         this.componentPlayerGear = new UIComponent('playerGearPanel');
         this.componentPlayerGear.itemContext = game.itemContexts.playerGear;
@@ -344,6 +348,10 @@ function UIPlanetScreen() {
     this.updateEmpirePanel = function() {
         // Todo
     };
+    
+    this.updateStatsPanel = function() {
+       // TODO 
+    };
 
     this.updateShipPanel = function() {
         // Todo
@@ -418,7 +426,7 @@ function UIPlanetScreen() {
     this.hideLeftSideComponents = function() {
         this.componentPlayerInventory.hide();
         this.componentEmpire.hide();
-
+        this.componentStats.hide();
         game.clearItemContext(this.playerInventory.itemContext);
     };
 
