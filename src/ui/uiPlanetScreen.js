@@ -451,6 +451,11 @@ function UIPlanetScreen() {
         this.componentEmpire.show();
     };
 
+    this.activateStats = function() {
+        this.hideLeftSideComponents();
+        this.componentStats.show();
+    };
+
     this.activatePlayerGear = function() {
         this.hideRightSideComponents();
         this.componentPlayerGear.show();
