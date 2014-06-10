@@ -6,7 +6,7 @@ function Combatant(opts) {
 
     this.inCombat = false;
 
-    this.health = 10;
+    this.health = 5;
     this.maxHealth = this.health;
     this.alive = true;
 
@@ -141,7 +141,7 @@ function Combatant(opts) {
             this.autoAttack = true;
         }
 
-        this.health = 10;
+        this.health = 5;
         this.maxHealth = this.health;
         
         if(fullReset) { //TODO: find a way around this
@@ -171,15 +171,15 @@ function Combatant(opts) {
     this.load = function() {
         var storageKey = this._getStorageKey();
 
-        this.health = utils.loadFloat(storageKey + 'health', 10); //changed default to 10
-        this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 10); //changed default to 10
+        this.health = utils.loadFloat(storageKey + 'health', 5); //changed default to 10
+        this.maxHealth = utils.loadFloat(storageKey + 'maxHealth', 5); //changed default to 10
         this.attack = utils.loadFloat(storageKey + 'attack', 0); //we have stats.damage, not this.attack?
         this.defense = utils.loadFloat(storageKey + 'defense', 0); //same as attack
         this.alive = utils.loadBool(storageKey + 'alive', true);
 
-        this.health = utils.loadFloat(storageKey + 'exp', 0);
-        this.health = utils.loadFloat(storageKey + 'expRequired', 500);
-        this.maxHealth = utils.loadFloat(storageKey + 'level', 1);
+        this.exp = utils.loadFloat(storageKey + 'exp', 0);
+        this.expRequired = utils.loadFloat(storageKey + 'expRequired', 500);
+        this.level = utils.loadFloat(storageKey + 'level', 1);
         
         this.baseAttackSpeed = utils.loadFloat(storageKey + 'baseAttackSpeed', 1);
     };

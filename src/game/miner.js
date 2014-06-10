@@ -91,9 +91,9 @@ function Miner(id) {
 	this.load = function() {
 		var storageKey = this._getStorageKey();
 		this.baseMineSpeed = utils.loadFloat(storageKey + 'baseMineSpeed', 1);
-		this.baseMineSpeed = utils.loadFloat(storageKey + 'exp', 0);
-		this.baseMineSpeed = utils.loadFloat(storageKey + 'expRequired', 500);
-		this.baseMineSpeed = utils.loadFloat(storageKey + 'level', 1);
+		this.exp = utils.loadFloat(storageKey + 'exp', 0);
+		this.expRequired = utils.loadFloat(storageKey + 'expRequired', 500);
+		this.level = utils.loadFloat(storageKey + 'level', 1);
 	};
 
 	this.reset = function(fullReset) {
