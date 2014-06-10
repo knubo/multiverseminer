@@ -72,7 +72,9 @@ function Storage(id) {
 			}
 		}
 		
-		this.storageChanged = true;
+		if(items.length>0) {
+            this.storageChanged = true;
+        }
 		return true;
 	};
 
