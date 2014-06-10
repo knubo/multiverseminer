@@ -11,6 +11,12 @@
         <link href="MultiverseMiner.min.css" rel="stylesheet" type="text/css">
     </head>
     <body class="body" oncontextmenu="return false;">
+        <div class="tlyPageGuideWelcome">
+            <p>Welcome to my new page! pageguide is here to help you learn more.</p>
+            <button class="tlypageguide_start">let's go</button>
+            <button class="tlypageguide_ignore">not now</button>
+            <button class="tlypageguide_dismiss">got it, thanks</button>
+        </div>
         <audio id="audioDig" preload="none"> 
             <source src="assets/sound/Dig.mp3" type="audio/mp3">
         </audio>
@@ -302,5 +308,36 @@
                     <div class="no" onclick="$.fn.custombox('close')">No</div>
                 </div>
         </div>
+        <div id="examplePlusWelcome">
+            <div id="exampleContent">
+                <div class="wrapper">
+                <!-- this set of pageguide steps will be displayed by default. -->
+                <ul id="tlyPageGuide" data-tourtitle="check out these elements">
+                  <!-- use these classes to indicate where each number bubble should be
+                  positioned. data-tourtarget should contain the selector for the element to
+                  which you want to attach this pageguide step. -->
+                  <li class="tlypageguide_bottom" data-tourtarget="#mineButton">
+                    This is the mining button. Click this button to mine. There is a chance you will find element(s).
+                    <br>
+                    You will only see this button if the planet has a mineable surface.
+                  </li>
+                  <li class="tlypageguide_bottom" data-tourtarget="#gatherButton">
+                      This is the gather button. Click this button to gather atmosphere.
+                      <br>
+                      You will only see this button if the planet has an atmosphere.
+                  </li>
+                  <li class="tlypageguide_bottom" data-tourtarget="#scavengeButton">
+                      This is the scavenge button. Explore abandoned building for scrap.
+                      <br>
+                      You will only see this button on earth.
+                  </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var pageguide = tl.pg.init();
+            });
+        </script>
     </body>
 </html>
