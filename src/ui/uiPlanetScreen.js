@@ -418,6 +418,7 @@ function UIPlanetScreen() {
     this.hideLeftSideComponents = function() {
         this.componentPlayerInventory.hide();
         this.componentEmpire.hide();
+        this.componentStats.hide();
 
         game.clearItemContext(this.playerInventory.itemContext);
     };
