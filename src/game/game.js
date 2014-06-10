@@ -291,6 +291,11 @@ function Game() {
 		if (target == undefined || !this.planetDictionary[target]) {
 			return false;
 		}
+        
+        if (this.player.Items.ship == undefined) {
+            ui.showDialog("Ok", "Ok", "Travel failed", this);
+            return false;
+        }
 		
 		var targetData = this.planetDictionary[target];
 		
