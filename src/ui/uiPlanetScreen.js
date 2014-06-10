@@ -252,7 +252,6 @@ function UIPlanetScreen() {
 
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
-        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
         //$('#playerCraftingContent').accordion("destroy");
         //$('#playerCraftingContent').empty();
         var parent = $('#playerCraftingContent');
@@ -263,7 +262,8 @@ function UIPlanetScreen() {
                     continue;
                 }
                 // TODO: Move this somewhere else and make it take other storages into account
-                for (var i = 0; i < items.length; i++) {
+
+		items.forEach(function(item) {
                     var item = items[i];
                     var element = $('#craft_' + item.id);
                     var canCraft = false;
@@ -272,12 +272,13 @@ function UIPlanetScreen() {
                         var quantity = game.itemDictionary[item.id].craftResult || 1;
                         var keys = Object.keys(cost);
                         var pass = 0;
-                        for (var x = 0; x < keys.length; x++) {
-                            var key = keys[x];
+                        
+			keys.forEach(function(key) {
                             if (game.player.storage.getItemCount(key) >= cost[key]) {
                                 pass++;
                             }
-                        }
+                        });
+
                         if (pass === keys.length) {
                             canCraft = true;
                         }
@@ -287,7 +288,7 @@ function UIPlanetScreen() {
                     } else {
                         element.addClass('opaque');
                     }
-                }
+                });
             }
             // Skip re-building this for now
             return;
@@ -334,6 +335,7 @@ function UIPlanetScreen() {
         $("#playerCraftingContent").accordion({
             heightStyle: "content"
         });
+        var activePage = $('#playerCraftingContent').accordion('option', 'active');
         $("#playerCraftingContent").accordion('option', 'active', activePage);
     };
 
