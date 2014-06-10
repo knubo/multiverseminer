@@ -21,7 +21,6 @@ function UIPlanetScreen() {
     this.componentPlayerInventory = undefined;
     this.componentCrafting = undefined;
     this.componentEmpire = undefined;
-    this.componentStats = undefined;
 
     this.componentPlayerGear = undefined;
     this.componentPlayerShip = undefined;
@@ -88,10 +87,6 @@ function UIPlanetScreen() {
         this.componentEmpire = new UIComponent('empirePanel');
         this.componentEmpire.init();
         this.componentEmpire.updateCallback = this.updateEmpirePanel;
-        
-        this.componentStats = new UIComponent('statsPanel');
-        this.componentStats.init();
-        this.componentStats.updateCallback = this.updateStatsPanel;
 
         this.componentPlayerGear = new UIComponent('playerGearPanel');
         this.componentPlayerGear.itemContext = game.itemContexts.playerGear;
@@ -258,6 +253,7 @@ function UIPlanetScreen() {
 
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
+        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
         //$('#playerCraftingContent').accordion("destroy");
         //$('#playerCraftingContent').empty();
         var parent = $('#playerCraftingContent');
@@ -267,7 +263,8 @@ function UIPlanetScreen() {
                 if (!items || items.length <= 0) {
                     continue;
                 }
-                items.forEach(function(item) {
+                // TODO: Move this somewhere else and make it take other storages into account
+                for (var i = 0; i < items.length; i++) {
                     var item = items[i];
                     if(item.id) {
                         var element = $('#craft_' + item.id);
@@ -340,8 +337,7 @@ function UIPlanetScreen() {
         $("#playerCraftingContent").accordion({
             heightStyle: "content"
         });
-        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        //$("#playerCraftingContent").accordion('option', 'active', activePage);
+        $("#playerCraftingContent").accordion('option', 'active', activePage);
     };
 
     this.updateEmpirePanel = function() {
@@ -421,7 +417,6 @@ function UIPlanetScreen() {
     this.hideLeftSideComponents = function() {
         this.componentPlayerInventory.hide();
         this.componentEmpire.hide();
-        this.componentStats.hide();
 
         game.clearItemContext(this.playerInventory.itemContext);
     };
@@ -454,10 +449,7 @@ function UIPlanetScreen() {
         this.hideLeftSideComponents();
         this.componentEmpire.show();
     };
-    this.activateStats = function() {
-        this.hideLeftSideComponents();
-        this.componentStats.show();
-    };
+
     this.activatePlayerGear = function() {
         this.hideRightSideComponents();
         this.componentPlayerGear.show();
