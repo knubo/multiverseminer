@@ -262,9 +262,7 @@ function UIPlanetScreen() {
                 if (!items || items.length <= 0) {
                     continue;
                 }
-                // TODO: Move this somewhere else and make it take other storages into account
-
-		items.forEach(function(item) {
+                items.forEach(function(item) {
                     var item = items[i];
                     var element = $('#craft_' + item.id);
                     var canCraft = false;
@@ -273,13 +271,11 @@ function UIPlanetScreen() {
                         var quantity = game.itemDictionary[item.id].craftResult || 1;
                         var keys = Object.keys(cost);
                         var pass = 0;
-                        
-			keys.forEach(function(key) {
+                        keys.forEach(function(key) {
                             if (game.player.storage.getItemCount(key) >= cost[key]) {
                                 pass++;
                             }
                         });
-
                         if (pass === keys.length) {
                             canCraft = true;
                         }
@@ -336,8 +332,8 @@ function UIPlanetScreen() {
         $("#playerCraftingContent").accordion({
             heightStyle: "content"
         });
-        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        //$("#playerCraftingContent").accordion('option', 'active', activePage);
+        var activePage = $('#playerCraftingContent').accordion('option', 'active');
+        $("#playerCraftingContent").accordion('option', 'active', activePage);
     };
 
     this.updateEmpirePanel = function() {
