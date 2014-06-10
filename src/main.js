@@ -229,7 +229,7 @@ function onSetInventoryFilter(filter) {
 
 function showSolar() {
     var $solarSystem = $('')
-        .load('/solar.html')
+        .load('solar.html')
         .dialog({
             autoOpen: false,
             minWidth: 1200,
