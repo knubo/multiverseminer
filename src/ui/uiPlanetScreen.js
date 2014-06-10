@@ -127,6 +127,7 @@ function UIPlanetScreen() {
         // Check for inventory changes
         if (game.player.storage.getStorageChanged()) {
             this.playerInventory.invalidate();
+            this.componentCrafting.invalidate();
             game.player.storage.setStorageChanged(false);
         }
 
