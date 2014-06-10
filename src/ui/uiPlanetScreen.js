@@ -331,8 +331,8 @@ function UIPlanetScreen() {
             }
         }
 
-        //$("#playerCraftingContent").accordion({heightStyle: "content" });
-        //$("#playerCraftingContent").accordion('option', 'active', activePage);
+        $("#playerCraftingContent").accordion({heightStyle: "content" });
+        $("#playerCraftingContent").accordion('option', 'active', activePage);
     };
     
     this.updateEmpirePanel = function() {
