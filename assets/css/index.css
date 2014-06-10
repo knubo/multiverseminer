@@ -5,13 +5,10 @@ html {
     -o-background-size: cover;
     background-size: cover;
     height: 98%;
+    width:100%;
 }
 body {
-color: white;
-height: 97.5%;
-}
-
-body {
+color:white;
 overflow:auto;
 min-width:1100px;
 min-height:600px;
