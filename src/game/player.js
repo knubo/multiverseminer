@@ -205,7 +205,9 @@ function Player() {
 		// Remove the item from the storage while it's equipped
 		this.storage.removeItem(itemId);
 		replacedBy = this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
-		this.storage.addItem(replacedBy);
+		if(replacedBy) {
+			this.storage.addItem(replacedBy);
+		}
 	};
 	
 	this.canEquip = function(itemId) {
@@ -242,6 +244,7 @@ function Player() {
 		this.storage.save();
 		this.gear.save();
 		localStorage.playerOxygenConsumption = this.oxygenConsumption;
+		localStorage.planetID = game.currentPlanet.data.id;
 	};
 
 	this.load = function() {
@@ -250,6 +253,8 @@ function Player() {
 		this.storage.load();
 		this.gear.load();
 		this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
+		game.currentPlanet = game.planets[utils.loadInt('planetID', 1)];
+		game.planetChanged = true;
 	};
 
 	this.reset = function(fullReset) {
