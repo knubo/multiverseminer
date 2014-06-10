@@ -291,19 +291,37 @@ function Game() {
 		if (target == undefined || !this.planetDictionary[target]) {
 			return false;
 		}
-        
-        if (this.player.Items.ship == undefined) {
-            ui.showDialog("Ok", "Ok", "Travel failed", this);
-            return false;
-        }
 		
 		var targetData = this.planetDictionary[target];
+        
+        // If player does not have a ship, they should not be able to travel
+        if (!this.player.storage.hasItem("spaceship")) {
+            ui.notifyError("You cannot travel without a ship!");
+            $('#get-a-ship').dialog({
+                height: "auto",
+                width: "auto"
+            });
+            return false;
+        }
 		
 		// Check if we are already there
 		if(this.currentPlanet.data.id == targetData.id) {
 			return false;
 		}
 		
+        // If the player has the basic spaceship they should be able to travel to the Earth and to the Moon
+        if (this.player.storage.hasItem("spaceship")) {
+            if (targetData.name == "Moon") {
+                return true;
+            }
+            if (targetData.name == "Earth") {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        
 		return true;
 	};
 	
