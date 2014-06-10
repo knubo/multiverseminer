@@ -52,10 +52,12 @@ module.exports = function(grunt) {
 
 						jquery      : 'external/jquery-2.1.1.min',
 						jqueryui    : 'external/jquery-ui-1.10.4.custom.min',
+                        widget      : 'external/jquery.ui.widget',
 						jgrowl      : 'external/jquery.jgrowl.min',
 						starfield   : 'external/starfield',
                         tooltipster : 'external/jquery.tooltipster.min',
-                        custombox   : 'external/jquery.custombox'
+                        custombox   : 'external/jquery.custombox',
+                        earth3d     : 'external/jquery.earth-3d'
 					}
 				}
 			}
@@ -68,7 +70,7 @@ module.exports = function(grunt) {
 						'assets/css/*.css',
 						'assets/fonts/overpass/*.css',
 						'src/ui/controls/*.css',
-						'src/external/*.css',
+						'src/external/*.css'
 					]
 				}
 			}
