@@ -184,7 +184,6 @@ function UISlot(id, parent) {
         });
         this.mainDiv.append(this.iconDisplay);
         this.mainDiv.append(this.countDisplay);
-
         this.update(count);
     };
 
@@ -207,7 +206,6 @@ function UISlot(id, parent) {
         if ($("#" + this.id).hasClass("tooltipstered")) {
             //$("#" + this.id).tooltipster("hide");
         }
-
         this.mainDiv.empty();
         this.mainDiv.attr('title', '');
     };
