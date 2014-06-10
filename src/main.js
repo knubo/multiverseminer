@@ -24,6 +24,12 @@ Number.prototype.formatNumber = function() {
     return this;
 };
 
+function selectClass(race) {
+    console.log(race);
+    game.player.race = race;
+    $("#race-pick").dialog("close");
+}
+
 // ---------------------------------------------------------------------------
 // function hooks
 // ---------------------------------------------------------------------------
@@ -57,6 +63,16 @@ function onDocumentReady() {
     setInterval(function() {
         onUpdate();
     }, interval);
+
+    $("#class1").click(function() {
+        selectClass(1);
+    });
+    $("#class2").click(function() {
+        selectClass(2);
+    });
+    $("#class3").click(function() {
+        selectClass(3);
+    });
 };
 
 function onUpdate() {
