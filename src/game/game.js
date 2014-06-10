@@ -106,7 +106,9 @@ function Game() {
 		var elapsedSinceTravel = currentTime - this.lastTravelTime;
 
 		if (this.settings.autoSaveEnabled
-				&& elapsedSinceAutoSave > this.settings.autoSaveInterval) {
+				&& elapsedSinceAutoSave > this.settings.autoSaveInterval
+                && !this.settings.travelActive) {
+
 			ui.notify("Auto-saving");
 			this.save();
 			this.lastAutoSaveTime = currentTime;
