@@ -21,6 +21,7 @@ function UIPlanetScreen() {
     this.componentPlayerInventory = undefined;
     this.componentCrafting = undefined;
     this.componentEmpire = undefined;
+    this.componentStats = undefined;
 
     this.componentPlayerGear = undefined;
     this.componentPlayerShip = undefined;
