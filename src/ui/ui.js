@@ -67,8 +67,6 @@ function UI() {
         
 		if(game.settings.travelActive) {
 			$('#depth').text(game.settings.travelDistanceElapsed + " / " + game.settings.travelDistanceRemaining);
-		} else {
-			$('#depth').text(game.currentPlanet.currentDepth);
 		}
 
 		// Todo: do this a bit more proper maybe with a callback or something
