@@ -15,6 +15,7 @@ $.jGrowl.defaults.animateOpen = {
 $.jGrowl.defaults.life = 300;
 $.jGrowl.defaults.pool = 1;
 var pageguide = tl.pg.init();
+tl.pg.toggle_markup = "";
 Number.prototype.formatNumber = function() {
     if (ui.numberFormatter) {
         return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
