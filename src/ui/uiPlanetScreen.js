@@ -1,4 +1,4 @@
-require(["uicomponent", "uiinventory", "uiselection"]);
+require(["uicomponent", "uiinventory", "uiselection", "widget", "earth3d"]);
 
 UIPlanetScreen.prototype = new UIComponent();
 UIPlanetScreen.prototype.$super = parent;
@@ -254,7 +254,7 @@ function UIPlanetScreen() {
             }
         }
         return content;
-    }
+    };
 
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
