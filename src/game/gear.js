@@ -54,26 +54,15 @@ function Gear(id) {
 					+ " in " + itemInfo.gearType);
 			return;
 		}
-		
+		replacedBy = null;
 		if(this.slots[itemInfo.gearType]!=-1) {
-			this.unEquip(itemInfo.gearType);
+			replacedBy = this.slots[itemInfo.gearType];
 		}
 
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
 		this.gearChanged = true;
-	};
-
-	this.unEquip = function(type) {
-		if (!this.slots[type]) {
-			utils.logError("attempt to un-equip item but slot was not set: "
-					+ type);
-			return;
-		}
-		
-		this.slots[type] = -1;
-		this.slotMetadata[type] = undefined;
-		this.gearChanged = true;
+		return replacedBy;
 	};
 	
 	this.hasGearEquipped = function(type){

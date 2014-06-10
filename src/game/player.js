@@ -204,7 +204,8 @@ function Player() {
 		
 		// Remove the item from the storage while it's equipped
 		this.storage.removeItem(itemId);
-		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
+		replacedBy = this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
+		this.storage.addItem(replacedBy);
 	};
 	
 	this.canEquip = function(itemId) {
