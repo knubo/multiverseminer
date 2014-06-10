@@ -15,9 +15,12 @@ module.exports = function(grunt) {
 		requirejs : {
 			compile : {
 				options : {
+ 					generateSourceMaps: true,
+					preserveLicenseComments: false,
+
 					baseUrl  : "./src",
 					out      : "bin/MultiverseMiner.min.js",
-					optimize : 'uglify',
+					optimize : 'uglify2',
 					name     : 'main',
 
 					uglify2 : {

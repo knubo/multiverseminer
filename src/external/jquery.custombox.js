@@ -1,4 +1,4 @@
-/*
+/** @license
  *  jQuery Custombox v1.1.3 - 2014/02/18
  *  jQuery Modal Window Effects.
  *  http://dixso.github.io/custombox/

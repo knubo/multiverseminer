@@ -1,5 +1,13 @@
 Multiverse Miner
 ====
+
+### Running
+
+```shell
+npm install # installs dependencies
+npm start # compiles miner and opens a server (open in the browser)
+```
+
 ---
 Since unlocking the true potential of the elements, wormholes have been created and mastered, space travel occurs at the speed of light, and the elements in the universe can be manipulated at your whim.
 
