@@ -11,7 +11,7 @@ vertical-align:middle;
 cursor:hand;
 }
 
-#playerCraftingContent .ui-accordion-content {
+#playerCraftingContent.ui-accordion-content {
 margin-bottom:10px;
 border-radius:0;
 border:none;
@@ -22,14 +22,14 @@ line-height:16pt;
 padding:0;
 }
 
-#playerCraftingContent .ui-accordion-content div {
+#playerCraftingContent.ui-accordion-content div {
 text-align:left;
 margin-bottom:10px;
 border-radius:0;
 background:#333;
 }
 
-#playerCraftingContent .ui-accordion-header {
+#playerCraftingContent.ui-accordion-header {
 margin-bottom:10px;
 border-radius:0;
 border:none;
