@@ -1,4 +1,4 @@
-require(["uicomponent", "uiinventory", "uiselection", "pageguide" ]);
+require(["uicomponent", "uiinventory", "uiselection", "pageguide", "game" ]);
 
 UIPlanetScreen.prototype = new UIComponent();
 UIPlanetScreen.prototype.$super = parent;
@@ -342,17 +342,18 @@ function UIPlanetScreen() {
         $("#playerCraftingContent").accordion({
             heightStyle: "content",
 			collapsible: true,
-			active: false,
+			active: false
         });
         // $("#playerCraftingContent").accordion('option', 'active', activePage,);
     };
 
     this.updateEmpirePanel = function() {
         // Todo
+        console.log("empire");
     };
     
     this.updateStatsPanel = function() {
-       // TODO 
+        console.log("foo");
     };
 
     this.updateShipPanel = function() {
@@ -464,6 +465,15 @@ function UIPlanetScreen() {
     this.activateStats = function() {
         this.hideLeftSideComponents();
         this.componentStats.show();
+        var myObj = game.settings.totalStats,
+            numberRegex = /^\d+$/;
+        for (var prop in myObj) {
+            if (myObj.hasOwnProperty(prop)) {
+                if (numberRegex.test(myObj[prop])) {
+                  $("#statsContent").append((prop + ': ' + myObj[prop] + "\n"));
+                }
+            }
+        }
     };
 
     this.activatePlayerGear = function() {

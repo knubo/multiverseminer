@@ -142,7 +142,10 @@ function onActivateEmpire() {
 function onActivateStats() {
     // select the button
     changeLeftCategoryButton(2);
+    console.log("changed button");
+
     ui.screenPlanet.activateStats();
+    console.log("past activate stats")
 };
 
 function onActivatePlayerGear() {
