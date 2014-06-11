@@ -358,7 +358,7 @@ function UIPlanetScreen() {
         numberRegex = /^\d+$/;
         for (var prop in myObj) {
           if (myObj.hasOwnProperty(prop)) {
-            if (numberRegex.test(myObj[prop]) || prop == NaN) {
+            if (numberRegex.test(myObj[prop]) || isNaN(prop) == true ) {
               x.push((prop + ': ' + myObj[prop] + '\n'));
             }
           }
@@ -480,7 +480,7 @@ function UIPlanetScreen() {
         numberRegex = /^\d+$/;
         for (var prop in myObj) {
           if (myObj.hasOwnProperty(prop)) {
-            if (numberRegex.test(myObj[prop]) || prop == NaN) {
+            if (numberRegex.test(myObj[prop]) || isNaN(prop) ) {
               x.push((prop + ': ' + myObj[prop] + '\n'));
             }
           }

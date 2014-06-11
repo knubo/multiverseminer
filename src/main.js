@@ -3,6 +3,7 @@ require(["data/system", "data/items", "data/loot", "data/planets", "data/actors"
 // Create components
 var game = new Game();
 var ui = new UI();
+var uiplanetscreen = new UIPlanetScreen();
 
 // Add hook for document ready
 $(document).ready(onDocumentReady);
