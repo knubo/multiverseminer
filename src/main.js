@@ -96,7 +96,7 @@ function onCraft(what) {
 function onMine() {
     if (game.playerDied > 0)
         return false;
-    game.settings.addStat('mineCount');
+    game.settings.addStat('manualDigCount');
     if ( $("#leftCategory2").hasClass("genericButtonSelected") )
         uiplanetscreen.updateStatsPanel();
     if (game.player.mine()) {
@@ -109,7 +109,7 @@ function onMine() {
 function onGather() {
     if (game.playerDied > 0)
         return false;
-    game.settings.addStat('gatherCount');
+    game.settings.addStat('manualGatherCount');
     if ( $("#leftCategory2").hasClass("genericButtonSelected") )
         uiplanetscreen.updateStatsPanel();
     uiplanetscreen.updateStatsPanel();
@@ -119,7 +119,7 @@ function onGather() {
 function onScavenge() {
     if (game.playerDied > 0)
         return false;
-    game.settings.addStat('scavengeCount');
+    game.settings.addStat('manualScavengeCount');
     if ( $("#leftCategory2").hasClass("genericButtonSelected") )
         uiplanetscreen.updateStatsPanel();
     game.player.scavenge();
