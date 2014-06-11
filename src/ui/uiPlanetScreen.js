@@ -324,7 +324,7 @@ function UIPlanetScreen() {
             }
 
             var headerContent = $('<div/>');
-            parent.append('<h4>' + ItemCategory[key] + '</h4>').append(headerContent);
+            parent.append('<p>' + ItemCategory[key] + '</p>').append(headerContent);
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
                 $("#craft_" + craftableItems[i].id).tooltipster({
