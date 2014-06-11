@@ -112,7 +112,6 @@ function onGather() {
     game.settings.addStat('manualGatherCount');
     if ( $("#leftCategory2").hasClass("genericButtonSelected") )
         uiplanetscreen.updateStatsPanel();
-    uiplanetscreen.updateStatsPanel();
     game.player.gather();
 };
 
