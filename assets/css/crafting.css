@@ -11,29 +11,46 @@ vertical-align:middle;
 cursor:hand;
 }
 
-#playerCraftingContent.ui-accordion-content {
-margin-bottom:10px;
-border-radius:0;
-border:none;
-background:none;
-color:#777;
-font-size:10pt;
-line-height:16pt;
-padding:0;
+/* Outer Container */
+#playerCraftingContent .ui-accordion {
+    width: 250px;
+	border-bottom: 4px solid #656659;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
-#playerCraftingContent.ui-accordion-content div {
-text-align:left;
-margin-bottom:10px;
-border-radius:0;
-background:#333;
+/* Headers
+#playerCraftingContent .ui-accordion-header p {
+    display: block;
+    background-color: #FF9927;
+    font-weight: bold;
+    margin: 1px;
+    cursor: pointer;
+    padding: 5 5 5 7px;
+    list-style: circle;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+/*
+
+/* Content of Panels */
+#playerCraftingContent .ui-accordion-content {
+	margin: 0px;
+	padding: 0px;
 }
 
-#playerCraftingContent.ui-accordion-header {
-margin-bottom:10px;
-border-radius:0;
-border:none;
-background:#fff;
-color:#555;
-box-shadow:inset 0 0 20px #000;
+
+#playerCraftingContent .ui-state-default {
+	background: #000;
+	font-size: 16px;
+	padding: 5px 0px 5px 10px;
+	text-align: left;
+	margin-bottom: 2px;
+}
+
+
+#playerCraftingContent .ui-icon {
+	display: none;
 }
