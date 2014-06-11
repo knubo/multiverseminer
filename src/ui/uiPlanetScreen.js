@@ -353,7 +353,17 @@ function UIPlanetScreen() {
     };
     
     this.updateStatsPanel = function() {
-        console.log("foo");
+        var x = [];
+        var myObj = game.settings.totalStats,
+        numberRegex = /^\d+$/;
+        for (var prop in myObj) {
+          if (myObj.hasOwnProperty(prop)) {
+            if (numberRegex.test(myObj[prop]) || prop == NaN) {
+              x.push((prop + ': ' + myObj[prop] + '\n'));
+            }
+          }
+        };
+        $("#statsContent").html(x);
     };
 
     this.updateShipPanel = function() {
@@ -465,15 +475,17 @@ function UIPlanetScreen() {
     this.activateStats = function() {
         this.hideLeftSideComponents();
         this.componentStats.show();
+        var x = [];
         var myObj = game.settings.totalStats,
-            numberRegex = /^\d+$/;
+        numberRegex = /^\d+$/;
         for (var prop in myObj) {
-            if (myObj.hasOwnProperty(prop)) {
-                if (numberRegex.test(myObj[prop])) {
-                  $("#statsContent").append((prop + ': ' + myObj[prop] + "\n"));
-                }
+          if (myObj.hasOwnProperty(prop)) {
+            if (numberRegex.test(myObj[prop]) || prop == NaN) {
+              x.push((prop + ': ' + myObj[prop] + '\n'));
             }
-        }
+          }
+        };
+        $("#statsContent").html(x);
     };
 
     this.activatePlayerGear = function() {
