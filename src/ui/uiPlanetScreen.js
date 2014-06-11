@@ -340,9 +340,11 @@ function UIPlanetScreen() {
         }
 
         $("#playerCraftingContent").accordion({
-            heightStyle: "content"
+            heightStyle: "content",
+			collapsible: true,
+			active: false,
         });
-        $("#playerCraftingContent").accordion('option', 'active', activePage);
+        // $("#playerCraftingContent").accordion('option', 'active', activePage,);
     };
 
     this.updateEmpirePanel = function() {
