@@ -199,7 +199,9 @@ function Planet(data) {
 		if(attempts > 100) {
 			throw new Error("Way too many auto attempts pending, check the timer code!");
 		}
-		
+        game.settings.addStat('autoGatherCount');
+        if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+            uiplanetscreen.updateStatsPanel();
 		var totalItems = [];
 		for(var i = 0; i < attempts; i++) {
 			var items = this.miner.gather(this);
@@ -219,7 +221,9 @@ function Planet(data) {
 		if(attempts > 100) {
 			throw new Error("Way too many auto attempts pending, check the timer code!");
 		}
-		
+        game.settings.addStat('autoScavengeCount');
+        if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+            uiplanetscreen.updateStatsPanel();
 		var totalItems = [];
 		for(var i = 0; i < attempts; i++) {
 			var items = this.miner.scavenge(this);
