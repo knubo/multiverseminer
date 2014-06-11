@@ -1,4 +1,5 @@
-require(["gameminer", "gamestorage", "gamegear" ]);
+require(["gameminer", "gamestorage", "gamegear", "uiplanetscreen" ]);
+var uiplanetscreen = new UIPlanetScreen();
 
 function Planet(data) {
 	this.data = data;
@@ -148,6 +149,7 @@ function Planet(data) {
 				if(this.autoMinePerSecond > 10) {
 					this.autoMinePerSecond = 10;
 				}
+                
 			}
 			
 			if(item.autogather) {
@@ -177,6 +179,9 @@ function Planet(data) {
 		
 		var totalItems = [];
 		for(var i = 0; i < attempts; i++) {
+            game.settings.addStat('autoDigCount');
+            if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+                uiplanetscreen.updateStatsPanel();
 			var items = this.miner.mine(this);
 			if(items) {
 				totalItems = $.merge(totalItems, items);				
