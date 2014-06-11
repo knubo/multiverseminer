@@ -56,13 +56,19 @@ function Game() {
 		
 		this.setStartupState();
         
-		if(this.settings.showTutorial){
-			//TODO: This is for the tutorial, add infomartion about the way the game works, in this case, it needs to explain how you can't mine/scavenge/fight for 60 seconds after you die
-			var tutorial = $("#tutorial-dialog");
-			tutorial.dialog({ autoOpen: false });
-			tutorial.dialog("open");
-			this.settings.showTutorial = false;
+		if(!this.player.race) {
+			this.racePick = $("#race-pick");
+			this.racePick.dialog({autoOpen: true, width: "500px"});
+			this.racePick.dialog("open");
 		}
+
+		// if(this.settings.showTutorial){
+		// 	//TODO: This is for the tutorial, add infomartion about the way the game works, in this case, it needs to explain how you can't mine/scavenge/fight for 60 seconds after you die
+		// 	var tutorial = $("#tutorial-dialog");
+		// 	tutorial.dialog({ autoOpen: false });
+		// 	tutorial.dialog("open");
+		// 	this.settings.showTutorial = false;
+		// }
 	};
 	
 	this.setNewGame = function() {
