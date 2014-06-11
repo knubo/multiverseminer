@@ -8,7 +8,7 @@ function Player() {
 	this.gear = new Gear('player');
     this.stats = {"stats":[]};
 	this.combatant = new Combatant({id:'player',npc:false,player:this,name:"you"});
-	this.race = null;
+	this.playerClass = null;
 
 	this.oxygenConsumption = 1;
     this.canBreathe = true;
@@ -246,7 +246,7 @@ function Player() {
 		this.gear.save();
 		localStorage.playerOxygenConsumption = this.oxygenConsumption;
 		localStorage.planetID = game.currentPlanet.data.id;
-		localStorage.race = this.race;
+		localStorage.playerClass = this.playerClass;
 	};
 
 	this.load = function() {
@@ -255,7 +255,7 @@ function Player() {
 		this.storage.load();
 		this.gear.load();
 		this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
-		this.race = utils.loadInt('race', 1);
+		this.playerClass = utils.loadInt('playerClass', 1);
 		game.currentPlanet = game.planets[utils.loadInt('planetID', 1)];
 		game.planetChanged = true;
 	};
@@ -268,5 +268,6 @@ function Player() {
 		this.oxygenConsumption = 1;
 		this.pickPower = 1;
         this.baseMineSpeed = 1;
+        this.playerClass = null;
 	};
 }
