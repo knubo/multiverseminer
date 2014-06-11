@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils" ]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen" ]);
 
 // Create components
 var game = new Game();
@@ -96,6 +96,8 @@ function onMine() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('mineCount');
+    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+        uiplanetscreen.updateStatsPanel();
     if (game.player.mine()) {
         $('#audioDigSuccess').trigger('play');
     } else {
@@ -107,6 +109,9 @@ function onGather() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('gatherCount');
+    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+        uiplanetscreen.updateStatsPanel();
+    uiplanetscreen.updateStatsPanel();
     game.player.gather();
 };
 
@@ -114,6 +119,8 @@ function onScavenge() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('scavengeCount');
+    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+        uiplanetscreen.updateStatsPanel();
     game.player.scavenge();
 };
 
