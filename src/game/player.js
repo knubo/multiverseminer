@@ -57,7 +57,7 @@ function Player() {
 			return false;
 		}
 
-		game.settings.addStat('manualDigCount');
+		//game.settings.addStat('manualDigCount');
 
 		var items = this.miner.mine(game.currentPlanet, this.pickPower);
 		if (items) {
@@ -65,7 +65,7 @@ function Player() {
 				var name = game.getItemName(items[i]);
 				var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
 			}
-			
+			// TODO - Add stat for whatever items you found.
 			this.storage.addItems(items);
 			return true;
 		}
@@ -78,10 +78,11 @@ function Player() {
 			return false;
 		}
 
-		game.settings.addStat('manualGatherCount');
+		//game.settings.addStat('manualGatherCount');
 
 		var items = this.miner.gather(game.currentPlanet);
 		if (items) {
+			// TODO - Add stat for whatever items you found.
 			this.storage.addItems(items);
 			return true;
 		}
@@ -93,8 +94,8 @@ function Player() {
 		if (!game.currentPlanet) {
 			return false;
 		}
-
-		game.settings.addStat('manualScavengeCount');
+		// TODO - Add stat for whatever items you found.
+		//game.settings.addStat('manualScavengeCount');
 
 		var items = this.miner.scavenge(game.currentPlanet);
 		if (items) {
@@ -107,6 +108,7 @@ function Player() {
     
 	this.decomposeScavenged = function() {
         // Decomposing scavenged items
+    	// TODO - Add stat for whatever items you found.
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
         var scavengedItems = [];
         var gained = {};
