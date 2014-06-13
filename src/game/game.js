@@ -3,16 +3,12 @@ require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "ut
 function Game() {
 	this.player = new Player();
 	this.playerDied = -1;
-	
 	this.settings = new Settings();
-
 	this.planets = {};
 	this.currentPlanet = undefined;
-
 	this.planetDictionary = undefined;
 	this.itemDictionary = undefined;
 	this.lootTableDictionary = undefined;
-
 	this.lastUpdateTime = Date.now();
 	this.lastAutoSaveTime = Date.now();
 	this.lastTravelTime = Date.now();
@@ -73,13 +69,14 @@ function Game() {
 	
 	this.setNewGame = function() {
 		// Give the player some basic items
-		//this.player.storage.addItem(Items.woodenPick.id);
-        //this.player.storage.addItem(Items.copperSword.id);
-		//this.player.equipBestGear();
+		this.player.storage.addItem(Items.woodenPick.id);
+        this.player.storage.addItem(Items.copperSword.id);
+		this.player.equipBestGear();
 		//game.player.storage.removeItem(Items.woodenPick.id);
         //game.player.storage.removeItem(Items.copperSword.id);
-        this.player.equip(Items.woodenPick.id);
-        this.player.equip(Items.copperSword.id);
+        //this.player.equip(Items.woodenPick.id);
+        //this.player.equip(Items.copperSword.id);
+        
 		
 		// make earth our current planet
 		this.settings.currentPlanet = Planets.earth.id;

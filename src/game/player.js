@@ -199,22 +199,8 @@ function Player() {
 	};
 	
 	this.equip = function(itemId) {
-        // Changed the below, because new players should have gear equipped,
-        // not added to inventory then equipped.
-		if(!itemId || !this.canEquip(itemId))
-		{
-			utils.logError("Unable to equip item, invalid or don't have it");
-			return;
-		}
-        console.log(this.gear);
-		this.gear.equip(itemId);
-		// Remove the item from the storage while it's equipped
-		this.storage.removeItem(itemId);
-		replacedBy = this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
-		if(replacedBy) {
-			this.storage.addItem(replacedBy);
-		}
-        game.player.gearChanged = true;
+        this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
+        this.storage.removeItem(itemId);
 	};
 	
 	this.canEquip = function(itemId) {
@@ -227,11 +213,12 @@ function Player() {
 		}
 		
 		var itemId = this.gear.getItemInSlot(type);
+		game.player.storage.addItem(itemId);
         console.log(itemId);
 		this.gear.unEquip(type);
 		
 		// Add the item back to the player's inventory
-		//game.player.storage.addItem(itemId);
+
         game.player.gearChanged = true;
 	};
 	

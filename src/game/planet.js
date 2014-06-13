@@ -88,7 +88,6 @@ function Planet(data) {
 		}
 		
 		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
-		//game.player.inventory.removeItem(itemId);
 		this._updateStats();
 	};
 	
@@ -98,6 +97,7 @@ function Planet(data) {
 	
 	this.unEquip = function(type) {
 		this.gear.unEquip(type);
+        this._updateStats();
 	};
 
 	// ---------------------------------------------------------------------------
