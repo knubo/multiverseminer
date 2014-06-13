@@ -26,38 +26,38 @@
         <div id="planetScreen" class="screen">
             <div id="panelPlanetLeft" class="panelPlanetLeft">
                 <div id="leftCategory">
-                    <div id="leftCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerInventory()">
+                    
+					<div id="leftCategory0" class="genericButton categoryButton clickable" onclick="onActivatePlayerInventory()">
                         <img src="assets/images/itemIcons/backpack.png" alt="backpack" class="categoryButtonIcon">
-                        <div class="categoryButtonText">
-                            INVENTORY
-                        </div>
+                        <div class="categoryButtonText">INVENTORY</div>
                     </div>
-                    <div id="leftCategory1" class="genericButton categoryButton clickable" onclick="onActivateEmpire()">
+                    
+					<div id="leftCategory1" class="genericButton categoryButton clickable" onclick="onActivateEmpire()">
                         <img src="assets/images/empire.png" alt="empire" class="categoryButtonIcon">
-                        <div class="categoryButtonText">
-                            EMPIRE
-                        </div>
+                        <div class="categoryButtonText">EMPIRE</div>
                     </div>
-                    <div id="leftCategory2" class="genericButton categoryButton clickable" onclick="onActivateStats()">
-                        <img src="assets/images/empty.png" alt="stats" class="categoryButtonIcon">
-                        <div class="categoryButtonText">
-                            STATS
-                        </div>
+                    
+					<div id="leftCategory2" class="genericButton categoryButton clickable" onclick="onActivateStats()">
+                        <img src="assets/images/stats.png" alt="stats" class="categoryButtonIcon">
+                        <div class="categoryButtonText">STATS</div>
                     </div>
-                    <div id="leftCategory3" class="genericButton categoryButton genericButtonLast clickable">
-                        <img src="assets/images/empty.png" alt="empty" class="categoryButtonIcon">
-                        <div class="categoryButtonText"></div>
+                    
+					<div id="leftCategory3" class="genericButton categoryButton clickable" onclick="">
+                        <img src="assets/images/quests.png" alt="quests" class="categoryButtonIcon">
+                        <div class="categoryButtonText">QUESTS</div>
                     </div>
+					
                 </div>
-                <div id="leftCategoryContent" class="categoryContent clearLeftFloat">
-                    <div id="playerInventoryPanel" class="inventoryPanel">
+                
+				<div id="leftCategoryContent" class="categoryContent clearLeftFloat">
+				<div id="playerInventoryPanel" class="inventoryPanel">
                         <div id="playerInventoryContent">
                             <div id="playerInventoryFilter" class="inventoryFilter"></div>
                             <div id="playerInventorySlots" class="inventoryContentPlayer panelContent"></div>
                             <div id="decompButton" style="display:none;" class="decompbutton"><button id="decomp" title="Click to decompose" onclick="game.player.decomposeScavenged()">Decompose All</div>
                         </div>
                     </div>
-                    <div id="empirePanel" class="empirePanel">
+                				<div id="empirePanel" class="empirePanel">
                         <div id="empireContent"></div>
                     </div>
                     <div id="statsPanel" class="statsPanel">
