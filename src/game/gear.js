@@ -45,6 +45,8 @@ function Gear(id) {
 	this.equip = function(itemId, metadata) {
 		// get the item info
         console.log("gear.js equip");
+        console.log(this.slots);
+        // NEED TO GET ITEM INFO FOR WHATS EQUIPPED THEN REMOVE
 		var itemInfo = game.getItem(itemId);
 
 		if (!itemInfo || !itemInfo.gearType) {
@@ -58,13 +60,15 @@ function Gear(id) {
 			return;
 		}
 		replacedBy = null;
+        console.log(this.slots[itemInfo.gearType]);
 		if(this.slots[itemInfo.gearType]!=-1) {
-			replacedBy = this.slots[itemInfo.gearType];
-		}
+            replacedBy = this.slots[itemInfo.gearType];
+            game.player.storage.addItem(this.slots[itemInfo.gearType]);
+            game.player.unEquip(this.slots[itemInfo.gearType]);
 
+		}
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
-
         this.gearChanged = true;
 		return replacedBy;
 	};
