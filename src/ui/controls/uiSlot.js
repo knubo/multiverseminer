@@ -134,8 +134,8 @@ function UISlot(id, parent) {
     };
 
     this.generateItemTooltip = function(item) {
-        content = "<b>" + item.name + "</b></br>";
-        content += "<i style='font-size: 10pt;'>" + ItemCategory[item.category] + "</i></br>";
+        content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
+        // content += "<i style='font-size: 10pt;'>" + ItemCategory[item.category] + "</i></br>";
         content += "<div style='font-size: 9pt;'>";
         switch (item.category) {
             case "gearMainHand":
@@ -144,13 +144,16 @@ function UISlot(id, parent) {
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
-            case "rawMaterial":
+            
+			case "rawMaterial":
                 content += "Value: " + item.value;
                 break;
-            case "gem":
+            
+			case "gem":
                 content += "Value: " + item.value;
                 break;
-            case "miningGear":
+            
+			case "miningGear":
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Mining Luck: " + item.miningLuck + "</br>";
                 content += "Loot Luck: " + item.lootLuck + "</br>";
