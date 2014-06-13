@@ -134,108 +134,108 @@ function UISlot(id, parent) {
     };
 
     this.generateItemTooltip = function(item) {
-        // content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
-        // content += "<i style='font-size: 10pt;'>" + ItemCategory[item.category] + "</i></br>";
-        
-		content += "<div style='font-size: 9pt;'>";
-        
-		switch (item.category) {
+        content = "<b>" + item.name + "</b></br>" + item.description + "<br><br>";
+        content += "<i style='font-size: 10pt;'>" + ItemCategory[item.category] + "</i></br>";
+
+        content += "<div style='font-size: 9pt;'>";
+
+        switch (item.category) {
             case "rawMaterial":
-                //content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
-				content = "<b>" + item.name + "</b><br>"
-				content += "Value: " + item.value;
-                break;	
-            
-			case "gem":
-				content = "<b>" + item.name + "</b><br>"
+                content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
+                content = "<b>" + item.name + "</b><br>";
                 content += "Value: " + item.value;
                 break;
-            
-			case "component":
-				content = "<b>" + item.name + "</b>"
-				break;
-			
-			case "miningGear":
-				content = "<b>" + item.name + "</b><br>"
+
+            case "gem":
+                content = "<b>" + item.name + "</b><br>";
+                content += "Value: " + item.value;
+                break;
+
+            case "component":
+                content = "<b>" + item.name + "</b>";
+                break;
+
+            case "miningGear":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Mining Luck: " + item.miningLuck + "</br>";
                 content += "Loot Luck: " + item.lootLuck + "</br>";
                 content += "Scavenge Luck: " + item.scavengeLuck + "</br>";
                 break;
 
-			case "gearMainHand":
-				content = "<b>" + item.name + "</b><br>"
+            case "gearMainHand":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;			
-
-			case "gearSecondHand":
-				content = "<b>" + item.name + "</b><br>"
-				content += "Strength: " + item.strength + "</br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
 
-			case "gearHead":
-				content = "<b>" + item.name + "</b><br>"
+            case "gearSecondHand":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Strength: " + item.strength + "</br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
-			
-			case "gearChest":
-				content = "<b>" + item.name + "</b><br>"
-				content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-			
-			case "gearLegs":
-				content = "<b>" + item.name + "</b><br>"			
+
+            case "gearHead":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Strength: " + item.strength + "</br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
-			
-			case "gearFeet":
-				content = "<b>" + item.name + "</b><br>"			
+
+            case "gearChest":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Strength: " + item.strength + "</br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
-			
-			case "gearBuilding":
-				content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
-				break;
-				
-			case "machines":
-				content = "<b>" + item.name + "</b>"
-				break;
-			
-			case "usable":
-				content = "<b>" + item.name + "</b>"
-				break;
-			
-			case "spaceShip":
-				content = "<b>" + item.name + "</b><br>"			
+
+            case "gearLegs":
+                content = "<b>" + item.name + "</b><br>";
                 content += "Strength: " + item.strength + "</br>";
                 content += "Accuracy: " + item.accuracy + "</br>";
                 content += "Defense: " + item.defense + "</br>";
                 content += "Evasion: " + item.evasion + "</br>";
                 break;
-			
-			case "scavenge":
-				content = "<b>" + item.name + "</b>"
-				break;
+
+            case "gearFeet":
+                content = "<b>" + item.name + "</b><br>";
+                content += "Strength: " + item.strength + "</br>";
+                content += "Accuracy: " + item.accuracy + "</br>";
+                content += "Defense: " + item.defense + "</br>";
+                content += "Evasion: " + item.evasion + "</br>";
+                break;
+
+            case "gearBuilding":
+                content = "<b>" + item.name + "</b></br>" + item.description + "<br><br>";
+                break;
+
+            case "machines":
+                content = "<b>" + item.name + "</b>";
+                break;
+
+            case "usable":
+                content = "<b>" + item.name + "</b>";
+                break;
+
+            case "spaceShip":
+                content = "<b>" + item.name + "</b><br>";
+                content += "Strength: " + item.strength + "</br>";
+                content += "Accuracy: " + item.accuracy + "</br>";
+                content += "Defense: " + item.defense + "</br>";
+                content += "Evasion: " + item.evasion + "</br>";
+                break;
+
+            case "scavenge":
+                content = "<b>" + item.name + "</b>";
+                break;
         };
-        content += "</div>"
+        content += "</div>";
         return content;
     };
 
