@@ -320,7 +320,7 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('<li>');
+            var headerContent = $('<ul>');
             parent.append('<ul>' + ItemCategory[key] + '<li>').jstree({
                 "core": {
                     "themes": {
@@ -344,7 +344,7 @@ function UIPlanetScreen() {
                 //    speed: 10
                 //});
             };
-            parent.append("</ul>");
+            parent.append("</li>");
         }
         //$("#playerCraftingContent").accordion({
         //    heightStyle: "content",
@@ -508,7 +508,7 @@ function UIPlanetScreen() {
             icon = item.icon;
         }
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<span class="craftingText"/>' + item.name + '</span/></li>').disableSelection();
+        content.append('<span class="craftingText"/>' + item.name + '</span/></ul>').disableSelection();
         return content;
     };
 }
