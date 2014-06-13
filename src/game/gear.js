@@ -44,9 +44,6 @@ function Gear(id) {
 
 	this.equip = function(itemId, metadata) {
 		// get the item info
-        console.log("gear.js equip");
-        console.log(this.slots);
-        // NEED TO GET ITEM INFO FOR WHATS EQUIPPED THEN REMOVE
 		var itemInfo = game.getItem(itemId);
 
 		if (!itemInfo || !itemInfo.gearType) {
@@ -60,13 +57,15 @@ function Gear(id) {
 			return;
 		}
 		replacedBy = null;
-        console.log(this.slots[itemInfo.gearType]);
+        // If there's something in the slot already, we need to add it to
+        // the players storage, and unequip it.
 		if(this.slots[itemInfo.gearType]!=-1) {
             replacedBy = this.slots[itemInfo.gearType];
             game.player.storage.addItem(this.slots[itemInfo.gearType]);
             game.player.unEquip(this.slots[itemInfo.gearType]);
 
 		}
+        // Now we assign the new piece of gear to the slot.
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
         this.gearChanged = true;

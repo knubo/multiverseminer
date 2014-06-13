@@ -211,14 +211,10 @@ function Player() {
 		if(!this.hasEquipped(type)) {
 			return;
 		}
-		
 		var itemId = this.gear.getItemInSlot(type);
-		game.player.storage.addItem(itemId);
-        console.log(itemId);
 		this.gear.unEquip(type);
-		
 		// Add the item back to the player's inventory
-
+		game.player.storage.addItem(itemId);
         game.player.gearChanged = true;
 	};
 	
