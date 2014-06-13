@@ -1,3 +1,5 @@
+require(["gameplayer"]);
+
 function Gear(id) {
 	this.id = id;
 	this.slots = {};
@@ -42,6 +44,7 @@ function Gear(id) {
 
 	this.equip = function(itemId, metadata) {
 		// get the item info
+        console.log("gear.js equip");
 		var itemInfo = game.getItem(itemId);
 
 		if (!itemInfo || !itemInfo.gearType) {
@@ -61,7 +64,8 @@ function Gear(id) {
 
 		this.slots[itemInfo.gearType] = itemId;
 		this.slotMetadata[itemInfo.gearType] = metadata;
-		this.gearChanged = true;
+
+        this.gearChanged = true;
 		return replacedBy;
 	};
 	
