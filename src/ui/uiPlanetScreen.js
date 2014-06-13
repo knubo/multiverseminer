@@ -297,13 +297,13 @@ function UIPlanetScreen() {
             // Skip re-building this for now
             return;
         }
+        
 
         for (var key in ItemCategory) {
             // Todo: remove this when scavenging items no longer have craftCost as their attribute
             if (key === 'scavenge') {
                 continue;
             }
-
             var items = game.getItemsByCategory(key);
             if (!items || items.length <= 0) {
                 continue;
@@ -320,37 +320,23 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('<ul>');
-            parent.append('<ul>' + ItemCategory[key] + '<li>').jstree({
-                "core": {
-                    "themes": {
-                        "variant": "large"
-                    }
-                },
-                "checkbox": {
-                    "keep_selected_style": false
-                }
-            });
+            var headerContent = $('<ul><li>');
+            console.log(parent);
+            parent.append('<ul><li><a>' + ItemCategory[key] + '</a>');
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
-                $("#craft_" + craftableItems[i].id);
-                //.tooltipster({
-                //    content: self.buildCraftingTooltip(craftableItems[i]),
-                //    theme: 'tooltipster-punk',
-                //    contentAsHTML: true,
-                //    position: "bottom",
-                //    onlyOne: true,
-                //    interactiveTolerance: 10,
-                //    speed: 10
-                //});
+                $("#craft_" + craftableItems[i].id).tooltipster({
+                    content: self.buildCraftingTooltip(craftableItems[i]),
+                    theme: 'tooltipster-punk',
+                    contentAsHTML: true,
+                    position: "bottom",
+                    onlyOne: true,
+                    interactiveTolerance: 10,
+                    speed: 10
+                });
             };
-            parent.append("</li>");
         }
-        //$("#playerCraftingContent").accordion({
-        //    heightStyle: "content",
-        //	collapsible: true,
-        //	active: false
-        //});
+        $("#playerCraftingContent").jstree();
         // $("#playerCraftingContent").accordion('option', 'active', activePage,);
     };
 
@@ -508,7 +494,7 @@ function UIPlanetScreen() {
             icon = item.icon;
         }
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<span class="craftingText"/>' + item.name + '</span/></ul>').disableSelection();
+        content.append('<span class="craftingText"/>' + item.name + '</span>').disableSelection();
         return content;
     };
 }
