@@ -206,7 +206,7 @@ function Player() {
 		}
 		this.gear.equip(itemId);
 		// Remove the item from the storage while it's equipped
-		game.player.storage.removeItem(itemId);
+		this.storage.removeItem(itemId);
 		replacedBy = this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 		if(replacedBy) {
 			this.storage.addItem(replacedBy);
