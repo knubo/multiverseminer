@@ -320,9 +320,8 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('<ul><li>');
-            console.log(parent);
-            parent.append('<ul><li><a>' + ItemCategory[key] + '</a>');
+            var headerContent = $('<ul><li><a>');
+            parent.append('<ul><li><a>' + ItemCategory[key] + '<div></a><ul>');
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
                 $("#craft_" + craftableItems[i].id).tooltipster({
@@ -486,15 +485,15 @@ function UIPlanetScreen() {
 
     this.buildCraftingEntry = function(item) {
         var tooltipContent = ui.buildCraftingCostTooltip(item);
-
-        var content = $('<div id="craft_' + item.id + '" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" />');
-
+        var content = $('<li><a><div id="craft_' + item.id + '" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" /></a>');
+ 
         var icon = game.getDefaultItemIcon(item);
         if (item.icon) {
             icon = item.icon;
         }
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<span class="craftingText"/>' + item.name + '</span>').disableSelection();
+        content.append('<div class="craftingText">' + item.name + '</span></li></ul></div></li>').disableSelection();
+        console.log(content);
         return content;
     };
 }
