@@ -247,10 +247,11 @@ function UIPlanetScreen() {
     };
  
     this.buildCraftingTooltip = function(item) {
-        content = "<b>" + item.name + "</b></br>";
+        content = "<strong>" + item.name + "</strong></br>" + item.description + "<br><br>";
         if (item.craftCost) {
             for (cost in item.craftCost) {
-                content += item.craftCost[cost] + " x " + game.getItemName(cost) + "</br>";
+                // content += item.craftCost[cost] + " x " + game.getItemName(cost) + "</br>";
+				content += game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
             }
         }
         return content;
