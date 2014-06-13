@@ -1,4 +1,4 @@
-require(["uicomponent", "uiinventory", "uiselection", "pageguide", "game" ]);
+require(["uicomponent", "uiinventory", "uiselection", "pageguide", "game", "jstree"]);
 
 UIPlanetScreen.prototype = new UIComponent();
 UIPlanetScreen.prototype.$super = parent;
@@ -88,7 +88,7 @@ function UIPlanetScreen() {
         this.componentEmpire = new UIComponent('empirePanel');
         this.componentEmpire.init();
         this.componentEmpire.updateCallback = this.updateEmpirePanel;
-        
+
         this.componentStats = new UIComponent('statsPanel');
         this.componentStats.init();
         this.componentStats.updateCallback = this.updateStatsPanel;
@@ -258,9 +258,6 @@ function UIPlanetScreen() {
 
     this.updateCraftingPanel = function() {
         var self = ui.screenPlanet;
-        //var activePage = $('#playerCraftingContent').accordion('option', 'active');
-        //$('#playerCraftingContent').accordion("destroy");
-        //$('#playerCraftingContent').empty();
         var parent = $('#playerCraftingContent');
         if (parent.html() !== "") {
             for (var key in ItemCategory) {
@@ -271,7 +268,7 @@ function UIPlanetScreen() {
                 // TODO: Move this somewhere else and make it take other storages into account
                 for (var i = 0; i < items.length; i++) {
                     var item = items[i];
-                    if(item.id) {
+                    if (item.id) {
                         var element = $('#craft_' + item.id);
                         var canCraft = false;
                         if (item.craftCost && game.player.storage.canAdd(item.id)) {
@@ -323,27 +320,36 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('<div/>');
-            parent.append('<p>' + ItemCategory[key] + '</p>').append(headerContent);
+            var headerContent = $('</div>');
+            parent.append('<ul><li>' + ItemCategory[key] + '</li>').jstree({
+                "core": {
+                    "themes": {
+                        "variant": "large"
+                    }
+                },
+                "checkbox": {
+                    "keep_selected_style": false
+                }
+            });
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
-                $("#craft_" + craftableItems[i].id).tooltipster({
-                    content: self.buildCraftingTooltip(craftableItems[i]),
-                    theme: 'tooltipster-punk',
-                    contentAsHTML: true,
-                    position: "bottom",
-                    onlyOne: true,
-                    interactiveTolerance: 10,
-                    speed: 10
-                });
+                $("#craft_" + craftableItems[i].id);
+                //.tooltipster({
+                //    content: self.buildCraftingTooltip(craftableItems[i]),
+                //    theme: 'tooltipster-punk',
+                //    contentAsHTML: true,
+                //    position: "bottom",
+                //    onlyOne: true,
+                //    interactiveTolerance: 10,
+                //    speed: 10
+                //});
             }
         }
-
-        $("#playerCraftingContent").accordion({
-            heightStyle: "content",
-			collapsible: true,
-			active: false
-        });
+        //$("#playerCraftingContent").accordion({
+        //    heightStyle: "content",
+        //	collapsible: true,
+        //	active: false
+        //});
         // $("#playerCraftingContent").accordion('option', 'active', activePage,);
     };
 
@@ -351,16 +357,16 @@ function UIPlanetScreen() {
         // Todo
         console.log("empire");
     };
-    
+
     this.updateStatsPanel = function() {
         var x = [];
         var myObj = game.settings.totalStats,
-        numberRegex = /^\d+$/;
+            numberRegex = /^\d+$/;
         for (var prop in myObj) {
-          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function' ) {
-            if(myObj[prop] == null) myObj[prop] = 0;
-            x.push((prop + ': ' + myObj[prop] + '<br>'));
-          }
+            if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function') {
+                if (myObj[prop] == null) myObj[prop] = 0;
+                x.push((prop + ': ' + myObj[prop] + '<br>'));
+            }
         };
         $("#statsContent").html(x);
     };
@@ -385,22 +391,6 @@ function UIPlanetScreen() {
 
     this.updateElementFinderPanel = function() {
         $('#elementFinderPanel').text("N/A");
-        /*if (game.currentPlanet) {
-            var tableId = game.currentPlanet.getMiningLootTableId();
-            var table = game.getLootTable(tableId);
-            utils.log(table.entries);
-            var resElement = "<div>";
-            for (var i = 0; i < table.entries.length; i++) {
-            	var item = game.getItem(table[i][0]);
-            	'<div class="element">' + 
-                	'<span class="elementName">' + item.name + '</span>' +
-                	'<span class="elementAbr">' + item.el + '</span>' +
-                '</div>'
-            }
-            $('#elementFinderPanel').html(resElement + "</div>");
-        } else {
-            $('#elementFinderPanel').text("N/A");
-        }*/
     };
 
     this.updatePlanetDisplay = function() {
@@ -476,12 +466,12 @@ function UIPlanetScreen() {
         this.componentStats.show();
         var x = [];
         var myObj = game.settings.totalStats,
-        numberRegex = /^\d+$/;
+            numberRegex = /^\d+$/;
         for (var prop in myObj) {
-          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function' ) {
-            if(myObj[prop] == null) myObj[prop] = 0;
-            x.push((prop + ': ' + myObj[prop] + '<br>'));
-          }
+            if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function') {
+                if (myObj[prop] == null) myObj[prop] = 0;
+                x.push((prop + ': ' + myObj[prop] + '<br>'));
+            }
         };
         $("#statsContent").html(x);
     };
@@ -517,8 +507,7 @@ function UIPlanetScreen() {
             icon = item.icon;
         }
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<span class="craftingText">' + item.name + '</span>').disableSelection();
-
+        content.append('<span class="craftingText"/>' + item.name + '</span/></li/>').disableSelection();
         return content;
     };
 }
