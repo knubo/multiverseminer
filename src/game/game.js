@@ -326,6 +326,7 @@ function Game() {
                 return true;
             }
             else {
+                // Changed for testing.
                 return true;
             }
         }
