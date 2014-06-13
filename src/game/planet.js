@@ -80,6 +80,7 @@ function Planet(data) {
 	};
 	
 	this.equip = function(itemId) {
+        console.log("planet.js equip");
 		if(!itemId || !this.storage.hasItem(itemId))
 		{
 			utils.logError("Unable to equip item, invalid or don't have it");
@@ -87,7 +88,7 @@ function Planet(data) {
 		}
 		
 		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
-		game.player.inventory.removeItem(itemId);
+		//game.player.inventory.removeItem(itemId);
 		this._updateStats();
 	};
 	

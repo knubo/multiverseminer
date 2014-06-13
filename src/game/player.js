@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "gamegear", "ui", "uiplanetscreen" ]);
+require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen" ]);
 
 function Player() {
 	this.id = 'player';
@@ -199,11 +199,14 @@ function Player() {
 	};
 	
 	this.equip = function(itemId) {
-		if(!itemId || !this.storage.hasItem(itemId))
+        // Changed the below, because new players should have gear equipped,
+        // not added to inventory then equipped.
+		if(!itemId || !this.canEquip(itemId))
 		{
 			utils.logError("Unable to equip item, invalid or don't have it");
 			return;
 		}
+        console.log(this.gear);
 		this.gear.equip(itemId);
 		// Remove the item from the storage while it's equipped
 		this.storage.removeItem(itemId);
