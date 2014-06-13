@@ -320,8 +320,8 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('</div>');
-            parent.append('<ul><li>' + ItemCategory[key] + '</li>').jstree({
+            var headerContent = $('<li>');
+            parent.append('<ul>' + ItemCategory[key] + '<li>').jstree({
                 "core": {
                     "themes": {
                         "variant": "large"
@@ -333,7 +333,7 @@ function UIPlanetScreen() {
             });
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
-                //$("#craft_" + craftableItems[i].id);
+                $("#craft_" + craftableItems[i].id);
                 //.tooltipster({
                 //    content: self.buildCraftingTooltip(craftableItems[i]),
                 //    theme: 'tooltipster-punk',
@@ -343,7 +343,8 @@ function UIPlanetScreen() {
                 //    interactiveTolerance: 10,
                 //    speed: 10
                 //});
-            }
+            };
+            parent.append("</ul>");
         }
         //$("#playerCraftingContent").accordion({
         //    heightStyle: "content",
@@ -507,7 +508,7 @@ function UIPlanetScreen() {
             icon = item.icon;
         }
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<span class="craftingText"/>' + item.name + '</span/></li/>').disableSelection();
+        content.append('<span class="craftingText"/>' + item.name + '</span/></li>').disableSelection();
         return content;
     };
 }
