@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "gamegear", "ui" ]);
+require(["gameminer", "gamecombatant", "gamestorage", "gamegear", "ui", "uiplanetscreen" ]);
 
 function Player() {
 	this.id = 'player';
@@ -204,13 +204,14 @@ function Player() {
 			utils.logError("Unable to equip item, invalid or don't have it");
 			return;
 		}
-		
+		this.gear.equip(itemId);
 		// Remove the item from the storage while it's equipped
-		this.storage.removeItem(itemId);
+		game.player.storage.removeItem(itemId);
 		replacedBy = this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
 		if(replacedBy) {
 			this.storage.addItem(replacedBy);
 		}
+        game.player.gearChanged = true;
 	};
 	
 	this.canEquip = function(itemId) {
@@ -223,10 +224,12 @@ function Player() {
 		}
 		
 		var itemId = this.gear.getItemInSlot(type);
+        console.log(itemId);
 		this.gear.unEquip(type);
 		
 		// Add the item back to the player's inventory
-		this.storage.addItem(itemId);
+		//game.player.storage.addItem(itemId);
+        game.player.gearChanged = true;
 	};
 	
 	this.hasEquipped = function(type) {

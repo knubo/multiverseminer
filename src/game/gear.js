@@ -84,6 +84,17 @@ function Gear(id) {
 	this.getMetadataInSlot = function(type) {
 		return this.slotMetadata[type];
 	};
+    
+	this.unEquip = function(type) {
+		if (!this.slots[type]) {
+			Utils.logError("attempt to un-equip item but slot was not set: "
+					+ type);
+			return;
+		}
+		this.slots[type] = -1;
+		this.slotMetadata[type] = undefined;
+		this.gearChanged = true;
+	};
 	
 	this.getStats = function() {
 		// Todo: calculate all the stats for the current gear and return it
