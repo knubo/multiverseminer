@@ -297,7 +297,7 @@ function UIPlanetScreen() {
             // Skip re-building this for now
             return;
         }
-        
+
 
         for (var key in ItemCategory) {
             // Todo: remove this when scavenging items no longer have craftCost as their attribute
@@ -320,8 +320,8 @@ function UIPlanetScreen() {
                 continue;
             }
 
-            var headerContent = $('<ul><li><a>');
-            parent.append('<ul><li><a>' + ItemCategory[key] + '<div></a><ul>');
+            var headerContent = $('</div></li></ul>');
+            parent.append('<ul><li><a>' + ItemCategory[key] + '</a><li>');
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
                 $("#craft_" + craftableItems[i].id).tooltipster({
@@ -335,7 +335,7 @@ function UIPlanetScreen() {
                 });
             };
         }
-        $("#playerCraftingContent").jstree();
+        $("#playerCraftingContent").jstree({ "plugins" : ["themes", "html_data"] });
         // $("#playerCraftingContent").accordion('option', 'active', activePage,);
     };
 
@@ -485,15 +485,16 @@ function UIPlanetScreen() {
 
     this.buildCraftingEntry = function(item) {
         var tooltipContent = ui.buildCraftingCostTooltip(item);
-        var content = $('<li><a><div id="craft_' + item.id + '" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" /></a>');
- 
+        var content = $('<li><div id="craft_' + item.id + '" class="craftingItemPanel" onclick="onCraft(\'' + item.id + '\')" />');
+
         var icon = game.getDefaultItemIcon(item);
         if (item.icon) {
             icon = item.icon;
         }
+
         content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
-        content.append('<div class="craftingText">' + item.name + '</span></li></ul></div></li>').disableSelection();
+        content.append('<span class="craftingText">' + item.name + '</span>').disableSelection();
         console.log(content);
-        return content;
+        return (content);
     };
 }
