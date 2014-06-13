@@ -333,7 +333,7 @@ function UIPlanetScreen() {
             });
             for (var i = 0; i < craftableItems.length; i++) {
                 headerContent.append(self.buildCraftingEntry(craftableItems[i]));
-                $("#craft_" + craftableItems[i].id);
+                //$("#craft_" + craftableItems[i].id);
                 //.tooltipster({
                 //    content: self.buildCraftingTooltip(craftableItems[i]),
                 //    theme: 'tooltipster-punk',
