@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                         tooltipster : 'external/jquery.tooltipster.min',
                         custombox   : 'external/jquery.custombox',
                         pageguide   : 'external/pageguide.min',
-                        jstree      : 'external/jstree'
+                        noty        : 'external/jquery.noty.packaged'
 					}
 				}
 			}
