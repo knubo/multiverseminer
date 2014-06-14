@@ -19,7 +19,7 @@
   border-image: url(assets/images/resetBorder.png) 27 27 27 35 stretch;
   background: black;
   padding: 10px;
-  height: 320px;
+  height: auto;
   width: 320px;
   font-family: Lucida Console;
   font-weight: normal;
