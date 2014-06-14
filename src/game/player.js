@@ -132,21 +132,27 @@ function Player() {
             this.storage.removeItem(item.id, count);
         }
 		
-		var gainedString = "Gained: ";
+		var gainedString = "<strong>Gained:</strong><br> ";
 		for(var key in gained) {
-			gainedString += game.getItem(key).name + ": " + gained[key] + ", ";
+			gainedString += game.getItem(key).name + " x " + gained[key] + ", ";
 		}
 		gainedString.substring(0, gainedString.length-2);
 		
-		var removedString = "Lost: ";
+		var removedString = "<br><br><strong>Lost:</strong><br>";
 		for(var key in removed) {
-			removedString += game.getItem(key).name + ": " + removed[key] + ", ";
+			removedString += game.getItem(key).name + " x " + removed[key] + ", ";
 		}
 		removedString = removedString.substring(0, removedString.length-2);
         gainedString = gainedString.substring(0, gainedString.length-2);
-        $('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} }).empty();
-        $("#scavmodal").append(gainedString + "<p>" + removedString);
-        delete scavengedItems;
+        //$('#scavmodal').dialog({positon: {my: "center", at: "center", of: window} }).empty();
+		$(this).custombox ({ 
+								url: "#scavmodal", 
+								customClass: 'scavModal',
+								overlayClose: 'true',
+								opacity: '0.7',								
+							});
+        $("#scavmodal").append(gainedString + "" + removedString);
+		delete scavengedItems;
     };
 
 	this.craft = function(itemId, count) {
