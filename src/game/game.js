@@ -105,8 +105,9 @@ function Game() {
 
         this.setNewGame();
         this.player.gear.reset(fullReset);
+        console.log(this.player.gear);
         this.setStartupState();
-        this.save();
+        //this.save();
         location.reload();
     };
 
@@ -716,10 +717,8 @@ function Game() {
                 utils.logError("Duplicate id: " + entry.id);
                 continue;
             }
-
             result[entry.id] = entry;
         }
-
         return result;
     };
 
@@ -730,10 +729,8 @@ function Game() {
         if (typeof(Storage) == "undefined") {
             return;
         }
-
         this.player.save();
         this.settings.save();
-
         if (this.currentPlanet) {
             this.currentPlanet.save();
         }

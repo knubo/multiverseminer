@@ -285,6 +285,5 @@ function Planet(data) {
 	this.reset = function() {
 		this.miner.reset();
 		this.storage.reset();
-		this.currentDepth = 0;
 	};
 }

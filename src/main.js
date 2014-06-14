@@ -210,6 +210,7 @@ function onPlayerDied() {
 };
 
 function doReset() {
+    game.player.reset();
     game.reset();
     onActivatePlayerInventory();
     onActivatePlayerGear();

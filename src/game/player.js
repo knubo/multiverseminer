@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen" ]);
+require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "gamesettings" ]);
 
 function Player() {
 	this.id = 'player';
@@ -252,6 +252,7 @@ function Player() {
 	};
 
 	this.reset = function(fullReset) {
+        window.localStorage.clear();
 		this.miner.reset(fullReset);
 		this.combatant.reset(fullReset);
 		this.storage.reset(fullReset);

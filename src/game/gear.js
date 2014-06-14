@@ -63,7 +63,6 @@ function Gear(id) {
             replacedBy = this.slots[itemInfo.gearType];
             game.player.storage.addItem(this.slots[itemInfo.gearType]);
             game.player.unEquip(this.slots[itemInfo.gearType]);
-
 		}
         // Now we assign the new piece of gear to the slot.
 		this.slots[itemInfo.gearType] = itemId;
