@@ -159,7 +159,7 @@ function Player() {
             url: "#scavmodal",
             customClass: 'scavModal',
             overlayClose: 'true',
-            opacity: '0.7',
+            opacity: '0.7'
         });
         $("#scavmodal").append(gainedString + "" + removedString);
         delete scavengedItems;
