@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen" ]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear"]);
 
 // Create components
 var game = new Game();
@@ -28,8 +28,8 @@ Number.prototype.formatNumber = function() {
 function selectClass(playerClass) {
     game.player.playerClass = playerClass;
     $("#class-pick").dialog("close");
-    game.save()
-}
+    game.save();
+};
 
 // ---------------------------------------------------------------------------
 // function hooks
@@ -97,7 +97,7 @@ function onMine() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('manualDigCount');
-    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+    if ($("#leftCategory2").hasClass("genericButtonSelected"))
         uiplanetscreen.updateStatsPanel();
     if (game.player.mine()) {
         $('#audioDigSuccess').trigger('play');
@@ -110,7 +110,7 @@ function onGather() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('manualGatherCount');
-    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+    if ($("#leftCategory2").hasClass("genericButtonSelected"))
         uiplanetscreen.updateStatsPanel();
     game.player.gather();
 };
@@ -119,7 +119,7 @@ function onScavenge() {
     if (game.playerDied > 0)
         return false;
     game.settings.addStat('manualScavengeCount');
-    if ( $("#leftCategory2").hasClass("genericButtonSelected") )
+    if ($("#leftCategory2").hasClass("genericButtonSelected"))
         uiplanetscreen.updateStatsPanel();
     game.player.scavenge();
 };
@@ -149,10 +149,8 @@ function onActivateEmpire() {
 function onActivateStats() {
     // select the button
     changeLeftCategoryButton(2);
-    console.log("changed button");
 
     ui.screenPlanet.activateStats();
-    console.log("past activate stats")
 };
 
 function onActivatePlayerGear() {
@@ -186,36 +184,22 @@ function onSave() {
 };
 
 function onReset() {
-    $(this).custombox({
-        // This is where you'd put the ID or class of the modal,
-        // Or you can use a URL and load it via ajax.
-        url: '#newReset',
-        overlay: 'true',
-        overlayOpacity: '0.9',
-        customClass: 'resetGame',
-        effect: 'fadein',
-        error: 'This is a test!'
+    $(function() {
+        $("#newReset").dialog({
+            resizable: false,
+            height: 300,
+            modal: true,
+            buttons: {
+                "Delete Everything.": function() {
+                    doReset();
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
     });
-    /***
-	There will need to be an actual reset button that is tied to
-	the HTML buttons inside the modal, so when the "yes" button fires,
-	that function will fire:
-	game.reset();
-	// ui.reset();
-	onActivatePlayerInventory();
-	onActivatePlayerGear(); */
-
-    /*** Old jQueryUI version 
-	ui.showDialog('Yes', 'No', 'Confirm reset', function() {
-		game.reset();
-		// TODO: Add reset function to ui
-		// ui.reset();
-		onActivatePlayerInventory();
-		onActivatePlayerGear();
-	}); */
 };
-
-//TODO: check for the right place for this
 
 function onPlayerDied() {
     game.playerDied = new Date();

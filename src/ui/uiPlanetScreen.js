@@ -384,26 +384,6 @@ function UIPlanetScreen() {
         }
     };
  
-    this.updateElementFinderPanel = function() {
-        $('#elementFinderPanel').text("N/A");
-        /*if (game.currentPlanet) {
-            var tableId = game.currentPlanet.getMiningLootTableId();
-            var table = game.getLootTable(tableId);
-            utils.log(table.entries);
-            var resElement = "<div>";
-            for (var i = 0; i < table.entries.length; i++) {
-                var item = game.getItem(table[i][0]);
-                '<div class="element">' + 
-                    '<span class="elementName">' + item.name + '</span>' +
-                    '<span class="elementAbr">' + item.el + '</span>' +
-                '</div>'
-            }
-            $('#elementFinderPanel').html(resElement + "</div>");
-        } else {
-            $('#elementFinderPanel').text("N/A");
-        }*/
-    };
- 
     this.updatePlanetDisplay = function() {
         $('#planetDisplayBackground').empty();
         $('#planetDisplayNameText').empty();

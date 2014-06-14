@@ -101,6 +101,7 @@ function Gear(id) {
 		this.slots[type] = -1;
 		this.slotMetadata[type] = undefined;
 		this.gearChanged = true;
+        return;
 	};
 	
 	this.getStats = function() {
@@ -148,11 +149,9 @@ function Gear(id) {
 				continue;
 			}
 			
-			this.equip(itemId);
+			console.log(this.equip(itemId));
 			// Todo: load metadata
 		}
-		
-		this.gearChanged = true;
 	};
     
 	this.reset = function(fullReset) {
@@ -160,7 +159,7 @@ function Gear(id) {
 			if(!this.hasGearEquipped(key)) {
 				continue;
 			}
-			this.unEquip(key);
+            this.unEquip(key);
 		}
 	};
 }
