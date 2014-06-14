@@ -247,6 +247,9 @@ function UIPlanetScreen() {
     };
  
     this.buildCraftingTooltip = function(item) {
+        if (!item.description) {
+            item.description = "An item used in crafting.";
+        }
         content = "<strong>" + item.name + "</strong></br>" + item.description + "<br><br>";
         if (item.craftCost) {
             for (cost in item.craftCost) {
