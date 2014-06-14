@@ -250,11 +250,11 @@ function UIPlanetScreen() {
         if (!item.description) {
             item.description = "An item used in crafting.";
         }
-        content = "<strong>" + item.name + "</strong></br>" + item.description + "<br><br>";
+        content = "<strong>" + item.description + "</strong><br><br><strong>Cost:</strong><br>";
         if (item.craftCost) {
             for (cost in item.craftCost) {
                 // content += item.craftCost[cost] + " x " + game.getItemName(cost) + "</br>";
-				content += game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				content += "&nbsp;&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
             }
         }
         return content;
