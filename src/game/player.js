@@ -117,7 +117,7 @@ function Player() {
         // Decomposing scavenged items
         // TODO - Add stat for whatever items you found.
         if (!this.storage.getItemsOfCategory("scavenge")) {
-            return;
+            return ui.notifyError("You don't have anything to decompose.");
         }
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
         var scavengedItems = [];
