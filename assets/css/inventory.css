@@ -9,11 +9,11 @@
 }
 
 .inventoryContent {
-	position: relative;
-	clear: left;
-	left: 8px;
-	width: calc(100%-16px);
-	height: 250px;
+    clear: left;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    width: 100%;
 }
 
 .inventoryContentPlayer {
