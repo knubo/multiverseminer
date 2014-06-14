@@ -48,7 +48,6 @@ function onDocumentReady() {
     ui.bindKey("d", onMine);
     ui.bindKey("g", onGather);
     ui.bindKey("s", onScavenge);
-    ui.bindKey("r", onReset);
 
     // Call one round of UI Updates
     ui.update();
