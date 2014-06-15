@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty"]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty", "joyride"]);
 
 // Create components
 var game = new Game();
@@ -16,8 +16,6 @@ $.jGrowl.defaults.animateOpen = {
 $.jGrowl.defaults.life = 300;
 $.jGrowl.defaults.pool = 1;
 
-var pageguide = tl.pg.init();
-tl.pg.toggle_markup = "";
 Number.prototype.formatNumber = function() {
     if (ui.numberFormatter) {
         return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -74,7 +72,23 @@ function onDocumentReady() {
     $("#class3").click(function() {
         selectClass(3);
     });
-    var n = noty({text: "We're open source, and actively developing! <a href='http://github.com/antlong/multiverseminer' target='_blank'>Fork our repo.</a>", type:"alert", timeout: 5000});
+    var n = noty({
+        text: "We're open source, and actively developing! <a href='http://github.com/antlong/multiverseminer' target='_blank'>Fork our repo.</a>",
+        type: "alert",
+        timeout: 3000
+    });
+    $(window).load(function() {
+        $('#joyRideTipContent').joyride({
+            autoStart: true,
+            postStepCallback: function(index, tip) {
+                if (index == 2) {
+                    $(this).joyride('set_li', false, 1);
+                }
+            },
+            modal: false,
+            expose: true
+        });
+    });
 };
 
 function onUpdate() {
