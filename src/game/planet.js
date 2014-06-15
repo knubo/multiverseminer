@@ -292,7 +292,18 @@ function Planet(data) {
 	this.load = function() {
 		this.miner.load();
 		this.storage.load();
-		this.gear.load();
+		//TODO: fix this ...
+			var storageKey = this.gear._getStorageKey();
+			for(var key in this.gear.slots) {
+				var itemId = utils.load(storageKey + key, undefined);
+				if(!itemId || itemId == -1) {
+					continue;
+				}
+				
+				console.log(this.equip(itemId));
+				// TODO: load metadata
+			}
+		//this.gear.load();
 		this._updateStats();
 	};
 
