@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 						starfield   : 'external/starfield',
                         tooltipster : 'external/jquery.tooltipster.min',
                         custombox   : 'external/jquery.custombox',
-                        pageguide   : 'external/pageguide.min',
+                        joyride     : 'external/jquery.joyride-2.1',
                         noty        : 'external/jquery.noty.packaged'
 					}
 				}
