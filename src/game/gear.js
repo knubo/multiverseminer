@@ -136,7 +136,7 @@ function Gear(id) {
 		for(var key in this.slots) {
 			localStorage[storageKey + key] = this.slots[key];
 			
-			// Todo: save metadata
+			// TODO: save metadata
 		}
 	};
 
@@ -149,7 +149,7 @@ function Gear(id) {
 			}
 			
 			console.log(this.equip(itemId));
-			// Todo: load metadata
+			// TODO: load metadata
 		}
 	};
     
