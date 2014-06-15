@@ -175,7 +175,7 @@ function Player() {
         if (item.gearType == 'building' && game.currentPlanet) {
             game.moveItems(itemId, this.storage, game.currentPlanet.storage, 1);
 
-            // Todo: Planet needs to evaluate this
+            // TODO: Planet needs to evaluate this
             game.currentPlanet.equip(item.id);
         }
 

@@ -20,6 +20,9 @@ function Planet(data) {
 	this.autoScavengeValue = 0;
 	this.autoScavenge = false;
 	
+	var equippedAmount = 0; //TODO: remove this and all related to it once we find a proper way to equip buildings
+	var maxCanEquip = 4; //TODO: read above
+	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
@@ -30,7 +33,8 @@ function Planet(data) {
 		this.gear.initialize();
 		
 		// Add the slots we can wear
-		this.gear.addSlot('building');
+		for(var i = 0; i < maxCanEquip; i++) //TODO: read equippedAmount, line 23, todo
+			this.gear.addSlot('building_'+i);
 		
 		this.miner.initialize();
 		this.storage.initialize();
@@ -87,8 +91,18 @@ function Planet(data) {
 			return;
 		}
 		
-		this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
-		this._updateStats();
+		//TODO: fix this horrible hack once we figure a way to add multiple of the same slot ...
+		
+		if(equippedAmount < maxCanEquip) {
+			var itemInfo = game.getItem(itemId);
+			this.gear.slots['building_'+equippedAmount] = itemId;
+			this.gear.slotMetadata['building_'+equippedAmount] = this.storage.getItemMetadata(itemId);
+	        this.gear.gearChanged = true;
+	        equippedAmount ++;
+
+			//this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
+			this._updateStats();
+		}
 	};
 	
 	this.canEquip = function(itemId) {
