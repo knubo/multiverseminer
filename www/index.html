@@ -41,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="genericButton categoryButton clickable" id="leftCategory3" onclick="">
+                <div class="genericButton categoryButton clickable" id="leftCategory3" onclick="onActivateQuests()">
                     <img alt="quests" class="categoryButtonIcon" src="assets/images/quests.png">
 
                     <div class="categoryButtonText">
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="genericButton categoryButton clickable" id="rightCategory2" onclick="onActivatePlanet()">
-                    <img alt="earth" class="categoryButtonIcon" src="assets/images/earth.png">
+                    <img alt="earth" class="categoryButtonIcon" src="assets/images/earth2.png">
 
                     <div class="categoryButtonText">
                         PLANET
@@ -271,11 +271,13 @@
 
     <div class="panelBottom" style="background:url(assets/images/bottomBarBackground.png) no-repeat center; background-size:100% 50px;">
         <div class="panelBottomRight">
-            <div class="genericButton bottomBarButton clickable noselect" onclick="showChat()">
+            <a href="http://webchat.freenode.net?channels=%23multiverseminer&uio=d4" target="_new">
+            <div class="genericButton bottomBarButton clickable noselect">
                 <div class="bottomBarButton noSelect">
                     Chat
                 </div>
             </div>
+        </a>
 
             <div class="genericButton bottomBarButton clickable noselect" onclick="$('#solarsystem').load('solar.html').dialog({autoOpen:true,minWidth:1200,minHeight:'auto',modal:true});">
                 <div class="bottomBarButton noSelect">
@@ -304,6 +306,11 @@
             <div class="genericButton bottomBarButton clickable" onclick="onReset()">
                 <div class="bottomBarButtonText">
                     Reset
+                </div>
+            </div>
+            <div class="genericButton bottomBarButton clickable" onclick="tutorial()">
+                <div class="bottomBarButtonText">
+                    Tutorial
                 </div>
             </div>
 
@@ -348,7 +355,7 @@
             </script>
                 -->
 
-            <div class="hidden" id="chat-modal" style="position:relative;">
+            <!--<div class="hidden" id="chat-modal" style="position:relative;">
                 <div class="chatInputs">
                     <input id="data" style="width:200px;position:relative;"><input id="datasend" type="button" value="send">
                 </div>
@@ -367,7 +374,7 @@
 
         <div class="hidden" id="scavmodal" style="margin-left:auto;margin-right:auto;">
             <div>
-                <script src="ChatConnectScript.js" type="text/javascript"></script>
+                <script src="ChatConnectScript.js" type="text/javascript"></script>-->
 
                 <div class="hidden" id="newReset" style="font-family: Lucida Console;font-size:14px;">
                     <p>Are you sure you would like to reset?<br>
@@ -396,13 +403,16 @@
 
                         <p>This panel displays stats on how many times you have mined, gathered, and scavenged.</p>
                     </li>
-
                     <li data-id="leftCategory3" data-options="tipLocation:bottom;" data-text="Next">
                         <h2>Quests</h2>
 
                         <p>We are currently implementing this section. Check back soon.</p>
                     </li>
+                    <li data-id="leftCategory3" data-options="tipLocation:bottom;" data-text="Next">
+                        <h2>Quests</h2>
 
+                        <p>We are currently implementing this section. Check back soon.</p>
+                    </li>
                     <li data-button="Next" data-id="mineButton" data-options="tipLocation:bottom;">
                         <h2>Digging</h2>
 

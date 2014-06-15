@@ -74,11 +74,12 @@ function onDocumentReady() {
     });
     var n = noty({
         text: "We're open source, and actively developing! <a href='http://github.com/antlong/multiverseminer' target='_blank'>Fork our repo.</a>",
-        type: "alert",
-        timeout: 3000
+        type: "information",
+        timeout: 3500
     });
-    $(window).load(function() {
-        $('#joyRideTipContent').joyride({
+};
+function tutorial() {
+    $('#joyRideTipContent').joyride({
             autoStart: true,
             postStepCallback: function(index, tip) {
                 if (index == 2) {
@@ -88,9 +89,7 @@ function onDocumentReady() {
             modal: false,
             expose: true
         });
-    });
-};
-
+}
 function onUpdate() {
     var currentTime = Date.now();
     game.update(currentTime);
@@ -167,7 +166,10 @@ function onActivateStats() {
 
     ui.screenPlanet.activateStats();
 };
-
+function onActivateQuests() {
+    changeLeftCategoryButton(3);
+    ui.screenPlanet.activateQuests();
+}
 function onActivatePlayerGear() {
     // select the button
     changeRightCategoryButton(0);

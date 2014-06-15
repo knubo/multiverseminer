@@ -113,6 +113,11 @@ function UIPlanetScreen() {
         this.componentPlanetDisplay.init();
         this.componentPlanetDisplay.enabled = true;
         this.componentPlanetDisplay.updateCallback = this.updatePlanetDisplay;
+        
+        this.componentQuestsPanel = new UIComponent('questsPanel');
+        this.componentQuestsPanel.init();
+        this.componentQuestsPanel.enabled = true;
+        this.componentQuestsPanel.updateCallback = this.updateQuestsDisplay;
  
         // Activate some defaults
         this.activatePlayerInventory();
@@ -387,6 +392,10 @@ function UIPlanetScreen() {
             parent.append(slot.getMainElement());
         }
     };
+
+    this.updateQuestsDisplay = function() {
+        // TODO
+    };
  
     this.updatePlanetDisplay = function() {
         $('#planetDisplayBackground').empty();
@@ -451,6 +460,9 @@ function UIPlanetScreen() {
         this.componentCrafting.show();
     };
  
+    this.activateQuests = function() {
+        this.hideLeftSideComponents();
+    };
     this.activateEmpire = function() {
         this.hideLeftSideComponents();
         this.componentEmpire.show();
