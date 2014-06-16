@@ -52,10 +52,10 @@ function UIPlanetScreen() {
         this.playerInventoryFilter.init();
         this.playerInventoryFilter.setSelection(game.settings.selectedPlayerInventoryFilter);
  
-        this.playerInventory = new UIInventory('playerInventorySlots', 30);
+        this.playerInventory = new UIInventory('playerInventorySlots', 50);
         this.playerInventory.setStorage(game.player.storage);
         this.playerInventory.itemContext = game.itemContexts.playerInventory;
-        this.playerInventory.slotCount = 30;
+        this.playerInventory.slotCount = 50;
         this.playerInventory.init();
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
  
@@ -67,9 +67,9 @@ function UIPlanetScreen() {
         this.planetInventoryFilter.init();
         this.planetInventoryFilter.setSelection(game.settings.selectedPlanetInventoryFilter);
  
-        this.planetInventory = new UIInventory('planetInventorySlots', 30);
+        this.planetInventory = new UIInventory('planetInventorySlots', 50);
         this.planetInventory.itemContext = game.itemContexts.planetInventory;
-        this.planetInventory.slotCount = 30;
+        this.planetInventory.slotCount = 50;
         this.planetInventory.init();
         this.planetInventory.setCategory(game.settings.selectedPlanetInventoryFilter);
  
