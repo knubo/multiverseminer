@@ -60,8 +60,10 @@ function UIPlanetScreen() {
         this.playerInventory.setCategory(game.settings.selectedPlayerInventoryFilter);
  
         this.planetInventoryFilter = new UISelection('planetInventoryFilter');
-        this.planetInventoryFilter.values = ["rawMaterial", "gem", "scavenge"];
+        this.planetInventoryFilter.values = ItemCategory;
         this.planetInventoryFilter.callback = this.onPlanetInventoryFilterChanged;
+        this.planetInventoryFilter.min = 1; // To avoid selecting undef
+        //console.log(this.planetInventoryFilter);
         this.planetInventoryFilter.init();
         this.planetInventoryFilter.setSelection(game.settings.selectedPlanetInventoryFilter);
  
