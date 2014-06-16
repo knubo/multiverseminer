@@ -22,10 +22,11 @@ function Miner(id) {
 		return this._dropResources(tableId);
 	};
 
-	this.mine = function(location, power) {
+	this.mine = function(location, power, luck) {
 		power = power || 1; //power comes from pickaxe
+		luck = luck || 0;
 		var tableId = location.getMiningLootTableId();
-		return this._dropResources(tableId, power);
+		return this._dropResources(tableId, power, luck);
 	};
 
 	this.scavenge = function(location) {
@@ -61,14 +62,15 @@ function Miner(id) {
 	// ---------------------------------------------------------------------------
 	// internal
 	// ---------------------------------------------------------------------------
-	this._dropResources = function(tableId, power) {
+	this._dropResources = function(tableId, power, luck) {
 		power = power || 1; //never too safe ...
+		luck = luck || 0;
 		var table = game.getLootTable(tableId);
 		if (!table || table.length <= 0) {
 			return;
 		}
 		// Todo: apply modifiers and tools etc	
-		items = game.loot(table, this.baseMineSpeed * power);
+		items = game.loot(table, this.baseMineSpeed * power, luck);
 		this.gainExp(items.length);
 		return items;
 	};
