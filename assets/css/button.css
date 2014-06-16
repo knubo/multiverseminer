@@ -37,7 +37,7 @@ margin-right:0;
 .bottomBarButton {
 margin-top:5px;
 height:30px;
-width:100px;
+width:75px;
 text-align:center;
 }
 
@@ -45,6 +45,7 @@ text-align:center;
 margin-left:auto;
 margin-right:auto;
 margin-top:5px;
+font-size:12px;
 }
 
 .categoryButton {

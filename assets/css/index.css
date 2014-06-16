@@ -18,6 +18,7 @@ margin:0;
 }
 a {
     color:white;
+    font-size:12px;
 }
 .lootFloating {
 position:absolute;
