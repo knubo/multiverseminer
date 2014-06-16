@@ -299,10 +299,8 @@ function Planet(data) {
         if (this.storage.getItemsOfCategory("scavenge")) {
             items = this.storage.getItemsOfCategory("scavenge");
             var rand = items[Math.floor(Math.random() * items.length)];
-                console.log(rand);
                 game.currentPlanet.storage.removeItem(rand);
                 game.player.storage.addItem(rand);
-                console.log("Auto-Refined: " + rand);
             }
     };
     this._finalizeAuto = function(totalItems) {
