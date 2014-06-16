@@ -183,7 +183,7 @@ function Player() {
             game.currentPlanet.equip(item.id);
         }
 
-        this.equipBestGear();
+        //this.equipBestGear();
 
         return true;
     };
