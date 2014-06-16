@@ -19,7 +19,7 @@ function Player() {
     this.oxygenConsumption = 1;
     this.canBreathe = true;
     this.lastOxygenConsumption = Date.now();
-    this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
+    this.totalPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
 
     // ---------------------------------------------------------------------------
     // general
@@ -38,9 +38,12 @@ function Player() {
         this.gear.addSlot('legs');
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
-        this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
+        this.totalPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
     };
 
+    this.totalPower = function() {
+        this.pickPower = this.gear.getStats()["power"]
+    }
     this.update = function(currentTime) {
         this.miner.update(currentTime);
         this.combatant.update(currentTime);
