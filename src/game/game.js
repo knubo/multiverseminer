@@ -408,6 +408,7 @@ function Game() {
             var item = this.getItem(items[i]);
             switch (item.category) {
                 case 'rawMaterial':
+                case 'scavenge':
                 case 'gem':
                     {
                         break;
