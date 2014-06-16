@@ -36,8 +36,8 @@ function Miner(id) {
 	this.gainExp = function(value) {
 		this.exp += value;
 		this.checkLevel();
-	}
-	
+	};
+    
 	this.checkLevel = function() {
 		this.expRequired = Math.pow(1.125, this.level-1) * 500;
 		if(this.exp >= this.expRequired) {
@@ -51,12 +51,12 @@ function Miner(id) {
 			this.updateUI();
 		}
 		return false;
-	}
+	};
 	
 	this.updateUI = function() { //TODO: move to its own UI section
 		$('#minerXP')[0].innerHTML = "Miner XP: " + Math.floor(this.exp) + " / " + Math.ceil(this.expRequired);
 		$('#minerLevel')[0].innerHTML = "Miner Level: " + this.level;
-	}
+	};
 
 	// ---------------------------------------------------------------------------
 	// internal
