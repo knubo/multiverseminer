@@ -291,7 +291,6 @@ function UI() {
         }
 
         var slot = new UISlot(id + '_' + slotType, parent);
-        console.log(slotType);
         if (slotType.substring(0, 8) == "building") {
             slot.classes = slotType + ' buildingSlot '
         } else {

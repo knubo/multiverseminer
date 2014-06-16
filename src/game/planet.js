@@ -92,7 +92,7 @@ function Planet(data) {
 		}
 		
 		//TODO: fix this horrible hack once we figure a way to add multiple of the same slot ...
-		
+        
 		if(equippedAmount < maxCanEquip) {
 			var itemInfo = game.getItem(itemId);
 			this.gear.slots['building_'+equippedAmount] = itemId;
@@ -110,6 +110,7 @@ function Planet(data) {
 	};
 	
 	this.unEquip = function(type) {
+        console.log(type);
 		this.gear.unEquip(type);
         this._updateStats();
 	};

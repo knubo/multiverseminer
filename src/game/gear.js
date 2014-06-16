@@ -45,7 +45,6 @@ function Gear(id) {
 	this.equip = function(itemId, metadata) {
 		// get the item info
 		var itemInfo = game.getItem(itemId);
-
 		if (!itemInfo || !itemInfo.gearType) {
 			utils.logError("attempt to equip unknown or invalid item: " + itemId + itemInfo.category);
 			return;
@@ -92,6 +91,7 @@ function Gear(id) {
 	};
     
 	this.unEquip = function(type) {
+        console.log("gear unequip");
 		if (!this.slots[type]) {
 			Utils.logError("attempt to un-equip item but slot was not set: "
 					+ type);
