@@ -364,16 +364,28 @@ function UIPlanetScreen() {
     };
      
     this.updateStatsPanel = function() {
+        numberRegex = /^\d+$/;
+        $('#statsContent') .empty();
+        numberRegex = /^\d+$/;
+        var stats = game.player.stats;
         var x = [];
-        var myObj = game.settings.totalStats,
+        var y = [];
+        var myObj = game.settings.totalStats;
         numberRegex = /^\d+$/;
         for (var prop in myObj) {
-          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function' ) {
-            if(myObj[prop] == null) myObj[prop] = 0;
+          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function') {
+            if (myObj[prop] == null) myObj[prop] = 0;
             x.push((prop + ': ' + myObj[prop] + '<br>'));
           }
         };
-        $("#statsContent").html(x);
+        for (var key in stats) {
+          var value = stats[key];
+          y.push((key) + ': ' + value + '<br>');
+        };
+        $('#statsContent').html("Player Stats:<br>");
+        $('#statsContent').append(y);
+        $('#statsContent').append('<br>Game Stats:<br>');
+        $('#statsContent').append(x);
     };
  
     this.updateShipPanel = function() {
@@ -472,16 +484,27 @@ function UIPlanetScreen() {
     this.activateStats = function() {
         this.hideLeftSideComponents();
         this.componentStats.show();
+        $('#statsContent') .empty();
+        numberRegex = /^\d+$/;
+        var stats = game.player.stats;
         var x = [];
-        var myObj = game.settings.totalStats,
+        var y = [];
+        var myObj = game.settings.totalStats;
         numberRegex = /^\d+$/;
         for (var prop in myObj) {
-          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function' ) {
-            if(myObj[prop] == null) myObj[prop] = 0;
+          if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function') {
+            if (myObj[prop] == null) myObj[prop] = 0;
             x.push((prop + ': ' + myObj[prop] + '<br>'));
           }
         };
-        $("#statsContent").html(x);
+        for (var key in stats) {
+          var value = stats[key];
+          y.push((key) + ': ' + value + '<br>');
+        };
+        $('#statsContent').html("Player Stats:<br>");
+        $('#statsContent') .append(y);
+        $('#statsContent') .append('<br>Game Stats:<br>');
+        $('#statsContent') .append(x);
     };
  
     this.activatePlayerGear = function() {

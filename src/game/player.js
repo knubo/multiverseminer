@@ -3,10 +3,10 @@ require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "g
 function Player() {
     this.id = 'player';
     this.pickPower = 1;
-    this.stats = null;
     this.miner = new Miner('player');
     this.storage = new Storage('player');
     this.gear = new Gear('player');
+    this.stats = null;
     this.combatant = new Combatant({
         id: 'player',
         npc: false,
@@ -36,12 +36,13 @@ function Player() {
         this.gear.addSlot('legs');
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
-        this.stats = this.gear.getStats();
+        
     };
 
     this.update = function(currentTime) {
         this.miner.update(currentTime);
         this.combatant.update(currentTime);
+        this.stats = this.gear.getStats();
         this.checkPlanet();
 
         if (!this.canBreathe) {
