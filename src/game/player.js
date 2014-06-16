@@ -3,6 +3,7 @@ require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "g
 function Player() {
     this.id = 'player';
     this.pickPower = 1;
+    this.miningLuck = 1;
     this.miner = new Miner('player');
     this.storage = new Storage('player');
     this.gear = new Gear('player');
@@ -18,6 +19,7 @@ function Player() {
     this.oxygenConsumption = 1;
     this.canBreathe = true;
     this.lastOxygenConsumption = Date.now();
+    this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
 
     // ---------------------------------------------------------------------------
     // general
@@ -36,7 +38,7 @@ function Player() {
         this.gear.addSlot('legs');
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
-        
+        this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
     };
 
     this.update = function(currentTime) {
@@ -44,6 +46,7 @@ function Player() {
         this.combatant.update(currentTime);
         this.stats = this.gear.getStats();
         this.checkPlanet();
+        this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
 
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
@@ -66,7 +69,7 @@ function Player() {
 
         //game.settings.addStat('manualDigCount');
 
-        var items = this.miner.mine(game.currentPlanet, this.pickPower);
+        var items = this.miner.mine(game.currentPlanet, this.pickPower * this.miningLuck);
         if (items) {
             for (var i = 0; i < items.length; i++) {
                 var name = game.getItemName(items[i]);
@@ -266,6 +269,7 @@ function Player() {
         this.playerClass = utils.loadInt('playerClass', 1);
         game.currentPlanet = game.planets[utils.loadInt('planetID', 1)];
         game.planetChanged = true;
+        this.pickPower = this.gear.getStats()["power"] * this.gear.getStats()["miningLuck"];
     };
 
     this.reset = function(fullReset) {
