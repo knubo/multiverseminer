@@ -284,5 +284,3 @@ function Player() {
         this.playerClass = null;
     };
 }
-=======
->>>>>>> External Changes
