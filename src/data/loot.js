@@ -55,11 +55,12 @@ function addSingleTable(id, internalName, data) {
 // ---------------------------------------------------------------------------
 addTable(100, 'earthAtmosphere', [
     [Items.oxygen.id, 0.9],
-    [Items.hydrogen.id, 0.0007],
+    [Items.hydrogen.id, 0.007],
     [Items.argon.id, 0.009],
     [Items.carbonDioxide.id, 0.007],
-    [Items.helium.id, 0.0007],
-    [Items.krypton.id, 0.0007]
+    [Items.helium.id, 0.007],
+    [Items.krypton.id, 0.007],
+    [Items.nitrogen.id, 0.05]
 ]);
 
 addTable(101, 'earthMinerals', [
@@ -75,12 +76,11 @@ addTable(101, 'earthMinerals', [
     [Items.manganese.id, 0.0007],
     [Items.aluminum.id, 0.0007],
     [Items.fluorine.id, 0.0007],
-    [Items.gold.id, 0.0007],
-    [Items.sulfur.id, 0.0001],
-    [Items.carbon.id, 0.0001],
-    [Items.titanium.id, 0.00005],
-    [Items.barium.id, 0.00005],
-    [Items.nitrogen.id, 0.00005],
+    [Items.gold.id, 0.007],
+    [Items.sulfur.id, 0.001],
+    [Items.carbon.id, 0.05],
+    [Items.titanium.id, 0.0005],
+    [Items.barium.id, 0.0005],
     [Items.nickel.id, 0.00005],
     [Items.zinc.id, 0.00005]
 ]);
