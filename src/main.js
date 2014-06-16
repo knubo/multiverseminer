@@ -37,8 +37,8 @@ function selectClass(playerClass) {
 function onDocumentReady() {
 
     //Initialize the audio
-    $('#audioDig').trigger('load');
-    $('#audioDigSuccess').trigger('load');
+    //$('#audioDig').trigger('load');
+    //$('#audioDigSuccess').trigger('load');
 
     //Initialize components
     game.init();
@@ -113,11 +113,11 @@ function onMine() {
     game.settings.addStat('manualDigCount');
     if ($("#leftCategory2").hasClass("genericButtonSelected"))
         uiplanetscreen.updateStatsPanel();
-    if (game.player.mine()) {
-        $('#audioDigSuccess').trigger('play');
-    } else {
-        $('#audioDig').trigger('play');
-    }
+    //if (game.player.mine()) {
+    //    $('#audioDigSuccess').trigger('play');
+    //} else {
+    //    $('#audioDig').trigger('play');
+    //}
 };
 
 function onGather() {

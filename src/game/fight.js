@@ -76,7 +76,6 @@ function Fight(teamList) {
             var damage = sourceStats.damage;
             var log = (source.opts.description || source.name) + (source.opts.attackText ? (source.opts.attackText + source.opts.weaponName) : (" hit " + target.opts.description.toLowerCase() || target.name)) + " for " + damage + " hp.";
             this.log.push(log);
-            console.log(log);
             $('#combat-log').prepend(log + "<br>");
             target.takeDamage(this, damage);
         } else if (action == "heal") {
@@ -86,7 +85,6 @@ function Fight(teamList) {
             var heal = sourceStats.damage;
             var log = (source.opts.description || source.name) + " heals " + (target.opts.description || target.name) + " for " + damage + " hp.";
             this.log.push(log);
-            console.log(log);
             $('#combat-log').prepend(log + "<br>");
             target.heal(this, heal);
         }
