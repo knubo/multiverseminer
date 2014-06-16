@@ -1,4 +1,4 @@
-require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "gamesettings"]);
+require(["gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "gamesettings", "noty"]);
 
 function Player() {
     this.id = 'player';
@@ -117,7 +117,11 @@ function Player() {
         // Decomposing scavenged items
         // TODO - Add stat for whatever items you found.
         if (!this.storage.getItemsOfCategory("scavenge")) {
-            return ui.notifyError("You don't have anything to decompose.");
+            return noty({
+                text: "You don't have anything to decompose.",
+                type: "information",
+                timeout: 3500
+            });
         }
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
         var scavengedItems = [];
