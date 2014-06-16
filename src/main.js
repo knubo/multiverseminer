@@ -113,12 +113,19 @@ function onMine() {
     game.settings.addStat('manualDigCount');
     if ($("#leftCategory2").hasClass("genericButtonSelected"))
         uiplanetscreen.updateStatsPanel();
-    //if (game.player.mine()) {
-    //    $('#audioDigSuccess').trigger('play');
-    //} else {
-    //    $('#audioDig').trigger('play');
-    //}
+    if (game.player.mine()) {
+        $('#audioDigSuccess').trigger('play');
+    } else {
+        $('#audioDig').trigger('play');
+    }
 };
+
+function stopAudio() {
+  //pause playing
+   document.getElementById('bg_audio').muted = false; 
+  $("#audioDig").trigger('stop');
+  $("#audioDigSuccess").trigger('stop');
+}
 
 function onGather() {
     if (game.playerDied > 0)
