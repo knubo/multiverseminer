@@ -37,8 +37,8 @@ function selectClass(playerClass) {
 function onDocumentReady() {
 
     //Initialize the audio
-    //$('#audioDig').trigger('load');
-    //$('#audioDigSuccess').trigger('load');
+    $('#audioDig').trigger('load');
+    $('#audioDigSuccess').trigger('load');
 
     //Initialize components
     game.init();
@@ -78,18 +78,20 @@ function onDocumentReady() {
         timeout: 3500
     });
 };
+
 function tutorial() {
     $('#joyRideTipContent').joyride({
-            autoStart: true,
-            postStepCallback: function(index, tip) {
-                if (index == 2) {
-                    $(this).joyride('set_li', false, 1);
-                }
-            },
-            modal: false,
-            expose: true
-        });
+        autoStart: true,
+        postStepCallback: function(index, tip) {
+            if (index == 2) {
+                $(this).joyride('set_li', false, 1);
+            }
+        },
+        modal: false,
+        expose: true
+    });
 }
+
 function onUpdate() {
     var currentTime = Date.now();
     game.update(currentTime);
@@ -121,10 +123,16 @@ function onMine() {
 };
 
 function stopAudio() {
-  //pause playing
-   document.getElementById('bg_audio').muted = false; 
-  $("#audioDig").trigger('stop');
-  $("#audioDigSuccess").trigger('stop');
+    //pause playing
+    if (!document.getElementById('audioDig').muted) {
+        document.getElementById('audioDig').muted = true;
+        document.getElementById('audioDigSuccess').muted = true;
+        $("#audioDig").trigger('stop');
+        $("#audioDigSuccess").trigger('stop');
+    } else {
+        document.getElementById('audioDig').muted = false;
+        document.getElementById('audioDigSuccess').muted = false;
+    }
 }
 
 function onGather() {
@@ -173,10 +181,12 @@ function onActivateStats() {
 
     ui.screenPlanet.activateStats();
 };
+
 function onActivateQuests() {
     changeLeftCategoryButton(3);
     ui.screenPlanet.activateQuests();
 }
+
 function onActivatePlayerGear() {
     // select the button
     changeRightCategoryButton(0);
