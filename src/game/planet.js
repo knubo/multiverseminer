@@ -44,10 +44,19 @@ function Planet(data) {
 		this.miner.update(currentTime);
 		
 		// Temp fix to enable auto-mining on re-load
-		if(this.gear.getItemInSlot('building') > 0 && !this.autoMine) {
+        var x = [1,2,3,4];
+        for (i = 0; i < x.length; i++) {
+            if (game.currentPlanet.gear.getItemInSlot("building_" + i));
+        }
+		if(this.gear.getItemInSlot('building_' + x) == "miningRig" && !this.autoMine) {
 			this.autoMine = true;
 		}
-		
+		if(this.gear.getItemInSlot('building_' + x) == "scavengeStation" && !this.autoScavenge) {
+			this.autoScavenge = true;
+		}
+		if(this.gear.getItemInSlot('building_' + x) == "gatherStation" && !this.autoGather) {
+			this.autoGather = true;
+		}
 		var elapsedTime = currentTime - this.lastAutoTime;
 		var autoCycles = Math.floor(elapsedTime / 1000); // account for inactive tab
 		
@@ -110,7 +119,6 @@ function Planet(data) {
 	};
 	
 	this.unEquip = function(type) {
-        console.log(type);
 		this.gear.unEquip(type);
         this._updateStats();
 	};
@@ -177,7 +185,7 @@ function Planet(data) {
 				}
 			}
 			
-			if(item.autoScavenge) {
+			if(item.autoscavenge) {
 				this.autoScavengePerSecond += item.autoscavenge * this.storage.getItemCount(item.id);
 				this.autoScavenge = true;
 				// Temporary cap at 5 / s
