@@ -35,6 +35,14 @@ overflow:auto;
 opacity:0.7;
 }
 
+.craftEnabled {
+  opacity: 1.0;
+}
+
+.craftDisabled {
+  opacity: 0.4;
+}
+
 .logo {
 max-width:600px;
 max-height:89px;

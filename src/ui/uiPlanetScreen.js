@@ -301,9 +301,9 @@ function UIPlanetScreen() {
                             }
                         }
                         if (canCraft) {
-                            element.removeClass('opaque');
+                            element.removeClass('craftDisabled').addClass('craftEnabled');
                         } else {
-                            element.addClass('opaque');
+                            element.addClass('craftDisabled');
                         }
                     }
                 }
