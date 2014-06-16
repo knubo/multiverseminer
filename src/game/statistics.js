@@ -1,9 +1,9 @@
 function Statistics(key) {
     this.key = key;
-    this.autoDigCount = 0;
     this.manualDigCount = 0;
     this.manualGatherCount = 0;
     this.manualScavengeCount = 0;
+    this.autoDigCount = 0;
     this.autoScavengeCount = 0;
     this.autoGatherCount = 0;
 
@@ -44,11 +44,11 @@ function Statistics(key) {
     };
 
     this.reset = function(fullReset) {
-        this.manualDigCount = 0;
-        this.manualGatherCount = 0;
-        this.manualScavengeCount = 0;
-        this.autoScavengeCount = 0;
-        this.autoGatherCount = 0;
         this.autoDigCount = 0;
+        this.manualDigCount = 0;
+        this.autoGatherCount = 0;
+        this.manualGatherCount = 0;
+        this.autoScavengeCount = 0;
+        this.manualScavengeCount = 0;
     };
 };
