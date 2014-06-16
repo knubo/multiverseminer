@@ -54,24 +54,28 @@ function addSingleTable(id, internalName, data) {
 // Earth resources
 // ---------------------------------------------------------------------------
 addTable(100, 'earthAtmosphere', [
-    [Items.oxygen.id, 1]
+    [Items.oxygen.id, 0.9],
+    [Items.hydrogen.id, 0.0007],
+    [Items.argon.id, 0.009],
+    [Items.carbonDioxide.id, 0.007],
+    [Items.helium.id, 0.0007],
+    [Items.krypton.id, 0.0007]
 ]);
 
 addTable(101, 'earthMinerals', [
     [Items.silicon.id, 0.020],
     [Items.calcium.id, 0.015],
     [Items.sodium.id, 0.015],
-	[Items.copper.id, 0.015],
+    [Items.copper.id, 0.015],
     [Items.potassium.id, 0.005],
     [Items.magnesium.id, 0.005],
-	[Items.iron.id, 0.005],
+    [Items.iron.id, 0.005],
     [Items.crudeOil.id, 0.0007],
-    [Items.hydrogen.id, 0.0007],
     [Items.phosphorus.id, 0.0007],
     [Items.manganese.id, 0.0007],
     [Items.aluminum.id, 0.0007],
     [Items.fluorine.id, 0.0007],
-	[Items.gold.id, 0.0007],
+    [Items.gold.id, 0.0007],
     [Items.sulfur.id, 0.0001],
     [Items.carbon.id, 0.0001],
     [Items.titanium.id, 0.00005],
@@ -328,5 +332,5 @@ addTable(1000, 'earthScavengeRes', [
 //NPC loot
 //---------------------------------------------------------------------------
 addTable(1500, 'npcGenericLoot', [
-   [Items.copperBar.id, 0.5]
+    [Items.copperBar.id, 0.5]
 ]);
