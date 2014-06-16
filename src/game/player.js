@@ -78,10 +78,12 @@ function Player() {
 
         var items = this.miner.mine(game.currentPlanet, this.pickPower, this.miningLuck);
         if (items) {
-            for (var i = 0; i < items.length; i++) {
-                var name = game.getItemName(items[i]);
-                var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
-            }
+        	if(game.settings.showPopups) {
+	            for (var i = 0; i < items.length; i++) {
+	                var name = game.getItemName(items[i]);
+	                var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
+	            }
+        	}
             // TODO - Add stat for whatever items you found.
             this.storage.addItems(items);
             return true;

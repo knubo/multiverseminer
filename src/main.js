@@ -122,7 +122,7 @@ function onMine() {
     }
 };
 
-function stopAudio() {
+function toggleAudio() {
     //pause playing
     if (!document.getElementById('audioDig').muted) {
         document.getElementById('audioDig').muted = true;
@@ -133,7 +133,12 @@ function stopAudio() {
         document.getElementById('audioDig').muted = false;
         document.getElementById('audioDigSuccess').muted = false;
     }
-}
+};
+
+function togglePopup() {
+    //pause playing
+    game.settings.togglePopups();
+};
 
 function onGather() {
     if (game.playerDied > 0)

@@ -24,12 +24,18 @@ function Settings() {
 	this.isNewGame = true;
 	this.showTutorial = true;
 	
+	this.showPopups = true;
+	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
 		this.totalStats.initialize();
 		this.sessionStats.initialize();
+	};
+	
+	this.togglePopups = function() {
+		this.showPopups = !this.showPopups;
 	};
 
 	// ---------------------------------------------------------------------------
@@ -71,6 +77,8 @@ function Settings() {
 		
 		localStorage.isNewGame = this.newGame;
 		localStorage.showTutorial = this.showTutorial;
+
+		localStorage.showPopups = this.showPopups;
 	};
 
 	this.load = function() {
@@ -94,6 +102,8 @@ function Settings() {
 		
 		this.isNewGame = utils.loadBool("isNewGame", true);
 		this.showTutorial = utils.loadBool("showTutorial", true);
+
+		this.showPopups = utils.loadBool("showPopups", true);
 	};
 
 	this.reset = function(fullReset) {
@@ -109,6 +119,8 @@ function Settings() {
 		
 		this.isNewGame = true;
 		this.showTutorial = true;
+		
+		this.showPopups = true;
 
 		if (fullReset) {
 			this.totalStats = new Statistics('total');
