@@ -291,7 +291,12 @@ function UI() {
         }
 
         var slot = new UISlot(id + '_' + slotType, parent);
-        slot.classes = slotType + ' gearSlot ';
+        console.log(slotType);
+        if (slotType.substring(0, 8) == "building") {
+            slot.classes = slotType + ' buildingSlot '
+        } else {
+            slot.classes = slotType + ' gearSlot ';
+        }
         slot.init();
 
         if (item != undefined) {

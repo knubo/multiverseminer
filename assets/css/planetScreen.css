@@ -91,7 +91,10 @@
     margin: 10px 10px 1px;
 }
 .buildingsContent {
-    height: 150px;
+    clear: left;
+    height: 100%;
+    overflow: auto;
+    position: relative;
     width: 100%;
 }
 .gearPanel {
