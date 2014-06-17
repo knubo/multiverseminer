@@ -8,6 +8,11 @@ var uiplanetscreen = new UIPlanetScreen();
 // Add hook for document ready
 $(document).ready(onDocumentReady);
 
+window.onbeforeunload = function() {
+    game.save();
+    console.log("atomic save");
+};
+
 // Setup notifications
 $.jGrowl.defaults.position = 'top-right';
 $.jGrowl.defaults.animateOpen = {
@@ -303,10 +308,16 @@ function showChat() {
     });
 }
 function newCraftingModal(itemId) {
+    var name = game.getItem(itemId).name;
+    if (game.getItem(itemId).description) {
+        var description = "Description: " + game.getItem(itemId).description;
+        $("#item-description").val(description);
+    }
     $("#new-crafting-modal").dialog({
         resizable: false,
         height: 300,
         modal: true,
+        title: "Crafting: " + name,
         buttons: {
             'Craft It': function() {
                 newCraft(itemId, $("#quantity").val());
@@ -314,6 +325,7 @@ function newCraftingModal(itemId) {
         }
     });
     $("#hidden-input").val(itemId);
+    $("#item-description").css("display", "block");
     $("new-crating-modal").dialog('open');
 };
 function showFight() {

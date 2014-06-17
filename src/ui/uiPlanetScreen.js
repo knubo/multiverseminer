@@ -706,7 +706,6 @@ function UIPlanetScreen() {
  
     this.buildCraftingEntry = function(item) {
         var tooltipContent = ui.buildCraftingCostTooltip(item);
- 
         var content = $('<div id="craft_' + item.id + '" class="craftingItemPanel" onclick="newCraftingModal(\'' + item.id + '\')" />');
  
         var icon = game.getDefaultItemIcon(item);
