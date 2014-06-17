@@ -480,6 +480,8 @@ function UIPlanetScreen() {
 
         var self = ui.screenPlanet;
         var parent = $('#playerCraftingContent');
+        //parent.append('<form class="filterform"><input class="filterinput" type="text" data-type="search"></input></form><br>');
+        //parent.append('<form class="filterform"><input class="filterinput" type="text" data-type="search"></input></form><br>');
         if (parent.html() !== "") {
             var craftableContent = parent.children(":nth-child(2)"); // assuming child 1 is [Crafting] header
             for (var key in ItemCategory) {
@@ -518,7 +520,6 @@ function UIPlanetScreen() {
             // Skip re-building this for now
             return;
         }
-        parent.append('<form class="filterform" action="#"><input class="filterinput" type="text"></form><br>');
         parent.append('<p>[Craftable]</p>').append($('<div/>'));
 
         for (var key in ItemCategory) {
@@ -555,6 +556,16 @@ function UIPlanetScreen() {
             heightStyle: "content",
             collapsible: true,
             active: false
+        });
+        parent.prepend('<form id="formdiv" class="filterform"><input class="filterinput" type="text" data-type="search" /></form>')
+            .wrap('<div id="sq" class="divclearable"></div>')
+            .parent()
+            .attr('class', $(this).attr('class') + ' divclearable')
+            .append('<a class="clearlink" href="javascript:"></a>');
+        $('.clearlink')
+            .attr('title', 'Click to clear this textbox')
+            .click(function() {
+                $(this).prev().val('').focus();
         });
         $('.filterinput').on('input', function() {
             $('.ui-accordion-content').addClass('ui-accordion-content-active').attr({'aria-expanded':'true','aria-hidden':'false'}).show();
