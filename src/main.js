@@ -92,13 +92,6 @@ function openSettings() {
         position: 'top',
         hideOnClick: true
     });
-    $('.tool-item').tooltipster({
-        theme: 'tooltipster-punk',
-        position: "top",
-        onlyOne: true,
-        interactiveTolerance: 10,
-        speed: 10
-    });
 };
 
 function tutorial() {
