@@ -187,14 +187,17 @@ function Game() {
         var quantity = targetItem.craftResult || 1;
         var keys = Object.keys(cost);
         // First pass to check
+        console.log(targetItem.name);
+        var x = "Insufficient resources. You need: ";
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
             if (storageSource.getItemCount(key) < cost[key]) {
                 // Todo: this needs to go into the ui somewhere
-                noty({text:"Insufficient resources, need " + cost[key] + " " + this.getItemName(key), timeout:1500});
-                return false;
+                x += targetItem.name + ": " + cost[key] + ", ";
             }
-        }
+             noty({text:"Insufficient resources, need " + x, timeout:1500});
+             return false;
+            }
 
         // Now deduct
         for (var i = 0; i < keys.length; i++) {
