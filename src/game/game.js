@@ -187,7 +187,7 @@ function Game() {
         var quantity = targetItem.craftResult || 1;
         var keys = Object.keys(cost);
         // First pass to check
-        console.log(targetItem.name);
+        console.log(cost.name);
         var x = "Insufficient resources. You need: ";
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
