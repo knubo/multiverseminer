@@ -75,19 +75,20 @@ function onDocumentReady() {
         timeout: 3500
     });
     $('#settings').toolbar({
-      content: '#user-toolbar-options',
-      position: 'top',
-      hideOnClick: true
+        content: '#user-toolbar-options',
+        position: 'top',
+        hideOnClick: true
     });
 };
 
 function openSettings() {
-  $('#settings').toolbar({
-    content: '#user-toolbar-options',
-    position: 'top',
-    hideOnClick: true
-  });
+    $('#settings').toolbar({
+        content: '#user-toolbar-options',
+        position: 'top',
+        hideOnClick: true
+    });
 };
+
 function tutorial() {
     $('#joyRideTipContent').joyride({
         autoStart: true,
@@ -138,15 +139,27 @@ function toggleAudio() {
         document.getElementById('audioDigSuccess').muted = true;
         $("#audioDig").trigger('stop');
         $("#audioDigSuccess").trigger('stop');
+        noty({
+            text: "Audio muted.",
+            type: "information",
+            timeout: 2000
+        });
     } else {
         document.getElementById('audioDig').muted = false;
         document.getElementById('audioDigSuccess').muted = false;
+        noty({text: "Audio unmuted.",type: "information",timeout: 2000});
     }
 };
 
 function togglePopup() {
     //pause playing
     game.settings.togglePopups();
+    if !(game.settings.showPopups) {
+        noty({text: "Loot text disabled.",type: "information",timeout: 2000});
+    } else {
+        noty({text: "Loot text enabled.",type: "information",timeout: 2000});
+    }
+    
 };
 
 function onGather() {
@@ -228,7 +241,7 @@ function onMovePlanetItemsToPlayer() {
 
 function onSave() {
     game.save();
-    ui.notify("Game saved");
+    noty({text: "Game saved.",type: "information",timeout: 2000});
 };
 
 function onReset() {
