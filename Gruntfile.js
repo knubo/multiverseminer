@@ -58,7 +58,8 @@ module.exports = function(grunt) {
                         tooltipster : 'external/jquery.tooltipster.min',
                         custombox   : 'external/jquery.custombox',
                         joyride     : 'external/jquery.joyride-2.1',
-                        noty        : 'external/jquery.noty.packaged'
+                        noty        : 'external/jquery.noty.packaged',
+                        toolbar     : 'external/jquery.toolbar'
 					}
 				}
 			}
