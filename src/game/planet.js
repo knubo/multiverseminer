@@ -106,7 +106,6 @@ function Planet(data) {
     };
 
     this.equip = function(itemId) {
-        console.log("planet.js equip");
         if (!itemId || !this.storage.hasItem(itemId)) {
             utils.logError("Unable to equip item, invalid or don't have it");
             return;
@@ -345,8 +344,6 @@ function Planet(data) {
             if (!itemId || itemId == -1) {
                 continue;
             }
-
-            console.log(this.equip(itemId));
             // TODO: load metadata
         }
         //this.gear.load();
