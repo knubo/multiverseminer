@@ -91,7 +91,6 @@ function Gear(id) {
 	};
     
 	this.unEquip = function(type) {
-        console.log("gear unequip");
 		if (!this.slots[type]) {
 			Utils.logError("attempt to un-equip item but slot was not set: "
 					+ type);

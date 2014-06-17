@@ -262,9 +262,8 @@ function UIPlanetScreen() {
     };
  
     this.buildCraftingTooltip = function(item) {
- 
-		content += "<div style='font-size: 9pt;'>";
-
+		content = "<div style='font-size: 9pt;'>";
+        
         switch (item.category) {
             case "rawMaterial":
 				if (item.craftCost) {
