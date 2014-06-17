@@ -41,6 +41,9 @@ function UIPlanetScreen() {
     // main functions
     // ---------------------------------------------------------------------------
     this.init = function() {
+        if ($("#playerInventoryFilter").text() == "SCAVENGE") {
+            $("#decompButton").show();
+        };
         this.baseInit();
  
         this.updateWhenNeededOnly = false;
@@ -123,13 +126,18 @@ function UIPlanetScreen() {
         // Activate some defaults
         this.activatePlayerInventory();
         this.activatePlayerGear();
+        if ($("#playerInventoryFilter").text() == "SCAVENGE") {
+            $("#decompButton").show();
+        };
     };
  
     this.update = function(currentTime) {
         if (!this.baseUpdate(currentTime)) {
             return false;
         };
- 
+        if ($("#playerInventoryFilter").text() == "SCAVENGE") {
+            $("#decompButton").show();
+        };
         // Check for gear changes
         if (game.player.gear.gearChanged) {
             this.componentPlayerGear.invalidate();

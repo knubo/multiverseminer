@@ -49,9 +49,6 @@ function onDocumentReady() {
 
     // Call one round of UI Updates
     ui.update();
-    if ($("#playerInventoryFilter").text() == "Scavenge") {
-        $("#decompButton").show();
-    }
 
     // Activate the default panels
     onActivatePlayerInventory();

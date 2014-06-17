@@ -309,11 +309,6 @@
                 </div>
             </div>
         </div>
-            <div class="genericButton bottomBarButton clickable" onclick="togglePopup()">
-                <div class="bottomBarButtonText noSelect">
-                    Popups
-                </div>
-            </div>
             <div class="hidden fightDialog" id="fight-dialog">
                 <div id="fightText">
                     Player:
@@ -415,7 +410,7 @@
                     <li data-button="Next" data-id="mineButton" data-options="tipLocation:bottom;">
                         <h2>Digging</h2>
 
-                        <p>Click this button to manually dig.<br>
+                        <p>Click this button to manually dig.<br> You also can press/hold D.<br>
                         There is a chance to find elements when digging<br>
                         Craft a better pickaxe for a higher chance of finding elements, and finding more at once.</p>
                     </li>
@@ -465,10 +460,11 @@
             </div>
         </div>
     </div>
-<div id="user-toolbar-options" style="display:none;">
-    	<a onclick="toggleAudio()" title="Mute Audio"><img src="assets/images/mute.png" style="height:30px;width:30px;"></img></a>
+    <div id="user-toolbar-options" style="display:none;">
+    	<a onclick="toggleAudio()" title="Mute Audio"><img src="assets/images/mute.png"style="height:30px;width:30px;"></img></a>
     	<a onclick="onSave()" title="Save"><img src="assets/images/save.png" style="height:30px;width:30px;"></img></a>
     	<a onclick="onReset()" title="Reset"><img src="assets/images/reset.png" style="height:30px;width:30px;"></img></a>
-</div>
+        <a onclick="togglePopup()" title="Low Quality Graphics"><img src="assets/images/graphics.png" style="height:30px;width:30px;"></img></a>
+    </div>
 </body>
 </html>
