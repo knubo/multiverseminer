@@ -212,10 +212,11 @@ function Game() {
         return true;
     };
 
-    this.loot = function(table, count) {
+    this.loot = function(table, count, luck) {
+    	luck = luck || 0;
         var results = [];
         for (var n = 0; n < count; n++) {
-            this._pickLootTableEntries(table, results);
+            this._pickLootTableEntries(table, results, luck);
             if (results.length <= 0) {
                 continue;
             }
@@ -642,30 +643,32 @@ function Game() {
     this._processItemContextPlayerShip = function(item, targetContext) {
     };
 
-    this._pickLootTableEntries = function(table, results) {
+    this._pickLootTableEntries = function(table, results, luck) {
+    	luck = luck || 0;
         switch (table.mode) {
             case LootMode.single:
                 {
-                    this._pickSingleLootTableEntry(table, results);
+                    this._pickSingleLootTableEntry(table, results, luck);
                     break;
                 }
 
             case LootMode.multi:
                 {
-                    this._pickMultiLootTableEntries(table, results);
+                    this._pickMultiLootTableEntries(table, results, luck);
                     break;
                 }
         }
     };
 
-    this._pickMultiLootTableEntries = function(table, results) {
+    this._pickMultiLootTableEntries = function(table, results, luck) {
+    	luck = luck || 1;
         for (var i = 0; i < table.entries.length; i++) {
             var entry = table.entries[i][0];
             var chance = table.entries[i][1];
-            if (Math.random() <= chance) {
+            if (Math.random() <= chance * Math.sqrt(Math.pow(1.1, luck-1))) {
                 if (entry.entries) {
                     // Sub-table
-                    this._pickLootTableEntries(entry, results);
+                    this._pickLootTableEntries(entry, results, luck);
                 } else {
                     results.push(entry);
                 }
@@ -673,12 +676,13 @@ function Game() {
         }
     };
 
-    this._pickSingleLootTableEntry = function(table, results) {
+    this._pickSingleLootTableEntry = function(table, results, luck) {
+    	luck = luck || 0;
         var pick = utils.getRandomInt(0, table.entries.length - 1);
         var entry = table.entries[pick];
         if (entry.entries) {
             // Sub-table
-            this._pickLootTableEntries(entry, results);
+            this._pickLootTableEntries(entry, results, luck);
         } else {
             results.push(entry);
         }
