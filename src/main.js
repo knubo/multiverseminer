@@ -154,12 +154,11 @@ function toggleAudio() {
 function togglePopup() {
     //pause playing
     game.settings.togglePopups();
-    if !(game.settings.showPopups) {
+    if (!game.settings.showPopups) {
         noty({text: "Loot text disabled.",type: "information",timeout: 2000});
     } else {
         noty({text: "Loot text enabled.",type: "information",timeout: 2000});
     }
-    
 };
 
 function onGather() {
