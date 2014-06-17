@@ -60,3 +60,36 @@
 #playerCraftingContent .ui-icon {
 	display: none;
 }
+.filterinput {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display:inline;
+    padding-right:5px;
+    vertical-align:middle;
+    width:189px;
+    height:auto;
+    margin-bottom:6px;
+}
+.divclearable {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display:inline;
+    padding-right:5px;
+    vertical-align:middle;
+    width:200px;
+    height:auto;
+}
+  
+a.clearlink {
+    background: url("assets/images/close-button.png") no-repeat scroll 0 0 transparent;
+    background-position: center center;
+    cursor: pointer;
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display:inline;
+    height: 12px;
+    width: 12px;
+    z-index: 2000;
+    border: 0px solid;
+    position:fixed;
+}
