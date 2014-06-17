@@ -107,7 +107,17 @@ function onUpdate() {
     game.update(currentTime);
     ui.update(currentTime);
 };
-
+function newCraft(what, quantity) {
+    if (what == undefined) {
+        utils.logError("onCraft with no item specified.");
+    }
+    if (quantity == undefined) {
+        quantity = 1;
+    };
+    if (game.player.craft(what, quantity)) {
+        ui.screenPlanet.componentCrafting.invalidate();
+    }
+};
 function onCraft(what) {
     if (what == undefined) {
         utils.logError("onCraft with invalid target");
@@ -301,7 +311,20 @@ function showChat() {
         width: 500
     });
 }
-
+function newCraftingModal(itemId) {
+    $("#new-crafting-modal").dialog({
+        resizable: false,
+        height: 300,
+        modal: true,
+        buttons: {
+            'Craft It': function() {
+                newCraft(itemId, $("#quantity").val());
+            }
+        }
+    });
+    $("#hidden-input").val(itemId);
+    $("new-crating-modal").dialog('open');
+};
 function showFight() {
     if (game.playerDied > 0)
         return false;
