@@ -308,6 +308,11 @@ function showChat() {
     });
 }
 function newCraftingModal(itemId) {
+	var maxCrafts = game.player.storage.getMaxCrafts(itemId);
+	if (maxCrafts <= 5) {
+		newCraft(itemId,1);
+		return;
+	}
     var name = game.getItem(itemId).name;
     if (game.getItem(itemId).description) {
         var description = "Description: " + game.getItem(itemId).description;
