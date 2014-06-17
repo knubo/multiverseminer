@@ -78,7 +78,7 @@ addTable(101, 'earthMinerals', [
     [Items.fluorine.id, 0.0007],
     [Items.gold.id, 0.007],
     [Items.sulfur.id, 0.001],
-    [Items.carbon.id, 0.05],
+    [Items.carbon.id, 0.009],
     [Items.titanium.id, 0.0005],
     [Items.barium.id, 0.0005],
     [Items.nickel.id, 0.00005],
