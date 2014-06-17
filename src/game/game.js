@@ -12,7 +12,7 @@ function Game() {
     this.lastUpdateTime = Date.now();
     this.lastAutoSaveTime = Date.now();
     this.lastTravelTime = Date.now();
-    
+
     this.planetChanged = true;
 
     this.version = 0.1;
@@ -26,7 +26,7 @@ function Game() {
     };
 
     this.activeItemContexts = [];
-    
+
     this.QuestTable = [];
 
     // ---------------------------------------------------------------------------
@@ -76,7 +76,7 @@ function Game() {
         // Give the player some basic items
         // This while could be hairy, I'm not really sure.
         // TODO: investigate this code below.
-        while (this.player.gear.slots.miningGear == -1){
+        while (this.player.gear.slots.miningGear == -1) {
             this.player.storage.addItem(Items.woodenPick.id);
             this.player.equip(Items.woodenPick.id);
         };
@@ -187,17 +187,18 @@ function Game() {
         var quantity = targetItem.craftResult || 1;
         var keys = Object.keys(cost);
         // First pass to check
-        console.log(cost.name);
         var x = "Insufficient resources. You need: ";
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
             if (storageSource.getItemCount(key) < cost[key]) {
                 // Todo: this needs to go into the ui somewhere
-                x += targetItem.name + ": " + cost[key] + ", ";
+                noty({
+                    text: "Insufficient resources, you need " + keys.join(', '),
+                    timeout: 1500
+                });
+                return false;
             }
-             noty({text:"Insufficient resources, need " + x, timeout:1500});
-             return false;
-            }
+        }
 
         // Now deduct
         for (var i = 0; i < keys.length; i++) {
@@ -215,7 +216,7 @@ function Game() {
     };
 
     this.loot = function(table, count, luck) {
-    	luck = luck || 0;
+        luck = luck || 0;
         var results = [];
         for (var n = 0; n < count; n++) {
             this._pickLootTableEntries(table, results, luck);
@@ -542,16 +543,16 @@ function Game() {
                 return false;
         }
     };
-    
-    this.addQuest = function(name,desc, ordered, tasks, reward) {
-    	this.QuestTable.push(new Quest(name, desc, ordered, tasks, reward));
+
+    this.addQuest = function(name, desc, ordered, tasks, reward) {
+        this.QuestTable.push(new Quest(name, desc, ordered, tasks, reward));
     };
-    
+
     this.questProgress = function(type, what) { //Destroy, Craft, Collect, Event? x y
-    	for(var i = 0; i < QuestTable.length; i++) {
-    		if(this.QuestTable[i].completed) continue;
-    		this.QuestTable[i].taskProgress(type, what);
-    	}
+        for (var i = 0; i < QuestTable.length; i++) {
+            if (this.QuestTable[i].completed) continue;
+            this.QuestTable[i].taskProgress(type, what);
+        }
     };
 
     // ---------------------------------------------------------------------------
@@ -652,11 +653,10 @@ function Game() {
 
     };
 
-    this._processItemContextPlayerShip = function(item, targetContext) {
-    };
+    this._processItemContextPlayerShip = function(item, targetContext) {};
 
     this._pickLootTableEntries = function(table, results, luck) {
-    	luck = luck || 0;
+        luck = luck || 0;
         switch (table.mode) {
             case LootMode.single:
                 {
@@ -673,11 +673,11 @@ function Game() {
     };
 
     this._pickMultiLootTableEntries = function(table, results, luck) {
-    	luck = luck || 1;
+        luck = luck || 1;
         for (var i = 0; i < table.entries.length; i++) {
             var entry = table.entries[i][0];
             var chance = table.entries[i][1];
-            if (Math.random() <= chance * Math.sqrt(Math.pow(1.1, luck-1))) {
+            if (Math.random() <= chance * Math.sqrt(Math.pow(1.1, luck - 1))) {
                 if (entry.entries) {
                     // Sub-table
                     this._pickLootTableEntries(entry, results, luck);
@@ -689,7 +689,7 @@ function Game() {
     };
 
     this._pickSingleLootTableEntry = function(table, results, luck) {
-    	luck = luck || 0;
+        luck = luck || 0;
         var pick = utils.getRandomInt(0, table.entries.length - 1);
         var entry = table.entries[pick];
         if (entry.entries) {
