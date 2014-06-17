@@ -492,13 +492,16 @@ function UIPlanetScreen() {
                                 }
                             }
                         }
-                        if (canCraft > 1.0) {
+                        var jcount = element.find(".craftingCount");
+                        if (canCraft >= 1.0) {
                             element.removeClass('craftDisabled').addClass('craftEnabled');
-                            element.find(".craftingCount").html("("+canCraft.toFixed()+")");
+                            jcount.html(" x "+canCraft.toFixed()+" ");
                         } else {
                             element.addClass('craftDisabled');
-                            element.find(".craftingCount").html("");
+                            jcount.html("");
                         }
+                        var qty = game.player.storage.getItemCount(item.id);
+                        if (qty > 0) jcount.append(" ("+qty+")");
                     }
                 }
             }
