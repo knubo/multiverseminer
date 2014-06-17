@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 						gamestatistics : 'game/statistics',
 						gamestorage    : 'game/storage',
 						gamefight      : 'game/fight',
+						gamequest      : 'game/quest',
 
 						ui             : 'ui/ui',
 						uicomponent    : 'ui/controls/uiComponent',
