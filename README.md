@@ -1,6 +1,10 @@
 Multiverse Miner
 ====
 
+This game is open source, however some of the art is not.
+
+Please message antlong on irc.freenode.net for license details.
+
 ### Running
 
 ```shell
