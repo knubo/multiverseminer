@@ -479,23 +479,11 @@ function UIPlanetScreen() {
                     var item = items[i];
                     if (item.id) {
                         var element = $('#craft_' + item.id);
-                        var canCraft = null;
-                        if (item.craftCost && game.player.storage.canAdd(item.id)) {
-                            var cost = game.getCraftingCost(item.id, 1);
-                            var quantity = game.itemDictionary[item.id].craftResult || 1;
-                            var keys = Object.keys(cost);
-                            for (var x = 0; x < keys.length; x++) {
-                                var key = keys[x];
-                                var n = game.player.storage.getItemCount(key) / cost[key]
-                                if (canCraft == null || canCraft > n) {
-                                    canCraft = n;
-                                }
-                            }
-                        }
+                        var maxCraftable = game.player.storage.getMaxCraftableItems(item.id);
                         var jcount = element.find(".craftingCount");
-                        if (canCraft >= 1.0) {
+                        if (maxCraftable >= 1) {
                             element.removeClass('craftDisabled').addClass('craftEnabled');
-                            jcount.html(" x "+canCraft.toFixed()+" ");
+                            jcount.html(" x "+maxCraftable.toFixed()+" ");
                         } else {
                             element.addClass('craftDisabled');
                             jcount.html("");
