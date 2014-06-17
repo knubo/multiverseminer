@@ -4,7 +4,7 @@ function Player() {
     this.id = 'player';
     this.pickPower = 1;
     this.miningLuck = 1;
-    this.totalPower = 1;
+    //this.totalPower = 1;
     this.miner = new Miner('player');
     this.storage = new Storage('player');
     this.gear = new Gear('player');
@@ -38,26 +38,26 @@ function Player() {
         this.gear.addSlot('legs');
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
-        this.totalPower = this.calculatePower();
+        /*/this.totalPower = */this.calculatePower();
     };
 
     this.calculatePower = function() {
-        var power = this.gear.getStats()["power"] || 1;
-        var miningLuck = this.gear.getStats()["miningLuck"] || 1;
-        this.totalPower = power * miningLuck;
-        return this.totalPower;
-    };
+        this.pickPower = this.gear.getStats()["power"] || 1;
+        this.miningLuck = this.gear.getStats()["miningLuck"] || 1;
+        //this.totalPower = power * miningLuck;
+        //return this.totalPower;
+    };//*/
     
     this.update = function(currentTime) {
         this.miner.update(currentTime);
         this.combatant.update(currentTime);
         this.stats = this.gear.getStats();
         this.checkPlanet();
-        this.totalPower = this.calculatePower();
+        /*/this.totalPower = */this.calculatePower();
 
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
-                // Todo: need to do something when this runs out
+                // TODO: need to do something when this runs out
                 if (this.storage.getItemCount(Items.oxygen.id) > 0) {
                     this.storage.removeItem(Items.oxygen.id);
                 }
@@ -76,12 +76,14 @@ function Player() {
 
         //game.settings.addStat('manualDigCount');
 
-        var items = this.miner.mine(game.currentPlanet, this.totalPower);
+        var items = this.miner.mine(game.currentPlanet, this.pickPower, this.miningLuck);
         if (items) {
-            for (var i = 0; i < items.length; i++) {
-                var name = game.getItemName(items[i]);
-                var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
-            }
+        	if(game.settings.showPopups) {
+	            for (var i = 0; i < items.length; i++) {
+	                var name = game.getItemName(items[i]);
+	                var float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
+	            }
+        	}
             // TODO - Add stat for whatever items you found.
             this.storage.addItems(items);
             return true;
@@ -233,7 +235,7 @@ function Player() {
     };
 
     this.getTravelSpeed = function() {
-        // Todo: hardcoded for now until ship is done
+        // TODO: hardcoded for now until ship is done
         return 5000;
     };
 
@@ -260,7 +262,7 @@ function Player() {
         this.playerClass = utils.loadInt('playerClass', 1);
         game.currentPlanet = game.planets[utils.loadInt('planetID', 1)];
         game.planetChanged = true;
-        this.totalPower = this.calculatePower();
+        /*this.totalPower = */this.calculatePower();
     };
 
     this.reset = function(fullReset) {

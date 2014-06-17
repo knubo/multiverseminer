@@ -145,7 +145,12 @@ function toggleAudio() {
         document.getElementById('audioDig').muted = false;
         document.getElementById('audioDigSuccess').muted = false;
     }
-}
+};
+
+function togglePopup() {
+    //pause playing
+    game.settings.togglePopups();
+};
 
 function onGather() {
     if (game.playerDied > 0)
