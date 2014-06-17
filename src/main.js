@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty", "joyride"]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty", "joyride", "toolbar"]);
 
 // Create components
 var game = new Game();
@@ -77,8 +77,20 @@ function onDocumentReady() {
         type: "information",
         timeout: 3500
     });
+    $('#settings').toolbar({
+      content: '#user-toolbar-options',
+      position: 'top',
+      hideOnClick: true
+    });
 };
 
+function openSettings() {
+  $('#settings').toolbar({
+    content: '#user-toolbar-options',
+    position: 'top',
+    hideOnClick: true
+  });
+};
 function tutorial() {
     $('#joyRideTipContent').joyride({
         autoStart: true,
@@ -90,7 +102,7 @@ function tutorial() {
         modal: false,
         expose: true
     });
-}
+};
 
 function onUpdate() {
     var currentTime = Date.now();
@@ -122,7 +134,7 @@ function onMine() {
     }
 };
 
-function stopAudio() {
+function toggleAudio() {
     //pause playing
     if (!document.getElementById('audioDig').muted) {
         document.getElementById('audioDig').muted = true;

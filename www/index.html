@@ -303,23 +303,11 @@
                     Tutorial
                 </div>
             </div>
-            <div class="genericButton bottomBarButton clickable" onclick="onSave()">
-                <div class="bottomBarButtonText noSelect">
-                    Save
+            <div class="genericButton bottomBarButton clickable" onclick="openSettings()">
+                <div id="settings" class="bottomBarButtonText noSelect">
+                    Settings
                 </div>
             </div>
-
-            <div class="genericButton bottomBarButton clickable" onclick="onReset()">
-                <div class="bottomBarButtonText noSelect">
-                    Reset
-                </div>
-            </div>
-            <div class="genericButton bottomBarButton clickable" onclick=stopAudio()>
-                <div class="bottomBarButtonText noSelect">
-                    Mute
-                </div>
-            </div>
-
             <div class="hidden fightDialog" id="fight-dialog">
                 <div id="fightText">
                     Player:
@@ -471,5 +459,10 @@
             </div>
         </div>
     </div>
+<div id="user-toolbar-options" style="display:none;">
+    	<a onclick="toggleAudio()" title="Mute Audio"><img src="assets/images/mute.png" style="height:30px;width:30px;"></img></a>
+    	<a onclick="onSave()" title="Save"><img src="assets/images/save.png" style="height:30px;width:30px;"></img></a>
+    	<a onclick="onReset()" title="Reset"><img src="assets/images/reset.png" style="height:30px;width:30px;"></img></a>
+</div>
 </body>
 </html>
