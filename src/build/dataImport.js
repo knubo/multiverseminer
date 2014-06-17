@@ -149,7 +149,8 @@ module.exports = function (grunt) {
 		        'gems.xls': {'category': 'gem'},
 		        'materials.xls': {'category': 'rawMaterial'},
 		        'potions.xls': {'category': 'usable'},
-		        'scavenge.xls': {'category': 'scavenge'}
+		        'scavenge.xls': {'category': 'scavenge'},
+                'spaceship.xls': {'category': 'spaceship'}
 		};
 		importData(sourceFiles, 'src/data/items.js');
 		
@@ -161,19 +162,19 @@ module.exports = function (grunt) {
 
 		// Planets
 		sourceFiles = {
-			'planets.xls': {},	
+			'planets.xls': {}
 		};
 		importData(sourceFiles, 'src/data/planets_autogen.js', 'Planets');
 		
 		// Races
 		sourceFiles = {
-			'races.xls': {},
+			'races.xls': {}
 		};
 		importData(sourceFiles, 'src/data/races.js', 'Races');
 		
 		// NPC
 		sourceFiles = {
-			'actors.xls': {},
+			'actors.xls': {}
 		};
 		importData(sourceFiles, 'src/data/actors.js', 'Actors');
 	});

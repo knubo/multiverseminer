@@ -24,8 +24,8 @@ function Planet(data) {
     this.autoRefineValue = 0;
     this.autoRefine = false;
 
-    var equippedAmount = 0; //TODO: remove this and all related to it once we find a proper way to equip buildings
-    var maxCanEquip = 4; //TODO: read above
+    this.equippedAmount = 0; //TODO: remove this and all related to it once we find a proper way to equip buildings
+    this.maxCanEquip = 4; //TODO: read above
 
     // ---------------------------------------------------------------------------
     // general
@@ -34,7 +34,7 @@ function Planet(data) {
         this.gear.initialize();
 
         // Add the slots we can wear
-        for (var i = 0; i < maxCanEquip; i++) //TODO: read equippedAmount, line 23, todo
+        for (var i = 0; i < this.maxCanEquip; i++) //TODO: read equippedAmount, line 23, todo
             this.gear.addSlot('building_' + i);
 
         this.miner.initialize();
@@ -43,24 +43,9 @@ function Planet(data) {
 
     this.update = function(currentTime) {
         this.miner.update(currentTime);
-
-        // Temp fix to enable auto-mining on re-load
-        var x = [1, 2, 3, 4];
-        for (i = 0; i < x.length; i++) {
-            if (game.currentPlanet.gear.getItemInSlot("building_" + i));
-        }
-        if (this.gear.getItemInSlot('building_' + x) == "miningRig" && !this.autoMine) {
-            this.autoMine = true;
-        }
-        if (this.gear.getItemInSlot('building_' + x) == "scavengeStation" && !this.autoScavenge) {
-            this.autoScavenge = true;
-        }
-        if (this.gear.getItemInSlot('building_' + x) == "gatherStation" && !this.autoGather) {
-            this.autoGather = true;
-        }
-        if (this.gear.getItemInSlot('building_' + x) == "refinery" && !this.autoRefine) {
-            this.autoRefine = true;
-        }
+        if (this.equippedAmount > 0) {
+            this._updateStats();
+        };
         var elapsedTime = currentTime - this.lastAutoTime;
         var autoCycles = Math.floor(elapsedTime / 1000); // account for inactive tab
 
@@ -113,12 +98,12 @@ function Planet(data) {
 
         //TODO: fix this horrible hack once we figure a way to add multiple of the same slot ...
 
-        if (equippedAmount < maxCanEquip) {
+        if (this.equippedAmount < this.maxCanEquip) {
             var itemInfo = game.getItem(itemId);
-            this.gear.slots['building_' + equippedAmount] = itemId;
-            this.gear.slotMetadata['building_' + equippedAmount] = this.storage.getItemMetadata(itemId);
+            this.gear.slots['building_' + this.equippedAmount] = itemId;
+            this.gear.slotMetadata['building_' + this.equippedAmount] = this.storage.getItemMetadata(itemId);
             this.gear.gearChanged = true;
-            equippedAmount++;
+            this.equippedAmount++;
 
             //this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
             this._updateStats();
