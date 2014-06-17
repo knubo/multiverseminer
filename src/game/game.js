@@ -176,7 +176,7 @@ function Game() {
         var targetItem = game.itemDictionary[what];
         // Check if we have enough storage to store the result
         if (!storageTarget.canAdd(what, count)) {
-            ui.notifyError("Can not craft, storage limit exceeded!");
+            noty({text: "Can not craft, storage limit exceeded!"});
             return false;
         }
         var cost = this.getCraftingCost(what, count);
@@ -187,13 +187,12 @@ function Game() {
         var quantity = targetItem.craftResult || 1;
         var keys = Object.keys(cost);
         // First pass to check
-        var x = "Insufficient resources. You need: ";
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
             if (storageSource.getItemCount(key) < cost[key]) {
                 // Todo: this needs to go into the ui somewhere
                 noty({
-                    text: "Insufficient resources, you need " + keys.join(', '),
+                    text: "Insufficient resources, you need: " + keys.join(', '),
                     timeout: 1500
                 });
                 return false;
