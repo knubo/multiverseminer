@@ -262,16 +262,85 @@ function UIPlanetScreen() {
     };
  
     this.buildCraftingTooltip = function(item) {
-        if (!item.description) {
-            item.description = "An item used in crafting.";
-        }
-        content = "<strong>" + item.description + "</strong><br><br><strong>Cost:</strong><br>";
-        if (item.craftCost) {
-            for (cost in item.craftCost) {
-                // content += item.craftCost[cost] + " x " + game.getItemName(cost) + "</br>";
-				content += "&nbsp;&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
-            }
-        }
+ 
+		content += "<div style='font-size: 9pt;'>";
+
+        switch (item.category) {
+            case "rawMaterial":
+				if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost];
+				}}
+            break;
+		     
+			case "component":
+				if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost];
+				}}
+            break;
+			
+            case "miningGear":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
+                content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
+                content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
+                content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";			
+			break;				
+            
+			case "gearMainHand":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";		
+			break;			
+			
+			case "gearHead":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Defense: " +item.defense + "</br>";			
+			break;		
+			
+			case "gearLegs":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Defense: " +item.defense + "</br>";		
+			break;
+			
+			case "gearFeet":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Defense: " +item.defense + "</br>";	
+			break;			
+			case "gearBuilding":
+                if (item.craftCost) {
+					for (cost in item.craftCost) {
+						content = "<strong>Cost:</strong><br>&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+				}}	
+				content += "<br><strong>Stats:</strong><br>";
+				content += "&nbsp;Mine: " + item.automine + "/s</br>";
+				content += "&nbsp;Refine: " + item.autorefine + "/s</br>";
+				content += "&nbsp;Gather: " + item.autogather + "/s</br>";
+				content += "&nbsp;Scavenge: " + item.autoscavenge + "/s</br>";		
+			break;
+			
+		};
+        content += "</div>";
         return content;
     };
  
