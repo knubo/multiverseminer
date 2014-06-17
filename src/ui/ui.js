@@ -280,7 +280,6 @@ function UI() {
 
             costEntries.push(cost[key] + ' ' + costItem.name);
         }
-
         return costEntries.join(', ');
     };
 

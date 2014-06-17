@@ -10,16 +10,16 @@
 
 .inventoryContent {
     clear: left;
-    height: 300px;
+    height: 435px;
     overflow: scroll;
     position: relative;
-    width: 272px;
+    width: 329px;
 }
 
 .inventoryContentPlayer {
     clear: left;
-    height: 300px;
+    height: 435px;
     overflow: scroll;
     position: relative;
-    width: 272px;
+    width: 329px;
 }

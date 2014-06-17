@@ -1,4 +1,4 @@
-require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils", "gamequest"]);
+require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils", "gamequest", "noty"]);
 
 function Game() {
     this.player = new Player();
@@ -80,8 +80,6 @@ function Game() {
             this.player.storage.addItem(Items.woodenPick.id);
             this.player.equip(Items.woodenPick.id);
         };
-        console.log(this.player.storage.items);
-
         // make earth our current planet
         this.settings.currentPlanet = Planets.earth.id;
 
@@ -107,7 +105,6 @@ function Game() {
 
         this.setNewGame();
         this.player.gear.reset(fullReset);
-        console.log(this.player.gear);
         this.setStartupState();
         //this.save();
         location.reload();
@@ -194,7 +191,7 @@ function Game() {
             var key = keys[i];
             if (storageSource.getItemCount(key) < cost[key]) {
                 // Todo: this needs to go into the ui somewhere
-                ui.notifyError("Insufficient resources, need " + cost[key] + " " + this.getItemName(key));
+                noty({text:"Insufficient resources, need " + cost[key] + " " + this.getItemName(key), timeout:1500});
                 return false;
             }
         }
@@ -340,7 +337,6 @@ function Game() {
     };
 
     this.travelTo = function(target) {
-        console.log("Traveling to " + target);
         // Todo: deduct travel cost
         if (target == undefined || !this.planetDictionary[target]) {
             ui.notifyError("Unknown destination: " + target);
