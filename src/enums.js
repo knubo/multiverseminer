@@ -1,6 +1,6 @@
 ItemCategory = {
     'unset': '-unset-',
-    'rawMaterial': 'Raw materials',
+    'rawMaterial': 'Raw Materials',
     'gem': 'Gems',
     'component': 'Components',
     'miningGear': 'Mining Gear',
