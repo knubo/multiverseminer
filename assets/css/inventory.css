@@ -6,6 +6,7 @@
 	margin-bottom: 20px;
 	margin-top: 20px;
 	height: 20px;
+	width: 290px;
 }
 
 .inventoryContent {
@@ -21,5 +22,7 @@
     height: 435px;
     overflow: scroll;
     position: relative;
-    width: 329px;
+    width: 293px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
