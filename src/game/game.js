@@ -1,4 +1,4 @@
-require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils"]);
+require(["gameplayer", "gameplanet", "gamenpc", "gamefight", "gamesettings", "utils", "gamequest"]);
 
 function Game() {
     this.player = new Player();
@@ -12,7 +12,7 @@ function Game() {
     this.lastUpdateTime = Date.now();
     this.lastAutoSaveTime = Date.now();
     this.lastTravelTime = Date.now();
-
+    
     this.planetChanged = true;
 
     this.version = 0.1;
@@ -26,6 +26,8 @@ function Game() {
     };
 
     this.activeItemContexts = [];
+    
+    this.QuestTable = [];
 
     // ---------------------------------------------------------------------------
     // main functions
@@ -540,6 +542,17 @@ function Game() {
             default:
                 return false;
         }
+    };
+    
+    this.addQuest = function(name,desc, ordered, tasks, reward) {
+    	this.QuestTable.push(new Quest(name, desc, ordered, tasks, reward));
+    };
+    
+    this.questProgress = function(type, what) { //Destroy, Craft, Collect, Event? x y
+    	for(var i = 0; i < QuestTable.length; i++) {
+    		if(this.QuestTable[i].completed) continue;
+    		this.QuestTable[i].taskProgress(type, what);
+    	}
     };
 
     // ---------------------------------------------------------------------------
