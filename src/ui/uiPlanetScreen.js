@@ -561,7 +561,6 @@ function UIPlanetScreen() {
             var a = $(this).val();
             if (a.length > 0) {
                 var containing = $('.craftingItemPanel').filter(function() {
-                    console.log($(this).text().indexOf(a) + 1);
                     return $(this).text().toLowerCase().indexOf(a.toLowerCase()) + 1;
                 }).slideDown();
                 $('.craftingItemPanel').not(containing).slideUp();
