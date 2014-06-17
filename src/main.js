@@ -254,20 +254,11 @@ function onSave() {
 };
 
 function onReset() {
-    $(function() {
-        $("#newReset").dialog({
-            resizable: false,
-            height: 300,
-            modal: true,
-            buttons: {
-                "Delete Everything.": function() {
-                    doReset();
-                },
-                Cancel: function() {
-                    $(this).dialog("close");
-                }
-            }
-        });
+    $(this).custombox({
+        url: "#newReset",
+        customClass: 'scavModal',
+        overlayClose: 'true',
+        opacity: '0.7'
     });
 };
 
