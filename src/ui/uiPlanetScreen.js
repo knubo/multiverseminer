@@ -481,7 +481,7 @@ function UIPlanetScreen() {
         var self = ui.screenPlanet;
         var parent = $('#playerCraftingContent');
         if (parent.html() !== "") {
-            var craftableContent = parent.children(":nth-child(1)"); // assuming child 1 is [Crafting] header
+            var craftableContent = parent.children(":nth-child(2)"); // assuming child 1 is [Crafting] header
             for (var key in ItemCategory) {
                 if (key == 'scavenge') continue;
                 var items = game.getItemsByCategory(key);
@@ -518,6 +518,7 @@ function UIPlanetScreen() {
             // Skip re-building this for now
             return;
         }
+        parent.append('<form class="filterform" action="#"><input class="filterinput" type="text"></form><br>');
         parent.append('<p>[Craftable]</p>').append($('<div/>'));
 
         for (var key in ItemCategory) {
@@ -555,7 +556,6 @@ function UIPlanetScreen() {
             collapsible: true,
             active: false
         });
-        parent.prepend('<form class="filterform" action="#"><input class="filterinput" type="text"></form>');
         $('.filterinput').on('input', function() {
             $('.ui-accordion-content').addClass('ui-accordion-content-active').attr({'aria-expanded':'true','aria-hidden':'false'}).show();
             var a = $(this).val();
