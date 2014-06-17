@@ -557,18 +557,8 @@ function UIPlanetScreen() {
             collapsible: true,
             active: false
         });
-        parent.prepend('<form id="formdiv" class="filterform"><input class="filterinput" type="text" data-type="search" /></form>')
-            .wrap('<div id="sq" class="divclearable"></div>')
-            .parent()
-            .attr('class', $(this).attr('class') + ' divclearable')
-            .append('<a class="clearlink" href="javascript:"></a>');
-        $('.clearlink')
-            .attr('title', 'Click to clear this textbox')
-            .click(function() {
-                $(this).prev().val('').focus();
-        });
+        parent.prepend('<form id="formdiv"><input class="filterinput" type="text" data-type="search" /></form><br>').parent();
         $('.filterinput').on('input', function() {
-            $('.ui-accordion-content').addClass('ui-accordion-content-active').attr({'aria-expanded':'true','aria-hidden':'false'}).show();
             var a = $(this).val();
             if (a.length > 0) {
                 var containing = $('.craftingItemPanel').filter(function() {
