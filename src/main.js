@@ -55,9 +55,8 @@ function onDocumentReady() {
     $(function() {
         $("#notification-list").dialog()
             .on('diagclose', function(event, ui) {
-                if ( localStorage.getItem('notification_count') ) {
-                    localStorage.setItem('notification_count', 0);
-                }
+                localStorage.setItem('notification_count', 0);
+                localStorage.setItem('notification_text', "");
             });
         });
     // Activate the default panels
