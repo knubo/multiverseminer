@@ -301,7 +301,7 @@
                         <a>Notifications</a>
                     </div>
                     <div class="bottomBarButtonText new-message noSelect">
-                        <a>0</a>
+                        <a><div id="new-message-count">0</div></a>
                     </div>
                 </div>
             </div>
@@ -310,7 +310,7 @@
                     Tutorial
                 </div>
             </div>
-            <div class="genericButton bottomBarButton clickable" onclick="openSettings()">
+            <div class="genericButton bottomBarButton clickable">
                 <div id="settings" class="bottomBarButtonText noSelect">
                     Settings
                 </div>
@@ -464,5 +464,6 @@
          <input style="display:none;" id="hidden-input" name="itemId"></input>
     </div>
     <div id="release-notes" style="display:none;"></div>
+    <div id="notification-list" style="display:none;"></div>
 </body>
 </html>
