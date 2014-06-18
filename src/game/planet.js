@@ -18,6 +18,10 @@ function Planet(data) {
     this.autoScavengePerSecond = 0;
     this.autoScavengeValue = 0;
     this.autoScavenge = false;
+    
+    this.autoRefinePerSecond = 0;
+    this.autoRefineValue = 0;
+    this.autoRefine = false;
 
     // ---------------------------------------------------------------------------
     // general
@@ -66,6 +70,14 @@ function Planet(data) {
                     var attempts = Math.floor(this.autoScavengeValue);
                     this.autoScavengeValue -= attempts;
                     this._autoScavenge(attempts);
+                }
+            }
+            
+            if (this.autoRefine) {
+                this.autoRefineValue += this.autoRefinePerSecond;
+                if (this.autoRefineValue >= 1) {
+                    this.autoRefineValue -= attempts;
+                    this._autoRefine(attempts);
                 }
             }
         }
@@ -124,6 +136,10 @@ function Planet(data) {
         this.autoScavengePerSecond = 0;
         this.autoScavengeValue = 0;
         this.autoScavenge = false;
+        
+        this.autoRefinePerSecond = 0;
+        this.autoRefineValue = 0;
+        this.autoRefine = false;
 
         var items = this.storage.getItemsOfCategory('gearBuilding');
         if (!items) {
@@ -157,6 +173,14 @@ function Planet(data) {
                 // Temporary cap at 5 / s
                 if (this.autoScavengePerSecond > 5) {
                     this.autoScavengePerSecond = 5;
+                }
+            }
+            if (item.autoRefine) {
+                this.autoRefinePerSecond += item.autorefine * this.storage.getItemCount(item.id);
+                this.autoRefine = true;
+                // Temporary cap at 5 / s
+                if (this.autoRefine > 5) {
+                    this.autoRefinePerSecond = 5;
                 }
             }
         };
@@ -222,7 +246,21 @@ function Planet(data) {
 
         this._finalizeAuto(totalItems);
     };
-
+    this._autoRefine = function(attempts) {
+        if (attempts > 100) {
+            throw new Error("Way too many auto attempts pending, check the timer code!");
+        }
+        game.settings.addStat('autoRefineCount');
+        if ($("#leftCategory2").hasClass("genericButtonSelected")) {
+            uiplanetscreen.updateStatsPanel();
+        }
+        if (this.storage.getItemsOfCategory("scavenge")) {
+            items = this.storage.getItemsOfCategory("scavenge");
+            var rand = items[Math.floor(Math.random() * items.length)];
+                game.currentPlanet.storage.removeItem(rand);
+                game.player.storage.addItem(rand);
+            }
+    };
     this._finalizeAuto = function(totalItems) {
         this.storage.addItems(totalItems);
 
@@ -245,6 +283,7 @@ function Planet(data) {
             var name = game.getItemName(item);
             ui.createFloat('+' + items[item] + ' ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
         }
+        this._updateStats();
     };
 
     // ---------------------------------------------------------------------------

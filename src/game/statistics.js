@@ -43,7 +43,7 @@ function Statistics(key) {
         this.manualGatherCount = utils.loadInt(storageKey + 'manualGatherCount', 0);
         this.autoScavengeCount = utils.loadInt(storageKey + 'autoScavengeCount', 0);
         this.manualScavengeCount = utils.loadInt(storageKey + 'manualScavengeCount', 0);
-        this.autoRefineCount = utils.loadInt(storageKey + 'autoRefineCount', 0)
+        this.autoRefineCount = utils.loadInt(storageKey + 'autoRefineCount', 0);
     };
 
     this.reset = function(fullReset) {
