@@ -77,7 +77,7 @@ function Planet(data) {
             return;
         }
 
-        if(this.storage.getItemCount(itemId) > game.getItem(itemId).planetlimit || 1) {
+        if(this.storage.getItemCount(itemId) > (game.getItem(itemId).planetlimit || 1)) {
             game.moveItems(itemId, this.storage, game.player.storage, 1);
         } else {
             this._updateStats();
