@@ -8,8 +8,8 @@ MouseButtons = {
     middle: 2,
     right: 3
 };
-var notificationCount = (localStorage.getItem("notificationCount") || localStorage.setItem("notification_count", "0"));
-var notificationText = (localStorage.getItem("notificationText") || localStorage.setItem("notification_text", ""));
+var notificationCount = (localStorage.getItem("notification_count") || localStorage.setItem("notification_count", "0"));
+var notificationText = (localStorage.getItem("notification_text") || localStorage.setItem("notification_text", "You have no notifications."));
 //---------------------------------------------------------------------------
 // UI Class
 // ---------------------------------------------------------------------------
@@ -45,18 +45,21 @@ function UI() {
         //};
         $(function() {
             var pusher = new Pusher('eff046273c0447c5498c');
-        
+
             // logging
             pusher.log = function(message) {
-              if (window.console && window.console.log) {
-                window.console.log(message);
-              }
+                if (window.console && window.console.log) {
+                    window.console.log(message);
+                }
             };
             var channel = pusher.subscribe('updates');
             var notifier = new PusherNotifier(channel);
             channel.bind('update', function(data) {
+                if (localStorage.getItem("notification_text") == "You have no notifications.") {
+                    var notificationText = localStorage.setItem("notification_text", "Notifications: <br>");
+                };
                 localStorage.setItem("notification_count", ++notificationCount);
-                localStorage.setItem("notification_text", notification_text+="<br>" + data.message);
+                localStorage.setItem("notification_text", notificationText += "<br>" + data.message);
                 $("#new-message-count").text(notification_count);
                 $("#notification-list").text(notification_text);
             });
