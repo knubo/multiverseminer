@@ -345,15 +345,17 @@ function newCraftingModal(itemId) {
     if (game.getItem(itemId).description) {
         var description = "Description: " + game.getItem(itemId).description;
         $("#item-description").val(description);
+        $("#item-description").css("display", "block");
     }
     $("#new-crafting-modal").dialog({
         resizable: false,
         height: 300,
         modal: true,
         title: "Crafting: " + name,
+        close: function( event, ui ) {},
         buttons: {
             'Craft It': function() {
-                if ($("#quantity") > 0) {
+                if ($("#quantity").val() > 0) {
                     newCraft(itemId, $("#quantity").val());
                 } else {
                     noty({
@@ -366,8 +368,9 @@ function newCraftingModal(itemId) {
         }
     });
     $("#hidden-input").val(itemId);
-    $("#item-description").css("display", "block");
-    $("new-crating-modal").dialog('open');
+    $("new-crating-modal").dialog('open').bind('dialogclose', function(event) {
+        alert('closed');
+    });
 };
 
 function showFight() {
