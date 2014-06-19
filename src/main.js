@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty", "joyride", "toolbar"]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "custombox", "utils", "uiplanetscreen", "gamegear", "noty", "joyride", "toolbar", "pusher", "pushernotifier"]);
 
 // Create components
 var game = new Game();
@@ -26,6 +26,29 @@ Number.prototype.formatNumber = function() {
 
     return this;
 };
+
+$(function() {
+    var pusher = new Pusher('eff046273c0447c5498c');
+
+    // logging
+    pusher.log = function(message) {
+        if (window.console && window.console.log) {
+            window.console.log(message);
+        }
+    };
+    var channel = pusher.subscribe('updates');
+    var notifier = new PusherNotifier(channel);
+    channel.bind('update', function(data) {
+        if (localStorage.getItem("notification_text") == "You have no notifications.") {
+            var notificationText = localStorage.setItem("notification_text", "Notifications: <br>");
+        };
+        localStorage.setItem("notification_count", ++notificationCount);
+        localStorage.setItem("notification_text", notificationText += "<br>" + data.message);
+        $("#new-message-count").text(notification_count);
+        $("#notification-list").text(notification_text);
+    });
+});
+
 
 function selectClass(playerClass) {
     game.player.playerClass = playerClass;
