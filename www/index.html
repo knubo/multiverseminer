@@ -54,7 +54,9 @@
             </div>
 
             <div class="categoryContent clearLeftFloat" id="leftCategoryContent">
-                <div class="inventoryPanel" id="playerInventoryPanel">
+                
+				<!-- Inventory Panel -->
+				<div class="inventoryPanel" id="playerInventoryPanel">
                     <div id="playerInventoryContent">
                         <div class="inventoryFilter" id="playerInventoryFilter"></div>
 
@@ -65,21 +67,27 @@
                         </div>
                     </div>
                 </div>
-
+				
+				<!-- Empire Panel -->
                 <div class="empirePanel" id="empirePanel">
                     <div id="empireContent"></div>
                 </div>
-
+				
+				<!-- Stats Panel -->
                 <div class="statsPanel" id="statsPanel">
                     <div class="statsContent" id="statsContent"></div>
                 </div>
                 
-                <div class="questsPanel ui-sortable" id="questsPanel">
-                	<ul class="questsContent" id="questsContent"></ul>
-                </div>
-            </div>
+				<!-- Quests Panel -->
+				<div class="questsPanel" id="questsPanel">
+					<!-- <div class="questsContent" id="questsContent"> -->
+						<ul class="questsContent" id="questsContent"></ul>
+					<!-- </div> -->
+				</div>
+				            
+			</div>
         </div>
-
+	
         <div class="panelPlanetRight" id="panelPlanetRight">
             <div id="rightCategory">
                 <div class="genericButton categoryButton clickable" id="rightCategory0" onclick="onActivatePlayerGear()">
