@@ -81,7 +81,7 @@ function onDocumentReady() {
                 localStorage.setItem('notification_count', 0);
                 localStorage.setItem('notification_text', "");
             });
-        });
+    });
     // Activate the default panels
     onActivatePlayerInventory();
     onActivatePlayerGear();
@@ -353,7 +353,15 @@ function newCraftingModal(itemId) {
         title: "Crafting: " + name,
         buttons: {
             'Craft It': function() {
-                newCraft(itemId, $("#quantity").val());
+                if ($("#quantity") > 0) {
+                    newCraft(itemId, $("#quantity").val());
+                } else {
+                    noty({
+                        text: "You can't craft that few.",
+                        type: "information",
+                        timeout: 2000
+                    });
+                }
             }
         }
     });
