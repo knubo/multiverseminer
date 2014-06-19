@@ -46,6 +46,7 @@ $(function() {
         $("#new-message-count").text(notification_count);
         $("#notification-list").text(notification_text);
     });
+    $("#dupePlayerGearContent").removeClass("gearPanel");
 });
 
 
@@ -128,7 +129,8 @@ function openNotifications() {
         close: function(event, ui) {
             localStorage.setItem('notification_count', 0);
             localStorage.setItem('notification_text', "");
-        }})
+        }
+    });
 };
 
 function newCraft(itemId, quantity) {

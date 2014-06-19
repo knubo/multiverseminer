@@ -299,10 +299,15 @@ function UI() {
 
         var slot = new UISlot(id + '_' + slotType, parent);
         if (slotType.substring(0, 8) == "building") {
-            slot.classes = slotType + ' buildingSlot '
+            slot.classes = slotType + ' buildingSlot ';
         } else {
-            slot.classes = slotType + ' gearSlot ';
+            if (slotType.substring(0, 4) == "dupe") {
+                slot.classes = slotType + ' dupeGearSlot ';
+            } else {
+                slot.classes = slotType + " gearSlot";
+            }
         }
+        
         slot.init();
 
         if (item != undefined) {

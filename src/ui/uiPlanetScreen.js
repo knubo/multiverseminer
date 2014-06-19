@@ -248,13 +248,21 @@ function UIPlanetScreen() {
     this.updatePlayerGearPanel = function() {
         var self = ui.screenPlanet;
         var parent = $('#playerGearSlots');
+        var dupeSlots = $("#dupePlayerGearSlots");
         parent.empty();
+        dupeSlots.empty();
         var gearSlots = game.player.gear.getSlots();
         for (var i = 0; i < gearSlots.length; i++) {
             var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
             var slot = ui.buildGearSlot('playerGear', gearSlots[i], itemId, parent);
             slot.itemContext = self.componentPlayerGear.itemContext;
             parent.append(slot.getMainElement());
+        }
+        for (var i = 0; i < gearSlots.length; i++) {
+            var itemId = game.player.gear.getItemInSlot(gearSlots[i]);
+            var slot = ui.buildGearSlot('dupePlayerGear', "dupe" + gearSlots[i], itemId, parent);
+            dupeSlots.itemContext = self.componentPlayerGear.itemContext;
+            dupeSlots.append(slot.getMainElement());
         }
     };
 
