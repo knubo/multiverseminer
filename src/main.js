@@ -142,7 +142,7 @@ function onDocumentReady() {
                                 action: function(event, ui) {
                                     try {
                                         game.moveItems(item.id, game.player.storage, game.currentPlanet.storage, 1);
-                                        game.currentPlanet.storage.setStorageChanged(true);
+										game.currentPlanet.storage.setStorageChanged(true);
                                         game.currentPlanet._updateStats();
                                         game.currentPlanet.update();
                                     } catch (e) {
