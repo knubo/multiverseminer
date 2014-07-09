@@ -76,7 +76,6 @@ function Player() {
         $("#miningActionText").html("You enter the mine.");
         var items = this.miner.mine(game.currentPlanet, this.pickPower, this.miningLuck);
         if (items.length > 0) {
-            console.log("this.mine: items = " + items);
             if (game.settings.showPopups) {
                 for (var i = 0; i < items.length; i++) {
                     var name = game.getItemName(items[i]);
