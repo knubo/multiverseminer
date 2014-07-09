@@ -67,19 +67,6 @@ function UIFloating(content, classes) {
 		var pStyle = this.mainDiv[0].style;
 		pStyle.left = x + "px";
 		pStyle.top = y + "px";
-		/*
-		if (this.parent) {
-			var parentPosition = this.parent.offset();
-			if(this.center) {
-				y += parentPosition.top + (this.parent.height() / 2);
-				x += parentPosition.left + (this.parent.width() / 2);
-			} else {
-				y += parentPosition.top;
-				x += parentPosition.left;
-			}
-		};
-		this.mainDiv.offset({ top: y, left: x});
-		*/
 	};
 
 	this.setContent = function(content) {

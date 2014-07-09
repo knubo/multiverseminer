@@ -314,11 +314,6 @@ function Planet(data) {
 
             items[totalItems[i]]++;
         }
-
-        //for (item in items) {
-        //    var name = game.getItemName(item);
-        //    ui.createFloat('+' + items[item] + ' ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
-        //};
     };
 
     // ---------------------------------------------------------------------------

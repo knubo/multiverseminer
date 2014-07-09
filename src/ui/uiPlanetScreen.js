@@ -917,9 +917,11 @@ function UIPlanetScreen() {
 			content.append('<span id="craftingText" class="craftingText">' + item.name + '</span>');
 			content.append('<span class="craftingCount"></span><br>');
 			content.append('<span class="craft1"   onclick="newCraft(\'' + item.id + '\',1);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Craft&nbsp;&nbsp;</span>');
-			content.append('<span class="craft10"  onclick="newCraft(\'' + item.id + '\',10);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Craft (10)&nbsp;&nbsp;</span>');
-			content.append('<span class="craft100" onclick="newCraft(\'' + item.id + '\',100);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Craft (100)&nbsp;&nbsp;</span>');
-			// content.append('<span class="craftMax" onclick="newCraft(\'' + item.id + '\',\'max\');(arguments[0] || event || window.event).stopPropagation();"></span>');
+			if (item.category.indexOf("building") < 0 && item.category.indexOf("gear") < 0) {
+				content.append('<span class="craft10"  onclick="newCraft(\'' + item.id + '\',10);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Craft (10)&nbsp;&nbsp;</span>');
+				content.append('<span class="craft100" onclick="newCraft(\'' + item.id + '\',100);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Craft (100)&nbsp;&nbsp;</span>');
+				// content.append('<span class="craftMax" onclick="newCraft(\'' + item.id + '\',\'max\');(arguments[0] || event || window.event).stopPropagation();"></span>');
+			}
 			content.disableSelection();
 		}
 		return content;
