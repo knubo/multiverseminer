@@ -77,13 +77,13 @@ addTable(101, 'earthMinerals', [
     [Items.chloride.id, 0.0015],
     [Items.chromium.id, 0.0027],
     [Items.coal.id, 0.00009],
-    [Items.copper.id, 0.008],
+    [Items.copper.id, 0.01],
     [Items.crudeOil.id, 0.009],
     [Items.fluorine.id, 0.0007],
     [Items.germanium.id, 0.009],
     [Items.gold.id, 0.009],
     [Items.iridium.id, 0.007],
-    [Items.iron.id, 0.012],
+    [Items.iron.id, 0.050],
     [Items.lime.id, 0.005],
     [Items.magnesium.id, 0.009],
     [Items.manganese.id, 0.009],
@@ -205,7 +205,7 @@ addTable(200, 'moonAtmosphere', [
 addTable(201, 'moonMinerals', [
     [Items.silicon.id, 0.2],
     [Items.magnesium.id, 0.19],
-    [Items.iron.id, 0.1],
+    [Items.iron.id, 0.05],
     [Items.calcium.id, 0.03],
     [Items.aluminum.id, 0.03],
     [Items.chromium.id, 0.042],
@@ -217,7 +217,7 @@ addTable(201, 'moonMinerals', [
 // Mars resources
 // ---------------------------------------------------------------------------
 addTable(300, 'marsAtmosphere', [
-    [Items.carbonDioxide.id, 1]
+    [Items.carbonDioxide.id, .01]
 ]);
 
 addTable(301, 'marsMinerals', [
@@ -232,9 +232,9 @@ addTable(301, 'marsMinerals', [
 // ---------------------------------------------------------------------------
 addTable(400, 'venusAtmosphere', [
     [Items.carbonDioxide.id, 1],
-    [Items.nitrogen.id, 0.03],
-    [Items.sulfurDioxide.id, 0.015],
-    [Items.argon.id, 0.007],
+    [Items.nitrogen.id, 0.003],
+    [Items.sulfurDioxide.id, 0.0015],
+    [Items.argon.id, 0.0007],
     [Items.carbonMonoxide.id, 0.0017],
     [Items.neon.id, 0.0007],
     [Items.helium.id, 0.0012]
@@ -248,30 +248,30 @@ addTable(401, 'venusMinerals', [
 // Mercury resources
 // ---------------------------------------------------------------------------
 addTable(500, 'mercuryAtmosphere', [
-    [Items.oxygen.id, .01],
-    [Items.argon.id, .01],
-    [Items.nitrogen.id, .01],
-    [Items.carbonDioxide.id, .01],
-    [Items.xenon.id, .01],
-    [Items.krypton.id, .01],
-    [Items.neon.id, .01],
-    [Items.hydrogen.id, .22],
-    [Items.helium.id, .06],
-    [Items.potassium.id, .05]
+    [Items.oxygen.id, .001],
+    [Items.argon.id, .001],
+    [Items.nitrogen.id, .001],
+    [Items.carbonDioxide.id, .001],
+    [Items.xenon.id, .001],
+    [Items.krypton.id, .001],
+    [Items.neon.id, .001],
+    [Items.hydrogen.id, .022],
+    [Items.helium.id, .006],
+    [Items.potassium.id, .005]
 ]);
 addTable(501, 'mercuryMinerals', [
-    [Items.aluminum.id, .01],
-    [Items.iron.id, 0.1],
-    [Items.magnesium.id, .02],
-    [Items.silicon.id, .01]
+    [Items.aluminum.id, .001],
+    [Items.iron.id, 0.01],
+    [Items.magnesium.id, .002],
+    [Items.silicon.id, .001]
 ]);
 
 // ---------------------------------------------------------------------------
 // Jupiter resources
 // ---------------------------------------------------------------------------
 addTable(600, 'jupiterAtmosphere', [
-    [Items.hydrogen.id, .90],
-    [Items.helium.id, .1],
+    [Items.hydrogen.id, .090],
+    [Items.helium.id, .01],
     [Items.neon.id, 0.0007],
     [Items.methane.id, 0.0001]
 ]);
@@ -289,18 +289,18 @@ addTable(700, 'saturnAtmosphere', [
 // Neptune resources
 // ---------------------------------------------------------------------------
 addTable(800, 'neptuneAtmosphere', [
-    [Items.hydrogen.id, .80],
-    [Items.helium.id, .19],
-    [Items.methane.id, 0.01]
+    [Items.hydrogen.id, .080],
+    [Items.helium.id, .019],
+    [Items.methane.id, 0.001]
 ]);
 
 // ---------------------------------------------------------------------------
 // Pluto resources
 // ---------------------------------------------------------------------------
 addTable(900, 'plutoAtmosphere', [
-    [Items.nitrogen.id, 0.90],
-    [Items.methane.id, 0.05],
-    [Items.carbonMonoxide.id, 0.05]
+    [Items.nitrogen.id, 0.090],
+    [Items.methane.id, 0.005],
+    [Items.carbonMonoxide.id, 0.005]
 ]);
 
 // ---------------------------------------------------------------------------
