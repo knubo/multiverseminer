@@ -320,81 +320,71 @@ function UIPlanetScreen() {
 	this.buildCraftingTooltip = function(item) {
         content = "<strong>" + item.name + "</strong><br>";
 		content += "<div style='font-size:11px;text-transform:capitalize;'>";
-		if (item.description) content += "<strong>Description: </strong>" + item.description;
-        switch (item.category) {
-            case "rawMaterial":
+		if (item.description) content += "<strong>Description: </strong>" + item.description + "<br>";
+		switch (item.category) {
+			case "rawMaterial":
 				if (item.craftCost) {
-					content += "<br><strong>Requires:</strong>";
+					content += "<p><strong>Requires:</strong></br>";
 					for (cost in item.craftCost) {
-						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) + ")</br>";
 					}
-				};
-				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
-                break;
+				}
+				if (item.el) {
+					if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
+				}
+				break;
+
 			case "component":
 				if (item.craftCost) {
-					content += "<br><strong>Crafted From:</strong>";
+					content += "<p><strong>Crafted From:</strong></br>";
 					for (cost in item.craftCost) {
-						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) + ")</br>";
 					}
-				};
-				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
-                break;
+				}
+				break;
 
-			case "gem":
-			case "machines":
-			case "usable":
-                break;
-				
-            case "miningGear":
-			case "gearMainHand":
+			case "miningGear":
 			case "gearHead":
 			case "gearChest":
+			case "gearMainHand":
 			case "gearLegs":
 			case "gearFeet":
 				if (!item.minimumMiningLevel) item.minimumMiningLevel = 0;
-				content += "<br><strong>Mininum Mining Level: </strong>" + item.minimumMiningLevel + "<br>";
-                content += "<strong>Stats:</strong>";
-				content += "<br>&nbsp;&nbsp;&nbsp;Strength: " + item.strength;
-				content += "<br>&nbsp;&nbsp;&nbsp;Accuracy: " + item.accuracy;
-				content += "<br>&nbsp;&nbsp;&nbsp;Health: " + item.health;
-				content += "<br>&nbsp;&nbsp;&nbsp;Defense: " + item.defense;
-				content += "<br>&nbsp;&nbsp;&nbsp;Evasion: " + item.evasion;
-				content += "<br>&nbsp;&nbsp;&nbsp;Counter: " + item.counter;
-				content += "<br>&nbsp;&nbsp;&nbsp;Regeneration: " + item.regeneration;
-				content += "<br>&nbsp;&nbsp;&nbsp;Resillience: " + item.resillience;
-				content += "<br>&nbsp;&nbsp;&nbsp;Perception: " + item.perception;
-				content += "<br>&nbsp;&nbsp;&nbsp;Experience: " + item.experience;
-				content += "<br>&nbsp;&nbsp;&nbsp;Attack Speed: " + item.attackSpeed;
-				content += "<br>&nbsp;&nbsp;&nbsp;Ship Speed: " + item.shipSpeed;
-				content += "<br>&nbsp;&nbsp;&nbsp;Mining Luck: " + item.miningLuck;
-				content += "<br>&nbsp;&nbsp;&nbsp;Loot Luck: " + item.lootLuck;
-				content += "<br>&nbsp;&nbsp;&nbsp;Scavenge Luck: " + item.scavengeLuck;
-                break;
-
-            case "spaceShip":
-                if (item.storageLimit) content += "<strong>Storage Limit: </strong>" + item.storageLimit + "<br>";
-                break;
-
-            case "scavenge":
+				content += "<br><strong>Mininum Mining Level: </strong>" + item.minimumMiningLevel + "<br><br>";
 				if (item.craftCost) {
-					content += "<br>";
-					content += "<strong>Decomposes To:</strong>";
+					content += "<strong>Requires:</strong></br>";
 					for (cost in item.craftCost) {
-						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) + ")</br>";
 					}
-				};
-                break;
-            
-            case "building":
+				}
+				content += "<p><strong>Stats:</strong></br>";
+				content += "&nbsp;Strength: " + item.strength + "</br>";
+				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
+				content += "&nbsp;Health: " + item.health + "</br>";
+				content += "&nbsp;Defense: " + item.defense + "</br>";
+				content += "&nbsp;Evasion: " + item.evasion + "</br>";
+				content += "&nbsp;Counter: " + item.counter + "</br>";
+				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
+				content += "&nbsp;Resillience: " + item.resillience + "</br>";
+				content += "&nbsp;Perception: " + item.perception + "</br>";
+				content += "&nbsp;Experience: " + item.experience + "</br>";
+				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
+				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
+				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
+				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
+				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
+				break;
+
+				/* Buildings */
+			case "building":
 				if (item.craftCost) {
-					content += "<br><strong>Requires:</strong>";
+					content += "<strong>Requires:</strong></br>";
 					for (cost in item.craftCost) {
-						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) + ")</br>";
 					}
-				};
+				}
 				if (item.autoMine || item.autoGather || item.autoRefine || item.autoScavenge) {
-					content += "<br><br><strong>Effects:</strong><br>";
+					content += "<br><strong>Effects:</strong><br>";
 					content += "Auto Digs Per Second: " + item.autoMine + "<br>";
                 	content += "Auto Gathers Per Second: " + item.autoGather + "<br>";
                 	content += "Auto Decomposes Per Second: " + item.autoRefine + "<br>";
@@ -408,12 +398,23 @@ function UIPlanetScreen() {
 					});
 					content += "<br><strong>Droprate Increase: </strong>" + x;
 				}
-                content += "<br><strong>Planet Limit:</strong> " + item.planetLimit;
-                break;
-        };
-        content += "<br><strong>Category:</strong> " + ItemCategory[item.category];
-        content += "</div>";
-        return content;
+                content += "<br><strong>Planet Limit:</strong> " + item.planetLimit + "<br>";
+				break;
+
+				/* Spaceship */
+			case "spaceship":
+				if (item.craftCost) {
+					content += "<strong>Requires:</strong></br>";
+					for (cost in item.craftCost) {
+						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) + ")</br>";
+					}
+				}
+				break;
+		};
+		if (item.storageLimit) content += "<strong>Storage Limit: </strong>" + item.storageLimit + "<br>";
+		content += "<br><strong>Category:</strong>" + ItemCategory[item.category];
+		content += "</div>";
+		return content;
 	};
 
 	this.updateCraftingPanel = function() {
