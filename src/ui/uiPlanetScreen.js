@@ -50,7 +50,7 @@ function UIPlanetScreen() {
 		this.playerInventoryFilter.values = ItemCategory;
 		this.playerInventoryFilter.callback = this.onPlayerInventoryFilterChanged;
 		this.playerInventoryFilter.min = 0;
-        this.playerInventoryFilter.max = 11;
+		this.playerInventoryFilter.max = 11;
 		this.playerInventoryFilter.init();
 		this.playerInventoryFilter.setSelection(0);
 
@@ -64,15 +64,15 @@ function UIPlanetScreen() {
 		this.planetInventoryFilter.values = ItemCategoryPlanet;
 		this.planetInventoryFilter.callback = this.onPlanetInventoryFilterChanged;
 		this.planetInventoryFilter.min = 0;
-        delete this.planetInventoryFilter.values['component'];
-        delete this.planetInventoryFilter.values['miningGear'];
-        delete this.planetInventoryFilter.values['gearMainHand'];
-        delete this.planetInventoryFilter.values['gearHead'];
-        delete this.planetInventoryFilter.values['gearChest'];
-        delete this.planetInventoryFilter.values['gearLegs'];
-        delete this.planetInventoryFilter.values['gearFeet'];
-        delete this.planetInventoryFilter.values['spaceship'];
-        this.planetInventoryFilter.max = 3;
+		delete this.planetInventoryFilter.values['component'];
+		delete this.planetInventoryFilter.values['miningGear'];
+		delete this.planetInventoryFilter.values['gearMainHand'];
+		delete this.planetInventoryFilter.values['gearHead'];
+		delete this.planetInventoryFilter.values['gearChest'];
+		delete this.planetInventoryFilter.values['gearLegs'];
+		delete this.planetInventoryFilter.values['gearFeet'];
+		delete this.planetInventoryFilter.values['spaceship'];
+		this.planetInventoryFilter.max = 3;
 		this.planetInventoryFilter.init();
 		this.planetInventoryFilter.setSelection(0);
 
@@ -93,8 +93,8 @@ function UIPlanetScreen() {
 
 		this.componentCrafting = new UIComponent('playerCraftingPanel');
 		this.componentCrafting.init();
-		this.componentCrafting.updateCallback = this.updateCraftingPanel;
 		this.updateCraftingPanel();
+		this.componentCrafting.updateCallback = this.updateCraftingPanel;
 
 		this.componentEmpire = new UIComponent('empirePanel');
 		this.componentEmpire.init();
@@ -132,46 +132,46 @@ function UIPlanetScreen() {
 		this.activatePlayerInventory();
 		this.activatePlayerGear();
 
-                var divs = {
-                    "Minerals": {
-                        "dictionaryIndex": [101],
-                        "divId": "planetMinerals"
-                    },
-                    "Gases": {
-                        "dictionaryIndex": [100],
-                        "divId": "planetGases"
-                    },
-                    "Scavenge": {
-                        "dictionaryIndex": [1000],
-                        "divId": "planetScavenge"
-                    }
-                    //"Gems": {
-                    //    "dictionaryIndex": [102, 103],
-                    //    "divId": "planetGems"
-                    //}
-                };
+		var divs = {
+			"Minerals": {
+				"dictionaryIndex": [101],
+				"divId": "planetMinerals"
+			},
+			"Gases": {
+				"dictionaryIndex": [100],
+				"divId": "planetGases"
+			},
+			"Scavenge": {
+				"dictionaryIndex": [1000],
+				"divId": "planetScavenge"
+			}
+			//"Gems": {
+			//    "dictionaryIndex": [102, 103],
+			//    "divId": "planetGems"
+			//}
+		};
 
-                for (var name in divs) {
-                    var html = name + ': ';
+		for (var name in divs) {
+			var html = name + ': ';
 
-                    for (var i = 0; i < divs[name]['dictionaryIndex'].length; i++) {
-                        var index = divs[name]['dictionaryIndex'][i];
-                        for (var j = 0; j < game.lootTableDictionary[index].entries.length; j++) {
-                            if (j != 0 || i > 0) {
-                                html += ', ';
-                            }
+			for (var i = 0; i < divs[name]['dictionaryIndex'].length; i++) {
+				var index = divs[name]['dictionaryIndex'][i];
+				for (var j = 0; j < game.lootTableDictionary[index].entries.length; j++) {
+					if (j != 0 || i > 0) {
+						html += ', ';
+					}
 
-                            // Hacky D:
-                            if (name == 'Gems') {
-                                html += game.getItemName(game.lootTableDictionary[index].entries[j]);
-                            } else {
-                                html += game.getItemName(game.lootTableDictionary[index].entries[j][0]);
-                            }
-                        }
-                    }
+					// Hacky D:
+					if (name == 'Gems') {
+						html += game.getItemName(game.lootTableDictionary[index].entries[j]);
+					} else {
+						html += game.getItemName(game.lootTableDictionary[index].entries[j][0]);
+					}
+				}
+			}
 
-                    $('#' + divs[name]['divId']).html(html);
-                }
+			$('#' + divs[name]['divId']).html(html);
+		}
 	};
 
 	this.update = function(currentTime) {
@@ -187,7 +187,7 @@ function UIPlanetScreen() {
 		// Check for inventory changes
 		if (game.player.storage.getStorageChanged()) {
 			this.playerInventory.invalidate(currentTime);
-            this.planetInventory.invalidate(currentTime);
+			this.planetInventory.invalidate(currentTime);
 			this.componentCrafting.invalidate(currentTime);
 			game.player.storage.setStorageChanged(false);
 		}
@@ -287,6 +287,12 @@ function UIPlanetScreen() {
 		self.planetInventory.update(game.currentPlanet.storage);
 	};
 
+	this.listStats = function() {
+		stats = game.player.gear.getStats();
+		stats["totalPower"] = game.player.calculatePower();
+		return stats;
+	};
+
 	this.updatePlayerGearPanel = function() {
 		var self = ui.screenPlanet;
 		var parent = $('#playerGearSlots');
@@ -298,321 +304,132 @@ function UIPlanetScreen() {
 			slot.itemContext = self.componentPlayerGear.itemContext;
 			parent.append(slot.getMainElement());
 		};
-        stats = game.player.gear.getStats();
-        y = [];
-		Object.keys(stats) .forEach(function (key) {
+		stats = game.player.gear.getStats();
+		stats["totalPower"] = game.player.calculatePower();
+		y = [];
+		Object.keys(stats).forEach(function(key) {
 			var value = stats[key];
 			if (isNaN(value)) {
 				value = 0;
 			};
-			y.push('<tr><td>' + key.split(/(?=[A-Z])/g).join(' ').toLowerCase() + '</td><td>' + value + '</td></tr>');
+			y.push('<tr><td class="' + key + '">' + key.split(/(?=[A-Z])/g).join(' ').toLowerCase() + '</td><td>' + value + '</td></tr>');
 		});
-        $("#minerGearStats").html('<div class=\'statTable\'><table id="panel"><tbody><tr><td>Stats</td><td>#</td></tr>' + y.join(''));
+		$("#minerGearStats").html('<div class=\'statTable\'><table id="panel"><tbody><tr><td>Stats</td><td>#</td></tr>' + y.join(''));
 	};
 
 	this.buildCraftingTooltip = function(item) {
-		var content = "<div style='font-size: 9pt;'>";
-
-		switch (item.category) {
-			/* Raw Materials */
-			case "rawMaterial":
+        content = "<strong>" + item.name + "</strong><br>";
+		content += "<div style='font-size:11px;text-transform:capitalize;'>";
+		if (item.description) content += "<strong>Description: </strong>" + item.description;
+        switch (item.category) {
+            case "rawMaterial":
 				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					if (item.description) {
-						content += "<p><strong>Description: </strong>" + item.description + "</br>";
-					}
-					content += "<strong>Cost:</strong></br>";
+					content += "<br><strong>Requires:</strong>";
 					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
 					}
-				}
-				if (item.el) {
-					content += "<p><strong>Atomic Symbol: </strong>" + "</br>" + "&nbsp;" + item.el;
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				break;
-
-				/* Components */
+				};
+				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
+                break;
 			case "component":
 				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
+					content += "<br><strong>Crafted From:</strong>";
 					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
 					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				break;
+				};
+				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
+                break;
 
-				/* Mining Gear */
-			case "miningGear":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				content += "<p><strong>Stats:</strong></br>";
-				content += "&nbsp;Power: " + item.power + "</br>";
-				content += "&nbsp;Strength: " + item.strength + "</br>";
-				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-				content += "&nbsp;Health: " + item.health + "</br>";
-				content += "&nbsp;Defense: " + item.defense + "</br>";
-				content += "&nbsp;Evasion: " + item.evasion + "</br>";
-				content += "&nbsp;Counter: " + item.counter + "</br>";
-				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-				content += "&nbsp;Resillience: " + item.resillience + "</br>";
-				content += "&nbsp;Perception: " + item.perception + "</br>";
-				content += "&nbsp;Experience: " + item.experience + "</br>";
-				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-				/* Head Gear */
-			case "gearHead":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-					content += "<p><strong>Stats:</strong></br>";
-					content += "&nbsp;Strength: " + item.strength + "</br>";
-					content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-					content += "&nbsp;Health: " + item.health + "</br>";
-					content += "&nbsp;Defense: " + item.defense + "</br>";
-					content += "&nbsp;Evasion: " + item.evasion + "</br>";
-					content += "&nbsp;Counter: " + item.counter + "</br>";
-					content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-					content += "&nbsp;Resillience: " + item.resillience + "</br>";
-					content += "&nbsp;Perception: " + item.perception + "</br>";
-					content += "&nbsp;Experience: " + item.experience + "</br>";
-					content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-					content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-					content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-					content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-					content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-				/* Chest Gear */
-			case "gearChest":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				content += "<p><strong>Stats:</strong></br>";
-				content += "&nbsp;Strength: " + item.strength + "</br>";
-				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-				content += "&nbsp;Health: " + item.health + "</br>";
-				content += "&nbsp;Defense: " + item.defense + "</br>";
-				content += "&nbsp;Evasion: " + item.evasion + "</br>";
-				content += "&nbsp;Counter: " + item.counter + "</br>";
-				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-				content += "&nbsp;Resillience: " + item.resillience + "</br>";
-				content += "&nbsp;Perception: " + item.perception + "</br>";
-				content += "&nbsp;Experience: " + item.experience + "</br>";
-				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-				/* Main Hand */
-			case "gearMainHand":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				content += "<p><strong>Stats:</strong></br>";
-				content += "&nbsp;Strength: " + item.strength + "</br>";
-				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-				content += "&nbsp;Health: " + item.health + "</br>";
-				content += "&nbsp;Defense: " + item.defense + "</br>";
-				content += "&nbsp;Evasion: " + item.evasion + "</br>";
-				content += "&nbsp;Counter: " + item.counter + "</br>";
-				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-				content += "&nbsp;Resillience: " + item.resillience + "</br>";
-				content += "&nbsp;Perception: " + item.perception + "</br>";
-				content += "&nbsp;Experience: " + item.experience + "</br>";
-				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-				/* Leg Gear */
-			case "gearLegs":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				content += "<p><strong>Stats:</strong></br>";
-				content += "&nbsp;Strength: " + item.strength + "</br>";
-				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-				content += "&nbsp;Health: " + item.health + "</br>";
-				content += "&nbsp;Defense: " + item.defense + "</br>";
-				content += "&nbsp;Evasion: " + item.evasion + "</br>";
-				content += "&nbsp;Counter: " + item.counter + "</br>";
-				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-				content += "&nbsp;Resillience: " + item.resillience + "</br>";
-				content += "&nbsp;Perception: " + item.perception + "</br>";
-				content += "&nbsp;Experience: " + item.experience + "</br>";
-				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-				/* Foot Gear */
-			case "gearFeet":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.description) {
-					content += "<p><strong>Description: </strong>" + "</br>&nbsp;" + item.description + "</br>";
-				}
-				content += "<p><strong>Stats:</strong></br>";
-				content += "&nbsp;Strength: " + item.strength + "</br>";
-				content += "&nbsp;Accuracy: " + item.accuracy + "</br>";
-				content += "&nbsp;Health: " + item.health + "</br>";
-				content += "&nbsp;Defense: " + item.defense + "</br>";
-				content += "&nbsp;Evasion: " + item.evasion + "</br>";
-				content += "&nbsp;Counter: " + item.counter + "</br>";
-				content += "&nbsp;Regeneration: " + item.regeneration + "</br>";
-				content += "&nbsp;Resillience: " + item.resillience + "</br>";
-				content += "&nbsp;Perception: " + item.perception + "</br>";
-				content += "&nbsp;Experience: " + item.experience + "</br>";
-				content += "&nbsp;Attack Speed: " + item.attackSpeed + "</br>";
-				content += "&nbsp;Ship Speed: " + item.shipSpeed + "</br>";
-				content += "&nbsp;Mining Luck: " + item.miningLuck + "</br>";
-				content += "&nbsp;Loot Luck: " + item.lootLuck + "</br>";
-				content += "&nbsp;Scavenge Luck: " + item.scavengeLuck + "</br>";
-				break;
-
-			
-			/* Buildings */
-			case "building":
-				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-					if (item.description) {
-						content += "<p><strong>Description: </strong><br>&nbsp;" + item.description + "</br><br>";
-					}
-					content += "<strong>Cost:</strong></br>";
-					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "&nbsp;(" + game.player.storage.getItemCount(cost) +")</br>";
-					}
-				}
-				if (item.id == "miningRig") {
-					content += "</br><strong>Stats:</strong></br>";
-					content += "&nbsp;Mining : " + item.autoMine + "/aps";
-				}
-				if (item.id == "refinery") {
-					content += "</br><strong>Stats:</strong></br>";
-					content += "&nbsp;Refining Rate: " + item.autoRefine + "/aps";
-				}
-				if (item.id == "gatherStation") {
-					content += "</br><strong>Stats:</strong></br>";
-					content += "&nbsp;Gathering Rate: " + item.autoGather + "/aps";
-				}
-				if (item.id == "scavengeStation") {
-					content += "</br><strong>Stats:</strong></br>";
-					content += "&nbsp;Scavenging Rate: " + item.autoScavenge + "/aps";
-				}
-				if (item.id == "crudeOilDrone") {
-					content += "</br><strong>Stats:</strong></br>";
-					var aMatch = item.statChange.match("(\\w+)\":([0-9.]+)");
-					content += "&nbsp;" + game.getItemName(aMatch[1]) + " +" + aMatch[2] + "&#37;";
-				}
-				if (item.id == "ironDetector") {
-					content += "</br><strong>Stats:</strong></br>";
-					var aMatch = item.statChange.match("(\\w+)\":([0-9.]+)");
-					content += "&nbsp;" + game.getItemName(aMatch[1]) + " +" + aMatch[2] + "&#37;";
-				}
-				if (item.id == "oilPump") {
-					content += "</br><strong>Stats:</strong></br>";
-					var aMatch = item.statChange.match("(\\w+)\":([0-9.]+)");
-					content += "&nbsp;" + game.getItemName(aMatch[1]) + " +" + aMatch[2] + "&#37;";
-				}
-				if (item.id == "carbonDetector") {
-					content += "</br><strong>Stats:</strong></br>";
-					var aMatch = item.statChange.match("(\\w+)\":([0-9.]+)");
-					content += "&nbsp;" + game.getItemName(aMatch[1]) + " +" + aMatch[2] + "&#37;";
-				}
-				break;
+			case "gem":
+			case "machines":
+			case "usable":
+                break;
 				
-				/* Spaceship */
-			case "spaceship":
+            case "miningGear":
+			case "gearMainHand":
+			case "gearHead":
+			case "gearChest":
+			case "gearLegs":
+			case "gearFeet":
+				if (!item.minimumMiningLevel) item.minimumMiningLevel = 0;
+				content += "<br><strong>Mininum Mining Level: </strong>" + item.minimumMiningLevel + "<br>";
+                content += "<strong>Stats:</strong>";
+				content += "<br>&nbsp;&nbsp;&nbsp;Strength: " + item.strength;
+				content += "<br>&nbsp;&nbsp;&nbsp;Accuracy: " + item.accuracy;
+				content += "<br>&nbsp;&nbsp;&nbsp;Health: " + item.health;
+				content += "<br>&nbsp;&nbsp;&nbsp;Defense: " + item.defense;
+				content += "<br>&nbsp;&nbsp;&nbsp;Evasion: " + item.evasion;
+				content += "<br>&nbsp;&nbsp;&nbsp;Counter: " + item.counter;
+				content += "<br>&nbsp;&nbsp;&nbsp;Regeneration: " + item.regeneration;
+				content += "<br>&nbsp;&nbsp;&nbsp;Resillience: " + item.resillience;
+				content += "<br>&nbsp;&nbsp;&nbsp;Perception: " + item.perception;
+				content += "<br>&nbsp;&nbsp;&nbsp;Experience: " + item.experience;
+				content += "<br>&nbsp;&nbsp;&nbsp;Attack Speed: " + item.attackSpeed;
+				content += "<br>&nbsp;&nbsp;&nbsp;Ship Speed: " + item.shipSpeed;
+				content += "<br>&nbsp;&nbsp;&nbsp;Mining Luck: " + item.miningLuck;
+				content += "<br>&nbsp;&nbsp;&nbsp;Loot Luck: " + item.lootLuck;
+				content += "<br>&nbsp;&nbsp;&nbsp;Scavenge Luck: " + item.scavengeLuck;
+                break;
+
+            case "spaceShip":
+                if (item.storageLimit) content += "<strong>Storage Limit: </strong>" + item.storageLimit + "<br>";
+                break;
+
+            case "scavenge":
 				if (item.craftCost) {
-					content = "<strong>" + item.name + "</strong><p>";
-				if (item.description) {
-					content += "<p><strong>Description: </strong><br>&nbsp;" + item.description + "</br><br>";
-					}
-					content += "<strong>Cost:</strong></br>";
+					content += "<br>";
+					content += "<strong>Decomposes To:</strong>";
 					for (cost in item.craftCost) {
-						content += "&nbsp;" + game.getItemName(cost) + " x " + item.craftCost[cost] + "</br>";
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
 					}
+				};
+                break;
+            
+            case "building":
+				if (item.craftCost) {
+					content += "<br><strong>Requires:</strong>";
+					for (cost in item.craftCost) {
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+					}
+				};
+				if (item.autoMine || item.autoGather || item.autoRefine || item.autoScavenge) {
+					content += "<br><br><strong>Effects:</strong><br>";
+					content += "Auto Digs Per Second: " + item.autoMine + "<br>";
+                	content += "Auto Gathers Per Second: " + item.autoGather + "<br>";
+                	content += "Auto Decomposes Per Second: " + item.autoRefine + "<br>";
+					content += "Auto Scavenges Per Second: " + item.autoScavenge;
+				};
+				if (item.autoProduce) content += "<br><br>Auto Produce: <b>5 " + item.autoProduce + " per minute.</b>";
+				if (item.statChange) {
+					x = [];
+					$.each(JSON.parse(game.getItem(item.id).statChange), function(key, value) {
+						x.push(key + ": <b>+" + value + "</b>");
+					});
+					content += "<br><strong>Droprate Increase: </strong>" + x;
 				}
-				break;
-		};
-		content += "</div>";
-		return content;
+                content += "<br><strong>Planet Limit:</strong> " + item.planetLimit;
+                break;
+        };
+        content += "<br><strong>Category:</strong> " + ItemCategory[item.category];
+        content += "</div>";
+        return content;
 	};
 
 	this.updateCraftingPanel = function() {
 		function addTooltip(element, item) {
-			element.tooltipster ({
-					content: self.buildCraftingTooltip(item),
-					theme: 'tooltipster-multi',
-					contentAsHTML: true,
-					position: "left",
-					onlyOne: true,
-					interactiveTolerance: 10,
-					offsetX: 0,
-					offsetY: 0,
-					speed: 10
+			element.tooltipster({
+				content: self.buildCraftingTooltip(item),
+				theme: 'tooltipster-multi',
+				contentAsHTML: true,
+				position: "left",
+				onlyOne: true,
+				interactiveTolerance: 10,
+				offsetX: 0,
+				offsetY: 0,
+				speed: 10
 			});
 		}
-
 		var self = ui.screenPlanet;
 		var parent = $('#playerCraftingContent');
 		if (parent.html() !== "") {
@@ -635,9 +452,9 @@ function UIPlanetScreen() {
 						}
 						var element = $('.craft_' + item.id);
 						var jxMax = element.find(".craftMax");
-							element.find(".craft1").css("visibility", maxCraftable >= 1 ? "visible" : "hidden");
-							element.find(".craft10").css("visibility", maxCraftable >= 10 ? "visible" : "hidden");
-							element.find(".craft100").css("visibility", maxCraftable >= 100 ? "visible" : "hidden");
+						element.find(".craft1").css("visibility", maxCraftable >= 1 ? "visible" : "hidden");
+						element.find(".craft10").css("visibility", maxCraftable >= 10 ? "visible" : "hidden");
+						element.find(".craft100").css("visibility", maxCraftable >= 100 ? "visible" : "hidden");
 						if (maxCraftable > 0) {
 							element.removeClass('craftDisabled').addClass('craftEnabled');
 							jxMax.html(" x " + maxCraftable.toFixed() + " ");
@@ -679,16 +496,16 @@ function UIPlanetScreen() {
 			}
 
 			function countProperties(craftableItems) {
-			var count = 0;
-			for(var prop in craftableItems) {
-				if(craftableItems.hasOwnProperty(prop))
+				var count = 0;
+				for (var prop in craftableItems) {
+					if (craftableItems.hasOwnProperty(prop))
 					++count;
-			}
-			return count;
+				}
+				return count;
 			}
 
 			var headerContent = $('<div>');
-			parent.append('<p>' + ItemCategory[key] + '&nbsp;(' + countProperties(craftableItems) +')</p>').append(headerContent);
+			parent.append('<p>' + ItemCategory[key] + '&nbsp;(' + countProperties(craftableItems) + ')</p>').append(headerContent);
 			for (var i = 0; i < craftableItems.length; i++) {
 				var entry = self.buildCraftingEntry(craftableItems[i]);
 				headerContent.append(entry);
@@ -722,10 +539,10 @@ function UIPlanetScreen() {
 	this.updateStatsPanel = function() {
 		var x = [];
 		var myObj = game.settings.totalStats;
-		Object.keys(myObj) .forEach(function (prop) {
+		Object.keys(myObj).forEach(function(prop) {
 			if (myObj.hasOwnProperty(prop) && prop !== 'key' && typeof myObj[prop] != 'function' && prop != 'id') {
 				if (myObj[prop] == null) myObj[prop] = 0;
-				x.push('<tr><td>' + prop.split(/(?=[A-Z])/g).join(' ').toLowerCase() + '</td><td>' + myObj[prop] + '</td></tr>');
+				x.push('<tr><td class="' + prop + '">' + prop.split(/(?=[A-Z])/g).join(' ').toLowerCase() + '</td><td>' + myObj[prop] + '</td></tr>');
 			};
 		});
 		$("#statsContent").html('<div class=\'statTable\'><table><tbody><tr><td>Stats</td><td>#</td></tr>' + x.join(''));
@@ -822,7 +639,7 @@ function UIPlanetScreen() {
 		var category = self.playerInventoryFilter.selection;
 		game.settings.selectedPlayerInventoryFilter = category;
 		self.playerInventory.setCategory(category);
-		//self.componentPlayerInventory.invalidate();
+		self.componentPlayerInventory.invalidate();
 	};
 
 	this.onPlanetInventoryFilterChanged = function() {
@@ -830,7 +647,7 @@ function UIPlanetScreen() {
 		var category = self.planetInventoryFilter.selection;
 		game.settings.selectedPlanetInventoryFilter = category;
 		self.planetInventory.setCategory(category);
-        //self.componentPlanet.invalidate();
+		self.componentPlanet.invalidate();
 	};
 
 	this.hideLeftSideComponents = function() {
@@ -838,7 +655,6 @@ function UIPlanetScreen() {
 		this.componentEmpire.hide();
 		this.componentStats.hide();
 		this.componentQuestsPanel.hide();
-		//game.clearItemContext(this.playerInventory.itemContext);
 	};
 
 	this.hideRightSideComponents = function() {
@@ -846,18 +662,11 @@ function UIPlanetScreen() {
 		this.componentPlayerShip.hide();
 		this.componentPlanet.hide();
 		this.componentCrafting.hide();
-
-		//game.clearItemContext(this.componentPlayerGear.itemContext);
-		//game.clearItemContext(this.componentPlayerShip.itemContext);
-		//game.clearItemContext(this.componentPlanet.itemContext);
-		//game.clearItemContext(this.planetInventory.itemContext);
 	};
 
 	this.activatePlayerInventory = function() {
 		this.hideLeftSideComponents();
 		this.componentPlayerInventory.show();
-
-		//game.setItemContext(this.playerInventory.itemContext);
 	};
 
 	this.activateCrafting = function() {
@@ -879,22 +688,16 @@ function UIPlanetScreen() {
 	this.activatePlayerGear = function() {
 		this.hideRightSideComponents();
 		this.componentPlayerGear.show();
-
-		//game.setItemContext(this.componentPlayerGear.itemContext);
 	};
 
 	this.activatePlayerShip = function() {
 		this.hideRightSideComponents();
 		this.componentPlayerShip.show();
-
-		//game.setItemContext(this.componentPlayerShip.itemContext);
 	};
 
 	this.activatePlanet = function() {
 		this.hideRightSideComponents();
 		this.componentPlanet.show();
-
-		//game.setItemContext(this.planetInventory.itemContext);
 	};
 
 	this.buildCraftingEntry = function(item) {
@@ -905,12 +708,17 @@ function UIPlanetScreen() {
 		if (item.icon) {
 			icon = item.icon;
 		}
-	
-		if (item.planetLimit == "1") {
+
+		if (item.planetLimit == "1" || item.category.indexOf("building") != -1 || item.category.indexOf("gear") != -1) {
+			if (item.category.indexOf("building") != -1) {
+				actionText = "Build";
+			} else {
+				actionText = "Craft";
+			}
 			content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');
 			content.append('<span id="craftingText" class="craftingText">' + item.name + '</span>');
 			content.append('<span class="craftingCount"></span><br>');
-			content.append('<span class="craft1"   onclick="newCraft(\'' + item.id + '\',1);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;Build&nbsp;&nbsp;</span>');
+			content.append('<span class="craft1"   onclick="newCraft(\'' + item.id + '\',1);(arguments[0] || event || window.event).stopPropagation();">&nbsp;&nbsp;' + actionText + '&nbsp;&nbsp;</span>');
 			content.disableSelection();
 		} else {
 			content.append('<image class="craftingIcon" src="' + sys.iconRoot + icon + '" />');

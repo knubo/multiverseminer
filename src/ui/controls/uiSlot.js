@@ -134,112 +134,100 @@ function UISlot(id, parent) {
     };
 
     this.generateItemTooltip = function(item) {
-        content = "<b>" + item.name + "</b></br>" + item.description + "<br><br>";
-        content += "<i style='font-size: 10pt;'>" + ItemCategory[item.category] + "</i></br>";
-
-        content += "<div style='font-size: 9pt;'>";
-
+        content = "<strong>" + item.name + "</strong><br>";
+		content += "<div style='font-size:11px;text-transform:capitalize;'>";
+		if (item.description) content += "<strong>Description: </strong>" + item.description;
         switch (item.category) {
             case "rawMaterial":
-                content = "<b>" + item.name + "</b></br>" + item.description +"<br><br>";
-                content = "<b>" + item.name + "</b><br>";
-                if (item.value) content += "Value: " + item.value;
+				if (item.craftCost) {
+					content += "<br><strong>Requires:</strong><br>";
+					for (cost in item.craftCost) {
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+					}
+				};
+				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
+                break;
+			case "component":
+				if (item.craftCost) {
+					content += "<br><strong>Crafted From:</strong>";
+					for (cost in item.craftCost) {
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+					}
+				};
+				if (item.el) content += "<br><strong>Symbol: </strong>" + item.el;
                 break;
 
-            case "gem":
-                content = "<b>" + item.name + "</b><br>";
-                //content += "Value: " + item.value;
+			case "gem":
+			case "machines":
+			case "usable":
                 break;
-
-            case "component":
-                content = "<b>" + item.name + "</b>";
-                break;
-
+				
             case "miningGear":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Mining Luck: " + item.miningLuck + "</br>";
-                content += "Loot Luck: " + item.lootLuck + "</br>";
-                content += "Scavenge Luck: " + item.scavengeLuck + "</br>";
-                break;
-
-            case "gearMainHand":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "gearSecondHand":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "gearHead":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "gearChest":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "gearLegs":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "gearFeet":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
-                break;
-
-            case "machines":
-                content = "<b>" + item.name + "</b>";
-                break;
-
-            case "usable":
-                content = "<b>" + item.name + "</b>";
+			case "gearMainHand":
+			case "gearHead":
+			case "gearChest":
+			case "gearLegs":
+			case "gearFeet":
+				if (!item.minimumMiningLevel) item.minimumMiningLevel = 0;
+				content += "<br><strong>Mininum Mining Level: </strong>" + item.minimumMiningLevel + "<br>";
+                content += "<strong>Stats:</strong>";
+				content += "<br>&nbsp;&nbsp;&nbsp;Strength: " + item.strength;
+				content += "<br>&nbsp;&nbsp;&nbsp;Accuracy: " + item.accuracy;
+				content += "<br>&nbsp;&nbsp;&nbsp;Health: " + item.health;
+				content += "<br>&nbsp;&nbsp;&nbsp;Defense: " + item.defense;
+				content += "<br>&nbsp;&nbsp;&nbsp;Evasion: " + item.evasion;
+				content += "<br>&nbsp;&nbsp;&nbsp;Counter: " + item.counter;
+				content += "<br>&nbsp;&nbsp;&nbsp;Regeneration: " + item.regeneration;
+				content += "<br>&nbsp;&nbsp;&nbsp;Resillience: " + item.resillience;
+				content += "<br>&nbsp;&nbsp;&nbsp;Perception: " + item.perception;
+				content += "<br>&nbsp;&nbsp;&nbsp;Experience: " + item.experience;
+				content += "<br>&nbsp;&nbsp;&nbsp;Attack Speed: " + item.attackSpeed;
+				content += "<br>&nbsp;&nbsp;&nbsp;Ship Speed: " + item.shipSpeed;
+				content += "<br>&nbsp;&nbsp;&nbsp;Mining Luck: " + item.miningLuck;
+				content += "<br>&nbsp;&nbsp;&nbsp;Loot Luck: " + item.lootLuck;
+				content += "<br>&nbsp;&nbsp;&nbsp;Scavenge Luck: " + item.scavengeLuck;
                 break;
 
             case "spaceShip":
-                content = "<b>" + item.name + "</b><br>";
-                content += "Strength: " + item.strength + "</br>";
-                content += "Accuracy: " + item.accuracy + "</br>";
-                content += "Defense: " + item.defense + "</br>";
-                content += "Evasion: " + item.evasion + "</br>";
+                if (item.storageLimit) content += "<strong>Storage Limit: </strong>" + item.storageLimit + "<br>";
                 break;
 
             case "scavenge":
-                content = "<b>" + item.name + "</b>";
+				if (item.craftCost) {
+					content += "<br>";
+					content += "<strong>Decomposes To:</strong>";
+					for (cost in item.craftCost) {
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+					}
+				};
                 break;
             
             case "building":
-                content = "<b>" + item.name + "</b>";
-                content += "Auto Mining Speed: " + item.autoMine + "</br>";
-                content += "Auto Gathering Speed: " + item.autoGather + "</br>";
-                content += "Auto Decompose Speed: " + item.autoRefine + "</br>";
-                content += "Auto Scavenge Speed: " + item.autoScavenge + "</br>";
-                content += "Planet Limit: " + item.planetLimit + "</br>";
+				if (item.craftCost) {
+					content += "<br><strong>Requires:</strong>";
+					for (cost in item.craftCost) {
+						content += "<br>&nbsp;&nbsp;&nbsp;" + item.craftCost[cost] + "&nbsp;" + game.getItemName(cost);
+					}
+				};
+				if (item.autoMine || item.autoGather || item.autoRefine || item.autoScavenge) {
+					content += "<br><br><strong>Effects:</strong><br>";
+					content += "Auto Digs Per Second: " + item.autoMine + "<br>";
+                	content += "Auto Gathers Per Second: " + item.autoGather + "<br>";
+                	content += "Auto Decomposes Per Second: " + item.autoRefine + "<br>";
+					content += "Auto Scavenges Per Second: " + item.autoScavenge;
+				};
+				if (item.autoProduce) content += "<br><br>Auto Produce: <b>5 " + item.autoProduce + " per minute.</b>";
+				if (item.statChange) {
+					x = [];
+					$.each(JSON.parse(game.getItem(item.id).statChange), function(key, value) {
+						x.push(key + ": <b>+" + value + "</b>");
+					});
+					content += "<br><strong>Droprate Increase: </strong>" + x;
+				}
+                content += "<br><strong>Planet Limit:</strong> " + item.planetLimit + "<br>";
                 break;
         };
+        content += "<br><strong>Category:</strong> " + ItemCategory[item.category];
         content += "</div>";
         return content;
     };
@@ -259,10 +247,11 @@ function UISlot(id, parent) {
             content: this.generateItemTooltip(item),
             theme: 'tooltipster-multi',
             contentAsHTML: true,
-            position: "bottom",
+            position: "right",
             onlyOne: true,
-            interactiveTolerance: 10,
-            speed: 10
+            speed: 1,
+			maxWidth: 380,
+			positionTracker: true
 			//offsetX: -10,
 			//offsetY: 5
         });

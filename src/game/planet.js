@@ -42,7 +42,7 @@ function Planet(data) {
         var elapsedTime = currentTime - this.lastAutoTime;
         
         
-        if (this.autoProduce && currentTime - this.lastProduceTime >= 6000) {
+        if (this.autoProduce && currentTime - this.lastProduceTime >= 12000) {
                 this._autoProduce();
         };
         
@@ -198,17 +198,17 @@ function Planet(data) {
             if (item.autoScavenge) {
                 this.autoScavengePerSecond += item.autoScavenge * this.storage.getItemCount(item.id);
                 this.autoScavenge = true;
-                // Temporary cap at 5 / s
-                if (this.autoScavengePerSecond > 5) {
-                    this.autoScavengePerSecond = 5;
+                // Temporary cap at 10 / s
+                if (this.autoScavengePerSecond > 10) {
+                    this.autoScavengePerSecond = 10;
                 }
             }
             if (item.autoRefine) {
                 this.autoRefinePerSecond += item.autoRefine * this.storage.getItemCount(item.id);
                 this.autoRefine = true;
                 // Temporary cap at 5 / s
-                if (this.autoRefine > 5) {
-                    this.autoRefinePerSecond = 5;
+                if (this.autoRefine > 10) {
+                    this.autoRefinePerSecond = 10;
                 }
             }
         };
@@ -218,12 +218,12 @@ function Planet(data) {
         if (attempts > 100) {
             throw new Error("Way too many auto attempts pending, check the timer code!");
         }
-
         var totalItems = [];
         for (var i = 0; i < attempts; i++) {
             game.settings.addStat('autoDigCount');
             var items = this.miner.mine(this);
             if (items) {
+				game.settings.addStat("foundItems", items.length);
                 totalItems = $.merge(totalItems, items);
             }
         }
@@ -244,7 +244,9 @@ function Planet(data) {
         for (var i = 0; i < attempts; i++) {
             var items = this.miner.gather(this);
             if (items) {
+				game.settings.addStat("foundItems", items.length);
                 totalItems = $.merge(totalItems, items);
+				
             }
         }
 
@@ -264,6 +266,7 @@ function Planet(data) {
         for (var i = 0; i < attempts; i++) {
             var items = this.miner.scavenge(this);
             if (items) {
+				game.settings.addStat("foundItems", items.length);
                 totalItems = $.merge(totalItems, items);
             }
         }
@@ -314,11 +317,6 @@ function Planet(data) {
 
             items[totalItems[i]]++;
         }
-
-        //for (item in items) {
-        //    var name = game.getItemName(item);
-        //    ui.createFloat('+' + items[item] + ' ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
-        //};
     };
 
     // ---------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-require(["gameplayer", "gameplanet", "gamenpc", "gamesettings", "gamestatistics", "utils", "gamequest", "noty"]);
+require(["gameplayer", "gameplanet", "gamesettings", "gamestatistics", "utils", "gamequest", "noty"]);
 
 function Game() {
     this.player = new Player();
@@ -120,13 +120,11 @@ function Game() {
         var elapsedSinceTravel = currentTime - this.lastTravelTime;
 
         if (this.settings.autoSaveEnabled && elapsedSinceAutoSave > this.settings.autoSaveInterval && !this.settings.travelActive) {
-
-            // ui.notify("Auto-saving");
             var notify = noty({
                 layout: 'bottomCenter',
                 type: 'success',
                 timeout: 1500,
-                text: 'Auto Saved'
+                text: 'Game saved.'
             });
             this.save();
             this.lastAutoSaveTime = currentTime;

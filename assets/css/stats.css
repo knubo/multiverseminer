@@ -13,13 +13,14 @@ width:calc(100%+4px)
 }
 
 .statTable #panel {
-border:1px solid #000!important;
-border-radius:0;
-display:block;
-margin-top:60px;
-padding:0;
-position:absolute;
-width:253px
+border: 1px solid #000 !important;
+border-radius: 0;
+display: block;
+margin-top: 60px;
+padding: 0;
+position: absolute;
+line-height: 2.2px;
+width: 252px;
 }
 
 .statTable table {

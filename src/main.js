@@ -107,7 +107,6 @@ function onDocumentReady() {
                                 } else {
                                     game.player.equip(item.id);
                                 }
-
                                 game.player.update();
                             }
                         });
@@ -187,13 +186,12 @@ function onDocumentReady() {
             });
         }
     });
-
-    $('#settings').toolbar({
+   	game.player.updateUI();
+	$('#settings').toolbar({
         content: '#user-toolbar-options',
         position: "bottom",
         hideOnClick: true
     });
-    // Overall Site Tooltips
     $(".tooltip").tooltipster({
         theme: 'tooltipster-multi',
         contentAsHTML: true,
@@ -204,8 +202,6 @@ function onDocumentReady() {
         offsetX: 0,
         offsetY: 0
     });
-
-    // Tooltips for Settings Menu
     $(".tooltip2").tooltipster({
         theme: 'tooltipster-multi',
         position: "bottom",
@@ -218,6 +214,27 @@ function onDocumentReady() {
         offsetX: 0,
         offsetY: 0
     });
+	obj = {"gatheringLevel":0, "gatheringXP":0, "scavengingLevel":0, "scavengingXP":0, "miningLevel":0, "miningXP":0};
+	for (var key in obj) {
+		if (key == "gatheringLevel") tipContent = "This is your current <b>gathering level</b>.<p>Each time you increase your level you unlock bonuses.";
+		if (key == "gatheringXP") tipContent = "This is your current <b>gathering XP<b>.<p>You gain xp each time you find an item while gathering. <br>When you have enough xp, you will level.";
+		if (key == "scavengingLevel") tipContent = "This is your current <b>scavenging level</b>.<p>Each time you increase your level you unlock bonuses.";
+		if (key == "scavengingXP") tipContent = "This is your current <b>scavenging XP</b>. <p>You gain xp each time you find an item while scavenging. <br>When you have enough xp, you will level.";
+		if (key == "miningLevel") tipContent = "This is your current <b>mining level</b>. <p>Each time you increase your level you unlock bonuses.";
+		if (key == "miningXP") tipContent = "This is your current <b>mining XP</b>.<p>You gain xp each time you find an item while mining.<br>When you have enough xp, you will level.";
+		$("#" + key).tooltipster({
+			contentAsHTML: true,
+			content: tipContent,
+			theme: 'tooltipster-multi',
+			position: "left",
+			onlyOne: true,
+			delay: 0,
+			interactiveTolerance: 10,
+			speed: 1,
+			maxWidth: 300
+		});
+	};
+	this.hasTips = false;
 };
 
 function selectClass(playerClass) {
@@ -243,6 +260,43 @@ function onUpdate() {
     var currentTime = Date.now();
     game.update(currentTime);
     ui.update(currentTime);
+	if (!this.hasTips) {
+		var stats = uiplanetscreen.listStats();
+		for (var key in stats) {
+			tipContent = undefined;
+			if (key == "accuracy") tipContent = "Accuracy increases your chance to hit your opponent.";
+			if (key == "attackSpeed") tipContent = "Attack speed determines how times per round you attack.";
+			if (key == "counter") tipContent = "Counter allows you a free strike after being attacked.";
+			if (key == "defense") tipContent = "Defense negates some damage you take from enemies.";
+			if (key == "evasion") tipContent = "Evasion will sometimes allow you to dodge an attack.";
+			if (key == "experience") tipContent = "Experience will compound any xp you gain from combat.";
+			if (key == "health") tipContent = "This is how many health points you currently have. When it hits 0 you die.";
+			if (key == "lootLuck") tipContent = "Increases the quality, or quantity of loot found.";
+			if (key == "miningLuck") tipContent = "Increases your chance to find loot.";
+			if (key == "perception") tipContent = "Decreases your chance to be attacked while performing actions, like scavenge, or flying.";
+			if (key == "regeneration") tipContent = "Regeneration determines how much health you restore per second.";
+			if (key == "resillience") tipContent = "Resillience will lower the effect time of negative statuses, like Shrink, or Slow.";
+			if (key == "scavengeLuck") tipContent = "Scavenge Luck increases your chat to find multiple items at once, and increases quality";
+			if (key == "strength") tipContent = "Strength is factored in to damage, and actions like mining.";
+			if (key == "travelSpeed") tipContent = "Travel Speed modifies the amount of time it takes you to travel between planets.";
+			if (key == "totalPower") tipContent = "Total Power is a combination of Mining Luck, and Power, and allows you to find more elements.";
+			if (typeof tipContent !== "undefined") {
+				$("." + key).tooltipster({
+					content: tipContent,
+					theme: 'tooltipster-multi',
+					position: "left",
+					onlyOne: true,
+					delay: 0,
+					interactiveTolerance: 10,
+					speed: 1,
+					maxWidth: 225
+				});
+			};
+		};
+		this.hasTips = true;
+		delete stats;
+		game.player.updateUI();
+	};
 };
 
 function openNotifications() {
@@ -255,7 +309,6 @@ function openNotifications() {
 };
 
 function newCraft(itemId, quantity) {
-    //console.log(itemId, quantity);
     if (itemId == undefined) {
         utils.logError("onCraft with no item specified.");
         return false;
@@ -290,8 +343,6 @@ function exportStorage() {
     // encode the data into base64
     base64 = window.btoa(JSON.stringify(localStorage));
     var x = base64;
-    //console.log(x);
-
     content = '<strong>Export your Game</strong><br>Ctrl+A to select your saved game';
     content += '<textarea class="selectExportGame" cols="43" rows="20">' + x + '</textarea>';
 
@@ -443,7 +494,6 @@ function onMine() {
         };
     };
     game.settings.addStat('manualDigCount');
-
     if ($("#leftCategory2").hasClass("genericButtonSelected")) uiplanetscreen.updateStatsPanel();
     result = game.player.mine();
     if (result) {
@@ -552,9 +602,9 @@ function onMovePlanetItemsToPlayer() {
 function onSave() {
     game.save();
     noty({
-        text: "Game saved",
+        text: "Auto-saved.",
         type: "notification",
-        timeout: 1500
+        timeout: 500
     });
 };
 
@@ -674,31 +724,6 @@ function changeRightCategoryButton(selected) {
     var name = document.getElementById("rightCategory" + selected);
     name.className = "genericButtonSelected categoryButton clickable";
 }
-// Old events code.
-//$(function() {
-//    var channel = pusher.subscribe('updates');
-//    var notifier = new PusherNotifier(channel);
-//    channel.bind('update', function(data) {
-//        if (localStorage.getItem("notification_text") == "You have no notifications.") {
-//            var notificationText = localStorage.setItem("notification_text", "Notifications: <br>");
-//        };
-//        localStorage.setItem("notification_count", ++notificationCount);
-//        localStorage.setItem("notification_text", notificationText += "<br>" + data.message);
-//        $("#new-message-count").text(notification_count);
-//        $("#notification-list").text(notification_text);
-//    });
-//});
-
-// Select class.
-//$("#class1").click(function() {
-//    selectClass(1);
-//});
-//$("#class2").click(function() {
-//    selectClass(2);
-//});
-//$("#class3").click(function() {
-//    selectClass(3);
-//});
 
 function characterSelect() {
     var src = "character.html";
