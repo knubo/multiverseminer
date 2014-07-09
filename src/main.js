@@ -342,12 +342,15 @@ function onCraft(what) {
 };
 
 function exportStorage() {
+	try {
+		$.modal.close();
+	} catch (e) {};
     // encode the data into base64
     base64 = window.btoa(JSON.stringify(localStorage));
     var x = base64;
-    content = '<strong>Export your Game</strong><br>Ctrl+A to select your saved game';
+    content = '<strong>Export your Game</strong><br>Remove ALL gear before saving.<br>Ctrl+A to select your saved game';
     content += '<textarea class="selectExportGame" cols="43" rows="20">' + x + '</textarea>';
-
+	$.modal.close();
     $.modal(content, {
         opacity: 80,
         escClose: true,
@@ -360,6 +363,9 @@ function exportStorage() {
 }
 
 function importStorage() {
+	try {
+		$.modal.close();
+	} catch (e) {};
     content = '<strong>Import a Saved Game</strong><br>Paste your save below.';
     content += '<textarea cols="43" rows="19" class="selectImportGame"></textarea>';
     content += '<p><button onclick="doImport()">Import</button>';
@@ -393,7 +399,7 @@ function toggleAudio() {
         noty({
             text: "Audio muted.",
             type: "notification",
-            timeout: 2000
+            timeout: 1000
         });
     } else {
         document.getElementById('audioDig').muted = false;
@@ -401,7 +407,7 @@ function toggleAudio() {
         noty({
             text: "Audio unmuted.",
             type: "notification",
-            timeout: 2000
+            timeout: 1000
         });
     }
 };
