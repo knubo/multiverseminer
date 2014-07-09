@@ -717,7 +717,6 @@ function UIPlanetScreen() {
 
 	this.updateEmpirePanel = function() {
 		// Todo
-		console.log("empirePanel");
 	};
 
 	this.updateStatsPanel = function() {
@@ -733,11 +732,11 @@ function UIPlanetScreen() {
 	};
 
 	this.updateShipPanel = function() {
-		// Todo
+		// TODO
 	};
 
 	this.updatePlanetPanel = function() {
-		console.log("PlanetPanel");
+		// TODO
 	};
 
 	// Questing Section (650-704)
