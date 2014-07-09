@@ -8,16 +8,12 @@
 }
 .playerGearPaperdoll {
 clear: left;
-height: 400px;
+height: 300px;
 overflow: hidden;
-overflow-x: hidden;
-overflow-y: hidden;
 display: block;
 position: relative;
 padding-right: -134px;
 margin-right: 9;
-/* margin-left: -2px; */
-/* left: 2px; */
 margin-top: 10px;
 }
 

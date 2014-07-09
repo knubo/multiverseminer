@@ -30,10 +30,8 @@ module.exports = function(grunt) {
 
                     paths: {
                         game: 'game/game',
-                        gamecombatant: 'game/combatant',
                         gamegear: 'game/gear',
                         gameminer: 'game/miner',
-                        gamenpc: 'game/npc',
                         gameplanet: 'game/planet',
                         gameplayer: 'game/player',
                         gamequest: 'game/quest',
@@ -121,31 +119,22 @@ module.exports = function(grunt) {
                     expand: true
                 }]
             }
-        },
-
-        dataExport: {
-            build: {
-                src: 'assets/data/',
-                dest: 'export/'
-            }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadTasks("./src/build/");
+	grunt.loadTasks('./src/build/');
 
     // Default task(s).
-    grunt.registerTask('default', [
-        'clean',
+    grunt.registerTask('default', ['clean',
         'dataImport',
         'requirejs',
         'cssmin',
         'copy'
-        //'dataExport'
     ]);
 };

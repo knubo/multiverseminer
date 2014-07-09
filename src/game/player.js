@@ -1,34 +1,36 @@
-require(["game", "gameminer", "gamecombatant", "gamestorage", "ui", "uiplanetscreen", "gamesettings", "noty", "simplemodal"]);
+require(["game", "gameminer", "gamestorage", "ui", "uiplanetscreen", "gamesettings", "noty", "simplemodal"]);
 
 function Player() {
     this.id = 'player';
-    this.pickPower = 1;
-    this.miningLuck = 1;
-    this.totalPower = 1;
+    this.miningLuck = 0;
     this.miner = new Miner('player');
     this.storage = new Storage('player');
     this.gear = new Gear('player');
     this.stats = null;
-    this.combatant = new Combatant({
-        id: 'player',
-        npc: false,
-        player: this,
-        name: "you"
-    });
-    this.playerClass = null;
-
     this.oxygenConsumption = 1;
     this.canBreathe = true;
     this.lastOxygenConsumption = Date.now();
+	this.strength = undefined;
+    this.miningXPRequired = 500;
+	this.gatheringXPRequired = 500;
+	this.scavengingXPRequired = 500;
+	this.miningXP = 0;
+	this.miningLevel = 0;
+	this.gatheringXP = 0;
+	this.gatheringLevel = 0;
+	this.scavengingXP = 0;
+	this.scavengingLevel = 0;
+	this.totalPower = 0;
 
     // ---------------------------------------------------------------------------
     // general
     // ---------------------------------------------------------------------------
     this.initialize = function() {
         this.miner.initialize();
-        this.combatant.initialize();
         this.storage.initialize();
         this.gear.initialize();
+		this.update();
+		this.updateUI();
 
         // Add the slots we can wear
         this.gear.addSlot('head');
@@ -40,21 +42,118 @@ function Player() {
         this.gear.addSlot('miningGear');
         this.totalPower = this.calculatePower();
     };
-
+	
     this.calculatePower = function() {
-        this.pickPower = this.gear.getStats()["power"] || 1;
-        this.miningLuck = this.gear.getStats()["miningLuck"] || 1;
-        this.totalPower = this.pickPower * this.miningLuck;
+        this.strength = this.gear.getStats()["strength"] || 0;
+        this.miningLuck = this.gear.getStats()["miningLuck"] || 0;
+        this.totalPower = this.strength * this.miningLuck;
+		this.stats["totalPower"] = this.totalPower;
         return this.totalPower;
     };
-
+	
+	//this.calculateMaxHealth = function() {
+	//	this.maxHealth = 5 + this.gear.getStats().health;
+	//	return this.maxHealth;
+	//};
+	
+	this.gainMiningXP = function(value) {
+		this.miningXP += value;
+		this.updateMiningXP();
+		this.checkMiningLevel();
+	};
+    
+	this.gainScavengingXP = function(value) {
+    	this.scavengingXP += value;
+		this.updateScavengingXP();
+		this.checkScavengingLevel();
+    };
+	
+	this.gainGatheringXP = function(value) {
+		this.gatheringXP += value;
+		this.updateGatheringXP();
+		this.checkGatheringLevel();
+	};
+	
+	this.checkMiningLevel = function() {
+		this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
+		if (this.miningXPRequired < 500) this.miningXPRequired = 500;
+		if(this.miningXP >= this.miningXPRequired) {
+			this.miningLevel ++;
+			this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
+			this.miningXP = 0;
+			this.updateMiningXP();
+			this.updateMiningLevel();
+			return true;
+		}
+		return false;
+	};
+	
+	this.checkScavengingLevel = function() {
+		this.scavengingXPRequired = Math.floor(Math.pow(2.125, this.scavengingLevel) * 500);
+		if (this.scavengingXPRequired < 500) this.scavengingXPRequired = 500;
+		if(this.scavengingXP >= this.scavengingXPRequired) {
+			this.scavengingLevel ++;
+			this.scavengingXPRequired = Math.floor(Math.pow(2.125, this.scavengingLevel) * 500);
+			this.scavengingXP = 0;
+			this.updateScavengingXP();
+			this.updateScavengingLevel();
+			return true;
+		}
+		return false;
+	};
+	
+	this.checkGatheringLevel = function() {
+		this.gatheringXPRequired = Math.floor(Math.pow(2.125, this.gatheringLevel) * 500);
+		if (this.gatheringXPRequired < 500) this.gatheringXPRequired = 500;
+		if (this.gatheringXP >= this.gatheringXPRequired) {
+			this.gatheringLevel ++;
+			this.gatheringXPRequired = Math.floor(Math.pow(2.125, this.gatheringLevel) * 500);
+			this.gatheringXP = 0;
+			this.updateGatheringXP();
+			this.updateGatheringLevel();
+			return true;
+		}
+		return false;
+	};
+	
+	this.updateMiningXP = function() {
+		$('#miningXP')[0].innerHTML = "Mining XP: " + Math.floor(this.miningXP) + " / " + Math.ceil(this.miningXPRequired);
+	};
+	
+	this.updateMiningLevel = function() {
+		$('#miningLevel')[0].innerHTML = "Mining Level: " + this.miningLevel;
+	};
+	
+	this.updateGatheringXP = function() {
+		$('#gatheringXP')[0].innerHTML = "Gathering XP: " + Math.floor(this.gatheringXP) + " / " + Math.ceil(this.gatheringXPRequired);
+	};
+	
+	this.updateGatheringLevel = function() {
+		$('#gatheringLevel')[0].innerHTML = "Gathering Level: " + this.gatheringLevel;
+	};
+	
+	this.updateScavengingXP = function() {
+		$('#scavengingXP')[0].innerHTML = "Scavenging XP: " + Math.floor(this.scavengingXP) + " / " + Math.ceil(this.scavengingXPRequired);
+	};
+	
+	this.updateScavengingLevel = function() {
+		$('#scavengingLevel')[0].innerHTML = "Scavenging Level: " + this.scavengingLevel;
+	};
+	
+	this.updateUI = function(){
+		this.updateMiningXP();
+		this.updateMiningLevel();
+		this.updateGatheringXP();
+		this.updateGatheringLevel();
+		this.updateScavengingXP();
+		this.updateScavengingLevel();
+	};
+	
     this.update = function(currentTime) {
         this.miner.update(currentTime);
-        this.combatant.update(currentTime);
         this.stats = this.gear.getStats();
-        this.checkPlanet();
         this.totalPower = this.calculatePower();
-
+        this.checkPlanet();
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
                 // TODO: need to do something when this runs out
@@ -65,7 +164,15 @@ function Player() {
             }
         }
     };
-
+	
+	//---------------------------------------------------------------------------
+	//Player Storage Key
+	//---------------------------------------------------------------------------
+	
+	this._getStorageKey = function() {
+		return 'player_' + this.id + '_';
+	};
+	 
     // ---------------------------------------------------------------------------
     // player functions
     // ---------------------------------------------------------------------------	
@@ -74,8 +181,9 @@ function Player() {
             return false;
         };
         $("#miningActionText").html("You enter the mine.");
-        var items = this.miner.mine(game.currentPlanet, this.pickPower, this.miningLuck);
+        var items = this.miner.mine(game.currentPlanet, this.totalPower, this.miningLuck);
         if (items.length > 0) {
+			this.gainMiningXP(items.length);
             if (game.settings.showPopups) {
                 for (var i = 0; i < items.length; i++) {
                     var name = game.getItemName(items[i]);
@@ -121,6 +229,7 @@ function Player() {
         $("#gatheringActionText").html("You power on your atmospheric concentrator.");
         var items = this.miner.gather(game.currentPlanet);
         if (items.length > 0) {
+			this.gainGatheringXP(items.length);
             var results = items;
             if (results.length > 1) {
                 x = [];
@@ -136,7 +245,7 @@ function Player() {
         } else {
             resultsNothingChoices = [
                 "There was a kink in the cog; your machine shut off prematurely.",
-                "The battery light comes on, and the machine shuts off. You smack the machine and it goes back on."
+                "Your battery died, and the machine shut off."
             ];
             var choice = resultsNothingChoices[Math.floor(Math.random() * resultsNothingChoices.length)];
             $("#gatheringResultsText").html(choice);
@@ -171,6 +280,7 @@ function Player() {
         $("#scavengingActionText").html('Location: ' + actionTextUpper);
         var items = this.miner.scavenge(game.currentPlanet);
         if (items.length > 0) {
+			this.gainScavengingXP(items.length);
             var results = items;
             if (results.length > 1) {
                 x = [];
@@ -207,7 +317,7 @@ function Player() {
 
     this.canDecomposeItem = function(item) {
         return (item.category === "scavenge" ? true : false);
-    }
+    };
 
     this.decomposeScavenged = function() {
         // Decomposing scavenged items
@@ -218,12 +328,11 @@ function Player() {
                 type: "information",
                 timeout: 3500
             });
-        }
+        };
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
         var scavengedItems = [];
         var gained = {};
         var removed = {};
-
         for (var i = 0; i < tmpItems.length; i++) {
             scavengedItems.push([game.getItem(tmpItems[i]), this.storage.items[tmpItems[i]]]);
         }
@@ -297,6 +406,7 @@ function Player() {
     this.equip = function(itemId) {
         this.gear.equip(itemId, this.storage.getItemMetadata(itemId));
         this.storage.removeItem(itemId);
+		game.player.updateUI();
     };
 
     this.canEquip = function(itemId) {
@@ -311,6 +421,7 @@ function Player() {
         this.gear.unEquip(type);
         game.player.storage.addItem(itemId);
         game.player.gear.gearChanged = true;
+		game.player.updateUI();
     };
 
     this.hasEquipped = function(type) {
@@ -321,46 +432,69 @@ function Player() {
         // TODO: hardcoded for now until ship is done
         return 5000;
     };
-
+	
     // ---------------------------------------------------------------------------
     // loading / saving
     // ---------------------------------------------------------------------------
     this.save = function() {
+		var storageKey = this._getStorageKey();
         this.miner.save();
-        this.combatant.save();
         this.storage.save();
         this.gear.save();
+		localStorage[storageKey + 'miningXP'] = this.miningXP;
+		localStorage[storageKey + 'miningLevel'] = this.miningLevel;
+		localStorage[storageKey + 'miningXPRequired'] = this.miningXPRequired;
+		localStorage[storageKey + 'gatheringXP'] = this.gatheringXP;
+		localStorage[storageKey + 'gatheringLevel'] = this.gatheringLevel;
+		localStorage[storageKey + 'gatheringXPRequired'] = this.gatheringXPRequired;
+		localStorage[storageKey + 'scavengingXP'] = this.scavengingXP;
+		localStorage[storageKey + 'scavengingLevel'] = this.scavengingLevel;
+		localStorage[storageKey + 'scavengingXPRequired'] = this.scavengingXPRequired;
         localStorage.playerOxygenConsumption = this.oxygenConsumption;
         localStorage.planetID = game.currentPlanet.data.id;
-        localStorage.playerClass = this.playerClass;
+
     };
 
     this.load = function() {
+		var storageKey = this._getStorageKey();
         this.miner.load();
-        this.combatant.load();
         this.storage.load();
         this.gear.load();
         this.stats = this.gear.getStats();
         this.oxygenConsumption = utils.loadFloat('playerOxygenConsumption', 1);
-        this.playerClass = utils.loadInt('playerClass', 1);
+        this.totalPower = this.calculatePower();
+		this.miningXPRequired = utils.loadFloat(storageKey + 'miningXPRequired', 500);
+		this.gatheringXPRequired = utils.loadFloat(storageKey + 'gatheringXPRequired', 500);
+		this.scavengingXPRequired = utils.loadFloat(storageKey + 'scavengingXPRequired', 500);
+		this.miningLevel = utils.loadFloat(storageKey + 'miningLevel', 0);
+		this.miningXP = utils.loadFloat(storageKey + 'miningXP', 0);
+		this.gatheringLevel = utils.loadFloat(storageKey + 'gatheringLevel', 0);
+		this.gatheringXP = utils.loadFloat(storageKey + 'gatheringXP', 0);
+		this.scavengingLevel = utils.loadFloat(storageKey + 'scavengingLevel', 0);
+		this.scavengingXP = utils.loadFloat(storageKey + 'scavengingXP', 0);
         game.currentPlanet = game.planets[utils.loadInt('planetID', 1)];
         game.planetChanged = true;
-        this.totalPower = this.calculatePower();
     };
 
     this.reset = function(fullReset) {
         game.wasReset = true;
         $(window).off('onbeforeunload');
-        this.miner.reset(fullReset);
-        this.combatant.reset(fullReset);
         this.storage.reset(fullReset);
         this.gear.reset(fullReset);
+        this.miner.reset(fullReset);
         this.oxygenConsumption = 1;
-        this.pickPower = 1;
-        this.miningLuck = 1;
+        this.strength = 0;
+        this.miningLuck = 0;
         this.baseMineSpeed = 1;
-        this.playerClass = null;
-        this.totalPower = 1;
+		this.miningXP = 0;
+		this.miningLevel = 0;
+        this.miningXPRequired = 500;
+		this.gatheringXP = 0;
+		this.gatheringLevel = 0;
+		this.gatheringXPRequired = 500;
+		this.scavengingXP = 0;
+		this.scavengingLevel = 0;
+		this.scavengingXPRequired = 500;
         game.wasReset = false;
         $(window).on('onbeforeunload');
     };
