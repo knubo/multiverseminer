@@ -96,20 +96,22 @@ function onDocumentReady() {
                         // Equip text to show in the menu
                         var equipText = "Unequip";
                         if (currentEquip === undefined || currentEquip.id !== item.id) {
-                            equipText = "Equip";
+							equipText = "Equip";
                         }
 
-                        menu.push({
-                            title: equipText,
-                            action: function(event, ui) {
-                                if (game.player.hasEquipped(item.gearType) && item.id === currentEquip.id) {
-                                    game.player.unEquip(item.gearType);
-                                } else {
-                                    game.player.equip(item.id);
-                                }
-                                game.player.update();
-                            }
-                        });
+                        if (typeof item.minimumMiningLevel !== "undefined" && item.minimumMiningLevel <= game.player.miningLevel) {
+	                        menu.push({
+	                            title: equipText,
+	                            action: function(event, ui) {
+	                                if (game.player.hasEquipped(item.gearType) && item.id === currentEquip.id) {
+	                                    game.player.unEquip(item.gearType);
+	                                } else {
+	                                    game.player.equip(item.id);
+	                                }
+	                                game.player.update();
+	                            }
+	                        });
+						};
                     };
 
                     // Buildings

@@ -387,9 +387,7 @@ function Player() {
             return false;
         }
         game.questProgress('craft', count + " " + itemId);
-
         //this.equipBestGear();
-
         return true;
     };
 

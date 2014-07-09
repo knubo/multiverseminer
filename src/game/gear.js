@@ -29,14 +29,11 @@ function Gear(id) {
     this.canEquip = function(itemId) {
         var itemInfo = game.getItem(itemId);
 
-        if (!itemInfo || !itemInfo.gearType) {
-            return false;
-        }
+        if (!itemInfo || !itemInfo.gearType) return false;
 
-        if (!this.slots[itemInfo.gearType]) {
-            return false;
-        }
-
+        if (!this.slots[itemInfo.gearType]) return false;
+		
+		if (game.player.miningLevel < itemId.minimumMiningLevel) return false;
         return true;
     };
 
@@ -53,6 +50,10 @@ function Gear(id) {
             utils.logError("attempt to equip item but slot was not set: " + itemId + " in " + itemInfo.gearType);
             return;
         }
+		if (game.player.miningLevel < itemId.minimumMiningLevel) {
+			utils.logError("Player level is too low");
+			return;
+		}
         replacedBy = null;
         // If there's something in the slot already, we need to add it to
         // the players storage, and unequip it.
