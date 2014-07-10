@@ -1,4 +1,4 @@
-require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty", "joyride", "toolbar", "contextmenu", "remote/socket"]);
+require(["data/system", "data/items", "data/loot", "data/planets", "data/actors", "game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty", "joyride", "toolbar", "contextmenu", "remote/socket", "sieve"]);
 
 // Create components
 var game = new Game();
@@ -237,6 +237,7 @@ function onDocumentReady() {
 		});
 	};
 	this.hasTips = false;
+	$("#playerCraftingContent").sieve({itemSelector:"div"});
 };
 
 function selectClass(playerClass) {
