@@ -69,7 +69,6 @@ function UI() {
 	};
 
 	this.update = function(currentTime) {
-		//$('#timeDisplayText').text(utils.getShortTimeDisplay(utils.getDayTimeInSeconds()));
 		if (game.settings.travelActive) {
 			$('#depth').text(game.settings.travelDistanceElapsed + " / " + game.settings.travelDistanceRemaining);
 		}
@@ -119,7 +118,7 @@ function UI() {
 			}
 		}
 	};
-
+	
 	this.onMouseMove = function(parameter) {
 		var self = ui;
 
@@ -164,12 +163,9 @@ function UI() {
 		_float.parent = $('#floatingArea');
 		_float.init();
 		_float.moveTo(x, y);
-
 		// Todo: use something else as default i guess
 		_float.timeOut = Date.now() + 2;
-
 		this.activeFloats.push(_float);
-
 		return _float;
 	};
 
@@ -177,7 +173,6 @@ function UI() {
 		if (!sys.enableDragDrop) {
 			return;
 		}
-
 		// Queue this element for dragging
 		this.activeDragSource = source;
 		this.pendingDragElement = source;

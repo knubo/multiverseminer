@@ -1,4 +1,4 @@
-.panelPlanetLeft {
+.panelPlanetLeft, .panelPlanetRight {
     background-color: rgba(37,37,37,.75);
     border: 5px solid #000;
     float: left;
@@ -12,7 +12,9 @@
     outline: 1px solid #8A8A8A;
     text-align: center;
     width: 410px;
-    /* overflow-y: scroll; */
+}
+.panelPlanetRight {
+	float: right !important;
 }
 .panelPlanetDisplay {
     font-family: overpassregular,Arial,sans-serif;
@@ -24,26 +26,6 @@
     position: absolute;
     left: 35%;
 }
-
-.panelPlanetRight {
-	background-color: rgba(37,37,37,.75);
-	border: 5px solid #000;
-	float: right;
-	font-family: overpassregular,Arial,sans-serif;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 400;
-	height: 600px;
-	letter-spacing: 1px;
-	min-width: 300px;
-	outline: 1px solid #8A8A8A;
-	text-align: center;
-	width: 410px;
-	/* overflow-y: hidden; */
-	position: static;
-}
-
-/* Wrapper for Planet Information */
 .planetDisplay {
 height: 400px;
 }
@@ -57,25 +39,14 @@ height: 400px;
     height: 150px;
     margin-top: 20%;
 }
-
-/* Frame to hold planet image
-.planetDisplayBackground {
-    margin-top: 5px;
-	height: 30px;
-	width: auto;
-}
-*/
-
 .planetDisplayNameFrame {
     height: 91px;
-    /* position: inherit; */
-    /* top: 60%; */
 	margin-top: 2px;
     width: 100%;
 }
 
 .planetDisplayNameTitle {
-    color: #CCCCCC;
+    color: #CCC;
     font-family: overpassregular,Arial,sans-serif;
     font-size: 20px;
     font-style: normal;

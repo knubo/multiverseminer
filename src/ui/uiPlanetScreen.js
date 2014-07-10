@@ -6,7 +6,6 @@ UIPlanetScreen.prototype.constructor = UIPlanetScreen;
 
 function UIPlanetScreen() {
 	this.id = 'planetScreen';
-
 	this.parent = undefined;
 
 	this.playerInventoryFilter = undefined;
@@ -43,9 +42,8 @@ function UIPlanetScreen() {
 	// ---------------------------------------------------------------------------
 	this.init = function() {
 		this.baseInit();
-
 		this.updateWhenNeededOnly = false;
-
+		
 		this.playerInventoryFilter = new UISelection('playerInventoryFilter');
 		this.playerInventoryFilter.values = ItemCategory;
 		this.playerInventoryFilter.callback = this.onPlayerInventoryFilterChanged;
@@ -54,9 +52,9 @@ function UIPlanetScreen() {
 		this.playerInventoryFilter.init();
 		this.playerInventoryFilter.setSelection(0);
 
-		this.playerInventory = new UIInventory('playerInventorySlots', 56);
+		this.playerInventory = new UIInventory('playerInventorySlots', 112);
 		this.playerInventory.setStorage(game.player.storage);
-		this.playerInventory.slotCount = 56;
+		this.playerInventory.slotCount = 112;
 		this.playerInventory.init();
 		this.playerInventory.setCategory(0);
 
@@ -153,7 +151,6 @@ function UIPlanetScreen() {
 
 		for (var name in divs) {
 			var html = name + ': ';
-
 			for (var i = 0; i < divs[name]['dictionaryIndex'].length; i++) {
 				var index = divs[name]['dictionaryIndex'][i];
 				for (var j = 0; j < game.lootTableDictionary[index].entries.length; j++) {
@@ -615,7 +612,6 @@ function UIPlanetScreen() {
 		this.componentQuestsPanel.show();
 	};
 
-
 	this.updatePlanetDisplay = function() {
 		$('#planetDisplayBackground').empty();
 		$('#planetDisplayNameText').empty();
@@ -631,7 +627,7 @@ function UIPlanetScreen() {
 			$('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
 		}
 	};
-
+	
 	this.onPlayerInventoryFilterChanged = function() {
 		var self = ui.screenPlanet;
 		var category = self.playerInventoryFilter.selection;
