@@ -144,11 +144,11 @@ function UIPlanetScreen() {
 			"Scavenge": {
 				"dictionaryIndex": [1000],
 				"divId": "planetScavenge"
+			},
+			"Gems": {
+			    "dictionaryIndex": [102, 103],
+			    "divId": "planetGems"
 			}
-			//"Gems": {
-			//    "dictionaryIndex": [102, 103],
-			//    "divId": "planetGems"
-			//}
 		};
 
 		for (var name in divs) {
@@ -160,8 +160,6 @@ function UIPlanetScreen() {
 					if (j != 0 || i > 0) {
 						html += ', ';
 					}
-
-					// Hacky D:
 					if (name == 'Gems') {
 						html += game.getItemName(game.lootTableDictionary[index].entries[j]);
 					} else {
@@ -169,7 +167,6 @@ function UIPlanetScreen() {
 					}
 				}
 			}
-
 			$('#' + divs[name]['divId']).html(html);
 		}
 	};

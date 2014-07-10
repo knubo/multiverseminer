@@ -450,6 +450,24 @@ function goMining() {
         containerId: 'miningBox'
     });
 };
+function planetLootModal() {
+    $("#planetLootModal").modal({
+	    modal: false,
+	    escClose: true,
+	    overlayClose: true,
+	    opacity: 1,
+	    overlayCss: {
+	        backgroundColor: "#000"
+	    },
+	    onShow: function(dialog) {
+	        $(dialog.container).draggable({
+	            handle: 'div'
+	        });
+	    },
+	    position: ["15%", "36%"],
+	    containerId: 'planetLootModal'
+	});
+}
 
 function goGathering() {
     $("#gatheringModal").modal({
