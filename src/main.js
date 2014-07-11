@@ -440,7 +440,8 @@ function toggleAudio() {
 		noty({
 			text: "Audio muted.",
 			type: "notification",
-			timeout: 1000
+			timeout: 1000,
+			layout: "bottomCenter"
 		});
 	} else {
 		document.getElementById('audioDig').muted = false;
@@ -448,7 +449,8 @@ function toggleAudio() {
 		noty({
 			text: "Audio unmuted.",
 			type: "notification",
-			timeout: 1000
+			timeout: 1000,
+			layout: "bottomCenter"
 		});
 	}
 };
@@ -570,7 +572,8 @@ function onSave() {
 	noty({
 		text: "Auto-saved.",
 		type: "notification",
-		timeout: 500
+		timeout: 500,
+		layout: "bottomCenter"
 	});
 };
 
