@@ -106,7 +106,7 @@ function onDocumentReady() {
 								}
 							});
 						} else {
-							ui.noty({type: "error", text: "You are too low level to equip this.", timeout: 1500});
+							noty({type: "error", text: "You are too low level to equip this.", timeout: 1500});
 						}
 					};
 
