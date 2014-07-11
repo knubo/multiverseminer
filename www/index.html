@@ -14,7 +14,9 @@
     <audio id="audioDigSuccess" preload="none">
         <source src="assets/sound/Dig-FoundMineral.mp3" type="audio/mp3">
     </audio>
-  <div class="screen" id="planetScreen">
+<div class="screen" id="planetScreen">
+
+
     <div class="panelPlanetLeft" id="panelPlanetLeft">
       <div id="leftCategory">
         <div class="genericButton categoryButton clickable" id="leftCategory0" onClick="onActivatePlayerInventory()">
@@ -75,6 +77,8 @@
       </div>
     </div>
 
+
+	
     <div class="panelPlanetRight" id="panelPlanetRight">
       <div id="rightCategory">
         <div class="genericButton categoryButton clickable" id="rightCategory0" onClick="onActivatePlayerGear()">
@@ -150,8 +154,8 @@
           <div id="playerCraftingContent" style="height:520px;overflow-y:auto;"></div>
         </div>
       </div>
-    </div>
-
+    
+	
     <div class="panelPlanetDisplay" id="planetDisplay">
       <div>
         <button class="a_demo_two tooltip" id="mineButton" title="Click to mine." onClick="onMine()" style="cursor: pointer">
@@ -188,9 +192,14 @@
         </div>
       </div>
       <div class="floatingArea" id="floatingArea"></div>
-    </div>
-  </div>
 
+    </div>
+	</div>
+
+	<div class="panelUiBottom">
+	Test
+	</div>
+	
   <div class="screen" id="travelScreen">
     <div class="panelTravelDisplay" id="travelDisplay">
       <div id="travelDistance"></div>
@@ -404,6 +413,7 @@
   
   <div id="itemInfo"></div>
 </div>
+
 <script src="require.js" type="text/javascript"></script>
 <script src="MultiverseMiner.min.js" type="text/javascript"></script>
 <script>
