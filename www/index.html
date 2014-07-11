@@ -171,31 +171,30 @@
         </button>
       </div>
 
-      <div class="planetDisplay">
-	  
-        <div class="planetDisplayBackground" id="planetDisplayBackground"></div>
+    <div class="planetDisplay">
+	    <div class="planetDisplayBackground" id="planetDisplayBackground"></div>
+			<div class="planetDisplayNameFrame">
+			<div class="planetDisplayNameTitle">PLANET</div>
+				<div class="planetDisplayName">
+				<div class="planetDisplayNameText" id="planetDisplayNameText"></div>
+					<br>
 
-        <div class="planetDisplayNameFrame">
-          <div class="planetDisplayNameTitle">PLANET</div>
-          <div class="planetDisplayName">
-              <div class="planetDisplayNameText" id="planetDisplayNameText"></div>
-			  <br>
-			  <div onClick="planetLootModal()">Show Planet Loot</div>
-			  <div id="planetLootModal" style="display:none;">
-					<div id="planetContains" class="planetContains">
+				</div>
+			</div>
+			<div class="planetLootBox" onClick="planetLootModal()"><img src="assets/images/lootChest.png" title="Displays Planets Loot Table"></div>
+			<div id="planetLootModal" style="display:none;">
+				<div id="planetContains" class="planetContains">
 					<div id="planetMinerals" class="planetMinerals"></div>
 					<div id="planetGases" class="planetGases"></div>
 					<div id="planetScavenge" class="planetScavenge"></div>
 					<div id="planetGems" class="planetGems"></div>
-			  	</div>
-		  	</div>
-        </div>
-      </div>
-      <div class="floatingArea" id="floatingArea"></div>
-
-    </div>
+				</div>
+			</div>
+		<!-- <div class="floatingArea" id="floatingArea"></div> -->
 	</div>
-  <div class="screen" id="travelScreen">
+</div>
+
+<div class="screen" id="travelScreen">
     <div class="panelTravelDisplay" id="travelDisplay">
       <div id="travelDistance"></div>
     </div>

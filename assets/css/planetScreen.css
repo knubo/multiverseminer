@@ -52,7 +52,7 @@
 }
 
 .planetDisplay {
-	height: 400px;
+	height: 550px;
 }
 
 .planetImage {
@@ -62,10 +62,9 @@
 
 .planetBigEarth {
 	height: 150px;
-	margin-top: 20%;
+	margin-top: 160px;
 }
 .planetDisplayNameFrame {
-	height: 91px;
 	margin-top: 2px;
 	width: 100%;
 }
@@ -79,7 +78,7 @@
 }
 .planetDisplayName {
 	background: url(assets/images/planetTitleBackground.png) no-repeat center;
-	background-size: 295px 61px;
+	padding-top: 5px;
 }
 .planetDisplayNameText {
 	font-family: overpassregular,Arial,sans-serif;
@@ -128,4 +127,13 @@
 }
 .planetMinerals,.planetGems,.planetScavenge,.planetGases {
 	padding-bottom: 6px;
+}
+
+.planetDisplayBackground {
+	margin-top: 10px;
+	height: 65%;
+}
+
+.planetLootBox {
+	
 }
