@@ -58,21 +58,18 @@ function Player() {
 	
 	this.gainMiningXP = function(value) {
 		this.miningXP += value;
-		this.updateMiningXP();
 		this.checkMiningLevel();
 		this.xpChanged = true;
 	};
     
 	this.gainScavengingXP = function(value) {
     	this.scavengingXP += value;
-		this.updateScavengingXP();
 		this.checkScavengingLevel();
 		this.xpChanged = true;
     };
 	
 	this.gainGatheringXP = function(value) {
 		this.gatheringXP += value;
-		this.updateGatheringXP();
 		this.checkGatheringLevel();
 		this.xpChanged = true;
 	};
@@ -140,7 +137,6 @@ function Player() {
 		this.checkMiningLevel();
 		this.checkScavengingLevel();
         this.checkPlanet();
-		
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
                 // TODO: need to do something when this runs out

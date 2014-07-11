@@ -477,6 +477,7 @@ function onMine() {
 	};
 	game.settings.addStat('manualDigCount');
 	result = game.player.mine();
+	uiplanetscreen.updateStatsPanel();
 	if (result) {
 		$('#audioDigSuccess').trigger('play');
 	} else {
@@ -492,6 +493,7 @@ function onGather() {
 	};
 	game.settings.addStat('manualGatherCount');
 	game.player.gather();
+	uiplanetscreen.updateStatsPanel();
 	this.lastRun = ~~new Date() / 200 | 0;
 };
 
@@ -501,6 +503,7 @@ function onScavenge() {
 	};
 	game.settings.addStat('manualScavengeCount');
 	game.player.scavenge();
+	uiplanetscreen.updateStatsPanel();
 	this.lastRun = ~~new Date() / 200 | 0;
 };
 
