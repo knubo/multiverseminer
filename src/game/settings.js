@@ -3,7 +3,7 @@ function Settings() {
 	this.sessionStats = new Statistics('session');
 
 	this.autoSaveEnabled = true;
-	this.autoSaveInterval = 1000;
+	this.autoSaveInterval = 60000;
 	
 	this.savedVersion = 0;
 
@@ -77,7 +77,7 @@ function Settings() {
 		this.currentPlanet = utils.loadInt("currentPlanet", 0);
 
 		this.autoSaveEnabled = utils.loadBool("autoSaveEnabled", true);
-		this.autoSaveInterval = utils.loadInt("autoSaveInterval", 1000);
+		this.autoSaveInterval = utils.loadInt("autoSaveInterval", 60000);
 		
 		this.savedVersion = utils.loadFloat("savedVersion", 0);
 

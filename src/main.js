@@ -48,10 +48,21 @@ function onDocumentReady() {
 	onActivatePlayerGear();
 
 	// Set the update interval
-	setInterval(function() {
+	//window.setTimeout(function() { callback(new Date().getTime()); }, 1000 / 60);
+	window.requestAnimFrame = (function(){
+	  return  window.requestAnimationFrame       ||
+	          window.webkitRequestAnimationFrame ||
+	          window.mozRequestAnimationFrame    ||
+	          function( callback ){
+	            window.setTimeout(callback, 1000 / 60);
+	          };
+	})();
+	
+	(function animloop(){
 		onUpdate();
-	}, 1000);
-
+	  	requestAnimFrame(animloop);
+	})();
+	
 	// Right Click Menus
 	$(document).on('mousedown', '.hasMenu', function(e) {
 		try {

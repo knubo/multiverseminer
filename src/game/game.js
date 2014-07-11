@@ -120,13 +120,13 @@ function Game() {
         var elapsedSinceTravel = currentTime - this.lastTravelTime;
 
         if (this.settings.autoSaveEnabled && elapsedSinceAutoSave > this.settings.autoSaveInterval && !this.settings.travelActive) {
-            var notify = noty({
-                layout: 'bottomCenter',
-                type: 'success',
-                timeout: 1500,
-                text: 'Game saved.'
-            });
             this.save();
+        	noty({
+            	layout: 'bottomCenter',
+            	type: 'success',
+            	timeout: 1000,
+            	text: 'Game saved.'
+ 		   	});
             this.lastAutoSaveTime = currentTime;
         }
 
