@@ -54,7 +54,7 @@ a {
     height: 33%;
     margin-left: auto;
     margin-right: auto;
-    /* position: absolute; */
+    position: absolute;
     width: 100%;
 }
 .panelContent {
@@ -82,7 +82,6 @@ a {
     top: 2px;
     width: calc(99% - 1px);
 }
-
 .panelBottomLeft {
     float: left;
     margin-left: 2px;
