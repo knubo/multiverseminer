@@ -21,7 +21,7 @@ function Player() {
 	this.scavengingXP = 0;
 	this.scavengingLevel = 0;
 	this.totalPower = 0;
-	this.xpChanged = true;
+	this.xpChanged = false;
 
     // ---------------------------------------------------------------------------
     // general
@@ -31,7 +31,6 @@ function Player() {
         this.storage.initialize();
         this.gear.initialize();
 		this.update();
-		this.updateUI();
         this.gear.addSlot('head');
         this.gear.addSlot('chest');
         this.gear.addSlot('mainHand');
@@ -40,6 +39,7 @@ function Player() {
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
         this.totalPower = this.calculatePower();
+		this.updateUI();
 		this.xpChanged = true;
     };
 	
@@ -78,99 +78,64 @@ function Player() {
 	};
 	
 	this.checkMiningLevel = function() {
-		if (!this.xpChanged) return;
 		this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
 		if (this.miningXPRequired < 500) this.miningXPRequired = 500;
 		if(this.miningXP >= this.miningXPRequired) {
 			this.miningLevel ++;
 			this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
 			this.miningXP = 0;
-			this.updateMiningXP();
-			this.updateMiningLevel();
-			this.xpChanged = false;
+			this.setStats();
 			return true;
 		};
-		this.xpChanged = false;
 		return false;
 	};
 	
 	this.checkScavengingLevel = function() {
-		if (!this.xpChanged) return;
 		this.scavengingXPRequired = Math.floor(Math.pow(2.125, this.scavengingLevel) * 500);
 		if (this.scavengingXPRequired < 500) this.scavengingXPRequired = 500;
 		if(this.scavengingXP >= this.scavengingXPRequired) {
 			this.scavengingLevel ++;
 			this.scavengingXPRequired = Math.floor(Math.pow(2.125, this.scavengingLevel) * 500);
 			this.scavengingXP = 0;
-			this.updateScavengingXP();
-			this.updateScavengingLevel();
+			this.setStats();
 			this.xpChanged = false;
 			return true;
 		};
-		this.xpChanged = false;
 		return false;
 	};
 	
 	this.checkGatheringLevel = function() {
-		if (!this.xpChanged) return;
 		this.gatheringXPRequired = Math.floor(Math.pow(2.125, this.gatheringLevel) * 500);
 		if (this.gatheringXPRequired < 500) this.gatheringXPRequired = 500;
 		if (this.gatheringXP >= this.gatheringXPRequired) {
 			this.gatheringLevel ++;
 			this.gatheringXPRequired = Math.floor(Math.pow(2.125, this.gatheringLevel) * 500);
 			this.gatheringXP = 0;
-			this.updateGatheringXP();
-			this.updateGatheringLevel();
-			this.xpChanged = false;
+			this.setStats();
 			return true;
 		}
-		this.xpChanged = false;
 		return false;
 	};
 	
-	this.updateMiningXP = function() {
-		write = "Mining XP: " + Math.floor(this.miningXP) + " / " + Math.ceil(this.miningXPRequired);
-		if ( !$('#miningXP')[0].innerHTML == write ) $('#miningXP')[0].innerHTML = write;
-	};
-	
-	this.updateMiningLevel = function() {
-		write = "Mining Level: " + this.miningLevel;
-		if ( !$('#miningLevel')[0].innerHTML == write ) $('#miningLevel')[0].innerHTML = write;
-	};
-	
-	this.updateGatheringXP = function() {
-		write = "Gathering XP: " + Math.floor(this.gatheringXP) + " / " + Math.ceil(this.gatheringXPRequired);
-		if ( !$('#gatheringXP')[0].innerHTML == write ) $('#gatheringXP')[0].innerHTML = write;
-	};
-	
-	this.updateGatheringLevel = function() {
-		write = "Gathering Level: " + this.gatheringLevel;
-		if ( !$('#gatheringLevel')[0].innerHTML == write ) $("#gatheringLevel")[0].innerHTML = write;
-	};
-	
-	this.updateScavengingXP = function() {
-		write = "Scavenging XP: " + Math.floor(this.scavengingXP) + " / " + Math.ceil(this.scavengingXPRequired);
-		if ( !$('#scavengingXP')[0].innerHTML == write ) $("#scavengingXP")[0].innerHTML = write;
-	};
-	
-	this.updateScavengingLevel = function() {
-		write = "Scavenging Level: " + this.scavengingLevel;
-		if ( !$('#scavengingLevel')[0].innerHTML == write ) $("#scavengingLevel")[0].innerHTML = write; 
+	this.setStats = function() {
+		$('#miningXP')[0].innerHTML = "Mining XP: " + Math.floor(this.miningXP) + " / " + Math.ceil(this.miningXPRequired);
+		$('#miningLevel')[0].innerHTML = "Mining Level: " + this.miningLevel;
+		$('#gatheringXP')[0].innerHTML = "Gathering XP: " + Math.floor(this.gatheringXP) + " / " + Math.ceil(this.gatheringXPRequired);
+		$('#gatheringLevel')[0].innerHTML = "Gathering Level: " + this.gatheringLevel;
+		$('#scavengingXP')[0].innerHTML = "Scavenging XP: " + Math.floor(this.scavengingXP) + " / " + Math.ceil(this.scavengingXPRequired);
+		$('#scavengingLevel')[0].innerHTML = "Scavenging Level: " + this.scavengingLevel;
 	};
 	
 	this.updateUI = function(){
-		this.updateMiningXP();
-		this.updateMiningLevel();
-		this.updateGatheringXP();
-		this.updateGatheringLevel();
-		this.updateScavengingXP();
-		this.updateScavengingLevel();
+		if (this.xpChanged) this.setStats();
+		this.xpChanged = false;
 	};
 	
     this.update = function(currentTime) {
         this.miner.update(currentTime);
         this.stats = this.gear.getStats();
         this.totalPower = this.calculatePower();
+		this.updateUI();
 		this.checkGatheringLevel();
 		this.checkMiningLevel();
 		this.checkScavengingLevel();

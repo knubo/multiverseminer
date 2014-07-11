@@ -32,7 +32,7 @@ function Gear(id) {
 
         if (!this.slots[itemInfo.gearType]) return false;
 		
-		if (game.player.miningLevel < itemId.minimumMiningLevel) return false;
+		if (game.player.miningLevel && game.player.minimumMiningLevel < itemId.minimumMiningLevel) return false;
         return true;
     };
 

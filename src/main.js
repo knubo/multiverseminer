@@ -237,33 +237,6 @@ function onDocumentReady() {
 		offsetX: 0,
 		offsetY: 0
 	});
-	obj = {
-		"gatheringLevel": 0,
-		"gatheringXP": 0,
-		"scavengingLevel": 0,
-		"scavengingXP": 0,
-		"miningLevel": 0,
-		"miningXP": 0
-	};
-	for (var key in obj) {
-		if (key == "gatheringLevel") tipContent = "This is your current <b>gathering level</b>.<p>Each time you increase your level you unlock bonuses.";
-		if (key == "gatheringXP") tipContent = "This is your current <b>gathering XP<b>.<p>You gain xp each time you find an item while gathering. <br>When you have enough xp, you will level.";
-		if (key == "scavengingLevel") tipContent = "This is your current <b>scavenging level</b>.<p>Each time you increase your level you unlock bonuses.";
-		if (key == "scavengingXP") tipContent = "This is your current <b>scavenging XP</b>. <p>You gain xp each time you find an item while scavenging. <br>When you have enough xp, you will level.";
-		if (key == "miningLevel") tipContent = "This is your current <b>mining level</b>. <p>Each time you increase your level you unlock bonuses.";
-		if (key == "miningXP") tipContent = "This is your current <b>mining XP</b>.<p>You gain xp each time you find an item while mining.<br>When you have enough xp, you will level.";
-		$("#" + key).tooltipster({
-			contentAsHTML: true,
-			content: tipContent,
-			theme: 'tooltipster-multi',
-			position: "left",
-			onlyOne: true,
-			delay: 0,
-			interactiveTolerance: 10,
-			speed: 1,
-			maxWidth: 300
-		});
-	};
 	this.hasTips = false;
 	$("#playerCraftingContent").sieve({
 		itemSelector: "div"
@@ -319,6 +292,33 @@ function onDocumentReady() {
 				maxWidth: 225
 			});
 		};
+	};
+	obj = {
+		"gatheringLevel": 0,
+		"gatheringXP": 0,
+		"scavengingLevel": 0,
+		"scavengingXP": 0,
+		"miningLevel": 0,
+		"miningXP": 0
+	};
+	for (var key in obj) {
+		if (key == "gatheringLevel") tipContent = "This is your current <b>gathering level</b>.<p>Each time you increase your level you unlock bonuses.";
+		if (key == "gatheringXP") tipContent = "This is your current <b>gathering XP<b>.<p>You gain xp each time you find an item while gathering. <br>When you have enough xp, you will level.";
+		if (key == "scavengingLevel") tipContent = "This is your current <b>scavenging level</b>.<p>Each time you increase your level you unlock bonuses.";
+		if (key == "scavengingXP") tipContent = "This is your current <b>scavenging XP</b>. <p>You gain xp each time you find an item while scavenging. <br>When you have enough xp, you will level.";
+		if (key == "miningLevel") tipContent = "This is your current <b>mining level</b>. <p>Each time you increase your level you unlock bonuses.";
+		if (key == "miningXP") tipContent = "This is your current <b>mining XP</b>.<p>You gain xp each time you find an item while mining.<br>When you have enough xp, you will level.";
+		$("#" + key).tooltipster({
+			contentAsHTML: true,
+			content: tipContent,
+			theme: 'tooltipster-multi',
+			position: "left",
+			onlyOne: true,
+			delay: 0,
+			interactiveTolerance: 10,
+			speed: 1,
+			maxWidth: 300
+		});
 	};
 };
 
