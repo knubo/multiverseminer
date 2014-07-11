@@ -1,4 +1,5 @@
-.panelPlanetLeft, .panelPlanetRight {
+/* Panel Left & Panel Right */
+.panelPlanetLeft {
 	background-color: rgba(37,37,37,.75);
 	border: 5px solid #000;
 	float: left;
@@ -13,9 +14,8 @@
 	text-align: center;
 	width: 410px;
 }
-.panelPlanetRight {
-	float: right !important;
-}
+
+/* Center Panel Display */
 .panelPlanetDisplay {
 	font-family: overpassregular,Arial,sans-serif;
 	font-size: 14px;
@@ -23,9 +23,35 @@
 	font-weight: 400;
 	letter-spacing: 1px;
 	text-align: center;
-	position: absolute;
-	left: 35%;
+	width: 32%;
+	height: 600px;
+	float: left;
+	margin-left: 2px;
 }
+
+.panelPlanetRight {
+	/* float: right !important; */
+	float: right;
+	background-color: rgba(37,37,37,.75);
+	border: 5px solid #000;
+	font-family: overpassregular,Arial,sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	height: 600px;
+	letter-spacing: 1px;
+	min-width: 300px;
+	outline: 1px solid #8A8A8A;
+	text-align: center;
+	width: 410px;
+}
+
+.panelUiBottom {
+	float: right;
+	margin-top: 2px;
+	width: 100%;
+}
+
 .planetDisplay {
 	height: 400px;
 }
