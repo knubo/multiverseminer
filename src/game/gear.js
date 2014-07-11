@@ -21,7 +21,6 @@ function Gear(id) {
             utils.logError("Slot was already added: " + type);
             return;
         }
-
         this.slots[type] = -1;
         this.slotMetadata[type] = undefined;
     };

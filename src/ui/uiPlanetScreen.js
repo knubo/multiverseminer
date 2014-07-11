@@ -299,7 +299,7 @@ function UIPlanetScreen() {
 			parent.append(slot.getMainElement());
 		};
 		stats = game.player.gear.getStats();
-		stats["totalPower"] = game.player.calculatePower();
+		if (game.player.calculatePower()) stats["totalPower"] = game.player.calculatePower();
 		y = [];
 		Object.keys(stats).forEach(function(key) {
 			var value = stats[key];

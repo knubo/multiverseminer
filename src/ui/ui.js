@@ -1,4 +1,4 @@
-require(["uiplanetscreen", "uitravelscreen", "jquery", "jqueryui", "jgrowl", "tooltipster"]);
+require(["uiplanetscreen", "uitravelscreen", "jquery", "jqueryui", "tooltipster"]);
 
 // ---------------------------------------------------------------------------
 // Some const values used in ui code
@@ -138,13 +138,11 @@ function UI() {
 	};
 
 	this.notify = function(message) {
-		$.jGrowl(message);
+		console.log(message);
 	};
 
 	this.notifyError = function(message) {
-		$.jGrowl(message, {
-			header: 'Error'
-		});
+		console.log(notifyError);
 	};
 
 	this.showDialog = function(buttonSuccess, buttonCancel, title, callback) {
