@@ -79,12 +79,6 @@ function UISlot(id, parent) {
         if (self.onClick) {
             self.onClick(self);
         }
-
-        if (!self.canDrag) {
-            return;
-        }
-
-        ui.beginDrag(self);
     };
 
     this.onMouseUp = function(parameters) {

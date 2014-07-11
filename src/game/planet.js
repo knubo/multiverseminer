@@ -285,6 +285,7 @@ function Planet(data) {
         if (this.storage.getItemsOfCategory("scavenge")) {
 			items = this.storage.getItemsOfCategory("scavenge");
             var rand = items[Math.floor(Math.random() * items.length)];
+			game.settings.addStat('foundItems', rand.length);
 			for (key in game.getItem(rand).craftCost) {
 				game.player.storage.addItem(key);
             };

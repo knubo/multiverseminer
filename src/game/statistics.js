@@ -4,11 +4,11 @@ function Statistics(key) {
     this.manualGatherCount = "0";
     this.manualScavengeCount = "0";
     this.autoDigCount = "0";
-    this.autoScavengeCount = "0";
     this.autoGatherCount = "0";
+    this.autoProduceCount = "0";
+    this.autoScavengeCount = "0";
     this.autoRefineCount = "0";
     this.foundItems = "0";
-    this.autoProduceCount = "0";
     this.craftedItems = "0";
 
     // ---------------------------------------------------------------------------
@@ -33,10 +33,10 @@ function Statistics(key) {
         localStorage[storageKey + 'manualScavengeCount'] = this.manualScavengeCount;
         localStorage[storageKey + 'autoDigCount'] = this.autoDigCount;
         localStorage[storageKey + 'autoGatherCount'] = this.autoGatherCount;
+		localStorage[storageKey + 'autoProduceCount'] = this.autoProduceCount;
         localStorage[storageKey + 'autoScavengeCount'] = this.autoScavengeCount;
         localStorage[storageKey + 'autoRefineCount'] = this.autoRefineCount;
         localStorage[storageKey + 'foundItems'] = this.foundItems;
-        localStorage[storageKey + 'autoProduceCount'] = this.autoProduceCount;
         localStorage[storageKey + 'craftedItems'] = this.craftedItems;
 
     };

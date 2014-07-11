@@ -1,7 +1,7 @@
 require(
 	["data/system", "data/items", "data/loot", "data/planets", "data/actors",
 		"game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty",
-		"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination", "tsort"
+		"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination"
 	]
 );
 
@@ -113,7 +113,9 @@ function onDocumentReady() {
 									game.player.update();
 								}
 							});
-						};
+						} else {
+							ui.noty({type: "error", text: "You are too low level to equip this.", timeout: 1500});
+						}
 					};
 
 					// Buildings
@@ -344,19 +346,10 @@ function onUpdate() {
 				});
 			};
 		};
+		game.player.updateUI();
 		this.hasTips = true;
 		delete stats;
-		game.player.updateUI();
 	};
-};
-
-function openNotifications() {
-	$("#notification-list").dialog({
-		close: function(event, ui) {
-			localStorage.setItem('notification_count', 0);
-			localStorage.setItem('notification_text', "");
-		}
-	});
 };
 
 function newCraft(itemId, quantity) {
@@ -460,24 +453,6 @@ function toggleAudio() {
 	}
 };
 
-function togglePopup() {
-	//pause playing
-	game.settings.togglePopups();
-	if (!game.settings.showPopups) {
-		noty({
-			text: "Loot text disabled.",
-			type: "information",
-			timeout: 2000
-		});
-	} else {
-		noty({
-			text: "Loot text enabled.",
-			type: "information",
-			timeout: 2000
-		});
-	}
-};
-
 function planetLootModal() {
 	$("#planetLootModal").modal({
 		modal: false,
@@ -495,7 +470,7 @@ function planetLootModal() {
 		position: ["15%", "36%"],
 		containerId: 'planetLootModal'
 	});
-}
+};
 
 function onMine() {
 	if (game.playerDied > 0) return false;
@@ -530,14 +505,6 @@ function onScavenge() {
 	game.player.scavenge();
 	this.lastRun = ~~new Date() / 200 | 0;
 };
-
-function sortInventory(direction) {
-	$("#playerInventorySlots .itemSlot").tsort({
-		order: direction,
-		place: 'beginning'
-	});
-	return;
-}
 
 function onActivatePlayerInventory() {
 	// select the button

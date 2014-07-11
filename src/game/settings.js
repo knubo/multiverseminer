@@ -3,7 +3,7 @@ function Settings() {
 	this.sessionStats = new Statistics('session');
 
 	this.autoSaveEnabled = true;
-	this.autoSaveInterval = 60 * 1000;
+	this.autoSaveInterval = 1000;
 	
 	this.savedVersion = 0;
 
@@ -22,18 +22,12 @@ function Settings() {
 	this.isNewGame = true;
 	this.showTutorial = true;
 	
-	this.showPopups = true;
-	
 	// ---------------------------------------------------------------------------
 	// general
 	// ---------------------------------------------------------------------------
 	this.initialize = function() {
 		this.totalStats.initialize();
 		this.sessionStats.initialize();
-	};
-	
-	this.togglePopups = function() {
-		this.showPopups = !this.showPopups;
 	};
 
 	// ---------------------------------------------------------------------------
@@ -74,8 +68,6 @@ function Settings() {
 		
 		localStorage.isNewGame = this.newGame;
 		localStorage.showTutorial = this.showTutorial;
-
-		localStorage.showPopups = this.showPopups;
 	};
 
 	this.load = function() {
@@ -85,7 +77,7 @@ function Settings() {
 		this.currentPlanet = utils.loadInt("currentPlanet", 0);
 
 		this.autoSaveEnabled = utils.loadBool("autoSaveEnabled", true);
-		this.autoSaveInterval = utils.loadInt("autoSaveInterval", 60 * 1000);
+		this.autoSaveInterval = utils.loadInt("autoSaveInterval", 1000);
 		
 		this.savedVersion = utils.loadFloat("savedVersion", 0);
 
@@ -99,8 +91,6 @@ function Settings() {
 		
 		this.isNewGame = utils.loadBool("isNewGame", true);
 		this.showTutorial = utils.loadBool("showTutorial", true);
-
-		this.showPopups = utils.loadBool("showPopups", true);
 	};
 
 	this.reset = function(fullReset) {
@@ -116,8 +106,6 @@ function Settings() {
 		
 		this.isNewGame = true;
 		this.showTutorial = true;
-		
-		this.showPopups = true;
 
 		this.totalStats = new Statistics('total');
 		this.totalStats.initialize();

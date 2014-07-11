@@ -67,10 +67,7 @@ function UISelection(id, parent) {
     };
 
     this.update = function(currentTime) {
-        if (!this.baseUpdate(currentTime)) {
-            return;
-        };
-        // this.selectionTextElement.text(key.replace("gear", "").split(/(?=[A-Z])/g).join(' ').toLowerCase());
+        if (!this.baseUpdate(currentTime)) return;
         try {
             var key = this.keys[this.selection];
             this.selectionTextElement.text(key.split(/(?=[A-Z])/g).join(' ').toLowerCase());

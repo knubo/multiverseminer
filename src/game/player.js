@@ -1,4 +1,4 @@
-require(["game", "gameminer", "gamestorage", "ui", "uiplanetscreen", "gamesettings", "noty", "simplemodal"]);
+require(["game", "gameminer", "gamestorage", "ui", "uiplanetscreen", "gamesettings", "simplemodal"]);
 
 function Player() {
     this.id = 'player';
@@ -21,6 +21,7 @@ function Player() {
 	this.scavengingXP = 0;
 	this.scavengingLevel = 0;
 	this.totalPower = 0;
+	this.xpChanged = true;
 
     // ---------------------------------------------------------------------------
     // general
@@ -31,8 +32,6 @@ function Player() {
         this.gear.initialize();
 		this.update();
 		this.updateUI();
-
-        // Add the slots we can wear
         this.gear.addSlot('head');
         this.gear.addSlot('chest');
         this.gear.addSlot('mainHand');
@@ -41,6 +40,7 @@ function Player() {
         this.gear.addSlot('feet');
         this.gear.addSlot('miningGear');
         this.totalPower = this.calculatePower();
+		this.xpChanged = true;
     };
 	
     this.calculatePower = function() {
@@ -60,21 +60,25 @@ function Player() {
 		this.miningXP += value;
 		this.updateMiningXP();
 		this.checkMiningLevel();
+		this.xpChanged = true;
 	};
     
 	this.gainScavengingXP = function(value) {
     	this.scavengingXP += value;
 		this.updateScavengingXP();
 		this.checkScavengingLevel();
+		this.xpChanged = true;
     };
 	
 	this.gainGatheringXP = function(value) {
 		this.gatheringXP += value;
 		this.updateGatheringXP();
 		this.checkGatheringLevel();
+		this.xpChanged = true;
 	};
 	
 	this.checkMiningLevel = function() {
+		if (!this.xpChanged) return;
 		this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
 		if (this.miningXPRequired < 500) this.miningXPRequired = 500;
 		if(this.miningXP >= this.miningXPRequired) {
@@ -83,12 +87,15 @@ function Player() {
 			this.miningXP = 0;
 			this.updateMiningXP();
 			this.updateMiningLevel();
+			this.xpChanged = false;
 			return true;
-		}
+		};
+		this.xpChanged = false;
 		return false;
 	};
 	
 	this.checkScavengingLevel = function() {
+		if (!this.xpChanged) return;
 		this.scavengingXPRequired = Math.floor(Math.pow(2.125, this.scavengingLevel) * 500);
 		if (this.scavengingXPRequired < 500) this.scavengingXPRequired = 500;
 		if(this.scavengingXP >= this.scavengingXPRequired) {
@@ -97,12 +104,15 @@ function Player() {
 			this.scavengingXP = 0;
 			this.updateScavengingXP();
 			this.updateScavengingLevel();
+			this.xpChanged = false;
 			return true;
-		}
+		};
+		this.xpChanged = false;
 		return false;
 	};
 	
 	this.checkGatheringLevel = function() {
+		if (!this.xpChanged) return;
 		this.gatheringXPRequired = Math.floor(Math.pow(2.125, this.gatheringLevel) * 500);
 		if (this.gatheringXPRequired < 500) this.gatheringXPRequired = 500;
 		if (this.gatheringXP >= this.gatheringXPRequired) {
@@ -111,33 +121,41 @@ function Player() {
 			this.gatheringXP = 0;
 			this.updateGatheringXP();
 			this.updateGatheringLevel();
+			this.xpChanged = false;
 			return true;
 		}
+		this.xpChanged = false;
 		return false;
 	};
 	
 	this.updateMiningXP = function() {
-		$('#miningXP')[0].innerHTML = "Mining XP: " + Math.floor(this.miningXP) + " / " + Math.ceil(this.miningXPRequired);
+		write = "Mining XP: " + Math.floor(this.miningXP) + " / " + Math.ceil(this.miningXPRequired);
+		if ( !$('#miningXP')[0].innerHTML == write ) $('#miningXP')[0].innerHTML = write;
 	};
 	
 	this.updateMiningLevel = function() {
-		$('#miningLevel')[0].innerHTML = "Mining Level: " + this.miningLevel;
+		write = "Mining Level: " + this.miningLevel;
+		if ( !$('#miningLevel')[0].innerHTML == write ) $('#miningLevel')[0].innerHTML = write;
 	};
 	
 	this.updateGatheringXP = function() {
-		$('#gatheringXP')[0].innerHTML = "Gathering XP: " + Math.floor(this.gatheringXP) + " / " + Math.ceil(this.gatheringXPRequired);
+		write = "Gathering XP: " + Math.floor(this.gatheringXP) + " / " + Math.ceil(this.gatheringXPRequired);
+		if ( !$('#gatheringXP')[0].innerHTML == write ) $('#gatheringXP')[0].innerHTML = write;
 	};
 	
 	this.updateGatheringLevel = function() {
-		$('#gatheringLevel')[0].innerHTML = "Gathering Level: " + this.gatheringLevel;
+		write = "Gathering Level: " + this.gatheringLevel;
+		if ( !$('#gatheringLevel')[0].innerHTML == write ) $("#gatheringLevel")[0].innerHTML = write;
 	};
 	
 	this.updateScavengingXP = function() {
-		$('#scavengingXP')[0].innerHTML = "Scavenging XP: " + Math.floor(this.scavengingXP) + " / " + Math.ceil(this.scavengingXPRequired);
+		write = "Scavenging XP: " + Math.floor(this.scavengingXP) + " / " + Math.ceil(this.scavengingXPRequired);
+		if ( !$('#scavengingXP')[0].innerHTML == write ) $("#scavengingXP")[0].innerHTML = write;
 	};
 	
 	this.updateScavengingLevel = function() {
-		$('#scavengingLevel')[0].innerHTML = "Scavenging Level: " + this.scavengingLevel;
+		write = "Scavenging Level: " + this.scavengingLevel;
+		if ( !$('#scavengingLevel')[0].innerHTML == write ) $("#scavengingLevel")[0].innerHTML = write; 
 	};
 	
 	this.updateUI = function(){
@@ -153,7 +171,11 @@ function Player() {
         this.miner.update(currentTime);
         this.stats = this.gear.getStats();
         this.totalPower = this.calculatePower();
+		this.checkGatheringLevel();
+		this.checkMiningLevel();
+		this.checkScavengingLevel();
         this.checkPlanet();
+		
         if (!this.canBreathe) {
             if (currentTime - this.lastOxygenConsumption > 1000) {
                 // TODO: need to do something when this runs out
@@ -177,129 +199,42 @@ function Player() {
     // player functions
     // ---------------------------------------------------------------------------	
     this.mine = function() {
-        if (!game.currentPlanet) {
-            return false;
-        };
-        $("#miningActionText").html("You enter the mine.");
-        var items = this.miner.mine(game.currentPlanet, this.totalPower, this.miningLuck);
-        if (items.length > 0) {
+        if (!game.currentPlanet) return false;
+        
+        var items = this.miner.mine(game.currentPlanet, this.pickPower, this.miningLuck);
+		
+        if (items) {
+            this.storage.addItems(items);
 			this.gainMiningXP(items.length);
-            if (game.settings.showPopups) {
-                for (var i = 0; i < items.length; i++) {
-                    var name = game.getItemName(items[i]);
-                    var _float = ui.createFloat('+1 ' + name, 'lootFloating', utils.getRandomInt(-100, 100), utils.getRandomInt(-100, 0));
-                }
-            }
-            // TODO - Add stat for whatever items you found.
-
-            var questProgress = {};
-            for (var i = 0; i < items.length; i++) {
-                questProgress[items[i]] = questProgress[items[i]] ? (questProgress[items[i]] + 1) : 1;
-            }
-            for (var name in questProgress) {
-                game.questProgress('mine', questProgress[name] + " " + name);
-                this.storage.addItem(name, questProgress[name]);
-            }
-            var results = items;
-            if (results.length > 1) {
-                x = [];
-                for (var i = 0; i < results.length; i++) {
-                    x.push(game.getItemName(results[i]));
-                };
-                $("#miningResultsText").html("You take a rest, having found:<br>" + x.sort().join(', ') + ".");
-            } else {
-                $("#miningResultsText").html("You take a rest, having found:<br>" + game.getItemName(items) + ".");
-            }
-            return true;
-        } else {
-            resultsNothingChoices = [
-                'You lose your grip on the pickaxe, and it goes flying.',
-                'You\'ve unearthered nothing of value.'
-            ];
-            var choice = resultsNothingChoices[Math.floor(Math.random() * resultsNothingChoices.length)];
-            $("#miningResultsText").html(choice);
+			game.settings.addStat('foundItems', items.length);
+			this.xpChanged = true;
+			return true;
         };
         return false;
     };
 
     this.gather = function() {
-        if (!game.currentPlanet) {
-            return false;
-        }
-        $("#gatheringActionText").html("You power on your atmospheric concentrator.");
+        if ( !game.currentPlanet ) return false;
         var items = this.miner.gather(game.currentPlanet);
-        if (items.length > 0) {
-			this.gainGatheringXP(items.length);
-            var results = items;
-            if (results.length > 1) {
-                x = [];
-                for (var i = 0; i < results.length; i++) {
-                    x.push(game.getItemName(results[i]));
-                };
-                $('#gatheringResultsText').html('After a cycle, the machine powers down and you collect:<br>' + x.sort().join(', ') + ".");
-            } else {
-                $('#gatheringResultsText').html('After a cycle, the machine powers down and you collect:<br>' + game.getItemName(items) + ".");
-            }
+		if (items) {
             this.storage.addItems(items);
+			this.gainGatheringXP(items.length);
+			game.settings.addStat('foundItems', items.length);
+			this.xpChanged = true;
             return true;
-        } else {
-            resultsNothingChoices = [
-                "There was a kink in the cog; your machine shut off prematurely.",
-                "Your battery died, and the machine shut off."
-            ];
-            var choice = resultsNothingChoices[Math.floor(Math.random() * resultsNothingChoices.length)];
-            $("#gatheringResultsText").html(choice);
         };
         return false;
     };
-
-    this.generateActionText = function() {
-        choices = [
-            "house",
-            "office",
-            "pizzaria",
-            "store",
-            "van",
-            "supermarket"
-        ];
-        var choice = choices[Math.floor(Math.random() * choices.length)];
-        return choice;
-    };
-    
-    this.cap = function(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
     
     this.scavenge = function() {
-        if (!game.currentPlanet) {
-            return false;
-        }
-        // TODO - Add stat for whatever items you found.
-        actionText = this.generateActionText();
-        actionTextUpper = this.cap(actionText);
-        $("#scavengingActionText").html('Location: ' + actionTextUpper);
+        if ( !game.currentPlanet ) return false;
         var items = this.miner.scavenge(game.currentPlanet);
-        if (items.length > 0) {
+        if (items) {
+			this.storage.addItems(items);
 			this.gainScavengingXP(items.length);
-            var results = items;
-            if (results.length > 1) {
-                x = [];
-                for (var i = 0; i < results.length; i++) {
-                    x.push(game.getItemName(results[i]));
-                };
-                $('#scavengingResultsText').html('After a thorough inspection of the ' + actionText + ' you return home with: <br>' + x.sort().join(', ') + ".");
-            } else {
-                $('#scavengingResultsText').html('After a thorough inspection of the ' + actionText + ' you return home with: <br>' + game.getItemName(items) + ".");
-            }
-            this.storage.addItems(items);
+			game.settings.addStat('foundItems', items.length);
+			this.xpChanged = true;
             return true;
-        } else {
-            resultsNothingChoices = [
-                "a loud noise spooks you.<br>You run away empty handed.",
-                "after thorough examination,<br>you determine there is nothing useful.<br>You go home empty-handed."
-            ];
-            var choice = resultsNothingChoices[Math.floor(Math.random() * resultsNothingChoices.length)];
-            $("#scavengingResultsText").html('You enter the ' + actionText + ', but ' + choice);
         };
         return false;
     };
@@ -323,10 +258,10 @@ function Player() {
         // Decomposing scavenged items
         // TODO - Add stat for whatever items you found.
         if (!this.storage.getItemsOfCategory("scavenge")) {
-            return noty({
-                text: "You don't have anything to decompose.",
-                type: "information",
-                timeout: 3500
+            return ui.noty({
+                	text: "You don't have anything to decompose.",
+                	type: "information",
+                	timeout: 1000
             });
         };
         var tmpItems = this.storage.getItemsOfCategory("scavenge");
@@ -363,6 +298,9 @@ function Player() {
         }
         removedString = removedString.substring(0, removedString.length - 2);
         gainedString = gainedString.substring(0, gainedString.length - 2);
+		try {
+			$(this).dialog("close");
+		} catch (e) {}
         $('#decompModal').modal({
 			onShow: function(dialog) { $(dialog.container).draggable({handle: 'div'}); },
             opacity: 40,
@@ -385,9 +323,7 @@ function Player() {
         } catch (err) {
             console.log(e);
             return false;
-        }
-        game.questProgress('craft', count + " " + itemId);
-        //this.equipBestGear();
+        };
         return true;
     };
 
@@ -495,5 +431,6 @@ function Player() {
 		this.scavengingXPRequired = 500;
         game.wasReset = false;
         $(window).on('onbeforeunload');
+		this.xpChanged = true;
     };
 };

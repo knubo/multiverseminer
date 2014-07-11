@@ -41,7 +41,6 @@ module.exports = function(grunt) {
 
                         ui: 'ui/ui',
                         uicomponent: 'ui/controls/uiComponent',
-                        uifloating: 'ui/controls/uiFloating',
                         uiinventory: 'ui/controls/uiInventory',
                         uiselection: 'ui/controls/uiSelection',
                         uislot: 'ui/controls/uiSlot',
@@ -61,8 +60,7 @@ module.exports = function(grunt) {
                         contextmenu: 'external/jquery.ui-contextmenu',
                         simplemodal: 'external/jquery.simplemodal-1.4.4',
 						sieve: 'external/jquery.sieve.min',
-						pagination: 'external/jquery.simplePagination',
-						tsort: 'external/jquery.tinysort.min'
+						pagination: 'external/jquery.simplePagination'
                     }
                 }
             }
