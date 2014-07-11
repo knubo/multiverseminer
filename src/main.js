@@ -18,14 +18,6 @@ window.onbeforeunload = function() {
 // Add hook for document ready
 $(document).ready(onDocumentReady);
 
-// Setup notifications
-$.jGrowl.defaults.position = 'bottom';
-$.jGrowl.defaults.animateOpen = {
-	height: 'show'
-};
-$.jGrowl.defaults.life = 300;
-$.jGrowl.defaults.pool = 1;
-
 // ---------------------------------------------------------------------------
 // function hooks
 // ---------------------------------------------------------------------------
