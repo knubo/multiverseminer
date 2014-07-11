@@ -157,7 +157,7 @@ function Gear(id) {
             if (!itemId || itemId == -1) {
                 continue;
             }
-            //console.log(this.equip(itemId));
+            this.equip(itemId);
             // Todo: load metadata
         }
     };

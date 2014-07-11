@@ -7,6 +7,10 @@ html {
     margin-top: 41px;
     padding-left: 0;
     position: static;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 a {
     color: white;

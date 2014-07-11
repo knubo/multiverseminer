@@ -41,7 +41,7 @@ function onDocumentReady() {
 	ui.bindKey("s", onScavenge);
 
 	// Call one round of UI Updates
-	ui.update();
+	//ui.update();
 
 	// Activate the default panels
 	onActivatePlayerInventory();
