@@ -84,7 +84,7 @@ function Storage(id) {
 
 	this.getItem = function(id) {
 		return this.items[id] || undefined;
-	}
+	};
 
 	this.getItems = function() {
 		return Object.keys(this.items);
@@ -143,7 +143,7 @@ function Storage(id) {
 			
 			// Unregister from the dictionaries
 			this._unregisterItemDictionary(itemInfo, "category", this.itemCategoryDictionary);
-			if(itemInfo.gearType) {
+			if (itemInfo.gearType) {
 				this._unregisterItemDictionary(itemInfo, "gearType", this.gearTypeDictionary);
 			}
 		}

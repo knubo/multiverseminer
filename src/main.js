@@ -1,7 +1,8 @@
 require(
-	["data/system", "data/items", "data/loot", "data/planets", "data/actors", 
-	"game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty", 
-	"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination", "tsort"]
+	["data/system", "data/items", "data/loot", "data/planets", "data/actors",
+		"game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty",
+		"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination", "tsort"
+	]
 );
 
 // Create components
@@ -28,12 +29,13 @@ $.jGrowl.defaults.pool = 1;
 // ---------------------------------------------------------------------------
 // function hooks
 // ---------------------------------------------------------------------------
+
 function onDocumentReady() {
 	Number.prototype.formatNumber = function() {
-	    if (ui.numberFormatter) {
-	        return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	    }
-	    return this;
+		if (ui.numberFormatter) {
+			return ui.numberFormatter(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		return this;
 	};
 	//Initialize the audio
 	$('#audioDig').trigger('load');
@@ -54,36 +56,35 @@ function onDocumentReady() {
 	onActivatePlayerGear();
 
 	// Set the update interval
-	var interval = 1000 / 60;
 	setInterval(function() {
 		onUpdate();
-	}, interval);
+	}, 1000);
 
 	// Right Click Menus
 	$(document).on('mousedown', '.hasMenu', function(e) {
+		try {
+			$(".tooltipstered.hasMenu.itemSlotHover").tooltipster('hide');
+		} catch (e) {};
 		e.preventDefault();
 		var item = game.getItem($("div:last-child", this).attr("id"));
 		if (e.which === 3 && item !== undefined) {
 			$(this).contextmenu({
 				menu: function() {
+					// Info
 					var menu = [{
 						title: "Info",
 						action: function(event, ui) {
 							var itemName = item.name,
 								itemDescription = item.description,
 								dialogDiv = $("#itemInfo");
-
 							dialogDiv.dialog({
 								title: "Item Info: " + itemName,
 								autoOpen: true
 							});
-
 							dialogDiv.html("<p>Name: " + itemName + "</p>");
-
 							if (itemDescription === undefined) {
 								itemDescription = "A mysterious item.";
 							}
-
 							dialogDiv.append("<p>Description: " + itemDescription + "</p>");
 						}
 					}];
@@ -100,8 +101,7 @@ function onDocumentReady() {
 						if (currentEquip === undefined || currentEquip.id !== item.id) {
 							equipText = "Equip";
 						}
-
-						if (typeof item.minimumMiningLevel !== "undefined" && item.minimumMiningLevel <= game.player.miningLevel) {
+						if (item.minimumMiningLevel <= game.player.miningLevel) {
 							menu.push({
 								title: equipText,
 								action: function(event, ui) {
@@ -118,10 +118,10 @@ function onDocumentReady() {
 
 					// Buildings
 					// If the planet limit is less than the total that exists on the planet
-					if (~item.category.indexOf('building')) {
-						if (~e.target.id.indexOf('planet')) {
+					if (item.category.indexOf('building') > -1) {
+						if (e.target.id.indexOf('planet') > -1) {
 							menu.push({
-								title: "Remove from planet",
+								title: "Deconstruct",
 								action: function(event, ui) {
 									try {
 										game.moveItems(item.id, game.currentPlanet.storage, game.player.storage, 1);
@@ -140,9 +140,9 @@ function onDocumentReady() {
 								}
 							});
 						}
-						if (~e.target.id.indexOf('player') && parseInt(item.planetLimit, 10) > parseInt(game.currentPlanet.storage.getItemCount(item.id), 10)) {
+						if (e.target.id.indexOf('player') > -1 && parseInt(item.planetLimit, 10) > parseInt(game.currentPlanet.storage.getItemCount(item.id), 10)) {
 							menu.push({
-								title: "Construct on planet",
+								title: "Construct",
 								action: function(event, ui) {
 									try {
 										game.moveItems(item.id, game.player.storage, game.currentPlanet.storage, 1);
@@ -177,10 +177,10 @@ function onDocumentReady() {
 						menu.push({
 							title: "Trash",
 							action: function(event, ui) {
-								if (e.target.id.slice(0, 6) == "planet") {
+								if (e.target.id.indexOf("player") > -1) {
 									game.player.storage.removeItem(item.id, game.player.storage.getItemCount(item.id));
 								} else {
-									game.currentPlanet.storage.removeItem(item.id, game.currentPlanet.storage.getItemCount(item.id));
+									game.currentPlanet.storage.removeItems(item.id, game.currentPlanet.storage.getItemCount(item.id));
 								}
 							}
 						});
@@ -191,21 +191,20 @@ function onDocumentReady() {
 		}
 	});
 	$(document).on('focusout', '.craftingFilter', function(e) {
-		if ( $(".craftingFilter").val() == "" ) {
+		if ($(".craftingFilter").val() == "") {
 			$("#playerCraftingContent").accordion("refresh");
 		};
 	});
 	$(document).on('blur', '.craftingFilter', function(e) {
-		if ( $(".craftingFilter").val() == "" ) {
+		if ($(".craftingFilter").val() == "") {
 			$("#playerCraftingContent").accordion("refresh");
 		};
 	});
 	$(document).on('mouseleave', '.craftingFilter', function(e) {
-		if ( $(".craftingFilter").val() == "" ) {
+		if ($(".craftingFilter").val() == "") {
 			$("#playerCraftingContent").accordion("refresh");
 		};
 	});
-	game.player.updateUI();
 	$('#settings').toolbar({
 		content: '#user-toolbar-options',
 		position: "bottom",
@@ -261,14 +260,16 @@ function onDocumentReady() {
 		});
 	};
 	this.hasTips = false;
-	$("#playerCraftingContent").sieve({itemSelector: "div"});
+	$("#playerCraftingContent").sieve({
+		itemSelector: "div"
+	});
 	var pag = "<div class='dark-pagination'></div>";
 	//"<button class='sort' id='asc' onClick='sortInventory(asc)'>sort asc</button>";
 	//pag += "<button class='sort' id='desc' onClick='sortInventory(desc)'>desc</button>";
 	$("#playerInventoryContent").append(pag);
 	var pItems = $("#playerInventorySlots .itemSlot");
 	var pNumItems = pItems.length;
-	var perPage = pNumItems/2;
+	var perPage = pNumItems / 2;
 	pItems.slice(perPage).hide();
 	$('.dark-pagination').pagination({
 		items: pItems,
@@ -279,6 +280,7 @@ function onDocumentReady() {
 			var showFrom = perPage * (pageNumber - 1);
 			var showTo = showFrom + perPage;
 			pItems.hide().slice(showFrom, showTo).show();
+			return false;
 		}
 	});
 };
@@ -306,6 +308,9 @@ function onUpdate() {
 	var currentTime = Date.now();
 	game.update(currentTime);
 	ui.update(currentTime);
+    if ($("#leftCategory2").hasClass("genericButtonSelected")) {
+        uiplanetscreen.updateStatsPanel();
+    };
 	if (!this.hasTips) {
 		var stats = uiplanetscreen.listStats();
 		for (var key in stats) {
@@ -527,7 +532,10 @@ function onScavenge() {
 };
 
 function sortInventory(direction) {
-	$("#playerInventorySlots .itemSlot").tsort({order:direction, place: 'beginning'});
+	$("#playerInventorySlots .itemSlot").tsort({
+		order: direction,
+		place: 'beginning'
+	});
 	return;
 }
 
