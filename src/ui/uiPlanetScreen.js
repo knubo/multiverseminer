@@ -469,15 +469,20 @@ function UIPlanetScreen() {
 		parent.append('<p>Available</p>').append($('<div/>'));
 
 		for (var key in ItemCategory) {
-			// Todo: remove this when scavenging items no longer have craftCost as their attribute
 			if (key === 'scavenge') {
 				continue;
-			}
-
-			var items = game.getItemsByCategory(key);
+			};
+			items = game.getItemsByCategory(key);
+			lvl = game.player.miningLevel;
+			if (key === "miningGear") items = items.filter(function(v) { return v["minimumMiningLevel"] < lvl;});
+			if (key === "gearMainHand") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
+			if (key === "gearHead") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
+			if (key === "gearChest") items = items.filter(function(v) { return  v["minimumMiningLevel"] < lvl;});
+			if (key === "gearLeg") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
+			if (key === "gearFeet") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
 			if (!items || items.length <= 0) {
 				continue;
-			}
+			};
 
 			var craftableItems = [];
 			for (var i = 0; i < items.length; i++) {
