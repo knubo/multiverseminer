@@ -83,7 +83,7 @@ a {
     position: absolute;
     text-align: center;
     top: 2px;
-    width: calc(99% - 2px);
+    width: calc(99% - 3px);
 }
 
 .panelBottomLeft {
