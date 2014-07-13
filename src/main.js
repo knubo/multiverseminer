@@ -1,7 +1,7 @@
 require(
 	["data/system", "data/items", "data/loot", "data/planets", "data/actors",
-		"game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty",
-		"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination"
+	"game", "ui", "jquery", "jqueryui", "enums", "utils", "uiplanetscreen", "noty",
+	"joyride", "toolbar", "contextmenu", "remote/socket", "sieve", "pagination"
 	]
 );
 
