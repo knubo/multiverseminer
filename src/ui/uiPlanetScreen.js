@@ -429,7 +429,7 @@ function UIPlanetScreen() {
 				} else if (null == item.minimumMiningLevel) {
 					res = true;
 				} else {
-					res = item.minimumMiningLevel < game.player.miningLevel;
+					res = item.minimumMiningLevel <= game.player.miningLevel;
 				};
 				return item.category === filter && res;
 			});
