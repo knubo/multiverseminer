@@ -438,7 +438,11 @@ function UIPlanetScreen() {
 			return l.concat(r);
 		});
 	};
-
+	
+	this.clearCraftingPanel = function() {
+		$("#playerCraftingContent").clear();
+	};
+	
 	this.updateCraftingPanel = function() {
 		function addTooltip(element, item) {
 			element.tooltipster({

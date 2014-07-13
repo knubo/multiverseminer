@@ -82,6 +82,7 @@ function Player() {
 			this.miningXPRequired = Math.floor(Math.pow(2.125, this.miningLevel) * 500);
 			this.miningXP = 0;
 			this.setStats();
+			uiplanetscreen.clearCraftingPanel();
 			uiplanetscreen.updateCraftingPanel();
 			return true;
 		};
