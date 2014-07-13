@@ -473,7 +473,7 @@ function planetLootModal() {
 function onMine() {
 	if (game.playerDied > 0) return false;
 	if (this.lastRun !== "undefined") {
-		if (this.lastRun >= ~~new Date.now() / 200 | 0) return false;
+		if (this.lastRun >= ~~Date.now() / 200 | 0) return false;
 	};
 	game.settings.addStat('manualDigCount');
 	result = game.player.mine();
@@ -483,28 +483,28 @@ function onMine() {
 	} else {
 		$('#audioDig').trigger('play');
 	}
-	this.lastRun = ~~new Date.now() / 200 | 0;
+	this.lastRun = ~~Date.now() / 200 | 0;
 };
 
 function onGather() {
 	if (game.playerDied > 0) return false;
 	if (this.lastRun !== "undefined") {
-		if (this.lastRun >= ~~new Date.now() / 200 | 0) return false;
+		if (this.lastRun >= ~~Date.now() / 200 | 0) return false;
 	};
 	game.settings.addStat('manualGatherCount');
 	game.player.gather();
 	uiplanetscreen.updateStatsPanel();
-	this.lastRun = ~~new Date.now() / 200 | 0;
+	this.lastRun = ~~Date.now() / 200 | 0;
 };
 
 function onScavenge() {
 	if (this.lastRun !== "undefined") {
-		if (this.lastRun >= ~~new Date.now() / 200 | 0) return false;
+		if (this.lastRun >= ~~Date.now() / 200 | 0) return false;
 	};
 	game.settings.addStat('manualScavengeCount');
 	game.player.scavenge();
 	uiplanetscreen.updateStatsPanel();
-	this.lastRun = ~~new Date.now() / 200 | 0;
+	this.lastRun = ~~Date.now() / 200 | 0;
 };
 
 function onActivatePlayerInventory() {
