@@ -499,9 +499,7 @@ function UIPlanetScreen() {
 			if (key === 'scavenge') {
 				continue;
 			};
-			items = this.filterItems(["miningGear", "gearHead", "gearChest", "gearFeet", "gearLegs"], function(item) {
-				return item.minimumMiningLevel <= game.player.miningLevel;
-			});
+			items = this.filterItems([key]);
 			if (!items || items.length <= 0) {
 				continue;
 			};
