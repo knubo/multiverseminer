@@ -43,6 +43,7 @@ function UIPlanetScreen() {
 	this.init = function() {
 		this.baseInit();
 		this.updateWhenNeededOnly = false;
+		this.lastLevel = game.player.miningLevel;
 
 		this.playerInventoryFilter = new UISelection('playerInventoryFilter');
 		this.playerInventoryFilter.values = ItemCategory;
@@ -490,7 +491,6 @@ function UIPlanetScreen() {
 				}
 				craftableContent.find(".craftDisabled").remove();
 			}
-			// Skip re-building this for now
 			return;
 		}
 		parent.append('<p>Available</p>').append($('<div/>'));
