@@ -117,7 +117,7 @@ function onDocumentReady() {
 								}
 							});
 						} else {
-							noty({type: "error", text: "You are too low level to equip this.", timeout: 1500});
+							noty({type: "error", text: "You are too low level to equip this.", timeout: 500, position: "bottomCenter"});
 						}
 					};
 
@@ -137,7 +137,7 @@ function onDocumentReady() {
 										noty({
 											layout: 'bottomCenter',
 											type: 'error',
-											timeout: 1500,
+											timeout: 500,
 											text: "An error was encountered when trying to move the building."
 										});
 										return;
@@ -436,7 +436,7 @@ function toggleAudio() {
 		noty({
 			text: "Audio muted.",
 			type: "notification",
-			timeout: 1000,
+			timeout: 500,
 			layout: "bottomCenter"
 		});
 	} else {
@@ -445,7 +445,7 @@ function toggleAudio() {
 		noty({
 			text: "Audio unmuted.",
 			type: "notification",
-			timeout: 1000,
+			timeout: 500,
 			layout: "bottomCenter"
 		});
 	}
