@@ -440,7 +440,7 @@ function UIPlanetScreen() {
 	};
 	
 	this.clearCraftingPanel = function() {
-		$("#playerCraftingContent").clear();
+		$("#playerCraftingContent").empty();
 	};
 	
 	this.updateCraftingPanel = function() {
