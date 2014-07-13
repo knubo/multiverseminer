@@ -3,8 +3,6 @@ html {
 .body {
     background: url("assets/images/bg.png") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
     color: #ffffff;
-    height: 95%;
-    margin-top: 41px;
     padding-left: 0;
     position: static;
     -moz-user-select: none;
@@ -51,6 +49,7 @@ a {
 .screen {
     width: 100%;
     height: 100%;
+	margin-top:41px;
 }
 .floatingArea {
     bottom: 47%;
@@ -84,7 +83,7 @@ a {
     position: absolute;
     text-align: center;
     top: 2px;
-    width: calc(99% - 1px);
+    width: calc(99% - 2px);
 }
 
 .panelBottomLeft {

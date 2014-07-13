@@ -334,9 +334,13 @@ function Game() {
 		if (!this.player.storage.hasItem("spaceship")) {
 			noty({
 				text: "You cannot travel without a ship!",
-				type: "warning",
+				type: "information",
 				layout: "bottomCenter",
 				timeout: 500
+			});
+			$('#get-a-ship').dialog({
+				height: "auto",
+				width: "auto"
 			});
 			return false;
 		}
