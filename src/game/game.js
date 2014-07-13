@@ -184,7 +184,7 @@ function Game() {
 			noty({
 				text: "Can not craft, storage limit exceeded!",
 				timeout: 500,
-				position: "bottomCenter",
+				layout: "bottomCenter",
 				type: "notification"
 			});
 			return false;
@@ -205,7 +205,7 @@ function Game() {
 					text: "Insufficient resources, you need: " + keys.join(', '),
 					timeout: 500,
 					type: "notification",
-					position: "bottomCenter"
+					layout: "bottomCenter"
 				});
 				return false;
 			};
@@ -225,7 +225,7 @@ function Game() {
 		noty({
 			text: "Crafted " + totalQuantity + " " + targetItem.name,
 			type: "information",
-			position: "bottomCenter",
+			layout: "bottomCenter",
 			timeout: 500
 		});
 		return true;
@@ -266,7 +266,7 @@ function Game() {
 		if (!targetItem.craftCost) {
 			noty({
 				type: "error",
-				position: "bottomCenter",
+				layout: "bottomCenter",
 				timeout: 500,
 				text: "Don't know how to craft this, check the data!"
 			});
@@ -335,7 +335,7 @@ function Game() {
 			noty({
 				text: "You cannot travel without a ship!",
 				type: "information",
-				position: "bottomCenter",
+				layout: "bottomCenter",
 				timeout: 500
 			});
 			$('#get-a-ship').dialog({
@@ -368,9 +368,9 @@ function Game() {
 				return true;
 			} else {
 				// Changed for testing.
-				ui.notifyError({
+				noty({
 					type: "information",
-					position: "bottomCenter",
+					layout: "bottomCenter",
 					timeout: 500,
 					text: "You can't get past Mars for now. We are currently working on the other planets."
 				});
@@ -769,7 +769,7 @@ function Game() {
 			noty({
 				text: "Can't leave, not on a planet",
 				type: "information",
-				position: "bottomCenter",
+				layout: "bottomCenter",
 				timeout: 500
 			});
 		}

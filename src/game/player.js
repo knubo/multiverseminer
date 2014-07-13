@@ -224,7 +224,7 @@ function Player() {
             return noty({
                 	text: "You don't have anything to decompose.",
                 	type: "information",
-					position: "bottomCenter",
+					layout: "bottomCenter",
                 	timeout: 500
             });
         };
