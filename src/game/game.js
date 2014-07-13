@@ -383,7 +383,7 @@ function Game() {
 	this.travelTo = function(target) {
 		// Todo: deduct travel cost
 		if (target == undefined || !this.planetDictionary[target]) {
-			ui.notifyError("Unknown destination: " + target);
+			noty({type: "error", text: "Unknown destination: " + target});
 			return;
 		}
 
