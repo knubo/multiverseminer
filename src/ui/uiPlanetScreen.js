@@ -43,7 +43,7 @@ function UIPlanetScreen() {
 	this.init = function() {
 		this.baseInit();
 		this.updateWhenNeededOnly = false;
-		
+
 		this.playerInventoryFilter = new UISelection('playerInventoryFilter');
 		this.playerInventoryFilter.values = ItemCategory;
 		this.playerInventoryFilter.callback = this.onPlayerInventoryFilterChanged;
@@ -144,8 +144,8 @@ function UIPlanetScreen() {
 				"divId": "planetScavenge"
 			},
 			"Gems": {
-			    "dictionaryIndex": [102, 103],
-			    "divId": "planetGems"
+				"dictionaryIndex": [102, 103],
+				"divId": "planetGems"
 			}
 		};
 
@@ -312,7 +312,7 @@ function UIPlanetScreen() {
 	};
 
 	this.buildCraftingTooltip = function(item) {
-        content = "<strong>" + item.name + "</strong><br>";
+		content = "<strong>" + item.name + "</strong><br>";
 		content += "<div style='font-size:11px;text-transform:capitalize;'>";
 		if (item.description) content += "<strong>Description: </strong>" + item.description + "<br>";
 		switch (item.category) {
@@ -380,8 +380,8 @@ function UIPlanetScreen() {
 				if (item.autoMine || item.autoGather || item.autoRefine || item.autoScavenge) {
 					content += "<br><strong>Effects:</strong><br>";
 					content += "Auto Digs Per Second: " + item.autoMine + "<br>";
-                	content += "Auto Gathers Per Second: " + item.autoGather + "<br>";
-                	content += "Auto Decomposes Per Second: " + item.autoRefine + "<br>";
+					content += "Auto Gathers Per Second: " + item.autoGather + "<br>";
+					content += "Auto Decomposes Per Second: " + item.autoRefine + "<br>";
 					content += "Auto Scavenges Per Second: " + item.autoScavenge;
 				};
 				if (item.autoProduce) content += "<br><br>Auto Produce: <b>5 " + item.autoProduce + " per minute.</b>";
@@ -392,7 +392,7 @@ function UIPlanetScreen() {
 					});
 					content += "<br><strong>Droprate Increase: </strong>" + x;
 				}
-                content += "<br><strong>Planet Limit:</strong> " + item.planetLimit + "<br>";
+				content += "<br><strong>Planet Limit:</strong> " + item.planetLimit + "<br>";
 				break;
 
 				/* Spaceship */
@@ -409,6 +409,33 @@ function UIPlanetScreen() {
 		content += "<br><strong>Category:</strong>" + ItemCategory[item.category];
 		content += "</div>";
 		return content;
+	};
+
+	this.filterItems = function(filters, items, fn) {
+		var flagged;
+		if (typeof items === 'function') {
+			fn = items;
+			items = null;
+		};
+		return filters.map(function(filter) {
+			if (null == items || flagged) {
+				items = game.getItemsByCategory(filter);
+				flagged = true;
+			};
+			return items.filter(function(item) {
+				var res = false;
+				if (fn) {
+					res = fn(item);
+				} else if (null == item.minimumMiningLevel) {
+					res = true;
+				} else {
+					res = item.minimumMiningLevel < game.player.miningLevel;
+				};
+				return item.category === filter && res;
+			});
+		}).reduce(function(l, r) {
+			return l.concat(r);
+		});
 	};
 
 	this.updateCraftingPanel = function() {
@@ -472,14 +499,9 @@ function UIPlanetScreen() {
 			if (key === 'scavenge') {
 				continue;
 			};
-			items = game.getItemsByCategory(key);
-			lvl = game.player.miningLevel;
-			if (key === "miningGear") items = items.filter(function(v) { return v["minimumMiningLevel"] < lvl;});
-			if (key === "gearMainHand") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
-			if (key === "gearHead") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
-			if (key === "gearChest") items = items.filter(function(v) { return  v["minimumMiningLevel"] < lvl;});
-			if (key === "gearLeg") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
-			if (key === "gearFeet") items = items.filter(function(v) { return   v["minimumMiningLevel"] < lvl;});
+			items = this.filterItems(["miningGear", "gearHead", "gearChest", "gearFeet", "gearLegs"], function(item) {
+				return item.minimumMiningLevel <= game.player.miningLevel;
+			});
 			if (!items || items.length <= 0) {
 				continue;
 			};
@@ -633,7 +655,7 @@ function UIPlanetScreen() {
 			$('#planetDisplayNameText').text(game.currentPlanet.getName().toUpperCase());
 		}
 	};
-	
+
 	this.onPlayerInventoryFilterChanged = function() {
 		var self = ui.screenPlanet;
 		var category = self.playerInventoryFilter.selection;
